@@ -1,112 +1,112 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Ramium</title>
-    <link>https://example.com/tags/</link>
-    <description>Recent content in Tags on Ramium</description>
+    <title>Tags on 6W3N Site</title>
+    <link>https://6w3n.github.io/tags/</link>
+    <description>Recent content in Tags on 6W3N Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 16 Apr 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://6w3n.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>css</title>
-      <link>https://example.com/tags/css/</link>
+      <link>https://6w3n.github.io/tags/css/</link>
       <pubDate>Thu, 16 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/tags/css/</guid>
+      <guid>https://6w3n.github.io/tags/css/</guid>
       <description></description>
     </item>
     
     <item>
       <title>html</title>
-      <link>https://example.com/tags/html/</link>
+      <link>https://6w3n.github.io/tags/html/</link>
       <pubDate>Thu, 16 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/tags/html/</guid>
+      <guid>https://6w3n.github.io/tags/html/</guid>
       <description></description>
     </item>
     
     <item>
       <title>markdown</title>
-      <link>https://example.com/tags/markdown/</link>
+      <link>https://6w3n.github.io/tags/markdown/</link>
       <pubDate>Thu, 16 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/tags/markdown/</guid>
+      <guid>https://6w3n.github.io/tags/markdown/</guid>
       <description></description>
     </item>
     
     <item>
       <title>themes</title>
-      <link>https://example.com/tags/themes/</link>
+      <link>https://6w3n.github.io/tags/themes/</link>
       <pubDate>Thu, 16 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/tags/themes/</guid>
+      <guid>https://6w3n.github.io/tags/themes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>privacy</title>
-      <link>https://example.com/tags/privacy/</link>
+      <link>https://6w3n.github.io/tags/privacy/</link>
       <pubDate>Tue, 14 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/tags/privacy/</guid>
+      <guid>https://6w3n.github.io/tags/privacy/</guid>
       <description></description>
     </item>
     
     <item>
       <title>shortcodes</title>
-      <link>https://example.com/tags/shortcodes/</link>
+      <link>https://6w3n.github.io/tags/shortcodes/</link>
       <pubDate>Tue, 14 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/tags/shortcodes/</guid>
+      <guid>https://6w3n.github.io/tags/shortcodes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>emoji</title>
-      <link>https://example.com/tags/emoji/</link>
+      <link>https://6w3n.github.io/tags/emoji/</link>
       <pubDate>Mon, 13 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/tags/emoji/</guid>
+      <guid>https://6w3n.github.io/tags/emoji/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Katex</title>
-      <link>https://example.com/tags/katex/</link>
+      <link>https://6w3n.github.io/tags/katex/</link>
       <pubDate>Sun, 12 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/tags/katex/</guid>
+      <guid>https://6w3n.github.io/tags/katex/</guid>
       <description></description>
     </item>
     
     <item>
       <title>math</title>
-      <link>https://example.com/tags/math/</link>
+      <link>https://6w3n.github.io/tags/math/</link>
       <pubDate>Sun, 12 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/tags/math/</guid>
+      <guid>https://6w3n.github.io/tags/math/</guid>
       <description></description>
     </item>
     
     <item>
       <title>chords</title>
-      <link>https://example.com/tags/chords/</link>
+      <link>https://6w3n.github.io/tags/chords/</link>
       <pubDate>Sat, 11 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/tags/chords/</guid>
+      <guid>https://6w3n.github.io/tags/chords/</guid>
       <description></description>
     </item>
     
     <item>
       <title>music</title>
-      <link>https://example.com/tags/music/</link>
+      <link>https://6w3n.github.io/tags/music/</link>
       <pubDate>Sat, 11 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/tags/music/</guid>
+      <guid>https://6w3n.github.io/tags/music/</guid>
       <description></description>
     </item>
     
