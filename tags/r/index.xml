@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on 6W3N Site</title>
+    <link>https://6w3n.github.io/tags/r/</link>
+    <description>Recent content in R on 6W3N Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 13 Apr 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://6w3n.github.io/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ready to use EDM on R</title>
+      <link>https://6w3n.github.io/posts/redm_preparation/</link>
+      <pubDate>Mon, 13 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/posts/redm_preparation/</guid>
+      <description>I wrote MEMO that the preparation for running rEDM using EC2.
+ EDM: Emprical Dynamic Modeling rEDM: R packages using EDM EC2(Official name: Amazon Elastic Compute Cloud): one of the AWS platforms.  The above MEMO focuses on after establishing an instance on EC2.</description>
+    </item>
+    
+    <item>
+      <title>Tidyverse First Introduction</title>
+      <link>https://6w3n.github.io/posts/tidyverse_first_introduction/</link>
+      <pubDate>Wed, 20 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/posts/tidyverse_first_introduction/</guid>
+      <description>Contents (for MB2, 19/11/08)  Tidyverse tidyr dplyr Excersice (data manipulation using tidyr and dplyr)  Tidyverse Tidyverse has three meanings:
+ Concept:
+to use &amp;ldquo;tidy data&amp;rdquo; and to make the design of the tools used for data analyze more tidy.</description>
+    </item>
+    
+  </channel>
+</rss>

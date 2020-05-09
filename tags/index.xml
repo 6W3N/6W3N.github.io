@@ -6,107 +6,80 @@
     <description>Recent content in Tags on 6W3N Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 16 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 13 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://6w3n.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>css</title>
-      <link>https://6w3n.github.io/tags/css/</link>
-      <pubDate>Thu, 16 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://6w3n.github.io/tags/css/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>html</title>
-      <link>https://6w3n.github.io/tags/html/</link>
-      <pubDate>Thu, 16 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://6w3n.github.io/tags/html/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>markdown</title>
-      <link>https://6w3n.github.io/tags/markdown/</link>
-      <pubDate>Thu, 16 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://6w3n.github.io/tags/markdown/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>themes</title>
-      <link>https://6w3n.github.io/tags/themes/</link>
-      <pubDate>Thu, 16 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://6w3n.github.io/tags/themes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>privacy</title>
-      <link>https://6w3n.github.io/tags/privacy/</link>
-      <pubDate>Tue, 14 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://6w3n.github.io/tags/privacy/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>shortcodes</title>
-      <link>https://6w3n.github.io/tags/shortcodes/</link>
-      <pubDate>Tue, 14 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://6w3n.github.io/tags/shortcodes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>emoji</title>
-      <link>https://6w3n.github.io/tags/emoji/</link>
+      <title>aws</title>
+      <link>https://6w3n.github.io/tags/aws/</link>
       <pubDate>Mon, 13 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://6w3n.github.io/tags/emoji/</guid>
+      <guid>https://6w3n.github.io/tags/aws/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Katex</title>
-      <link>https://6w3n.github.io/tags/katex/</link>
-      <pubDate>Sun, 12 Apr 2020 00:00:00 +0000</pubDate>
+      <title>EDM</title>
+      <link>https://6w3n.github.io/tags/edm/</link>
+      <pubDate>Mon, 13 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://6w3n.github.io/tags/katex/</guid>
+      <guid>https://6w3n.github.io/tags/edm/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>math</title>
-      <link>https://6w3n.github.io/tags/math/</link>
-      <pubDate>Sun, 12 Apr 2020 00:00:00 +0000</pubDate>
+      <title>R</title>
+      <link>https://6w3n.github.io/tags/r/</link>
+      <pubDate>Mon, 13 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://6w3n.github.io/tags/math/</guid>
+      <guid>https://6w3n.github.io/tags/r/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>chords</title>
-      <link>https://6w3n.github.io/tags/chords/</link>
-      <pubDate>Sat, 11 Apr 2020 00:00:00 +0000</pubDate>
+      <title>Tidyverse</title>
+      <link>https://6w3n.github.io/tags/tidyverse/</link>
+      <pubDate>Wed, 20 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://6w3n.github.io/tags/chords/</guid>
+      <guid>https://6w3n.github.io/tags/tidyverse/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>music</title>
-      <link>https://6w3n.github.io/tags/music/</link>
-      <pubDate>Sat, 11 Apr 2020 00:00:00 +0000</pubDate>
+      <title>TEES</title>
+      <link>https://6w3n.github.io/tags/tees/</link>
+      <pubDate>Fri, 07 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://6w3n.github.io/tags/music/</guid>
+      <guid>https://6w3n.github.io/tags/tees/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>beanweevils</title>
+      <link>https://6w3n.github.io/tags/beanweevils/</link>
+      <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/tags/beanweevils/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>photo</title>
+      <link>https://6w3n.github.io/tags/photo/</link>
+      <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/tags/photo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sem</title>
+      <link>https://6w3n.github.io/tags/sem/</link>
+      <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/tags/sem/</guid>
       <description></description>
     </item>
     

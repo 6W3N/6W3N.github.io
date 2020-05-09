@@ -6,54 +6,77 @@
     <description>Recent content in Posts on 6W3N Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 16 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 13 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://6w3n.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Markdown Syntax Guide</title>
-      <link>https://6w3n.github.io/posts/1.-markdown-syntax/</link>
-      <pubDate>Thu, 16 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://6w3n.github.io/posts/1.-markdown-syntax/</guid>
-      <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Rich Content</title>
-      <link>https://6w3n.github.io/posts/3.-rich-content/</link>
-      <pubDate>Tue, 14 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://6w3n.github.io/posts/3.-rich-content/</guid>
-      <description>&lt;p&gt;Hugo ships with several &lt;a href=&#34;https://gohugo.io/content-management/shortcodes/#use-hugo-s-built-in-shortcodes&#34;&gt;Built-in Shortcodes&lt;/a&gt; for rich content, along with a &lt;a href=&#34;https://gohugo.io/about/hugo-and-gdpr/&#34;&gt;Privacy Config&lt;/a&gt; and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Emoji Support</title>
-      <link>https://6w3n.github.io/posts/4.-emoji-support/</link>
+      <title>Ready to use EDM on R</title>
+      <link>https://6w3n.github.io/posts/redm_preparation/</link>
       <pubDate>Mon, 13 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://6w3n.github.io/posts/4.-emoji-support/</guid>
-      <description>&lt;p&gt;Emoji can be enabled in a Hugo project in a number of ways.&lt;/p&gt;</description>
+      <guid>https://6w3n.github.io/posts/redm_preparation/</guid>
+      <description>I wrote MEMO that the preparation for running rEDM using EC2.
+ EDM: Emprical Dynamic Modeling rEDM: R packages using EDM EC2(Official name: Amazon Elastic Compute Cloud): one of the AWS platforms.  The above MEMO focuses on after establishing an instance on EC2.</description>
     </item>
     
     <item>
-      <title>Math Typesetting</title>
-      <link>https://6w3n.github.io/posts/5.-math-typesetting/</link>
-      <pubDate>Sun, 12 Apr 2020 00:00:00 +0000</pubDate>
+      <title>Tidyverse First Introduction</title>
+      <link>https://6w3n.github.io/posts/tidyverse_first_introduction/</link>
+      <pubDate>Wed, 20 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://6w3n.github.io/posts/5.-math-typesetting/</guid>
-      <description>&lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;</description>
+      <guid>https://6w3n.github.io/posts/tidyverse_first_introduction/</guid>
+      <description>Contents (for MB2, 19/11/08)  Tidyverse tidyr dplyr Excersice (data manipulation using tidyr and dplyr)  Tidyverse Tidyverse has three meanings:
+ Concept:
+to use &amp;ldquo;tidy data&amp;rdquo; and to make the design of the tools used for data analyze more tidy.</description>
     </item>
     
     <item>
-      <title>Happy Birthday Chords</title>
-      <link>https://6w3n.github.io/posts/6.-happy-birthday-chords/</link>
-      <pubDate>Sat, 11 Apr 2020 00:00:00 +0000</pubDate>
+      <title>TEES@190614</title>
+      <link>https://6w3n.github.io/posts/tees190614/</link>
+      <pubDate>Fri, 07 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://6w3n.github.io/posts/6.-happy-birthday-chords/</guid>
-      <description>Happy ABirthday Eto youHappy EBirthday Ato youHappy A7Birthday dear DJohnnyHappy ABirthday Eto Ayou </description>
+      <guid>https://6w3n.github.io/posts/tees190614/</guid>
+      <description>Next presentator is Akiko SHOJI@Univ. Tsukuba. For details, please visit the &amp;lt;a href=&amp;quot;http://tsukubaecology.web.fc2.com/&amp;quot;, target=&amp;rdquo;_blank&amp;quot;&amp;gt;TEES site.</description>
+    </item>
+    
+    <item>
+      <title>SEM Photo</title>
+      <link>https://6w3n.github.io/posts/semphoto/</link>
+      <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/posts/semphoto/</guid>
+      <description>SEM Photo of Bean weevils Males of Callasobruchus maculatus have exaggerated spins on genitalias. These spins often hurt their mates.
+They have been treated as model organisms of sexual conflict by these harmful spins.
+The two photos belows show male genitalias of two geographic strains, implying that the intensity of sexual conflict (and also sexual selection) varied depending on strains.</description>
+    </item>
+    
+    <item>
+      <title>TEES@181026</title>
+      <link>https://6w3n.github.io/posts/tees181026/</link>
+      <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/posts/tees181026/</guid>
+      <description>Next presentators are Mr. Uchiumi from Meiji Univ. and Prof. Peter from University of Vienna.</description>
+    </item>
+    
+    <item>
+      <title>TEES@190215</title>
+      <link>https://6w3n.github.io/posts/tees190215/</link>
+      <pubDate>Thu, 11 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/posts/tees190215/</guid>
+      <description>Next presentator is Keita FUKASAWA@NIES</description>
+    </item>
+    
+    <item>
+      <title>TEES@180720</title>
+      <link>https://6w3n.github.io/posts/tees180720/</link>
+      <pubDate>Wed, 18 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/posts/tees180720/</guid>
+      <description>Next presentator is Kobayashi-san from Kyoto Univ.</description>
     </item>
     
   </channel>
