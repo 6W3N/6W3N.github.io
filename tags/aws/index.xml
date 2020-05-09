@@ -13,6 +13,16 @@
     
     <item>
       <title>Ready to use EDM on R</title>
+      <link>https://6w3n.github.io/posts/redm_preparation-2/</link>
+      <pubDate>Mon, 13 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/posts/redm_preparation-2/</guid>
+      <description>I wrote MEMO that the preparation for running rEDM using EC2.
+ EDM: Emprical Dynamic Modeling rEDM: R packages using EDM EC2(Official name: Amazon Elastic Compute Cloud): one of the AWS platforms.  The above MEMO focuses on after establishing an instance on EC2.</description>
+    </item>
+    
+    <item>
+      <title>Ready to use EDM on R</title>
       <link>https://6w3n.github.io/posts/redm_preparation/</link>
       <pubDate>Mon, 13 Apr 2020 00:00:00 +0000</pubDate>
       

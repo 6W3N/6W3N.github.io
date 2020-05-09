@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en-us"><title>
+    Tidyverse First Introduction | 
+    
+    6W3N Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<meta name="description" 
+      content="A brief guide to Tidyverse
+                ">
+
+<link rel="canonical" href="https://6w3n.github.io/posts/tidyverse_first_introduction/" />
+
+<link rel="icon" type="image/png" href="https://6w3n.github.io/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bulma.min.css">
+
+<meta property="og:title" content="Tidyverse First Introduction" />
+<meta property="og:description" content="A brief guide to Tidyverse" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://6w3n.github.io/posts/tidyverse_first_introduction/" />
+<meta property="article:published_time" content="2019-11-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-11-20T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Tidyverse First Introduction"/>
+<meta name="twitter:description" content="A brief guide to Tidyverse"/>
+
+
+
+    
+
+
+<script src=/js/ramium.js></script>
+<link rel="stylesheet" href=/css/ramium.css>
+
+
+
+
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=/>
+      
+      <strong>6W3N Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="/">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="/tags/">All Tags</a>
+          
+          <a class="navbar-item" href="/sections/">All Sections</a>
+          
+          <a class="navbar-item" href="/posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+      
+      <a class="navbar-item" href="/author/">Author</a>
+      
+      
+      
+      <a class="navbar-item" href="/contact/">Contact</a>
+      
+      
+      
+      <a class="navbar-item" href="/links/">Links</a>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/6W3N/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1 class="title">Tidyverse First Introduction</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Nov 20, 2019
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    10 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="/tags/r">R</a>
+                
+                <a class="tag is-dark is-rounded" href="/tags/tidyverse">Tidyverse</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="/tags/r">R</a>
+        
+        <a class="tag is-dark is-rounded" href="/tags/tidyverse">Tidyverse</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h2 id="contents-for-mb2-191108">Contents (for MB2, 19/11/08)</h2>
+<ul>
+<li>Tidyverse</li>
+<li>tidyr</li>
+<li>dplyr</li>
+<li>Excersice (data manipulation using <code>tidyr</code> and <code>dplyr</code>)</li>
+</ul>
+<h2 id="tidyverse">Tidyverse</h2>
+<p>Tidyverse has three meanings:</p>
+<ul>
+<li>Concept:<br>
+to use &ldquo;tidy data&rdquo; and to make the design of the tools used for data analyze more tidy.</li>
+<li>Packages:<br>
+to manipulate data handling or data visualizing based on tidyverse (concept).</li>
+<li>Organization:<br>
+is managing <code>tidyverse</code> (packages).</li>
+</ul>
+<p>Today I explain about <code>tidyverse</code> (packages) mainly.</p>
+<p>Recently, <a href="https://www.tidyverse.org/"><code>tidyverse</code></a>, which became one of the dialects in R languages, is a powerful and useful collection of packages.
+Many codes on the web are written using <code>tidyverse</code>.
+So, if you want to learn R on the web, there is no less to know <code>tidyverse</code>.</p>
+<p>I strongly recommend to read and demonstrate &ldquo;R for Data Science (<a href="https://r4ds.had.co.nz/">R4DS</a>)&rdquo; for studying <code>tidyverse</code> or data handling skills in R.
+But this book has so many contents so that focus on some of them at this lecture.</p>
+<p>First of all, to load the <code>tidyverse</code> and make it available in your current R session.</p>
+<pre><code>install.packages(&quot;tidyverse&quot;) #if you have not installed tidyverse
+library(tidyverse)
+</code></pre><h4 id="core-tidyverse">Core tidyverse</h4>
+<p>NOTE: The following list is just only my thoughts.</p>
+<ul>
+<li>tidyr (create tidy data)</li>
+<li>dplyr (data transformation)</li>
+<li>purrr (apply function)</li>
+<li>ggplot2 (data visualization)</li>
+<li>stringr (string manipulation)</li>
+<li>readr (data import)</li>
+</ul>
+<p>Today, I will explain only about <code>tidyr</code> and <code>dplyr</code>.
+If you want to learn about other packages in <code>tidyverse</code>, please refer to <a href="https://rstudio.com/resources/cheatsheets/">RStudio Cheat Sheets</a> or <a href="https://r4ds.had.co.nz/">R for Data Science</a> or <a href="https://heavywatal.github.io/rstats/intro.html">Heavy Watal (jp lang)</a>.</p>
+<h2 id="tidyr">tidyr</h2>
+<p>Almost packages in <code>tidyverse</code> operate based on &ldquo;tidy data&rdquo;.
+Not only that, we can understand its meanings simply using &ldquo;tidy data.&rdquo;<br>
+But in the real world, we often encounter &ldquo;non-tidy data&rdquo;.
+The <code>tidyr</code> package allows us to create &ldquo;tidy data&rdquo; easily.</p>
+<h4 id="what-is-tidy-data">What is &ldquo;tidy data&rdquo;?</h4>
+<p>&ldquo;tidy&rdquo;: arranged neatly and in order.</p>
+<p>Hadley Wickham defined &ldquo;tidy data&rdquo; as follows.</p>
+<blockquote>
+<p>In tidy data:</p>
+<ol>
+<li>Each variable forms a column.</li>
+<li>Each observation forms a row.</li>
+<li>Each type of observational unit forms a table.</li>
+</ol>
+</blockquote>
+<p>Referrence: <a href="https://www.jstatsoft.org/article/view/v059i10">Tidy Data</a></p>
+<img src="https://d33wubrfki0l68.cloudfront.net/6f1ddb544fc5c69a2478e444ab8112fb0eea23f8/91adc/images/tidy-1.png">
+<p>by <a href="https://r4ds.had.co.nz/">R4DS</a></p>
+<h4 id="examples-of-tidy-data-and-non-tidy-data">Examples of &ldquo;tidy data&rdquo; and &ldquo;non-tidy data&rdquo;</h4>
+<p>&ldquo;Tidy data&rdquo; is like this:</p>
+<pre><code>table1 
+
+#&gt; # A tibble: 6 x 4
+#&gt;   country      year  cases population
+#&gt;   &lt;chr&gt;       &lt;int&gt;  &lt;int&gt;      &lt;int&gt;
+#&gt; 1 Afghanistan  1999    745   19987071
+#&gt; 2 Afghanistan  2000   2666   20595360
+#&gt; 3 Brazil       1999  37737  172006362
+#&gt; 4 Brazil       2000  80488  174504898
+#&gt; 5 China        1999 212258 1272915272
+#&gt; 6 China        2000 213766 1280428583
+</code></pre><p>Each column means variables, and each row represents observations.<br>
+On the other hands, &ldquo;non-tidy data&rdquo; are like these:</p>
+<pre><code>table2
+
+#&gt; # A tibble: 12 x 4
+#&gt;   country      year type           count
+#&gt;   &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;          &lt;int&gt;
+#&gt; 1 Afghanistan  1999 cases            745
+#&gt; 2 Afghanistan  1999 population  19987071
+#&gt; 3 Afghanistan  2000 cases           2666
+#&gt; 4 Afghanistan  2000 population  20595360
+#&gt; 5 Brazil       1999 cases          37737
+#&gt; 6 Brazil       1999 population 172006362
+#&gt; # … with 6 more rows
+</code></pre><p>Because two types (cases and population) are common to country column and year column, table2 is &ldquo;non-tidy data&rdquo;.</p>
+<pre><code>table3
+
+#&gt; # A tibble: 6 x 3
+#&gt;   country      year rate             
+#&gt; * &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;            
+#&gt; 1 Afghanistan  1999 745/19987071     
+#&gt; 2 Afghanistan  2000 2666/20595360    
+#&gt; 3 Brazil       1999 37737/172006362  
+#&gt; 4 Brazil       2000 80488/174504898  
+#&gt; 5 China        1999 212258/1272915272
+#&gt; 6 China        2000 213766/1280428583
+</code></pre><p>Because rate column consists of denominator and numerator, table3 is also &ldquo;non-tidy data&rdquo;.</p>
+<h4 id="functions-of-tidyr">Functions of tidyr</h4>
+<h5 id="gather"><code>gather</code></h5>
+<pre><code>table4a
+
+#&gt; # A tibble: 3 x 3
+#&gt;   country     `1999` `2000`
+#&gt; * &lt;chr&gt;        &lt;int&gt;  &lt;int&gt;
+#&gt; 1 Afghanistan    745   2666
+#&gt; 2 Brazil       37737  80488
+#&gt; 3 China       212258 213766
+</code></pre><p>table4a contains year (1999 or 2000), but each year are columns. &ldquo;gather&rdquo; function takes multiple columns and collapses into key-value pairs, duplicating all other columns as needed.</p>
+<pre><code>gather(table4a, `1999`, `2000`, key = &quot;year&quot;, value = &quot;cases&quot;)
+
+#&gt; # A tibble: 6 x 3
+#&gt;   country     year   cases
+#&gt;   &lt;chr&gt;       &lt;chr&gt;  &lt;int&gt;
+#&gt; 1 Afghanistan 1999     745
+#&gt; 2 Brazil      1999   37737
+#&gt; 3 China       1999  212258
+#&gt; 4 Afghanistan 2000    2666
+#&gt; 5 Brazil      2000   80488
+#&gt; 6 China       2000  213766
+</code></pre><p>Above scripts changed table4a to &ldquo;tidy data&rdquo;.</p>
+<img src="https://d33wubrfki0l68.cloudfront.net/3aea19108d39606bbe49981acda07696c0c7fcd8/2de65/images/tidy-9.png">
+by [R4DS](https://r4ds.had.co.nz/)
+<h5 id="spread"><code>spread</code></h5>
+<p><code>spread</code> function is the opposite of gathering.
+table2 have observations which are scattered across multiple rows.</p>
+<pre><code>spread(table2, key = type, value = count)
+
+#&gt; # A tibble: 6 x 4
+#&gt;   country      year  cases population
+#&gt;   &lt;chr&gt;       &lt;int&gt;  &lt;int&gt;      &lt;int&gt;
+#&gt; 1 Afghanistan  1999    745   19987071
+#&gt; 2 Afghanistan  2000   2666   20595360
+#&gt; 3 Brazil       1999  37737  172006362
+#&gt; 4 Brazil       2000  80488  174504898
+#&gt; 5 China        1999 212258 1272915272
+#&gt; 6 China        2000 213766 1280428583
+</code></pre><img src="https://d33wubrfki0l68.cloudfront.net/8350f0dda414629b9d6c354f87acf5c5f722be43/bcb84/images/tidy-8.png">
+<p>by <a href="https://r4ds.had.co.nz/">R4DS</a></p>
+<p>The <code>tidyr</code> package has more functions but the above lecture only introduces to <code>spread</code> and <code>gather</code> due to time.</p>
+<p>More functions are <a href="https://cran.r-project.org/web/packages/tidyr/tidyr.pdf">here</a>.
+Or we can confirm functions by running following commands.</p>
+<pre><code>help(package = &quot;tidyr&quot;)
+</code></pre><h2 id="dplyr">dplyr</h2>
+<p><code>dplyr</code> is a powerful tool to transform data, like summarising, grouping, manipulating cases, manipulating variables, even combination.</p>
+<h4 id="pipe-operator">pipe operator</h4>
+<p><code>%&gt;%</code> will forward a value, or the result of an expression, into the next function call/expression.
+Actually, the pipe operator is function from <code>magrittr</code> package which is one of <code>tidyverse</code>.</p>
+<p>The pipe operator makes R scripts more simple, readable, and hence easy to edit.
+This is because nested functions (the first script)  are difficult to read and also lots of variables (the second script) confuse us.</p>
+<p>Following two scripts will return same results.</p>
+<pre><code>spread(table2, key = type, value = count)
+</code></pre><p>or</p>
+<pre><code>table2 %&gt;%
+    spread(key = type, value = count)
+</code></pre><p><code>%&gt;%</code> operator would demonstrate its power when applying many  functions in one process.</p>
+<p>Following three scripts also return the same result.</p>
+<pre><code>mutate(spread(filter(table2, country==&quot;Afghanistan&quot;),key = type, value = count), ratio=population/cases)
+# `mutate` function will be discribed later.
+</code></pre><p>or</p>
+<pre><code>Af &lt;- filter(table2, country==&quot;Afghanistan&quot;)
+spreadAf &lt;- spread(Af, key = type, value = count)
+mutate(spreadAf, ratio=population/cases)
+</code></pre><p>but  you can utilize pipe operator,</p>
+<pre><code>table2 %&gt;% 
+  filter(country==&quot;Afghanistan&quot;) %&gt;% 
+  spread(key = type, value = count) %&gt;% 
+  mutate(ratio=population/cases)
+</code></pre><p>The first two are traditional R scripts.
+On the other hand, the third is a modern R script.</p>
+<p>I strongly recommend using the pipe operator to make your code simple and readable.
+And I write all scripts using the pipe operator from here on.</p>
+<h4 id="functions-of-dplyr">functions of dplyr</h4>
+<p>I will explain only some of the functions because <code>dplyr</code> also has so many useful functions.</p>
+<h5 id="mutate"><code>mutate</code></h5>
+<p><code>mutate</code> function adds new variables, as used in the above scripts.</p>
+<pre><code>table1 %&gt;% 
+  mutate(ratio=population/cases)
+</code></pre><p>Of course, <code>mutate</code> function can add columns using another dataset.</p>
+<pre><code>table1 %&gt;% 
+  mutate(rate=table3$rate)
+</code></pre><p>In dialect <code>tidyverse</code>, it is common to access the columns as follows:</p>
+<pre><code>table1 %&gt;% 
+  mutate(rate=table3 %&gt;% pull(rate))
+</code></pre><p>Like above, <code>%&gt;%</code> is also valid when passing as arguments.
+<code>pull</code> command access the variables in the data frame.</p>
+<p><code>mutate</code> function is so useful but we must pass data of the same length as the original data frame.
+If based on the <code>tidyverse</code> concept, we should operate at variables (columns) level of the data frame as possible.
+So, we will often use <code>mutate</code> function.</p>
+<p><strong>The following figure is for illustrative purposes.</strong>
+<img src="https://i.imgur.com/b1kRbDs.png" alt=""></p>
+<p>by <a href="https://rstudio.com/resources/cheatsheets/">RStudio Cheat Sheets</a></p>
+<h5 id="select"><code>select</code></h5>
+<p>The <code>select</code> function filters the column levels.</p>
+<p>If you want to do as same as <code>table1$year</code>, you should use <code>pull</code> command which is one of the commands in <code>dplyr</code>.</p>
+<p>The <code>pull</code> command  or <code>$</code> operator return the <code>data.frameRowLabels</code> type.
+But <code>select</code> function returns the <code>data.frame</code> type which columns name remains.</p>
+<pre><code>table1 %&gt;% 
+  select(countey)
+</code></pre><p><strong>The following figure is for illustrative purposes.</strong>
+<img src="https://i.imgur.com/hdLcz01.png" alt=""></p>
+<p>by <a href="https://rstudio.com/resources/cheatsheets/">RStudio Cheat Sheets</a></p>
+<h5 id="filter"><code>filter</code></h5>
+<p>The <code>filter</code> function filters the row levels.
+<code>filter</code> function returns matched row when matching arguments.</p>
+<pre><code>table1 %&gt;% 
+  filter(country==&quot;Afghanistan&quot;)
+</code></pre><p>The above commands return rows including <code>&quot;Afghanistan&quot;</code> in <code>country</code> column.</p>
+<p>Of course, you can also select by row numbers as below.
+But if so, you have to use <code>slice</code> function.</p>
+<pre><code>table1 %&gt;% 
+  slice(1)
+</code></pre><p><strong>The following figure is for illustrative purposes.</strong>
+<img src="https://i.imgur.com/eKVtSXz.png" alt=""></p>
+<p>by <a href="https://rstudio.com/resources/cheatsheets/">RStudio Cheat Sheets</a></p>
+<h5 id="inner_join"><code>inner_join</code></h5>
+<p>The <code>_join</code> function group (<code>left_</code>, <code>right_</code>, <code>inner_</code> <code>full_</code>) combine two data.
+The easiest to use function is <code>inner_join</code> which combine and returns only the rows that match the column specified by <code>by</code>.</p>
+<pre><code>table2 %&gt;%
+  inner_join(table3, by=c(&quot;country&quot;, &quot;year&quot;))
+</code></pre><p>The above commands returns the data combined with <code>country</code> and <code>year</code> columns.</p>
+<p><strong>The following figure is for illustrative purposes.</strong><br>
+<code>x</code> has <code>a, b, and c</code> in <code>A</code> column and <code>t, u, and v</code> in <code>B</code> column.
+On the other hand, <code>y</code> has the same variable as <code>x</code> like <code>a and b</code> in <code>A</code> column and <code>t and u</code> in <code>B</code> column.
+In this case, <code>inner_join</code> combine as below:
+<img src="https://i.imgur.com/VTbaYS7.png" alt=""></p>
+<p><img src="https://i.imgur.com/mu6Lj5S.png" alt=""></p>
+<p>by <a href="https://rstudio.com/resources/cheatsheets/">RStudio Cheat Sheets</a></p>
+<h5 id="group_by"><code>group_by</code></h5>
+<p><code>group_by</code> function makes groups.
+This function is compatible with <code>summarize</code> function.</p>
+<h5 id="summarize"><code>summarize</code></h5>
+<p>The <code>summarize</code> function summarize variables and create a new table of summary statistics.</p>
+<pre><code>mtcars %&gt;% 
+  as_tibble()    # tibble is easy to read and use class because we can confirm all variable's names, numbers of rows and columns, and columns class.
+
+
+#&gt; # A tibble: 32 x 11
+#&gt;    mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1  21       6  160    110  3.9   2.62  16.5     0     1     4     4
+#&gt; 2  21       6  160    110  3.9   2.88  17.0     0     1     4     4
+#&gt; 3  22.8     4  108     93  3.85  2.32  18.6     1     1     4     1
+#&gt; 4  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1
+#&gt; 5  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2
+#&gt; 6  18.1     6  225    105  2.76  3.46  20.2     1     0     3     1
+#&gt; 7  14.3     8  360    245  3.21  3.57  15.8     0     0     3     4
+#&gt; 8  24.4     4  147.    62  3.69  3.19  20       1     0     4     2
+#&gt; 9  22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
+#&gt;10  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
+#&gt;# … with 22 more rows
+</code></pre><pre><code>mtcars %&gt;%
+  group_by(cyl) %&gt;%    # grouping by `cyl` levels, which are 4, 6, or 8.
+  summarise(avg = mean(mpg))    # summarizing by the group (is `cyl` levels), and creation the averages column.
+
+
+
+#&gt;# A tibble: 3 x 2
+#&gt;    cyl   avg
+#&gt;  &lt;dbl&gt; &lt;dbl&gt;
+#&gt;1     4  26.7
+#&gt;2     6  19.7
+#&gt;3     8  15.1
+</code></pre><p><strong>The following figure is for illustrative purposes.</strong>
+<img src="https://i.imgur.com/xsAbvqT.png" alt=""></p>
+<p>by <a href="https://rstudio.com/resources/cheatsheets/">RStudio Cheat Sheets</a></p>
+<h2 id="exercise">Exercise</h2>
+<p>Let&rsquo;s enjoy data handling with <code>tidyverse</code> !!</p>
+<!--
+#### sum up  by sp. name
+`iris` is famous data in `tidyverse` or R language. 
+`iris` includes scientific names and some variabels.
+
+```
+iris %>%
+  as_tibble()
+  
+#># A tibble: 150 x 5
+#>   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+#>          <dbl>       <dbl>        <dbl>       <dbl> <fct>
+#> 1          5.1         3.5          1.4         0.2 setosa
+#> 2          4.9         3            1.4         0.2 setosa
+#> 3          4.7         3.2          1.3         0.2 setosa
+#> 4          4.6         3.1          1.5         0.2 setosa
+#> 5          5           3.6          1.4         0.2 setosa
+#> 6          5.4         3.9          1.7         0.4 setosa
+#> 7          4.6         3.4          1.4         0.3 setosa
+#> 8          5           3.4          1.5         0.2 setosa
+#> 9          4.4         2.9          1.4         0.2 setosa
+#>10          4.9         3.1          1.5         0.1 setosa
+#># … with 140 more rows  
+```
+
+
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2f6w3n.github.io%2fposts%2ftidyverse_first_introduction%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=/img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Tidyverse%20First%20Introduction&url=https%3a%2f%2f6w3n.github.io%2fposts%2ftidyverse_first_introduction%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=/img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=https%3a%2f%2f6w3n.github.io%2fposts%2ftidyverse_first_introduction%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=/img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2f6w3n.github.io%2fposts%2ftidyverse_first_introduction%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=/img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=https%3a%2f%2f6w3n.github.io%2fposts%2ftidyverse_first_introduction%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=/img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2f6w3n.github.io%2fposts%2ftidyverse_first_introduction%2f
+			&title=Tidyverse%20First%20Introduction&summary=Contents%20%28for%20MB2%2c%2019%2f11%2f08%29%20%20Tidyverse%20tidyr%20dplyr%20Excersice%20%28data%20manipulation%20using%20tidyr%20and%20dplyr%29%20%20Tidyverse%20Tidyverse%20has%20three%20meanings%3a%0a%20Concept%3a%0ato%20use%20%26ldquo%3btidy%20data%26rdquo%3b%20and%20to%20make%20the%20design%20of%20the%20tools%20used%20for%20data%20analyze%20more%20tidy.&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=/img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Tidyverse%20First%20Introduction&amp;body=Check out this site https%3a%2f%2f6w3n.github.io%2fposts%2ftidyverse_first_introduction%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=/img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '6W3N';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>
