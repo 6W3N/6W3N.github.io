@@ -6,10 +6,19 @@
     <description>Recent content in photo on 6W3N Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Sep 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 Sep 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://6w3n.github.io/tags/photo/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Visit to Arnqvist&#39;s Lab.</title>
+      <link>https://6w3n.github.io/posts/lab_visit_2019/</link>
+      <pubDate>Wed, 11 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/posts/lab_visit_2019/</guid>
+      <description>Arnqvist&amp;rsquo;s Lab. Before ESEB 2019, I visited Arnqvist Lab., Uppsala, Sweden. Thank you to Dr. Göran Arnqvist for talking to me about the research equipment and how to rear bean weevils. And thank you to everyone at Arnqvist Lab. for taking the time to do this, regardless of the summer break.</description>
+    </item>
     
     <item>
       <title>ESEB 2019 in Turku</title>
