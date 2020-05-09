@@ -18,7 +18,7 @@
       
       <guid>https://6w3n.github.io/posts/redm_preparation/</guid>
       <description>I wrote MEMO that the preparation for running rEDM using EC2.
- EDM: Emprical Dynamic Modeling rEDM: R packages using EDM EC2(Official name: Amazon Elastic Compute Cloud): one of the AWS platforms.  The above MEMO focuses on after establishing an instance on EC2.</description>
+ EDM: Emprical Dynamic Modeling rEDM: R packages using EDM EC2(Official name: Amazon Elastic Compute Cloud): one of the AWS platforms. The above MEMO focuses on after establishing an instance on EC2.</description>
     </item>
     
   </channel>

@@ -122,7 +122,7 @@
 
             <div class="level-item">
                 <p class="subtitle info">
-                    1 min read
+                    2 mins read
                 </p>
             </div>
         </div>
@@ -160,9 +160,94 @@
 <ul>
 <li>EDM: Emprical Dynamic Modeling</li>
 <li>rEDM: R packages using EDM</li>
-<li>EC2(Official name: Amazon Elastic Compute Cloud): one of the AWS platforms.</li>
+<li>EC2(Official name: Amazon Elastic Compute Cloud): one of the AWS platforms.
+The above MEMO focuses on after establishing an instance on EC2.</li>
 </ul>
-<p>The above MEMO focuses on after establishing an instance on EC2.</p>
+<hr>
+<p>The following text is the clone of the above MEMO.</p>
+<h2 id="how-to-use-redm-in-awsec2--memo-">How to use rEDM in AWS(EC2) -MEMO-</h2>
+<p>This entry describes the preparation for running rEDM using EC2.</p>
+<h2 id="connect-instance-in-awsec2">Connect instance in AWS(EC2)</h2>
+<ul>
+<li>Login to <a href="https://us-east-2.console.aws.amazon.com/ec2/v2/home?region=us-east-2#Instances:">EC2</a></li>
+<li>Make instance (This page is supporting only for Ubuntu)</li>
+<li>Click to &ldquo;CONNECT&rdquo;</li>
+<li>Excute following command in directory, which has .pem file
+<pre><code>ssh -i &quot;hogehoge.pem&quot; ubuntu@hugahuga.compute.amazonaws.com
+</code></pre></li>
+</ul>
+<h2 id="fileor-directory-import-local-to-aws">File(or Directory) import (local to AWS)</h2>
+<pre><code>scp -i ./hogehoge.pem -r [directories] ubuntu@hugahuga.compute.amazonaws.com:~/mydir/
+</code></pre><h2 id="update-r">Update R</h2>
+<ul>
+<li>Check codename of Ubuntu
+<pre><code>lsb_release -cs
+</code></pre></li>
+<li>Register the mirror site of the download source by adding at <b>/etc/apt/sources.list</b>
+<pre><code>echo -e &quot;\n## For R package&quot;  | sudo tee -a /etc/apt/sources.list
+echo &quot;deb https://cran.ism.ac.jp//bin/linux/ubuntu $(lsb_release -cs)-cran35/&quot; | sudo tee -a /etc/apt/sources.list
+</code></pre><ul>
+<li>cran35 means that a repository providing R 3.5.x for bionic</li>
+</ul>
+</li>
+<li>Register the public key
+<pre><code>sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+</code></pre></li>
+<li>And then <b>apt-get</b>
+<pre><code>sudo apt update
+sudo apt-get install r-base
+</code></pre></li>
+</ul>
+<p>Ref</p>
+<ul>
+<li><a href="https://qiita.com/JeJeNeNo/items/43fc95c4710c668e86a2">Qiita -最新のRをUbuntuにインストール-</a></li>
+</ul>
+<h2 id="redm-installation">rEDM installation</h2>
+<h3 id="preparations-in-advance">Preparations in advance</h3>
+<ul>
+<li>Install curl and xml and ssl on linux
+<pre><code>sudo apt-get install libcurl4-openssl-dev
+sudo apt-get install libxml2-dev    
+sudo apt-get install libssl-dev
+</code></pre></li>
+</ul>
+<h3 id="redm-installation-1">rEDM installation</h3>
+<pre><code>install.packages(remotes)
+remotes::install_github(&quot;ha0ye/rEDM&quot;)
+library(rEDM)
+</code></pre><h4 id="caution">!!caution!!</h4>
+<p>rEDM latest version(190422) <b>DOESN&rsquo;T</b> have <b><i>twin surrogate method</i></b> by default&hellip;
+So if you would like to use this method, 1. install <b>rEDM ver.0.7.1</b>, or 2. read <b>data_transformations.R</b></p>
+<p>Refs</p>
+<ul>
+<li><a href="https://iopscience.iop.org/article/10.1209/epl/i2006-10147-0/pdf">Thiel et al., 2006</a></li>
+<li><a href="https://www.jstage.jst.go.jp/article/seitai/65/3/65_KJ00010198786/_pdf">Nakayama et al., 2015</a></li>
+</ul>
+<ol>
+<li>
+<p>install rEDM ver.0.7.1</p>
+<pre><code>install.packages(&quot;repmis&quot;)
+library(repmis)
+InstallOldPackages(pkgs = &quot;rEDM&quot;, versions = &quot;0.7.1&quot;)
+</code></pre></li>
+<li>
+<p>read <a href="/9e2Pb_-dQbSqjSWFUnQdLA">data_transformations.R</a></p>
+<ol>
+<li>
+<p>create data_transformations.R by copy &amp; paste above page</p>
+</li>
+<li>
+<p>and then read this file</p>
+<pre><code>source(data_transformations.R)
+</code></pre></li>
+</ol>
+</li>
+</ol>
+<p>Refs</p>
+<ul>
+<li><a href="https://blogs.yahoo.co.jp/igproj_fusion/20270891.html">R パッケージ：　古いバージョンをインストールするには</a></li>
+<li><a href="https://github.com/ha0ye/rEDM">Github</a></li>
+</ul>
 
     </div>
 </div><div id="social-media-share" class="has-text-centered">
@@ -201,7 +286,7 @@
 	    </a>
 
 		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2f6w3n.github.io%2fposts%2fredm_preparation%2f
-			&title=Ready%20to%20use%20EDM%20on%20R&summary=I%20wrote%20MEMO%20that%20the%20preparation%20for%20running%20rEDM%20using%20EC2.%0a%20EDM%3a%20Emprical%20Dynamic%20Modeling%20rEDM%3a%20R%20packages%20using%20EDM%20EC2%28Official%20name%3a%20Amazon%20Elastic%20Compute%20Cloud%29%3a%20one%20of%20the%20AWS%20platforms.%20%20The%20above%20MEMO%20focuses%20on%20after%20establishing%20an%20instance%20on%20EC2.&source=rafed123.github.io"
+			&title=Ready%20to%20use%20EDM%20on%20R&summary=I%20wrote%20MEMO%20that%20the%20preparation%20for%20running%20rEDM%20using%20EC2.%0a%20EDM%3a%20Emprical%20Dynamic%20Modeling%20rEDM%3a%20R%20packages%20using%20EDM%20EC2%28Official%20name%3a%20Amazon%20Elastic%20Compute%20Cloud%29%3a%20one%20of%20the%20AWS%20platforms.%20The%20above%20MEMO%20focuses%20on%20after%20establishing%20an%20instance%20on%20EC2.&source=rafed123.github.io"
 	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
 	        title="Share on LinkedIn. Opens in a new window." >
 	        <img src=/img/icons/45px/linkedin.png>
