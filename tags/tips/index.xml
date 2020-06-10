@@ -33,7 +33,7 @@ Main Flow  Dataの準備 ネットワークへ変換の下準備 ネットワー
       <description>Preface このページは、RとSeleniumを使ったWeb Scraping（特に画像）の備忘録です。
 今回はGoogleでキーワードを入力した際に表示される大量の画像の取得を目指します。
 ここに表示されている画像たちです。
-Environment  Mac OS Catalina var. 10.15.4 Docker var. 2.2.0.5 RSelenium var. 1.7.7 R var. 3.6.1 wget (or curl)  今回はMac OSでの動かし方になります。Linuxでも大筋は変わりません。（誰か試してみて欲しい。） Windowsで、DockerやTerminal相当のものを動かしたことがないので今回は説明できません。パスです。
+Environment  Mac OS Catalina v. 10.15.4 Docker v. 2.2.0.5 RSelenium v. 1.7.7 R v. 3.6.1 wget (or curl)  今回はMac OSでの動かし方になります。Linuxでも大筋は変わりません。（誰か試してみて欲しい。） Windowsで、DockerやTerminal相当のものを動かしたことがないので今回は説明できません。パスです。
 上記環境ではDockerを用いていますが、Selenium自体はDockerでなくとも動きます。このページでは、簡単のためにDockerでの動かし方を書いています。
 また、上記の環境はインストール済みであるという前提にします。
 What&amp;rsquo;s RSelenium? RSeleniumとはSeleniumをR上で動かすためのパッケージです。 Seleniumは、ウェブブラウザを操作するための便利ツールくらいに思って置いてもらって構いません。 Seleniumについて詳しく知りたい方はこちらを参照ください。
