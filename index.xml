@@ -12,6 +12,19 @@
     
     
     <item>
+      <title>igraph memo</title>
+      <link>https://6w3n.github.io/posts/igraph_memo/</link>
+      <pubDate>Wed, 10 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/posts/igraph_memo/</guid>
+      <description>Preface Rとigraphでネットワークのグラフを書いた時の備忘録です。
+動物行動を遷移図として記述すると言う試みは古くからなされているのですが、見やすいグラフをRで描けないかな、と思い立ったのがきっかけです。なのでターゲットは動物行動です。
+Environment  Mac OS Catalina var. 10.15.4 R igraph ver. 1.2.5 R ver. 4.0.0  What&amp;rsquo;s igraph? igraphはR以外にもネットワークを記述する時に用いられる文法のようなものです。 R以外にPythonやMathmetica、C++などでも動かせます。ggplot2みたいなもの。
+Main Flow  Dataの準備 ネットワークへ変換の下準備 ネットワークの生成 描画  1. Data Preparation 今回は仮に2個体での複数の行動の遷移を表す図を作成します。 捕食者と被食者の関係で以下のような行動が見られるとします。
+ N: No action S: Search by the predator A: Attacking by the predator D: Defense by the prey E: prey is Escaped P: Predation  例えば、 N -&amp;gt; S -&amp;gt; A -&amp;gt; D -&amp;gt; E では「捕食者が探索行動を開始し、捕食者が被食者を発見し、攻撃を開始し、被食者が防御行動を行い、被食者が逃亡する。」を示しています。</description>
+    </item>
+    
+    <item>
       <title>Author</title>
       <link>https://6w3n.github.io/author/</link>
       <pubDate>Sat, 09 May 2020 00:00:00 +0000</pubDate>

@@ -15,8 +15,8 @@
 
 <link rel="icon" type="image/png" href="https://6w3n.github.io/image/favicon.ico">
 
-<link rel="stylesheet" href="/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/bulma.min.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../css/bulma.min.css">
 
 <meta property="og:title" content="RSelenium memo" />
 <meta property="og:description" content="Self memo of RSelenium" />
@@ -34,8 +34,8 @@
     
 
 
-<script src=/js/ramium.js></script>
-<link rel="stylesheet" href=/css/ramium.css>
+<script src=../../js/ramium.js></script>
+<link rel="stylesheet" href=../../css/ramium.css>
 
 
 
@@ -43,7 +43,7 @@
 
 <body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href=/>
+    <a class="navbar-item" href=../../>
       
       <strong>6W3N Site </strong>
       
@@ -61,7 +61,7 @@
     <div class="navbar-start">
       
       
-      <a class="navbar-item" href="/">Home</a>
+      <a class="navbar-item" href="../../">Home</a>
       
       
       
@@ -69,28 +69,28 @@
         <a class="navbar-link">This Blog</a>
         <div class="navbar-dropdown">
           
-          <a class="navbar-item" href="/tags/">All Tags</a>
+          <a class="navbar-item" href="../../tags/">All Tags</a>
           
-          <a class="navbar-item" href="/posts/">All Posts</a>
+          <a class="navbar-item" href="../../posts/">All Posts</a>
           
         </div>
       </div>
       
       
       
-      <a class="navbar-item" href="/author/">Author</a>
+      <a class="navbar-item" href="../../author/">Author</a>
       
       
       
-      <a class="navbar-item" href="/contact/">Contact</a>
+      <a class="navbar-item" href="../../contact/">Contact</a>
       
       
       
-      <a class="navbar-item" href="/links/">Links</a>
+      <a class="navbar-item" href="../../links/">Links</a>
       
       
       
-      <a class="navbar-item" href="/works/">Works</a>
+      <a class="navbar-item" href="../../works/">Works</a>
       
       
     </div>
@@ -129,15 +129,15 @@
         <div class="level-right is-hidden-touch">
             <div class="tags">
                 
-                <a class="tag is-dark is-rounded" href="/tags/r">R</a>
+                <a class="tag is-dark is-rounded" href="../../tags/r">R</a>
                 
-                <a class="tag is-dark is-rounded" href="/tags/selenium">Selenium</a>
+                <a class="tag is-dark is-rounded" href="../../tags/selenium">Selenium</a>
                 
-                <a class="tag is-dark is-rounded" href="/tags/tips">Tips</a>
+                <a class="tag is-dark is-rounded" href="../../tags/tips">Tips</a>
                 
-                <a class="tag is-dark is-rounded" href="/tags/webscraping">Webscraping</a>
+                <a class="tag is-dark is-rounded" href="../../tags/webscraping">Webscraping</a>
                 
-                <a class="tag is-dark is-rounded" href="/tags/html">Html</a>
+                <a class="tag is-dark is-rounded" href="../../tags/html">Html</a>
                 
             </div>
         </div>
@@ -145,15 +145,15 @@
 
     <div class="tags is-hidden-desktop">
         
-        <a class="tag is-dark is-rounded" href="/tags/r">R</a>
+        <a class="tag is-dark is-rounded" href="../../tags/r">R</a>
         
-        <a class="tag is-dark is-rounded" href="/tags/selenium">Selenium</a>
+        <a class="tag is-dark is-rounded" href="../../tags/selenium">Selenium</a>
         
-        <a class="tag is-dark is-rounded" href="/tags/tips">Tips</a>
+        <a class="tag is-dark is-rounded" href="../../tags/tips">Tips</a>
         
-        <a class="tag is-dark is-rounded" href="/tags/webscraping">Webscraping</a>
+        <a class="tag is-dark is-rounded" href="../../tags/webscraping">Webscraping</a>
         
-        <a class="tag is-dark is-rounded" href="/tags/html">Html</a>
+        <a class="tag is-dark is-rounded" href="../../tags/html">Html</a>
         
     </div>
 
@@ -164,7 +164,7 @@
 <h2 id="preface">Preface</h2>
 <p>このページは、RとSeleniumを使ったWeb Scraping（特に画像）の備忘録です。</p>
 <p>今回はGoogleでキーワードを入力した際に表示される大量の画像の取得を目指します。</p>
-<p><img src="/image/photo/webscraping_sample.png" alt="WSsample"></p>
+<p><img src="../../image/photo/webscraping_sample.png" alt="WSsample"></p>
 <p>ここに表示されている画像たちです。</p>
 <h2 id="environment">Environment</h2>
 <ul>
@@ -203,7 +203,7 @@ In fact, there is no problem even if you don't use Docker, but here I introduce 
 <h3 id="1-start-docker">1. Start Docker</h3>
 <p>Dockerを起動します。
 アプリケーション &gt; Dockerを叩いて起動させます。</p>
-<p><img src="/image/photo/Docker.png" alt="Docker"></p>
+<p><img src="../../image/photo/Docker.png" alt="Docker"></p>
 <h3 id="2-open-terminal-and-run-docker">2. Open Terminal and run Docker</h3>
 <p>Terminalを開いて、Dockerを走らせます。</p>
 <pre><code>docker run -d -p 4445:4444 selenium/standalone-firefox:2.53.1
@@ -212,7 +212,7 @@ In fact, there is no problem even if you don't use Docker, but here I introduce 
 <a href="https://github.com/SeleniumHQ/docker-selenium">Dockerのページ</a>に詳しく書かれています。</p>
 <h3 id="3-generate-url-to-get-images">3. Generate URL to get images</h3>
 <p>あるキーワードで検索した際に表示される画像検索結果のページ(例えば、<a href="https://www.google.com/search?q=beanweevil&amp;tbm=isch&amp;ved=2ahUKEwjnh7T7v7DpAhUMHqYKHSNWBBMQ2-cCegQIABAA&amp;oq=beanweevil&amp;gs_lcp=CgNpbWcQAzoECCMQJzoCCAA6BAgAEAQ6BwgAEIMBEAQ6BAgAEBNQjOPHAliB8McCYNzxxwJoAHAAeACAAYkBiAHmB5IBAzcuM5gBAKABAaoBC2d3cy13aXotaW1n&amp;sclient=img&amp;ei=TLq7XuexC4y8mAWjrJGYAQ">こういう感じ</a>)のURLを生成するRのスクリプトを書きます。</p>
-<p><img src="/image/photo/webscraping_sample.png" alt="Webscraping_sample"></p>
+<p><img src="../../image/photo/webscraping_sample.png" alt="Webscraping_sample"></p>
 <pre><code>pacman::p_load(tidyverse, RSelenium, httr, foreach)
 
 google_search_path &lt;- function(str) {
@@ -269,7 +269,7 @@ urls &lt;- foreach(i=1:100, .combine=rbind) %do% {			#Google shows 100 photos
 Data URIを直接ダウンロードしても画像にはなりません（！）。Decodeすれば画像に戻りますが、Data URIの時と元画像のURLの時とで条件分けをするのが面倒だったので、元画像のパスを探すことにします。（Decodeすると元画像のサイズではなくサムネの画像サイズになってたりもするのかもしれません。検証してませんが&hellip;。）</p>
 <p>そのため、少し遠回りをして元画像のURLを取得します。
 Google画像検索で出てきた画像をクリックすると、右側に黒い背景で拡大されます。この黒い背景の時に表示されている画像に関しては <strong>元画像のURL</strong> を用いています。これを取得します。</p>
-<p><img src="/image/photo/webscraping_sample_click.png" alt="Webscraping_sample_click"></p>
+<p><img src="../../image/photo/webscraping_sample_click.png" alt="Webscraping_sample_click"></p>
 <p>そのためには「各画像に対してクリックを行う」という操作をしなければなりません。
 それが9,10行目になります。
 <code>remDr$mouseMoveToLocation()</code>でマウスの位置を画像の位置に持ってきて、<code>remDr$click()</code>でクリックを行います。</p>
@@ -303,7 +303,7 @@ Google画像検索で出てきた画像をクリックすると、右側に黒�
 	write.table(&quot;YOURDIR/urls.txt&quot;, 
 		col.names = FALSE, quote=FALSE, row.names=FALSE)
 
-</code></pre><p><img src="/image/photo/urls_text.png" alt="urls_text"></p>
+</code></pre><p><img src="../../image/photo/urls_text.png" alt="urls_text"></p>
 <p>出力結果です。</p>
 <h3 id="5-wgetを用いて画像を取得">5. wgetを用いて画像を取得。</h3>
 <p>ここまできたら後は簡単です。</p>
@@ -315,7 +315,7 @@ Google画像検索で出てきた画像をクリックすると、右側に黒�
 <pre><code>setwd(&quot;YOURDIR/figs&quot;)
 system(&quot;wget -i ../urls.txt&quot;)
 </code></pre><p>これで取得できます。こちらはそこまで時間がかかりません。</p>
-<p><img src="/image/photo/figs_scraping.png" alt="figs_scraping"></p>
+<p><img src="../../image/photo/figs_scraping.png" alt="figs_scraping"></p>
 <p>こんな感じで取得できます。</p>
 <h2 id="postface">Postface</h2>
 <p>突貫工事的にRSeleniumを用いたGoogle画像検索結果から画像を取得をするコードとこのメモを書いたため、かなりの散文になってしまいました。ご容赦ください。</p>
@@ -333,43 +333,43 @@ system(&quot;wget -i ../urls.txt&quot;)
 	    <a  href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2f6w3n.github.io%2fposts%2frselenium%2f"
 	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
 	        title="Share on Facebook. Opens in a new window.">
-	        <img src=/img/icons/45px/facebook.png>
+	        <img src=../../img/icons/45px/facebook.png>
 	    </a>
 
 	    <a  href="https://twitter.com/intent/tweet?text=RSelenium%20memo&url=https%3a%2f%2f6w3n.github.io%2fposts%2frselenium%2f"
 	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
 	        title="Share on Twitter. Opens in a new window." >
-	        <img src=/img/icons/45px/twitter.png>
+	        <img src=../../img/icons/45px/twitter.png>
 	    </a>
 
 		<a  href="http://www.reddit.com/submit?url=https%3a%2f%2f6w3n.github.io%2fposts%2frselenium%2f"
 	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
 	        title="Share on Reddit. Opens in a new window." >
-	        <img src=/img/icons/45px/reddit.png>
+	        <img src=../../img/icons/45px/reddit.png>
 	    </a>
 
 	    <a  href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2f6w3n.github.io%2fposts%2frselenium%2f"
 	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
 	        title="Share on Pinterest. Opens in a new window." >
-	        <img src=/img/icons/45px/pinterest.png>
+	        <img src=../../img/icons/45px/pinterest.png>
 	    </a>
 
 	    <a  href="http://www.tumblr.com/share/link?url=https%3a%2f%2f6w3n.github.io%2fposts%2frselenium%2f"
 	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
 	        title="Share on Tumblr. Opens in a new window." >
-	        <img src=/img/icons/45px/tumblr.png>
+	        <img src=../../img/icons/45px/tumblr.png>
 	    </a>
 
 		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2f6w3n.github.io%2fposts%2frselenium%2f
 			&title=RSelenium%20memo&summary=Preface%20%e3%81%93%e3%81%ae%e3%83%9a%e3%83%bc%e3%82%b8%e3%81%af%e3%80%81R%e3%81%a8Selenium%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%9fWeb%20Scraping%ef%bc%88%e7%89%b9%e3%81%ab%e7%94%bb%e5%83%8f%ef%bc%89%e3%81%ae%e5%82%99%e5%bf%98%e9%8c%b2%e3%81%a7%e3%81%99%e3%80%82%0a%e4%bb%8a%e5%9b%9e%e3%81%afGoogle%e3%81%a7%e3%82%ad%e3%83%bc%e3%83%af%e3%83%bc%e3%83%89%e3%82%92%e5%85%a5%e5%8a%9b%e3%81%97%e3%81%9f%e9%9a%9b%e3%81%ab%e8%a1%a8%e7%a4%ba%e3%81%95%e3%82%8c%e3%82%8b%e5%a4%a7%e9%87%8f%e3%81%ae%e7%94%bb%e5%83%8f%e3%81%ae%e5%8f%96%e5%be%97%e3%82%92%e7%9b%ae%e6%8c%87%e3%81%97%e3%81%be%e3%81%99%e3%80%82%0a%e3%81%93%e3%81%93%e3%81%ab%e8%a1%a8%e7%a4%ba%e3%81%95%e3%82%8c%e3%81%a6%e3%81%84%e3%82%8b%e7%94%bb%e5%83%8f%e3%81%9f%e3%81%a1%e3%81%a7%e3%81%99%e3%80%82%0aEnvironment%20%20Mac%20OS%20Catalina%20var.%2010.15.4%20Docker%20var.%202.2.0.5%20RSelenium%20var.%201.7.7%20R%20var.%203.6.1%20wget%20%28or%20curl%29%20%20%e4%bb%8a%e5%9b%9e%e3%81%afMac%20OS%e3%81%a7%e3%81%ae%e5%8b%95%e3%81%8b%e3%81%97%e6%96%b9%e3%81%ab%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82Linux%e3%81%a7%e3%82%82%e5%a4%a7%e7%ad%8b%e3%81%af%e5%a4%89%e3%82%8f%e3%82%8a%e3%81%be%e3%81%9b%e3%82%93%e3%80%82%ef%bc%88%e8%aa%b0%e3%81%8b%e8%a9%a6%e3%81%97%e3%81%a6%e3%81%bf%e3%81%a6%e6%ac%b2%e3%81%97%e3%81%84%e3%80%82%ef%bc%89%20Windows%e3%81%a7%e3%80%81Docker%e3%82%84Terminal%e7%9b%b8%e5%bd%93%e3%81%ae%e3%82%82%e3%81%ae%e3%82%92%e5%8b%95%e3%81%8b%e3%81%97%e3%81%9f%e3%81%93%e3%81%a8%e3%81%8c%e3%81%aa%e3%81%84%e3%81%ae%e3%81%a7%e4%bb%8a%e5%9b%9e%e3%81%af%e8%aa%ac%e6%98%8e%e3%81%a7%e3%81%8d%e3%81%be%e3%81%9b%e3%82%93%e3%80%82%e3%83%91%e3%82%b9%e3%81%a7%e3%81%99%e3%80%82%0a%e4%b8%8a%e8%a8%98%e7%92%b0%e5%a2%83%e3%81%a7%e3%81%afDocker%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e3%81%84%e3%81%be%e3%81%99%e3%81%8c%e3%80%81Selenium%e8%87%aa%e4%bd%93%e3%81%afDocker%e3%81%a7%e3%81%aa%e3%81%8f%e3%81%a8%e3%82%82%e5%8b%95%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%e3%81%93%e3%81%ae%e3%83%9a%e3%83%bc%e3%82%b8%e3%81%a7%e3%81%af%e3%80%81%e7%b0%a1%e5%8d%98%e3%81%ae%e3%81%9f%e3%82%81%e3%81%abDocker%e3%81%a7%e3%81%ae%e5%8b%95%e3%81%8b%e3%81%97%e6%96%b9%e3%82%92%e6%9b%b8%e3%81%84%e3%81%a6%e3%81%84%e3%81%be%e3%81%99%e3%80%82%0a%e3%81%be%e3%81%9f%e3%80%81%e4%b8%8a%e8%a8%98%e3%81%ae%e7%92%b0%e5%a2%83%e3%81%af%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e6%b8%88%e3%81%bf%e3%81%a7%e3%81%82%e3%82%8b%e3%81%a8%e3%81%84%e3%81%86%e5%89%8d%e6%8f%90%e3%81%ab%e3%81%97%e3%81%be%e3%81%99%e3%80%82%0aWhat%26rsquo%3bs%20RSelenium%3f%20RSelenium%e3%81%a8%e3%81%afSelenium%e3%82%92R%e4%b8%8a%e3%81%a7%e5%8b%95%e3%81%8b%e3%81%99%e3%81%9f%e3%82%81%e3%81%ae%e3%83%91%e3%83%83%e3%82%b1%e3%83%bc%e3%82%b8%e3%81%a7%e3%81%99%e3%80%82%20Selenium%e3%81%af%e3%80%81%e3%82%a6%e3%82%a7%e3%83%96%e3%83%96%e3%83%a9%e3%82%a6%e3%82%b6%e3%82%92%e6%93%8d%e4%bd%9c%e3%81%99%e3%82%8b%e3%81%9f%e3%82%81%e3%81%ae%e4%be%bf%e5%88%a9%e3%83%84%e3%83%bc%e3%83%ab%e3%81%8f%e3%82%89%e3%81%84%e3%81%ab%e6%80%9d%e3%81%a3%e3%81%a6%e7%bd%ae%e3%81%84%e3%81%a6%e3%82%82%e3%82%89%e3%81%a3%e3%81%a6%e6%a7%8b%e3%81%84%e3%81%be%e3%81%9b%e3%82%93%e3%80%82%20Selenium%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6%e8%a9%b3%e3%81%97%e3%81%8f%e7%9f%a5%e3%82%8a%e3%81%9f%e3%81%84%e6%96%b9%e3%81%af%e3%81%93%e3%81%a1%e3%82%89%e3%82%92%e5%8f%82%e7%85%a7%e3%81%8f%e3%81%a0%e3%81%95%e3%81%84%e3%80%82%0aMain%20Flow%20%20Docker%e3%81%ae%e8%b5%b7%e5%8b%95%e3%80%82%20Terminal%e3%82%92%e9%96%8b%e3%81%84%e3%81%a6%e3%80%81Docker%e3%82%92%e8%b5%b0%e3%82%89%e3%81%9b%e3%82%8b%e3%80%82%20%e7%94%bb%e5%83%8f%e3%82%92%e5%8f%96%e5%be%97%e3%81%99%e3%82%8bURL%e3%82%92%e7%94%9f%e6%88%90%e3%80%82%20RSelenium%e3%81%a7%e7%94%bb%e5%83%8f%e3%81%aeURL%e3%82%92%e4%b8%80%e6%8b%ac%e5%8f%96%e5%be%97%e3%80%82%20wget%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e7%94%bb%e5%83%8f%e3%82%92%e5%8f%96%e5%be%97%e3%80%82%20%201.&source=rafed123.github.io"
 	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
 	        title="Share on LinkedIn. Opens in a new window." >
-	        <img src=/img/icons/45px/linkedin.png>
+	        <img src=../../img/icons/45px/linkedin.png>
 	    </a>
 
 	    <a  href="mailto:?subject=RSelenium%20memo&amp;body=Check out this site https%3a%2f%2f6w3n.github.io%2fposts%2frselenium%2f"
 	        title="Share via Email. Opens in a new window." >
-	        <img src=/img/icons/45px/mail.png>
+	        <img src=../../img/icons/45px/mail.png>
 	    </a>
 	</div>
 </div>
