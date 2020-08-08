@@ -6,24 +6,24 @@
     <description>Recent content in Tags on 6W3N Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 10 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 30 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://6w3n.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>igraph</title>
-      <link>https://6w3n.github.io/tags/igraph/</link>
-      <pubDate>Wed, 10 Jun 2020 00:00:00 +0000</pubDate>
+      <title>ggraph</title>
+      <link>https://6w3n.github.io/tags/ggraph/</link>
+      <pubDate>Thu, 30 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://6w3n.github.io/tags/igraph/</guid>
+      <guid>https://6w3n.github.io/tags/ggraph/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R</title>
       <link>https://6w3n.github.io/tags/r/</link>
-      <pubDate>Wed, 10 Jun 2020 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 30 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://6w3n.github.io/tags/r/</guid>
       <description></description>
@@ -32,9 +32,18 @@
     <item>
       <title>Tips</title>
       <link>https://6w3n.github.io/tags/tips/</link>
-      <pubDate>Wed, 10 Jun 2020 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 30 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://6w3n.github.io/tags/tips/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>igraph</title>
+      <link>https://6w3n.github.io/tags/igraph/</link>
+      <pubDate>Wed, 10 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/tags/igraph/</guid>
       <description></description>
     </item>
     
