@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en-us"><title>
+    Rtweet | 
+    
+    6W3N Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<meta name="description" 
+      content="Self memo of Twitter search by R
+                ">
+
+<link rel="canonical" href="https://6w3n.github.io/posts/rtweet/" />
+
+<link rel="icon" type="image/png" href="https://6w3n.github.io/image/favicon.ico">
+
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../css/bulma.min.css">
+
+<meta property="og:title" content="Rtweet" />
+<meta property="og:description" content="Self memo of Twitter search by R" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://6w3n.github.io/posts/rtweet/" />
+<meta property="article:published_time" content="2020-08-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-08-14T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Rtweet"/>
+<meta name="twitter:description" content="Self memo of Twitter search by R"/>
+
+
+
+    
+
+
+<script src=../../js/ramium.js></script>
+<link rel="stylesheet" href=../../css/ramium.css>
+
+
+
+
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=../../>
+      
+      <strong>6W3N Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="../../">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="../../tags/">All Tags</a>
+          
+          <a class="navbar-item" href="../../posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+      
+      <a class="navbar-item" href="../../author/">Author</a>
+      
+      
+      
+      <a class="navbar-item" href="../../contact/">Contact</a>
+      
+      
+      
+      <a class="navbar-item" href="../../links/">Links</a>
+      
+      
+      
+      <a class="navbar-item" href="../../works/">Works</a>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/6W3N/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1 class="title">Rtweet</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Aug 14, 2020
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    22 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="../../tags/r">R</a>
+                
+                <a class="tag is-dark is-rounded" href="../../tags/rtweet">Rtweet</a>
+                
+                <a class="tag is-dark is-rounded" href="../../tags/twitter">Twitter</a>
+                
+                <a class="tag is-dark is-rounded" href="../../tags/tips">Tips</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="../../tags/r">R</a>
+        
+        <a class="tag is-dark is-rounded" href="../../tags/rtweet">Rtweet</a>
+        
+        <a class="tag is-dark is-rounded" href="../../tags/twitter">Twitter</a>
+        
+        <a class="tag is-dark is-rounded" href="../../tags/tips">Tips</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <!--This page is a memo to run rtweet from R.-->
+<h2 id="preface">Preface</h2>
+<p>RとrtweetでTwitter APIを叩く備忘録です。</p>
+<p>Twitterには見方によって有用な情報が投稿されています。Twitter社はそれらの情報を扱うために、API（Application Programming Interface）と呼ばれるユーザー向けのツールを用意しています。
+詳細は<a href="https://help.twitter.com/ja/rules-and-policies/twitter-api">こちら</a>を参照してください。</p>
+<p>APIは申請してから使います。</p>
+<p>この備忘録では以下の流れで実行します。</p>
+<ol>
+<li>rtweet</li>
+<li>Twitter API</li>
+<li>rtweet + Twitter API</li>
+</ol>
+<h1 id="environment">Environment</h1>
+<ul>
+<li>macOS Catalina 10.15.6</li>
+<li>R 4.0.2</li>
+<li>rtweet 0.7.0</li>
+<li>Twitter Account</li>
+</ul>
+<h2 id="rtweet">rtweet</h2>
+<p>{rtweet}はRからTwitterを操作するためのパッケージです。例えば、ツイートのデータを集めたり、ツイートを行ったりすることができます。
+これらはTwitterアカウントを連携させて用いることになります。なのでTwitterのアカウントがない場合は<a href="https://help.twitter.com/ja/using-twitter/create-twitter-account">こちら</a>を参照してアカウントを作成してください。</p>
+<p>{rtweet}の使い方自体は至ってシンプルです。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(rtweet)
+
+<span style="color:#a6e22e">post_tweet</span>(<span style="color:#e6db74">&#34;Look, i&#39;m tweeting from R in my #rstats! @YOUR_TWITTER_ACCOUNT&#34;</span>)
+</code></pre></div><p><strong>初めて{rtweet}の関数を実行するとブラウザが立ち上がり、Twitterアカウントとアプリとの連携を求めてきます。認証をしましょう。</strong></p>
+<p>さて、上記のスクリプトを実行して自分のTwitterを見てみると&hellip;</p>
+<p><img src="https://i.imgur.com/Rf2SaaI.png" alt=""></p>
+<p>呟かれています。</p>
+<p>次はツイートの検索をしてみます。</p>
+<pre><code>rstats &lt;- search_tweets(q=&quot;#rstats&quot;, include_rts = FALSE)
+
+&gt; rstats
+# A tibble: 100 x 90
+   user_id status_id created_at          screen_name text  source
+   &lt;chr&gt;   &lt;chr&gt;     &lt;dttm&gt;              &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;
+ 1 608336… 12948646… 2020-08-16 05:12:48 Leilanie95  &quot;Reg… Twitt…
+ 2 103516… 12948634… 2020-08-16 05:08:08 mdsumner    &quot;#rs… Twitt…
+ 3 103516… 12948097… 2020-08-16 01:34:24 mdsumner    &quot;#rs… Twitt…
+ 4 103516… 12948187… 2020-08-16 02:10:12 mdsumner    &quot;#rs… Twitt…
+ 5 103516… 12948135… 2020-08-16 01:49:37 mdsumner    &quot;#rs… Twitt…
+ 6 120362… 12948287… 2020-08-16 02:50:06 icymi_r     &quot;📦 \… OneUp…
+ 7 120362… 12947603… 2020-08-15 22:18:08 icymi_r     &quot;✍️🔤… OneUp…
+ 8 120362… 12947260… 2020-08-15 20:02:06 icymi_r     &quot;✍️⚡… OneUp…
+ 9 120362… 12947945… 2020-08-16 00:34:19 icymi_r     &quot;✍️🎨… OneUp…
+10 120362… 12948630… 2020-08-16 05:06:28 icymi_r     &quot;✍️👥… OneUp…
+# … with 90 more rows, and 84 more variables: display_text_width &lt;dbl&gt;, ...
+</code></pre><p>スクリプトの説明をします。
+<code>search_tweets()</code>はその名の通りツイートを検索する関数です。第一引数のq=&rdquo;#rstat&quot;は、クエリの指定です。今回は#rstatsが含まれるツイートを検索してきています。また、include_rts = FALSEでリツイートを除くというオプションを入れています。
+クエリの指定の方法は<a href="https://developer.twitter.com/en/docs/twitter-api/v1/tweets/search/api-reference/get-search-tweets">公式ページ</a>を参考にしてください。</p>
+<p>検索結果が100件だけ&hellip;？非常に少ないですよね。
+これは<code>search_tweets()</code>が何かしていそうです。</p>
+<p><a href="https://cran.r-project.org/web/packages/rtweet/rtweet.pdf">CRAN</a>にある<code>search_tweets()</code>や、Rコンソール上で<code>?search_tweets()</code>を実行して説明を読んでみます。</p>
+<pre><code>&gt; ?search_tweets()
+
+search_tweets              package:rtweet              R Documentation
+
+Get tweets data on statuses identified via search query.
+
+Description:
+
+     Returns Twitter statuses matching a user provided search query.
+     ONLY RETURNS DATA FROM THE PAST 6-9 DAYS. To return more than
+     18,000 statuses in a single call, set &quot;retryonratelimit&quot; to TRUE.
+
+     search_tweets2 Passes all arguments to search_tweets. Returns data
+     from one OR MORE search queries.
+
+
+Usage:
+
+     search_tweets(
+       q,
+       n = 100,
+       type = &quot;recent&quot;,
+       include_rts = TRUE,
+       geocode = NULL,
+       max_id = NULL,
+       parse = TRUE,
+       token = NULL,
+       retryonratelimit = FALSE,
+       verbose = TRUE,
+       ...
+     )
+</code></pre><p>なるほど。遡れても6-9日だけとのことです。また、デフォルトではn=100になっていたために、100件しか表示されなかったようです。</p>
+<p>では、全期間（2006年以降）のデータにアクセスするにはどうすれば良いのでしょう。
+<code>search_fullarchive()</code>がそれっぽいです。</p>
+<pre><code>&gt; ?search_fullarchive()
+
+search_fullarchive           package:rtweet            R Documentation
+
+Search fullarchive (PREMIUM)
+
+Description:
+
+     Search Twitter's 'fullarchive' (PREMIUM) API
+</code></pre><p>PREMIUMとはTwitter APIの一つです。<a href="https://developer.twitter.com/en/products/twitter-api">Twitter公式ページ</a>によれば、API v1.1では下の表のようになっているようです。
+Full-archiveがPREMIUM（とEnterprise）でしか使えないことがよくわかります。</p>
+<p><img src="https://i.imgur.com/rppsVsF.png" alt="">
+出典：<a href="https://developer.twitter.com/en/products/twitter-api">Twitter公式</a></p>
+<p>また、<code>search_tweets()</code>は{rtweet}の製作者陣が用意してくれていたStandardのAPIを用いていたこともわかります。
+全期間を検索するためには <strong>自分で</strong> 用意したPremiumのAPIを叩かないといけないわけです。</p>
+<h2 id="twitter-api">Twitter API</h2>
+<p>そもそもTwitter APIを申請するところから始めました。
+申請済みの方は読み飛ばしてもらって構いません。</p>
+<h3 id="apiの申請">APIの申請</h3>
+<p>Twitterアカウントにログインした状態で、<a href="https://developer.twitter.com/en/account/environments">Developer Tool</a>にアクセスします。Create an appをクリックして申請などを行います。</p>
+<p><img src="https://i.imgur.com/21y93dn.png" alt=""></p>
+<p>その後、以下の項目についてを聞かれるので答えていきます。</p>
+<ul>
+<li>利用目的</li>
+<li>住んでいる国</li>
+<li>ニックネーム</li>
+</ul>
+<p>この辺りは<a href="https://www.itti.jp/web-direction/how-to-apply-for-twitter-api/">こちらのブログ</a>を参考にしました。
+利用目的は英語での記入になりますが、翻訳サイトなど使えば誰でも記入できると思います。</p>
+<p>申請を終えたら、あとはTwitter社からの返事を待ちます。
+これがだいぶまちまちで、筆者の例ですと1週間ほどかかりましたが、後輩は数分で返事がきたようです。ネット上の情報を見る限り、1週間で大抵は返事が来るようなので気長に待ちましょう。</p>
+<h2 id="rtweet--twitter-api">rtweet + Twitter API</h2>
+<h3 id="key-and-token">key and token</h3>
+<p>API申請が受理された後の話です。</p>
+<p><a href="https://developer.twitter.com/en/portal/">Developer Portal</a>にアクセスします。</p>
+<p>+Create AppをクリックしてAppを作成していきます。
+<img src="https://i.imgur.com/nVrgEFl.png" alt=""></p>
+<p>名前を入力します。今回は、お試しなのでbiological interactionを適当に略した名前を付けました。
+CompleteをクリックするとAPI keyなどが表示されます。</p>
+<p><img src="https://i.imgur.com/NwxzcPo.png" alt=""></p>
+<p>これら3つの情報は後からでも閲覧できますが、今のうちにコピーを取っておきましょう。
+また、詳細は後述しますが、この3つの情報に加えて <strong>access token</strong> と <strong>access secret token</strong> の2つが必要になってきます。</p>
+<p>サイドナビから、作成したAppの名前をクリックすることでそのAppの詳細を見にいくことができます。</p>
+<p><img src="https://i.imgur.com/iRcxGav.png" alt=""></p>
+<p>Appの名前の下にあるKeys and tokensをクリックしてtokenを見にいきましょう。</p>
+<p><img src="https://i.imgur.com/xfNzyAo.png" alt=""></p>
+<p>上のスクリーンショットではすでにtokenを生成してしまっていますが、Access Token &amp; Secretの横にあるGenerateをクリックするとtokenが生成されます。
+<strong>この2つのtokenはポップアップが出ている状態でしかコピーできません。</strong>
+コピーを取っておきましょう。</p>
+<p><img src="https://i.imgur.com/RBT3ZFB.png" alt=""></p>
+<p>次にPremiumのための準備を行います。</p>
+<h3 id="premium-api">Premium API</h3>
+<p>上述した通り、<code>search_fullarchive()</code>を用いるにはPremiumに登録する必要があります。
+Premiumにも無料で使える範囲があります。ひとまず無料で使える範囲で使ってみましょう。</p>
+<p>サイドナビのAccountの直下にあるBillingをクリックします。ここから、クレジットカードの情報を登録します。一旦登録をしないと無料版を使うつもりだとてPremium APIを叩く権利はないようです&hellip;。</p>
+<p>登録が済んだら再びサイドナビをみてみましょう。Premiumが追加されていると思います。</p>
+<p><img src="https://i.imgur.com/Iu0HBgM.png" alt=""></p>
+<p>このDev Environmentsをクリックして、先ほど作成したAppとPremiumの情報とを紐付けます。下の図はすでに作成していますが、例えばFull-archiveを使いたいのであれば、Full-archiveの右に出ているであろうSet up dev environmentをクリックします。
+自分でenvironmentの名前を決め、紐付けたいAppの名前を選択します。</p>
+<p><img src="https://i.imgur.com/kU9Gztc.png" alt=""></p>
+<p>Developer Toolにおける準備がようやく終わりました。</p>
+<h3 id="rtweetsearch_fullarchive">rtweet::search_fullarchive()</h3>
+<p>Rの画面に戻ります。アクセスの準備をします。</p>
+<pre><code>library(rtweet)
+
+appname &lt;- &quot;your-app-name&quot;
+key &lt;- &quot;yourLongApiKeyHere&quot;
+secret &lt;- &quot;yourSecretKeyHere&quot;
+broken &lt;- &quot;yourBrokenToken&quot;
+access_token &lt;- &quot;yourAccessToken&quot;
+access_secret &lt;- &quot;yourAccessSecretToken&quot;
+dev_env &lt;- &quot;yourDevEnvironments&quot;
+</code></pre><p>上記はDeveloper Toolで得られる情報です。
+上から、</p>
+<ul>
+<li>Appの名前</li>
+<li>AppのAPI key</li>
+<li>AppのAPI secret key</li>
+<li>AppのBroken key</li>
+<li>AppのAccess token</li>
+<li>AppのAccess secret token</li>
+<li>紐付けたDev Environmentの名前</li>
+</ul>
+<p>です。</p>
+<pre><code>twitter_token &lt;- create_token(
+	app = appname,
+	consumer_key = key,
+	consumer_secret = secret,
+	access_token = access_token,
+	access_secret = access_secret)
+</code></pre><p><code>create_token()</code>で上から6つの情報を入れておきます。
+そして、作成したtokenを<code>search_fullarchive()</code>で呼び出します。と、同時にDev Environmentの名前も必要になります。
+ちなみに先ほどの<code>search_tweets()</code>と同様にデフォルトでは最大100件までの取得になります。</p>
+<pre><code>rstats_2019 &lt;- search_fullarchive(q=&quot;#rstats&quot;, 
+			env_name=dev_env,	
+            token=twitter_token,
+			fromDate=&quot;201901010000&quot;,
+			toDate=&quot;201912312359&quot;)
+
+
+&gt; rstats_2019
+# A tibble: 100 x 90
+   user_id status_id created_at          screen_name text  source
+   &lt;chr&gt;   &lt;chr&gt;     &lt;dttm&gt;              &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;
+ 1 473324… 12121610… 2019-12-31 23:58:06 grrrck      &quot;As … Twitt…
+ 2 101181… 12121608… 2019-12-31 23:57:31 rstatstweet &quot;RSt… rstat…
+ 3 101181… 12121608… 2019-12-31 23:57:31 rstatstweet &quot;\U0… rstat…
+ 4 101181… 12121608… 2019-12-31 23:57:30 rstatstweet &quot;An … rstat…
+ 5 101181… 12121531… 2019-12-31 23:26:56 rstatstweet &quot;I w… rstat…
+ 6 101181… 12121531… 2019-12-31 23:26:56 rstatstweet &quot;Did… rstat…
+ 7 101181… 12121531… 2019-12-31 23:26:57 rstatstweet &quot;Hap… rstat…
+ 8 101181… 12121531… 2019-12-31 23:26:56 rstatstweet &quot;A t… rstat…
+ 9 101181… 12121494… 2019-12-31 23:12:13 rstatstweet &quot;My … rstat…
+10 101181… 12121494… 2019-12-31 23:12:13 rstatstweet &quot;My … rstat…
+# … with 90 more rows, and 84 more variables: display_text_width &lt;dbl&gt;, ...
+</code></pre><p>こんな感じで取得できました。100件なので指定した期間（2019年）で満遍なく取れるわけではなく、期間の中での最新の100件になるようです。</p>
+<p>また、Premiumでは、ツイートにかけられるフィルタリングに制限がかかっています（例：リツイートを除けない）。
+検索したいワードによってはリツイート数が大変なことになったりします。その辺どうにかしたければEnterpriseにするしかないのでしょうね&hellip;。</p>
+<p>取得したツイートをどういじっていくかについては別のtipsとして投稿できればと思っています。</p>
+<p>Enjoy!</p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2f6w3n.github.io%2fposts%2frtweet%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=../../img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Rtweet&url=https%3a%2f%2f6w3n.github.io%2fposts%2frtweet%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=../../img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=https%3a%2f%2f6w3n.github.io%2fposts%2frtweet%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=../../img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2f6w3n.github.io%2fposts%2frtweet%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=../../img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=https%3a%2f%2f6w3n.github.io%2fposts%2frtweet%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=../../img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2f6w3n.github.io%2fposts%2frtweet%2f
+			&title=Rtweet&summary=Preface%20R%e3%81%a8rtweet%e3%81%a7Twitter%20API%e3%82%92%e5%8f%a9%e3%81%8f%e5%82%99%e5%bf%98%e9%8c%b2%e3%81%a7%e3%81%99%e3%80%82%0aTwitter%e3%81%ab%e3%81%af%e8%a6%8b%e6%96%b9%e3%81%ab%e3%82%88%e3%81%a3%e3%81%a6%e6%9c%89%e7%94%a8%e3%81%aa%e6%83%85%e5%a0%b1%e3%81%8c%e6%8a%95%e7%a8%bf%e3%81%95%e3%82%8c%e3%81%a6%e3%81%84%e3%81%be%e3%81%99%e3%80%82Twitter%e7%a4%be%e3%81%af%e3%81%9d%e3%82%8c%e3%82%89%e3%81%ae%e6%83%85%e5%a0%b1%e3%82%92%e6%89%b1%e3%81%86%e3%81%9f%e3%82%81%e3%81%ab%e3%80%81API%ef%bc%88Application%20Programming%20Interface%ef%bc%89%e3%81%a8%e5%91%bc%e3%81%b0%e3%82%8c%e3%82%8b%e3%83%a6%e3%83%bc%e3%82%b6%e3%83%bc%e5%90%91%e3%81%91%e3%81%ae%e3%83%84%e3%83%bc%e3%83%ab%e3%82%92%e7%94%a8%e6%84%8f%e3%81%97%e3%81%a6%e3%81%84%e3%81%be%e3%81%99%e3%80%82%20%e8%a9%b3%e7%b4%b0%e3%81%af%e3%81%93%e3%81%a1%e3%82%89%e3%82%92%e5%8f%82%e7%85%a7%e3%81%97%e3%81%a6%e3%81%8f%e3%81%a0%e3%81%95%e3%81%84%e3%80%82%0aAPI%e3%81%af%e7%94%b3%e8%ab%8b%e3%81%97%e3%81%a6%e3%81%8b%e3%82%89%e4%bd%bf%e3%81%84%e3%81%be%e3%81%99%e3%80%82%0a%e3%81%93%e3%81%ae%e5%82%99%e5%bf%98%e9%8c%b2%e3%81%a7%e3%81%af%e4%bb%a5%e4%b8%8b%e3%81%ae%e6%b5%81%e3%82%8c%e3%81%a7%e5%ae%9f%e8%a1%8c%e3%81%97%e3%81%be%e3%81%99%e3%80%82%0a%20rtweet%20Twitter%20API%20rtweet%20%2b%20Twitter%20API%20%20Environment%20%20macOS%20Catalina%2010.15.6%20R%204.0.2%20rtweet%200.7.0%20Twitter%20Account%20%20rtweet%20%7brtweet%7d%e3%81%afR%e3%81%8b%e3%82%89Twitter%e3%82%92%e6%93%8d%e4%bd%9c%e3%81%99%e3%82%8b%e3%81%9f%e3%82%81%e3%81%ae%e3%83%91%e3%83%83%e3%82%b1%e3%83%bc%e3%82%b8%e3%81%a7%e3%81%99%e3%80%82%e4%be%8b%e3%81%88%e3%81%b0%e3%80%81%e3%83%84%e3%82%a4%e3%83%bc%e3%83%88%e3%81%ae%e3%83%87%e3%83%bc%e3%82%bf%e3%82%92%e9%9b%86%e3%82%81%e3%81%9f%e3%82%8a%e3%80%81%e3%83%84%e3%82%a4%e3%83%bc%e3%83%88%e3%82%92%e8%a1%8c%e3%81%a3%e3%81%9f%e3%82%8a%e3%81%99%e3%82%8b%e3%81%93%e3%81%a8%e3%81%8c%e3%81%a7%e3%81%8d%e3%81%be%e3%81%99%e3%80%82%20%e3%81%93%e3%82%8c%e3%82%89%e3%81%afTwitter%e3%82%a2%e3%82%ab%e3%82%a6%e3%83%b3%e3%83%88%e3%82%92%e9%80%a3%e6%90%ba%e3%81%95%e3%81%9b%e3%81%a6%e7%94%a8%e3%81%84%e3%82%8b%e3%81%93%e3%81%a8%e3%81%ab%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%e3%81%aa%e3%81%ae%e3%81%a7Twitter%e3%81%ae%e3%82%a2%e3%82%ab%e3%82%a6%e3%83%b3%e3%83%88%e3%81%8c%e3%81%aa%e3%81%84%e5%a0%b4%e5%90%88%e3%81%af%e3%81%93%e3%81%a1%e3%82%89%e3%82%92%e5%8f%82%e7%85%a7%e3%81%97%e3%81%a6%e3%82%a2%e3%82%ab%e3%82%a6%e3%83%b3%e3%83%88%e3%82%92%e4%bd%9c%e6%88%90%e3%81%97%e3%81%a6%e3%81%8f%e3%81%a0%e3%81%95%e3%81%84%e3%80%82%0a%7brtweet%7d%e3%81%ae%e4%bd%bf%e3%81%84%e6%96%b9%e8%87%aa%e4%bd%93%e3%81%af%e8%87%b3%e3%81%a3%e3%81%a6%e3%82%b7%e3%83%b3%e3%83%97%e3%83%ab%e3%81%a7%e3%81%99%e3%80%82%0alibrary%28rtweet%29%20post_tweet%28%26%2334%3bLook%2c%20i%26%2339%3bm%20tweeting%20from%20R%20in%20my%20%23rstats%21&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=../../img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Rtweet&amp;body=Check out this site https%3a%2f%2f6w3n.github.io%2fposts%2frtweet%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=../../img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+	    <p><a class="has-text-light" href="https://6w3n.github.io/">6W3N Site</a><p>
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

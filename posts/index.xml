@@ -6,10 +6,25 @@
     <description>Recent content in Posts on 6W3N Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 30 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 14 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://6w3n.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Rtweet</title>
+      <link>https://6w3n.github.io/posts/rtweet/</link>
+      <pubDate>Fri, 14 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/posts/rtweet/</guid>
+      <description>Preface RとrtweetでTwitter APIを叩く備忘録です。
+Twitterには見方によって有用な情報が投稿されています。Twitter社はそれらの情報を扱うために、API（Application Programming Interface）と呼ばれるユーザー向けのツールを用意しています。 詳細はこちらを参照してください。
+APIは申請してから使います。
+この備忘録では以下の流れで実行します。
+ rtweet Twitter API rtweet + Twitter API  Environment  macOS Catalina 10.15.6 R 4.0.2 rtweet 0.7.0 Twitter Account  rtweet {rtweet}はRからTwitterを操作するためのパッケージです。例えば、ツイートのデータを集めたり、ツイートを行ったりすることができます。 これらはTwitterアカウントを連携させて用いることになります。なのでTwitterのアカウントがない場合はこちらを参照してアカウントを作成してください。
+{rtweet}の使い方自体は至ってシンプルです。
+library(rtweet) post_tweet(&amp;#34;Look, i&amp;#39;m tweeting from R in my #rstats!</description>
+    </item>
     
     <item>
       <title>ggraph memo</title>
@@ -19,7 +34,7 @@
       <guid>https://6w3n.github.io/posts/ggraph/</guid>
       <description>Preface Rとggraphでネットワークのグラフを書いた時の備忘録です。 Igraph Memoの続編です。
 というのも、「{igraph}は{ggplot2}のように図の重ね合わせができない」という問題に当たったためです。 それを解決するために{ggraph}を用いました。そのメモです。
-Environment  Mac OS Catalina var. 10.15.4 R ggraph ver. 2.0.3 R ver. 4.0.2  What&amp;rsquo;s ggraph? ものすごく大雑把な説明をしてしまうと、{ggraph}は{ggplot2}のようにネットワークの視覚化などを行うためのパッケージです。
+Environment  Mac OS Catalina ver. 10.15.4 R ggraph ver. 2.0.3 R ver. 4.0.2  What&amp;rsquo;s ggraph? ものすごく大雑把な説明をしてしまうと、{ggraph}は{ggplot2}のようにネットワークの視覚化などを行うためのパッケージです。
 Main Flow  Dataの準備 ネットワークへ変換の下準備 ネットワークの生成 描画  上記1.と2.はIgraph Memoと全く同じです。読み飛ばしてもらっても構いません。
 今回は3.と4.をメインにやります。
 1. Data Preparation library(tidyverse) dat &amp;lt;- tribble(~beh,&amp;#34;S&amp;#34;, &amp;#34;NSADE&amp;#34;, &amp;#34;SAP&amp;#34;, &amp;#34;NSADE&amp;#34;, &amp;#34;MNSADS&amp;#34;, &amp;#34;ADASNSADE&amp;#34;, &amp;#34;NSAP&amp;#34;, &amp;#34;NSADAP&amp;#34;, &amp;#34;SNADENAS&amp;#34;, &amp;#34;NSADAP&amp;#34;) &amp;gt; dat # A tibble: 10 x 1 beh &amp;lt;chr&amp;gt; 1 S 2 NSADE 3 SAP 4 NSADE 5 MNSADS 6 ADASNSADE 7 NSAP 8 NSADAP 9 SNADENAS 10 NSADAP 2.</description>
