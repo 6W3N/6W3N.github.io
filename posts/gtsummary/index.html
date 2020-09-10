@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en-us"><title>
+    Gt | 
+    
+    6W3N Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<meta name="description" 
+      content="Self memo to make tables as images using R
+                ">
+
+<link rel="canonical" href="https://6w3n.github.io/posts/gtsummary/" />
+
+<link rel="icon" type="image/png" href="https://6w3n.github.io/image/favicon.ico">
+
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../css/bulma.min.css">
+
+<meta property="og:title" content="gt" />
+<meta property="og:description" content="Self memo to make tables as images using R" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://6w3n.github.io/posts/gtsummary/" />
+<meta property="article:published_time" content="2020-09-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-09-10T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="gt"/>
+<meta name="twitter:description" content="Self memo to make tables as images using R"/>
+
+
+
+    
+
+
+<script src=../../js/ramium.js></script>
+<link rel="stylesheet" href=../../css/ramium.css>
+
+
+
+
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=../../>
+      
+      <strong>6W3N Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="../../">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="../../tags/">All Tags</a>
+          
+          <a class="navbar-item" href="../../posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+      
+      <a class="navbar-item" href="../../author/">Author</a>
+      
+      
+      
+      <a class="navbar-item" href="../../contact/">Contact</a>
+      
+      
+      
+      <a class="navbar-item" href="../../links/">Links</a>
+      
+      
+      
+      <a class="navbar-item" href="../../works/">Works</a>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/6W3N/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1 class="title">Gt</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Sep 10, 2020
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    17 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="../../tags/r">R</a>
+                
+                <a class="tag is-dark is-rounded" href="../../tags/gt">Gt</a>
+                
+                <a class="tag is-dark is-rounded" href="../../tags/gtsummary">Gtsummary</a>
+                
+                <a class="tag is-dark is-rounded" href="../../tags/tips">Tips</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="../../tags/r">R</a>
+        
+        <a class="tag is-dark is-rounded" href="../../tags/gt">Gt</a>
+        
+        <a class="tag is-dark is-rounded" href="../../tags/gtsummary">Gtsummary</a>
+        
+        <a class="tag is-dark is-rounded" href="../../tags/tips">Tips</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <!--This page is a memo to male table as image using R.-->
+<h2 id="導入">導入</h2>
+<p>論文を執筆する時や、結果をボスに見せる時などに表を作成することがあると思います。
+そのような時に皆さんはどのように表を作成していますか？
+Excelで作成した表をWordに埋め込む、Wordで直接表を作成する、LaTeXの表組みを用いる、Markdownで記述してpandopcで吐き出す&hellip;などなどいろいろな方法があると思います。</p>
+<p>筆者はもっぱらLaTeXの表組みを用いていました。（筆者はそのうち.Rmdに完全移行したいと思いつつ2年くらいはR+LaTeXの組み合わせを用いています。）</p>
+<p>いつものようにぽちぽちとコピペをしていたところ、ふと <strong>「Rで吐き出した解析の結果をコピペする作業、虚しくない？」</strong> と思い立ったのが本記事のきっかけです。
+皆さんはどうですか？胸に手を当てて考えてみてください。<del>え、何も思わない？そうですか&hellip;。</del></p>
+<p>ということで、今回は <strong>Rから表をimageとして吐き出す</strong> ことを目的とした記事です。imageとして吐き出せば、あとはLaTeXだとて<code>\includegraphics</code>でおしまいなわけです。なんと楽なことか。</p>
+<p><strong>注意！！実際問題として、論文を投稿する時にはimageとしてtableを提出できない場合の方が多いと思います。そのような場合もある程度まではカバーできますが、今回は主に学会発表やプログレスミーティングの時のお役立ち情報くらいに考えてください。</strong></p>
+<p>また、今回もかなり備忘録に近いです。</p>
+<p>今回は、</p>
+<ol>
+<li><a href="#%7Bgt%7D%E3%81%AB%E3%82%88%E3%82%8B%E8%A1%A8%E4%BD%9C%E6%88%90">{gt}による表作成</a></li>
+<li><a href="#%7Bgtsummary%7D%E3%81%AB%E3%82%88%E3%82%8B%E8%A1%A8%E4%BD%9C%E6%88%90">{gtsummary}による表作成</a></li>
+<li><a href="#%E5%87%BA%E5%8A%9B%E3%80%81%E3%81%9D%E3%81%AE%E4%BB%96">出力、その他</a></li>
+</ol>
+<p>の順です。</p>
+<h2 id="environment">Environment</h2>
+<ul>
+<li>macOS Catalina 10.15.6</li>
+<li>R 4.0.2</li>
+<li>gt 0.2.2</li>
+<li>gtsummary 1.3.4</li>
+<li>webshot 0.5.2</li>
+</ul>
+<h2 id="gtによる表作成">{gt}による表作成</h2>
+<p>まずは{gt}パッケージによる表作成から。</p>
+<p>{gt}パッケージでは慣れ親しんだtibbleなどからgtオブジェクトを介してきれいな表を作成してくれます。
+例えばirisを例にすると</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(tidyverse)
+<span style="color:#a6e22e">library</span>(gt)
+
+iris <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">gt</span>()
+</code></pre></div><p>これだけです。ブラウザ（Rstudioならviewer）が立ち上がり、下のようなtableが表示されたのではないでしょうか。</p>
+<p><img src="https://i.imgur.com/Hn4nLA0.jpg" alt=""></p>
+<p>ちょっと長ったらしいので、データ自体を整形しましょう。</p>
+<p>各種の<code>Sepal.Length</code>のTOP5を集めて、tableとして表示します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">iris_SLtop5 <span style="color:#f92672">&lt;-</span> iris <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">group_by</span>(Species) <span style="color:#f92672">%&gt;%</span> 
+	<span style="color:#a6e22e">arrange</span>(<span style="color:#a6e22e">desc</span>(Sepal.Length)) <span style="color:#f92672">%&gt;%</span> 
+	<span style="color:#a6e22e">mutate</span>(rownum<span style="color:#f92672">=</span><span style="color:#a6e22e">row_number</span>()) <span style="color:#f92672">%&gt;%</span> 
+	<span style="color:#a6e22e">filter</span>(rownum<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">5</span>) <span style="color:#f92672">%&gt;%</span> 
+	<span style="color:#a6e22e">select</span>(<span style="color:#f92672">-</span>rownum) <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">ungroup</span>()
+    
+iris_SLtop5 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">gt</span>()    
+</code></pre></div><p><img src="https://i.imgur.com/HVwfega.png" alt=""></p>
+<p>すでにキレイな見た目に見えます。が、ここからさらに細かく編集していきましょう。</p>
+<h3 id="title-and-subtitle">Title and subtitle</h3>
+<p>表のタイトルです。習うより慣れろの精神で以下のスクリプトを実行してみてください。</p>
+<pre><code>iris_SLtop5 %&gt;% gt() %&gt;%
+	tab_header(
+		title = &quot;Anderson's Iris Data&quot;,
+		subtitle = md(&quot;_Top 5_ flowers from each species of Sepal.Length value&quot;)	
+	)
+</code></pre><p><img src="https://i.imgur.com/qe3HVOr.png" alt=""></p>
+<p>タイトルがつきました。
+<code>md()</code>という関数を用いると、Markdown記法で文字をいじることができます。これは便利。</p>
+<h3 id="footnote">Footnote</h3>
+<p>注釈を付け加えましょう。元データを記述します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">iris_SLtop5 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">gt</span>() <span style="color:#f92672">%&gt;%</span>
+	<span style="color:#a6e22e">tab_header</span>(
+		title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Anderson&#39;s Iris Data&#34;</span>,
+		subtitle <span style="color:#f92672">=</span> <span style="color:#a6e22e">md</span>(<span style="color:#e6db74">&#34;_Top 5_ flowers from each species of Sepal.Length value&#34;</span>)	
+	) <span style="color:#f92672">%&gt;%</span>  
+    <span style="color:#a6e22e">tab_source_note</span>(
+        source_note <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;The data were collected by Anderson, Edgar (1935).&#34;</span>
+  )
+</code></pre></div><p><img src="https://i.imgur.com/HKAw5mP.png" alt=""></p>
+<p>もうちょっと使い勝手良く注釈を付けたいですよね。それもできます。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">SL_longest <span style="color:#f92672">&lt;-</span> iris <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">group_by</span>(Species) <span style="color:#f92672">%&gt;%</span>
+    <span style="color:#a6e22e">summarize</span>(SL_mean<span style="color:#f92672">=</span><span style="color:#a6e22e">mean</span>(Sepal.Length),
+                PL_mean<span style="color:#f92672">=</span><span style="color:#a6e22e">mean</span>(Petal.Length)) <span style="color:#f92672">%&gt;%</span>
+    <span style="color:#a6e22e">ungroup</span>() <span style="color:#f92672">%&gt;%</span>
+    <span style="color:#a6e22e">filter</span>(SL_mean<span style="color:#f92672">==</span><span style="color:#a6e22e">max</span>(SL_mean)) <span style="color:#f92672">%&gt;%</span>
+    <span style="color:#a6e22e">pull</span>(Species) <span style="color:#f92672">%&gt;%</span> 
+    <span style="color:#a6e22e">as.character</span>()
+    
+    
+iris <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">group_by</span>(Species) <span style="color:#f92672">%&gt;%</span>
+    <span style="color:#a6e22e">summarize</span>(SL_mean<span style="color:#f92672">=</span><span style="color:#a6e22e">mean</span>(Sepal.Length),
+                PL_mean<span style="color:#f92672">=</span><span style="color:#a6e22e">mean</span>(Petal.Length)) <span style="color:#f92672">%&gt;%</span>
+    <span style="color:#a6e22e">ungroup</span>() <span style="color:#f92672">%&gt;%</span>    
+    <span style="color:#a6e22e">gt</span>() <span style="color:#f92672">%&gt;%</span>
+    <span style="color:#a6e22e">tab_footnote</span>(
+        footnote <span style="color:#f92672">=</span> <span style="color:#a6e22e">md</span>(<span style="color:#e6db74">&#34;The **longest** by Sepal.Length.&#34;</span>),
+        locations <span style="color:#f92672">=</span> <span style="color:#a6e22e">cells_body</span>(
+          columns <span style="color:#f92672">=</span> <span style="color:#a6e22e">vars</span>(SL_mean),
+          rows <span style="color:#f92672">=</span> Species <span style="color:#f92672">==</span> SL_longest)
+  ) <span style="color:#f92672">%&gt;%</span>
+    <span style="color:#a6e22e">tab_footnote</span>(
+        footnote <span style="color:#f92672">=</span> <span style="color:#a6e22e">md</span>(<span style="color:#e6db74">&#34;The **shortest** by Petal.Length&#34;</span>),
+        locations <span style="color:#f92672">=</span> <span style="color:#a6e22e">cells_body</span>(
+              columns <span style="color:#f92672">=</span> <span style="color:#a6e22e">vars</span>(PL_mean),
+              rows <span style="color:#f92672">=</span> PL_mean <span style="color:#f92672">==</span> <span style="color:#a6e22e">min</span>(PL_mean))
+  )
+</code></pre></div><p><img src="https://i.imgur.com/Q0yonGv.png" alt=""></p>
+<p>1つ目の<code>tab_footnote()</code>では、先に作成しておいた<code>SL_longest</code>に入っている<code>&quot;virginica&quot;</code>とのマッチングでSepal.Lengthの平均が最長の種を指定しています。
+2つ目の<code>tab_footnote()</code>では関数内でPetal.Lengthの平均が最短の種を選択しています。</p>
+<p>このような注釈を付け加えるのも数行で済んでしまいます。</p>
+<h3 id="grouping">Grouping</h3>
+<p>ここまでのスクリプトでは<code>ungroup()</code>をした後に<code>gt()</code>を行っていましたが、groupd_dfのまま<code>gt()</code>を行うとどうなるのか見ていきます。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">iris_SLtop5 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">group_by</span>(Species) <span style="color:#f92672">%&gt;%</span>
+    <span style="color:#a6e22e">gt</span>()
+</code></pre></div><p><img src="https://i.imgur.com/KxCvual.png" alt=""></p>
+<p>groupごとに表示されてすっきりしました。
+<del>tidydataで慣れている身からするとむしろnon-tidyでモヤッとする&hellip;</del></p>
+<p>見やすさは、おそらくtidydataよりもむしろこっち。多分。スライドなどにはこちらの方が使い勝手が良いかもしれません。</p>
+<h2 id="gtsummaryによる表作成">{gtsummary}による表作成</h2>
+<p>続いて{gtsummary}を用いた表作成です。</p>
+<p>{gtsummary}は名前の通り、{gt}を元に作成されたパッケージです。summaryデータを一瞬で表現できるすごいパッケージです。</p>
+<p>使い方はこちらもシンプル。これだけです。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(gtsummary)
+
+iris <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">tbl_summary</span>()
+</code></pre></div><p><img src="https://i.imgur.com/TfYq4iT.png" alt=""></p>
+<p>勝手にまとめてくれた上に表示までしてくれました。すごい。</p>
+<p>上記の値、どこかで近しい何かを見たことあるかもしれません。そう、<code>summary()</code>を用いた時です。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#f92672">&gt;</span> iris <span style="color:#f92672">%&gt;%</span> summary
+
+  Sepal.Length    Sepal.Width     Petal.Length    Petal.Width
+ Min.   <span style="color:#f92672">:</span><span style="color:#ae81ff">4.300</span>   Min.   <span style="color:#f92672">:</span><span style="color:#ae81ff">2.000</span>   Min.   <span style="color:#f92672">:</span><span style="color:#ae81ff">1.000</span>   Min.   <span style="color:#f92672">:</span><span style="color:#ae81ff">0.100</span>
+ <span style="color:#ae81ff">1</span>st Qu.<span style="color:#f92672">:</span><span style="color:#ae81ff">5.100</span>   <span style="color:#ae81ff">1</span>st Qu.<span style="color:#f92672">:</span><span style="color:#ae81ff">2.800</span>   <span style="color:#ae81ff">1</span>st Qu.<span style="color:#f92672">:</span><span style="color:#ae81ff">1.600</span>   <span style="color:#ae81ff">1</span>st Qu.<span style="color:#f92672">:</span><span style="color:#ae81ff">0.300</span>
+ Median <span style="color:#f92672">:</span><span style="color:#ae81ff">5.800</span>   Median <span style="color:#f92672">:</span><span style="color:#ae81ff">3.000</span>   Median <span style="color:#f92672">:</span><span style="color:#ae81ff">4.350</span>   Median <span style="color:#f92672">:</span><span style="color:#ae81ff">1.300</span>
+ Mean   <span style="color:#f92672">:</span><span style="color:#ae81ff">5.843</span>   Mean   <span style="color:#f92672">:</span><span style="color:#ae81ff">3.057</span>   Mean   <span style="color:#f92672">:</span><span style="color:#ae81ff">3.758</span>   Mean   <span style="color:#f92672">:</span><span style="color:#ae81ff">1.199</span>
+ <span style="color:#ae81ff">3</span>rd Qu.<span style="color:#f92672">:</span><span style="color:#ae81ff">6.400</span>   <span style="color:#ae81ff">3</span>rd Qu.<span style="color:#f92672">:</span><span style="color:#ae81ff">3.300</span>   <span style="color:#ae81ff">3</span>rd Qu.<span style="color:#f92672">:</span><span style="color:#ae81ff">5.100</span>   <span style="color:#ae81ff">3</span>rd Qu.<span style="color:#f92672">:</span><span style="color:#ae81ff">1.800</span>
+ Max.   <span style="color:#f92672">:</span><span style="color:#ae81ff">7.900</span>   Max.   <span style="color:#f92672">:</span><span style="color:#ae81ff">4.400</span>   Max.   <span style="color:#f92672">:</span><span style="color:#ae81ff">6.900</span>   Max.   <span style="color:#f92672">:</span><span style="color:#ae81ff">2.500</span>
+       Species
+ setosa    <span style="color:#f92672">:</span><span style="color:#ae81ff">50</span>
+ versicolor<span style="color:#f92672">:</span><span style="color:#ae81ff">50</span>
+ virginica <span style="color:#f92672">:</span><span style="color:#ae81ff">50</span>
+
+</code></pre></div><p>最小値や最大値、平均などは<code>tbl_sumamry()</code>のデフォルトではついてきませんが、個人的には結構満足です。</p>
+<h3 id="with-glm">with glm</h3>
+<p><code>summary()</code>がこんなにきれいに描けるならもしやliner modelとかも&hellip;と期待してしまいますよね。
+<strong>あります。</strong></p>
+<p>まずは単純に<code>glm()</code>から。モデル式などなどは適当です。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#f92672">&gt;</span> model1 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">glm</span>(Sepal.Length<span style="color:#f92672">~</span>Sepal.Width <span style="color:#f92672">+</span> Species <span style="color:#f92672">+</span> Sepal.Width<span style="color:#f92672">*</span>Species, dat<span style="color:#f92672">=</span>iris)
+<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">summary</span>(model1)
+
+
+Call<span style="color:#f92672">:</span>
+<span style="color:#a6e22e">glm</span>(formula <span style="color:#f92672">=</span> Sepal.Length <span style="color:#f92672">~</span> Sepal.Width <span style="color:#f92672">+</span> Species <span style="color:#f92672">+</span> Sepal.Width <span style="color:#f92672">*</span>
+    Species, data <span style="color:#f92672">=</span> iris)
+
+Deviance Residuals<span style="color:#f92672">:</span>
+     Min        <span style="color:#ae81ff">1</span>Q    Median        <span style="color:#ae81ff">3</span>Q       Max
+<span style="color:#ae81ff">-1.26067</span>  <span style="color:#ae81ff">-0.25861</span>  <span style="color:#ae81ff">-0.03305</span>   <span style="color:#ae81ff">0.18929</span>   <span style="color:#ae81ff">1.44917</span>
+
+Coefficients<span style="color:#f92672">:</span>
+                              Estimate Std. Error t value <span style="color:#a6e22e">Pr</span>(<span style="color:#f92672">&gt;|</span>t<span style="color:#f92672">|</span>)
+(Intercept)                     <span style="color:#ae81ff">2.6390</span>     <span style="color:#ae81ff">0.5715</span>   <span style="color:#ae81ff">4.618</span> <span style="color:#ae81ff">8.53e-06</span> <span style="color:#f92672">***</span>
+Sepal.Width                     <span style="color:#ae81ff">0.6905</span>     <span style="color:#ae81ff">0.1657</span>   <span style="color:#ae81ff">4.166</span> <span style="color:#ae81ff">5.31e-05</span> <span style="color:#f92672">***</span>
+Speciesversicolor               <span style="color:#ae81ff">0.9007</span>     <span style="color:#ae81ff">0.7988</span>   <span style="color:#ae81ff">1.128</span>    <span style="color:#ae81ff">0.261</span>
+Speciesvirginica                <span style="color:#ae81ff">1.2678</span>     <span style="color:#ae81ff">0.8162</span>   <span style="color:#ae81ff">1.553</span>    <span style="color:#ae81ff">0.123</span>
+Sepal.Width<span style="color:#f92672">:</span>Speciesversicolor   <span style="color:#ae81ff">0.1746</span>     <span style="color:#ae81ff">0.2599</span>   <span style="color:#ae81ff">0.672</span>    <span style="color:#ae81ff">0.503</span>
+Sepal.Width<span style="color:#f92672">:</span>Speciesvirginica    <span style="color:#ae81ff">0.2110</span>     <span style="color:#ae81ff">0.2558</span>   <span style="color:#ae81ff">0.825</span>    <span style="color:#ae81ff">0.411</span>
+<span style="color:#f92672">---</span>
+Signif. codes<span style="color:#f92672">:</span>  <span style="color:#ae81ff">0</span> ‘<span style="color:#f92672">***</span>’ <span style="color:#ae81ff">0.001</span> ‘<span style="color:#f92672">**</span>’ <span style="color:#ae81ff">0.01</span> ‘<span style="color:#f92672">*</span>’ <span style="color:#ae81ff">0.05</span> ‘.’ <span style="color:#ae81ff">0.1</span> ‘ ’ <span style="color:#ae81ff">1</span>
+
+(Dispersion parameter for gaussian family taken to be <span style="color:#ae81ff">0.1933783</span>)
+
+    Null deviance<span style="color:#f92672">:</span> <span style="color:#ae81ff">102.168</span>  on <span style="color:#ae81ff">149</span>  degrees of freedom
+Residual deviance<span style="color:#f92672">:</span>  <span style="color:#ae81ff">27.846</span>  on <span style="color:#ae81ff">144</span>  degrees of freedom
+AIC<span style="color:#f92672">:</span> <span style="color:#ae81ff">187.09</span>
+
+Number of Fisher Scoring iterations<span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>
+</code></pre></div><p>これを{gtsummary}で書くとこうなります。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">model1 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">tbl_regression</span>()
+</code></pre></div><p><img src="https://i.imgur.com/Chwf2v1.png" alt=""></p>
+<p>Interceptが欲しい、p-valueは小数点3桁で揃えたい、説明変数は斜体にしたい、などもできます。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">model1 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">tbl_regression</span>(intercept<span style="color:#f92672">=</span>T,
+             pvalue_fun <span style="color:#f92672">=</span> <span style="color:#f92672">~</span><span style="color:#a6e22e">style_pvalue</span>(.x, digits <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>)) <span style="color:#f92672">%&gt;%</span> 
+    <span style="color:#a6e22e">italicize_levels</span>()
+
+</code></pre></div><p><img src="https://i.imgur.com/0V2HQ74.png" alt=""></p>
+<p>他にもいろいろ便利な関数が用意されているようですが、私はまだ使いこなせていません。そのうち勉強して追記します。</p>
+<p>参考： <a href="https://cran.r-project.org/web/packages/gtsummary/gtsummary.pdf">https://cran.r-project.org/web/packages/gtsummary/gtsummary.pdf</a></p>
+<h2 id="出力その他">出力、その他</h2>
+<p>最後に出力の話を少しだけします。</p>
+<p>特にRstudio以外でRを動かしている場合、ブラウザが立ち上がって見たら.htmlだったと思います。
+ここからの出力の方法はいくつかあるのかな、と個人的には思っています。
+ただ今回は画像としての出力が目標でしたのでそちらで進めていきます。</p>
+<p>まずは、{webshot}パッケージを読み込みます。このパッケージを用いると（正確にはPhantomJSというアプリケーションを用いると）Rでwebページのスクリーンショットを撮ることができます。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(webshot)
+<span style="color:#a6e22e">install_phantomjs</span>()
+</code></pre></div><p>準びはこれで終わりです。</p>
+<p>では作成したhtmlのスクリーンショットを撮ってみます。</p>
+<p>例えば、一番最後に作成した表を画像として保存したいとします。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">model1 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">tbl_regression</span>(intercept<span style="color:#f92672">=</span>T,
+             pvalue_fun <span style="color:#f92672">=</span> <span style="color:#f92672">~</span><span style="color:#a6e22e">style_pvalue</span>(.x, digits <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>)) <span style="color:#f92672">%&gt;%</span> 
+    <span style="color:#a6e22e">italicize_levels</span>() <span style="color:#f92672">%&gt;%</span>
+    <span style="color:#a6e22e">as_gt</span>() <span style="color:#f92672">%&gt;%</span>
+    <span style="color:#a6e22e">gtsave</span>(<span style="color:#e6db74">&#34;hogehoge.png&#34;</span>)
+</code></pre></div><p>これで、<code>hogehoge.png</code>が作成されていると思います。</p>
+<p>先ほど表を作成した時と違うのは<code>as_gt()</code>を噛ませていることです。
+{gtsummary}それそのものではgtオブジェクトになっていないようですね。<code>as_gt()</code>でgtオブジェクトへ変換した後に<code>gtsave()</code>を行ってsaveします。
+この<code>gtsave()</code>の際に先ほどのwebshotが要求されます。</p>
+<p>また、保存は.png以外にも.htmlや.pdf、.texなども可能です。</p>
+<p>そうです。この.texに変換したものをLaTeX中に直接組み込むことで投稿論文にも{gtsummary}の転用が可能になります。（ただし、精度はあまり良くないので吐き出した.texファイルを元に自ら手直しをする必要があります。）</p>
+<p>{gtsummary}は、今後も開発が続くようですのでその時に期待ということになると思います。</p>
+<p>というわけで、{gt}などを用いて表を画像として出力する方法でした。</p>
+<p>enjoy!</p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2f6w3n.github.io%2fposts%2fgtsummary%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=../../img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=gt&url=https%3a%2f%2f6w3n.github.io%2fposts%2fgtsummary%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=../../img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=https%3a%2f%2f6w3n.github.io%2fposts%2fgtsummary%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=../../img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2f6w3n.github.io%2fposts%2fgtsummary%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=../../img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=https%3a%2f%2f6w3n.github.io%2fposts%2fgtsummary%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=../../img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2f6w3n.github.io%2fposts%2fgtsummary%2f
+			&title=gt&summary=%e5%b0%8e%e5%85%a5%20%e8%ab%96%e6%96%87%e3%82%92%e5%9f%b7%e7%ad%86%e3%81%99%e3%82%8b%e6%99%82%e3%82%84%e3%80%81%e7%b5%90%e6%9e%9c%e3%82%92%e3%83%9c%e3%82%b9%e3%81%ab%e8%a6%8b%e3%81%9b%e3%82%8b%e6%99%82%e3%81%aa%e3%81%a9%e3%81%ab%e8%a1%a8%e3%82%92%e4%bd%9c%e6%88%90%e3%81%99%e3%82%8b%e3%81%93%e3%81%a8%e3%81%8c%e3%81%82%e3%82%8b%e3%81%a8%e6%80%9d%e3%81%84%e3%81%be%e3%81%99%e3%80%82%20%e3%81%9d%e3%81%ae%e3%82%88%e3%81%86%e3%81%aa%e6%99%82%e3%81%ab%e7%9a%86%e3%81%95%e3%82%93%e3%81%af%e3%81%a9%e3%81%ae%e3%82%88%e3%81%86%e3%81%ab%e8%a1%a8%e3%82%92%e4%bd%9c%e6%88%90%e3%81%97%e3%81%a6%e3%81%84%e3%81%be%e3%81%99%e3%81%8b%ef%bc%9f%20Excel%e3%81%a7%e4%bd%9c%e6%88%90%e3%81%97%e3%81%9f%e8%a1%a8%e3%82%92Word%e3%81%ab%e5%9f%8b%e3%82%81%e8%be%bc%e3%82%80%e3%80%81Word%e3%81%a7%e7%9b%b4%e6%8e%a5%e8%a1%a8%e3%82%92%e4%bd%9c%e6%88%90%e3%81%99%e3%82%8b%e3%80%81LaTeX%e3%81%ae%e8%a1%a8%e7%b5%84%e3%81%bf%e3%82%92%e7%94%a8%e3%81%84%e3%82%8b%e3%80%81Markdown%e3%81%a7%e8%a8%98%e8%bf%b0%e3%81%97%e3%81%a6pandopc%e3%81%a7%e5%90%90%e3%81%8d%e5%87%ba%e3%81%99%26hellip%3b%e3%81%aa%e3%81%a9%e3%81%aa%e3%81%a9%e3%81%84%e3%82%8d%e3%81%84%e3%82%8d%e3%81%aa%e6%96%b9%e6%b3%95%e3%81%8c%e3%81%82%e3%82%8b%e3%81%a8%e6%80%9d%e3%81%84%e3%81%be%e3%81%99%e3%80%82%0a%e7%ad%86%e8%80%85%e3%81%af%e3%82%82%e3%81%a3%e3%81%b1%e3%82%89LaTeX%e3%81%ae%e8%a1%a8%e7%b5%84%e3%81%bf%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e3%81%84%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%ef%bc%88%e7%ad%86%e8%80%85%e3%81%af%e3%81%9d%e3%81%ae%e3%81%86%e3%81%a1.Rmd%e3%81%ab%e5%ae%8c%e5%85%a8%e7%a7%bb%e8%a1%8c%e3%81%97%e3%81%9f%e3%81%84%e3%81%a8%e6%80%9d%e3%81%84%e3%81%a4%e3%81%a42%e5%b9%b4%e3%81%8f%e3%82%89%e3%81%84%e3%81%afR%2bLaTeX%e3%81%ae%e7%b5%84%e3%81%bf%e5%90%88%e3%82%8f%e3%81%9b%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e3%81%84%e3%81%be%e3%81%99%e3%80%82%ef%bc%89%0a%e3%81%84%e3%81%a4%e3%82%82%e3%81%ae%e3%82%88%e3%81%86%e3%81%ab%e3%81%bd%e3%81%a1%e3%81%bd%e3%81%a1%e3%81%a8%e3%82%b3%e3%83%94%e3%83%9a%e3%82%92%e3%81%97%e3%81%a6%e3%81%84%e3%81%9f%e3%81%a8%e3%81%93%e3%82%8d%e3%80%81%e3%81%b5%e3%81%a8%20%e3%80%8cR%e3%81%a7%e5%90%90%e3%81%8d%e5%87%ba%e3%81%97%e3%81%9f%e8%a7%a3%e6%9e%90%e3%81%ae%e7%b5%90%e6%9e%9c%e3%82%92%e3%82%b3%e3%83%94%e3%83%9a%e3%81%99%e3%82%8b%e4%bd%9c%e6%a5%ad%e3%80%81%e8%99%9a%e3%81%97%e3%81%8f%e3%81%aa%e3%81%84%ef%bc%9f%e3%80%8d%20%e3%81%a8%e6%80%9d%e3%81%84%e7%ab%8b%e3%81%a3%e3%81%9f%e3%81%ae%e3%81%8c%e6%9c%ac%e8%a8%98%e4%ba%8b%e3%81%ae%e3%81%8d%e3%81%a3%e3%81%8b%e3%81%91%e3%81%a7%e3%81%99%e3%80%82%20%e7%9a%86%e3%81%95%e3%82%93%e3%81%af%e3%81%a9%e3%81%86%e3%81%a7%e3%81%99%e3%81%8b%ef%bc%9f%e8%83%b8%e3%81%ab%e6%89%8b%e3%82%92%e5%bd%93%e3%81%a6%e3%81%a6%e8%80%83%e3%81%88%e3%81%a6%e3%81%bf%e3%81%a6%e3%81%8f%e3%81%a0%e3%81%95%e3%81%84%e3%80%82%e3%81%88%e3%80%81%e4%bd%95%e3%82%82%e6%80%9d%e3%82%8f%e3%81%aa%e3%81%84%ef%bc%9f%e3%81%9d%e3%81%86%e3%81%a7%e3%81%99%e3%81%8b%26hellip%3b%e3%80%82%0a%e3%81%a8%e3%81%84%e3%81%86%e3%81%93%e3%81%a8%e3%81%a7%e3%80%81%e4%bb%8a%e5%9b%9e%e3%81%af%20R%e3%81%8b%e3%82%89%e8%a1%a8%e3%82%92image%e3%81%a8%e3%81%97%e3%81%a6%e5%90%90%e3%81%8d%e5%87%ba%e3%81%99%20%e3%81%93%e3%81%a8%e3%82%92%e7%9b%ae%e7%9a%84%e3%81%a8%e3%81%97%e3%81%9f%e8%a8%98%e4%ba%8b%e3%81%a7%e3%81%99%e3%80%82image%e3%81%a8%e3%81%97%e3%81%a6%e5%90%90%e3%81%8d%e5%87%ba%e3%81%9b%e3%81%b0%e3%80%81%e3%81%82%e3%81%a8%e3%81%afLaTeX%e3%81%a0%e3%81%a8%e3%81%a6%5cincludegraphics%e3%81%a7%e3%81%8a%e3%81%97%e3%81%be%e3%81%84%e3%81%aa%e3%82%8f%e3%81%91%e3%81%a7%e3%81%99%e3%80%82%e3%81%aa%e3%82%93%e3%81%a8%e6%a5%bd%e3%81%aa%e3%81%93%e3%81%a8%e3%81%8b%e3%80%82%0a%e6%b3%a8%e6%84%8f%ef%bc%81%ef%bc%81%e5%ae%9f%e9%9a%9b%e5%95%8f%e9%a1%8c%e3%81%a8%e3%81%97%e3%81%a6%e3%80%81%e8%ab%96%e6%96%87%e3%82%92%e6%8a%95%e7%a8%bf%e3%81%99%e3%82%8b%e6%99%82%e3%81%ab%e3%81%afimage%e3%81%a8%e3%81%97%e3%81%a6table%e3%82%92%e6%8f%90%e5%87%ba%e3%81%a7%e3%81%8d%e3%81%aa%e3%81%84%e5%a0%b4%e5%90%88%e3%81%ae%e6%96%b9%e3%81%8c%e5%a4%9a%e3%81%84%e3%81%a8%e6%80%9d%e3%81%84%e3%81%be%e3%81%99%e3%80%82%e3%81%9d%e3%81%ae%e3%82%88%e3%81%86%e3%81%aa%e5%a0%b4%e5%90%88%e3%82%82%e3%81%82%e3%82%8b%e7%a8%8b%e5%ba%a6%e3%81%be%e3%81%a7%e3%81%af%e3%82%ab%e3%83%90%e3%83%bc%e3%81%a7%e3%81%8d%e3%81%be%e3%81%99%e3%81%8c%e3%80%81%e4%bb%8a%e5%9b%9e%e3%81%af%e4%b8%bb%e3%81%ab%e5%ad%a6%e4%bc%9a%e7%99%ba%e8%a1%a8%e3%82%84%e3%83%97%e3%83%ad%e3%82%b0%e3%83%ac%e3%82%b9%e3%83%9f%e3%83%bc%e3%83%86%e3%82%a3%e3%83%b3%e3%82%b0%e3%81%ae%e6%99%82%e3%81%ae%e3%81%8a%e5%bd%b9%e7%ab%8b%e3%81%a1%e6%83%85%e5%a0%b1%e3%81%8f%e3%82%89%e3%81%84%e3%81%ab%e8%80%83%e3%81%88%e3%81%a6%e3%81%8f%e3%81%a0%e3%81%95%e3%81%84%e3%80%82%0a%e3%81%be%e3%81%9f%e3%80%81%e4%bb%8a%e5%9b%9e%e3%82%82%e3%81%8b%e3%81%aa%e3%82%8a%e5%82%99%e5%bf%98%e9%8c%b2%e3%81%ab%e8%bf%91%e3%81%84%e3%81%a7%e3%81%99%e3%80%82%0a%e4%bb%8a%e5%9b%9e%e3%81%af%e3%80%81%0a%20%7bgt%7d%e3%81%ab%e3%82%88%e3%82%8b%e8%a1%a8%e4%bd%9c%e6%88%90%20%7bgtsummary%7d%e3%81%ab%e3%82%88%e3%82%8b%e8%a1%a8%e4%bd%9c%e6%88%90%20%e5%87%ba%e5%8a%9b%e3%80%81%e3%81%9d%e3%81%ae%e4%bb%96%20%20%e3%81%ae%e9%a0%86%e3%81%a7%e3%81%99%e3%80%82%0aEnvironment%20%20macOS%20Catalina%2010.15.6%20R%204.0.2%20gt%200.2.2%20gtsummary%201.3.4%20webshot%200.5.2%20%20%7bgt%7d%e3%81%ab%e3%82%88%e3%82%8b%e8%a1%a8%e4%bd%9c%e6%88%90%20%e3%81%be%e3%81%9a%e3%81%af%7bgt%7d%e3%83%91%e3%83%83%e3%82%b1%e3%83%bc%e3%82%b8%e3%81%ab%e3%82%88%e3%82%8b%e8%a1%a8%e4%bd%9c%e6%88%90%e3%81%8b%e3%82%89%e3%80%82%0a%7bgt%7d%e3%83%91%e3%83%83%e3%82%b1%e3%83%bc%e3%82%b8%e3%81%a7%e3%81%af%e6%85%a3%e3%82%8c%e8%a6%aa%e3%81%97%e3%82%93%e3%81%a0tibble%e3%81%aa%e3%81%a9%e3%81%8b%e3%82%89gt%e3%82%aa%e3%83%96%e3%82%b8%e3%82%a7%e3%82%af%e3%83%88%e3%82%92%e4%bb%8b%e3%81%97%e3%81%a6%e3%81%8d%e3%82%8c%e3%81%84%e3%81%aa%e8%a1%a8%e3%82%92%e4%bd%9c%e6%88%90%e3%81%97%e3%81%a6%e3%81%8f%e3%82%8c%e3%81%be%e3%81%99%e3%80%82%20%e4%be%8b%e3%81%88%e3%81%b0iris%e3%82%92%e4%be%8b%e3%81%ab%e3%81%99%e3%82%8b%e3%81%a8%0alibrary%28tidyverse%29%20library%28gt%29%20iris%20%25%26gt%3b%25%20gt%28%29%20%e3%81%93%e3%82%8c%e3%81%a0%e3%81%91%e3%81%a7%e3%81%99%e3%80%82%e3%83%96%e3%83%a9%e3%82%a6%e3%82%b6%ef%bc%88Rstudio%e3%81%aa%e3%82%89viewer%ef%bc%89%e3%81%8c%e7%ab%8b%e3%81%a1%e4%b8%8a%e3%81%8c%e3%82%8a%e3%80%81%e4%b8%8b%e3%81%ae%e3%82%88%e3%81%86%e3%81%aatable%e3%81%8c%e8%a1%a8%e7%a4%ba%e3%81%95%e3%82%8c%e3%81%9f%e3%81%ae%e3%81%a7%e3%81%af%e3%81%aa%e3%81%84%e3%81%a7%e3%81%97%e3%82%87%e3%81%86%e3%81%8b%e3%80%82&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=../../img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=gt&amp;body=Check out this site https%3a%2f%2f6w3n.github.io%2fposts%2fgtsummary%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=../../img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+	    <p><a class="has-text-light" href="https://6w3n.github.io/">6W3N Site</a><p>
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>
