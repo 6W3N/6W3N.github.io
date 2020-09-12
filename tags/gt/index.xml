@@ -21,13 +21,11 @@
 筆者はもっぱらLaTeXの表組みを用いていました。（筆者はそのうち.Rmdに完全移行したいと思いつつ2年くらいはR+LaTeXの組み合わせを用いています。）
 いつものようにRで得た解析結果をぽちぽちとコピペをしていたところ、ふと 「Rで吐き出した解析の結果をコピペする作業、虚しくない？」 と思い立ったのが本記事のきっかけです。 皆さんはどうですか？胸に手を当てて考えてみてください。え、何も思わない？そうですか&amp;hellip;。
 ということで、今回は Rから表をimageとして吐き出す ことを目的とした記事です。imageとして吐き出せば、あとはLaTeXだとて\includegraphicsでおしまいなわけです。なんと楽なことか。
-注意！！実際問題として、論文を投稿する時にはimageとしてtableを提出できない場合の方が多いと思います。そのような場合もある程度まではカバーできますが、今回は主に学会発表やプログレスミーティングの時のお役立ち情報くらいに考えてください。
+注意！！実際問題として、論文を投稿する時にはimageとしてtableを提出できない場合の方が多いと思います。そのような場合もある程度まではカバーできますが、今回は主に学会発表やプログレスミーティングの時のお役立ち情報くらいに考えてください。 こちらの記事を参照ください。&amp;ldquo;Can we insert tables as images in a manuscript submission document?&amp;quot;
 また、今回もかなり備忘録に近いです。
 今回は、
  {gt}による表作成 {gtsummary}による表作成 出力、その他  の順です。
-Environment  macOS Catalina 10.15.6 R 4.0.2 gt 0.2.2 gtsummary 1.3.4 webshot 0.5.2  {gt}による表作成 まずは{gt}パッケージによる表作成から。
-{gt}パッケージでは慣れ親しんだtibbleなどからgtオブジェクトを介してきれいな表を作成してくれます。 例えばirisを例にすると
-library(tidyverse) library(gt) iris %&amp;gt;% gt() これだけです。ブラウザ（Rstudioならviewer）が立ち上がり、下のようなtableが表示されたのではないでしょうか。</description>
+Environment  macOS Catalina 10.15.6 R 4.0.2 gt 0.</description>
     </item>
     
   </channel>
