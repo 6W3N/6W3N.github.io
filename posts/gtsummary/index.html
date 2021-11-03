@@ -21,9 +21,10 @@
 <meta property="og:title" content="gt" />
 <meta property="og:description" content="Self memo to make tables as images using R" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://6w3n.github.io/posts/gtsummary/" />
+<meta property="og:url" content="https://6w3n.github.io/posts/gtsummary/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-09-10T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-09-10T00:00:00+00:00" />
+
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="gt"/>
@@ -187,7 +188,7 @@ Excelで作成した表をWordに埋め込む、Wordで直接表を作成する�
 <p>まずは{gt}パッケージによる表作成から。</p>
 <p>{gt}パッケージでは慣れ親しんだtibbleなどからgtオブジェクトを介してきれいな表を作成してくれます。
 例えばirisを例にすると</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(tidyverse)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(tidyverse)
 <span style="color:#a6e22e">library</span>(gt)
 
 iris <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">gt</span>()
@@ -195,7 +196,7 @@ iris <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">gt</s
 <p><img src="https://i.imgur.com/Hn4nLA0.jpg" alt=""></p>
 <p>ちょっと長ったらしいので、データ自体を整形しましょう。</p>
 <p>各種の<code>Sepal.Length</code>のTOP5を集めて、tableとして表示します。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">iris_SLtop5 <span style="color:#f92672">&lt;-</span> iris <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">group_by</span>(Species) <span style="color:#f92672">%&gt;%</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">iris_SLtop5 <span style="color:#f92672">&lt;-</span> iris <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">group_by</span>(Species) <span style="color:#f92672">%&gt;%</span> 
 	<span style="color:#a6e22e">arrange</span>(<span style="color:#a6e22e">desc</span>(Sepal.Length)) <span style="color:#f92672">%&gt;%</span> 
 	<span style="color:#a6e22e">mutate</span>(rownum<span style="color:#f92672">=</span><span style="color:#a6e22e">row_number</span>()) <span style="color:#f92672">%&gt;%</span> 
 	<span style="color:#a6e22e">filter</span>(rownum<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">5</span>) <span style="color:#f92672">%&gt;%</span> 
@@ -206,7 +207,7 @@ iris_SLtop5 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e
 <p>すでにキレイな見た目に見えます。が、ここからさらに細かく編集していきましょう。</p>
 <h3 id="title-and-subtitle">Title and subtitle</h3>
 <p>表のタイトルです。習うより慣れろの精神で以下のスクリプトを実行してみてください。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">iris_SLtop5 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">gt</span>() <span style="color:#f92672">%&gt;%</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">iris_SLtop5 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">gt</span>() <span style="color:#f92672">%&gt;%</span>
 	<span style="color:#a6e22e">tab_header</span>(
 		title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Anderson&#39;s Iris Data&#34;</span>,
 		subtitle <span style="color:#f92672">=</span> <span style="color:#a6e22e">md</span>(<span style="color:#e6db74">&#34;_Top 5_ flowers from each species of Sepal.Length value&#34;</span>)	
@@ -216,7 +217,7 @@ iris_SLtop5 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e
 <code>md()</code>という関数を用いると、Markdown記法で文字をいじることができます。これは便利。</p>
 <h3 id="footnote">Footnote</h3>
 <p>注釈を付け加えましょう。データの出典を記述します。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">iris_SLtop5 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">gt</span>() <span style="color:#f92672">%&gt;%</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">iris_SLtop5 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">gt</span>() <span style="color:#f92672">%&gt;%</span>
 	<span style="color:#a6e22e">tab_header</span>(
 		title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Anderson&#39;s Iris Data&#34;</span>,
 		subtitle <span style="color:#f92672">=</span> <span style="color:#a6e22e">md</span>(<span style="color:#e6db74">&#34;_Top 5_ flowers from each species of Sepal.Length value&#34;</span>)	
@@ -226,7 +227,7 @@ iris_SLtop5 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e
   )
 </code></pre></div><p><img src="https://i.imgur.com/HKAw5mP.png" alt=""></p>
 <p>もうちょっと使い勝手良く注釈を付けたいですよね。それもできます。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">SL_longest <span style="color:#f92672">&lt;-</span> iris <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">group_by</span>(Species) <span style="color:#f92672">%&gt;%</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">SL_longest <span style="color:#f92672">&lt;-</span> iris <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">group_by</span>(Species) <span style="color:#f92672">%&gt;%</span>
     <span style="color:#a6e22e">summarize</span>(SL_mean<span style="color:#f92672">=</span><span style="color:#a6e22e">mean</span>(Sepal.Length),
                 PL_mean<span style="color:#f92672">=</span><span style="color:#a6e22e">mean</span>(Petal.Length)) <span style="color:#f92672">%&gt;%</span>
     <span style="color:#a6e22e">ungroup</span>() <span style="color:#f92672">%&gt;%</span>
@@ -258,7 +259,7 @@ iris <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">group
 <p>このような注釈を付け加えるのも数行で済んでしまいます。</p>
 <h3 id="grouping">Grouping</h3>
 <p>ここまでのスクリプトでは<code>ungroup()</code>をした後に<code>gt()</code>を行っていましたが、groupd_dfのまま<code>gt()</code>を行うとどうなるのか見ていきます。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">iris_SLtop5 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">group_by</span>(Species) <span style="color:#f92672">%&gt;%</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">iris_SLtop5 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">group_by</span>(Species) <span style="color:#f92672">%&gt;%</span>
     <span style="color:#a6e22e">gt</span>()
 </code></pre></div><p><img src="https://i.imgur.com/KxCvual.png" alt=""></p>
 <p>groupごとに表示されてすっきりしました。
@@ -268,13 +269,13 @@ iris <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">group
 <p>続いて{gtsummary}を用いた表作成です。</p>
 <p>{gtsummary}は名前の通り、{gt}を元に作成されたパッケージです。summaryデータを一瞬で表現できるすごいパッケージです。</p>
 <p>使い方はこちらもシンプル。これだけです。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(gtsummary)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(gtsummary)
 
 iris <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">tbl_summary</span>()
 </code></pre></div><p><img src="https://i.imgur.com/TfYq4iT.png" alt=""></p>
 <p>勝手にまとめてくれた上に表示までしてくれました。すごい。</p>
 <p>上記の値、どこかで近しい何かを見たことあるかもしれません。そう、<code>summary()</code>を用いた時です。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#f92672">&gt;</span> iris <span style="color:#f92672">%&gt;%</span> summary
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#f92672">&gt;</span> iris <span style="color:#f92672">%&gt;%</span> summary
 
   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width
  Min.   <span style="color:#f92672">:</span><span style="color:#ae81ff">4.300</span>   Min.   <span style="color:#f92672">:</span><span style="color:#ae81ff">2.000</span>   Min.   <span style="color:#f92672">:</span><span style="color:#ae81ff">1.000</span>   Min.   <span style="color:#f92672">:</span><span style="color:#ae81ff">0.100</span>
@@ -293,7 +294,7 @@ iris <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">tbl_s
 <p><code>summary()</code>がこんなにきれいに描けるならもしやliner modelとかも&hellip;と期待してしまいますよね。
 <strong>あります。</strong></p>
 <p>まずは単純に<code>glm()</code>から。モデル式などなどは適当です。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#f92672">&gt;</span> model1 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">glm</span>(Sepal.Length<span style="color:#f92672">~</span>Sepal.Width <span style="color:#f92672">+</span> Species <span style="color:#f92672">+</span> Sepal.Width<span style="color:#f92672">*</span>Species, dat<span style="color:#f92672">=</span>iris)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#f92672">&gt;</span> model1 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">glm</span>(Sepal.Length<span style="color:#f92672">~</span>Sepal.Width <span style="color:#f92672">+</span> Species <span style="color:#f92672">+</span> Sepal.Width<span style="color:#f92672">*</span>Species, dat<span style="color:#f92672">=</span>iris)
 <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">summary</span>(model1)
 
 
@@ -324,10 +325,10 @@ AIC<span style="color:#f92672">:</span> <span style="color:#ae81ff">187.09</span
 
 Number of Fisher Scoring iterations<span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>
 </code></pre></div><p>これを{gtsummary}で書くとこうなります。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">model1 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">tbl_regression</span>()
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">model1 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">tbl_regression</span>()
 </code></pre></div><p><img src="https://i.imgur.com/Chwf2v1.png" alt=""></p>
 <p>Interceptが欲しい、p-valueは小数点3桁で揃えたい、説明変数は斜体にしたい、などもできます。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">model1 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">tbl_regression</span>(intercept<span style="color:#f92672">=</span>T,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">model1 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">tbl_regression</span>(intercept<span style="color:#f92672">=</span>T,
              pvalue_fun <span style="color:#f92672">=</span> <span style="color:#f92672">~</span><span style="color:#a6e22e">style_pvalue</span>(.x, digits <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>)) <span style="color:#f92672">%&gt;%</span> 
     <span style="color:#a6e22e">italicize_levels</span>()
 
@@ -340,12 +341,12 @@ Number of Fisher Scoring iterations<span style="color:#f92672">:</span> <span st
 ここからの出力の方法はいくつかあるのかな、と個人的には思っています。
 ただ今回は画像としての出力が目標でしたのでそちらで進めていきます。</p>
 <p>まずは、{webshot}パッケージを読み込みます。このパッケージを用いると（正確にはPhantomJSというアプリケーションを用いると）Rでwebページのスクリーンショットを撮ることができます。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(webshot)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(webshot)
 <span style="color:#a6e22e">install_phantomjs</span>()
 </code></pre></div><p>準備はこれで終わりです。</p>
 <p>では作成したhtmlのスクリーンショットを撮ってみます。</p>
 <p>例えば、一番最後に作成した表を画像として保存したいとします。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">model1 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">tbl_regression</span>(intercept<span style="color:#f92672">=</span>T,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">model1 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">tbl_regression</span>(intercept<span style="color:#f92672">=</span>T,
              pvalue_fun <span style="color:#f92672">=</span> <span style="color:#f92672">~</span><span style="color:#a6e22e">style_pvalue</span>(.x, digits <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>)) <span style="color:#f92672">%&gt;%</span> 
     <span style="color:#a6e22e">italicize_levels</span>() <span style="color:#f92672">%&gt;%</span>
     <span style="color:#a6e22e">as_gt</span>() <span style="color:#f92672">%&gt;%</span>

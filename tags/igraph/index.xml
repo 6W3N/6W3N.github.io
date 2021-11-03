@@ -6,11 +6,7 @@
     <description>Recent content in igraph on 6W3N Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 10 Jun 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://6w3n.github.io/tags/igraph/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 10 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://6w3n.github.io/tags/igraph/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>igraph memo</title>
       <link>https://6w3n.github.io/posts/igraph_memo/</link>

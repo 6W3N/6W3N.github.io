@@ -21,9 +21,10 @@
 <meta property="og:title" content="Rtweet" />
 <meta property="og:description" content="Self memo of Twitter search by R" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://6w3n.github.io/posts/rtweet/" />
+<meta property="og:url" content="https://6w3n.github.io/posts/rtweet/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-08-14T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-08-14T00:00:00+00:00" />
+
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Rtweet"/>
@@ -179,7 +180,7 @@
 <p>{rtweet}はRからTwitterを操作するためのパッケージです。例えば、ツイートのデータを集めたり、ツイートを行ったりすることができます。
 これらはTwitterアカウントを連携させて用いることになります。なのでTwitterのアカウントがない場合は<a href="https://help.twitter.com/ja/using-twitter/create-twitter-account">こちら</a>を参照してアカウントを作成してください。</p>
 <p>{rtweet}の使い方自体は至ってシンプルです。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(rtweet)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(rtweet)
 
 <span style="color:#a6e22e">post_tweet</span>(<span style="color:#e6db74">&#34;Look, i&#39;m tweeting from R in my #rstats! @YOUR_TWITTER_ACCOUNT&#34;</span>)
 </code></pre></div><p><strong>初めて{rtweet}の関数を実行するとブラウザが立ち上がり、Twitterアカウントとアプリとの連携を求めてきます。認証をしましょう。</strong></p>
@@ -187,7 +188,7 @@
 <p><img src="https://i.imgur.com/Rf2SaaI.png" alt=""></p>
 <p>呟かれています。</p>
 <p>次はツイートの検索をしてみます。</p>
-<pre><code>rstats &lt;- search_tweets(q=&quot;#rstats&quot;, include_rts = FALSE)
+<pre tabindex="0"><code>rstats &lt;- search_tweets(q=&quot;#rstats&quot;, include_rts = FALSE)
 
 &gt; rstats
 # A tibble: 100 x 90
@@ -205,12 +206,12 @@
 10 120362… 12948630… 2020-08-16 05:06:28 icymi_r     &quot;✍️👥… OneUp…
 # … with 90 more rows, and 84 more variables: display_text_width &lt;dbl&gt;, ...
 </code></pre><p>スクリプトの説明をします。
-<code>search_tweets()</code>はその名の通りツイートを検索する関数です。第一引数のq=&rdquo;#rstat&quot;は、クエリの指定です。今回は#rstatsが含まれるツイートを検索してきています。また、include_rts = FALSEでリツイートを除くというオプションを入れています。
+<code>search_tweets()</code>はその名の通りツイートを検索する関数です。第一引数のq=&quot;#rstat&quot;は、クエリの指定です。今回は#rstatsが含まれるツイートを検索してきています。また、include_rts = FALSEでリツイートを除くというオプションを入れています。
 クエリの指定の方法は<a href="https://developer.twitter.com/en/docs/twitter-api/v1/tweets/search/api-reference/get-search-tweets">公式ページ</a>を参考にしてください。</p>
 <p>検索結果が100件だけ&hellip;？非常に少ないですよね。
 これは<code>search_tweets()</code>が何かしていそうです。</p>
 <p><a href="https://cran.r-project.org/web/packages/rtweet/rtweet.pdf">CRAN</a>にある<code>search_tweets()</code>や、Rコンソール上で<code>?search_tweets()</code>を実行して説明を読んでみます。</p>
-<pre><code>&gt; ?search_tweets()
+<pre tabindex="0"><code>&gt; ?search_tweets()
 
 search_tweets              package:rtweet              R Documentation
 
@@ -244,7 +245,7 @@ Usage:
 </code></pre><p>なるほど。遡れても6-9日だけとのことです。また、デフォルトではn=100になっていたために、100件しか表示されなかったようです。</p>
 <p>では、全期間（2006年以降）のデータにアクセスするにはどうすれば良いのでしょう。
 <code>search_fullarchive()</code>がそれっぽいです。</p>
-<pre><code>&gt; ?search_fullarchive()
+<pre tabindex="0"><code>&gt; ?search_fullarchive()
 
 search_fullarchive           package:rtweet            R Documentation
 
@@ -307,7 +308,7 @@ Premiumにも無料で使える範囲があります。ひとまず無料で使�
 <p>Developer Toolにおける準備がようやく終わりました。</p>
 <h3 id="rtweetsearch_fullarchive">rtweet::search_fullarchive()</h3>
 <p>Rの画面に戻ります。アクセスの準備をします。</p>
-<pre><code>library(rtweet)
+<pre tabindex="0"><code>library(rtweet)
 
 appname &lt;- &quot;your-app-name&quot;
 key &lt;- &quot;yourLongApiKeyHere&quot;
@@ -328,7 +329,7 @@ dev_env &lt;- &quot;yourDevEnvironments&quot;
 <li>紐付けたDev Environmentの名前</li>
 </ul>
 <p>です。</p>
-<pre><code>twitter_token &lt;- create_token(
+<pre tabindex="0"><code>twitter_token &lt;- create_token(
 	app = appname,
 	consumer_key = key,
 	consumer_secret = secret,
@@ -337,7 +338,7 @@ dev_env &lt;- &quot;yourDevEnvironments&quot;
 </code></pre><p><code>create_token()</code>で上から6つの情報を入れておきます。
 そして、作成したtokenを<code>search_fullarchive()</code>で呼び出します。と、同時にDev Environmentの名前も必要になります。
 ちなみに先ほどの<code>search_tweets()</code>と同様にデフォルトでは最大100件までの取得になります。</p>
-<pre><code>rstats_2019 &lt;- search_fullarchive(q=&quot;#rstats&quot;, 
+<pre tabindex="0"><code>rstats_2019 &lt;- search_fullarchive(q=&quot;#rstats&quot;, 
 			env_name=dev_env,	
             token=twitter_token,
 			fromDate=&quot;201901010000&quot;,

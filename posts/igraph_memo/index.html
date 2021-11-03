@@ -21,9 +21,10 @@
 <meta property="og:title" content="igraph memo" />
 <meta property="og:description" content="Self memo of igraph &#43; R" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://6w3n.github.io/posts/igraph_memo/" />
+<meta property="og:url" content="https://6w3n.github.io/posts/igraph_memo/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-06-10T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-06-10T00:00:00+00:00" />
+
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="igraph memo"/>
@@ -193,12 +194,12 @@ N -&gt; S -&gt; A -&gt; D -&gt; E
 <p>データの都合上、Pが生じたらそこでこの行動の観察を終了します。行ごとの被食者を統一するためです。
 捕食後の捕食者が次の探索行動に移る場合などは別の行で表します。
 つまり、行が同じ時は捕食者と被食者が同一であることを示します。NとSでは被食者が出てきませんが&hellip;。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(tidyverse)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(tidyverse)
 
 dat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">tribble</span>(<span style="color:#f92672">~</span>beh,<span style="color:#e6db74">&#34;S&#34;</span>, <span style="color:#e6db74">&#34;NSADE&#34;</span>, <span style="color:#e6db74">&#34;SAP&#34;</span>, 
     <span style="color:#e6db74">&#34;NSADE&#34;</span>, <span style="color:#e6db74">&#34;MNSADS&#34;</span>, <span style="color:#e6db74">&#34;ADASNSADE&#34;</span>, <span style="color:#e6db74">&#34;NSAP&#34;</span>, 
     <span style="color:#e6db74">&#34;NSADAP&#34;</span>, <span style="color:#e6db74">&#34;SNADENAS&#34;</span>, <span style="color:#e6db74">&#34;NSADAP&#34;</span>)
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#f92672">&gt;</span> dat
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#f92672">&gt;</span> dat
 <span style="color:#75715e"># A tibble: 10 x 1</span>
    beh
    <span style="color:#f92672">&lt;</span>chr<span style="color:#f92672">&gt;</span>
@@ -225,7 +226,7 @@ dat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">tribble
 ノードは一つの行動（ex. NとかSなど）が相当します。
 リンクは行動の遷移（ex. NSやSAなど）が相当します。
 また、今回はただのリンクではなく、方向性のあるリンクとなります。遷移なので。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">nodes <span style="color:#f92672">&lt;-</span> dat <span style="color:#f92672">%&gt;%</span>  
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">nodes <span style="color:#f92672">&lt;-</span> dat <span style="color:#f92672">%&gt;%</span>  
 	<span style="color:#a6e22e">mutate</span>(N<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;N&#34;</span>),
         S<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;S&#34;</span>), 
 		A<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;A&#34;</span>), 
@@ -266,7 +267,7 @@ links <span style="color:#f92672">&lt;-</span> dat <span style="color:#f92672">%
 	<span style="color:#a6e22e">select</span>(<span style="color:#f92672">-</span>transition, <span style="color:#f92672">-</span>V1)
 </code></pre></div><p><strong>※今回は簡単のため、一連の行動（1行に相当する）の長さについて考えていません。実際には行動のレベルで標準化することが必要かと思います。</strong></p>
 <p>できたものがこちら。</p>
-<pre><code>&gt; nodes
+<pre tabindex="0"><code>&gt; nodes
 # A tibble: 6 x 5
   id    beh       behType typeLabel nodeSize
   &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;
@@ -295,13 +296,13 @@ links <span style="color:#f92672">&lt;-</span> dat <span style="color:#f92672">%
 </code></pre><p>なんかそれっぽくなってきました。</p>
 <h3 id="3-generate-network">3. Generate Network</h3>
 <p>ようやく{igraph}の出番です。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(igraph)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(igraph)
 
 net <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">graph_from_data_frame</span>(d<span style="color:#f92672">=</span>links, vertices<span style="color:#f92672">=</span>nodes, 
                             directed<span style="color:#f92672">=</span>T)
 </code></pre></div><p><code>graph_from_data_frame()</code>以外にもnetworkを作成する関数は存在します。興味がある人は<code>?igraph</code>で探してみてください。</p>
 <p>中身はこんな感じになっています。ここからは完全に{igraph}の独壇場です。</p>
-<pre><code>&gt; net
+<pre tabindex="0"><code>&gt; net
 IGRAPH a6bd990 DNW- 6 10 --
 + attr: name (v/c), beh (v/c), behType (v/n), typeLabel (v/c), nodeSize
 | (v/n), weight (e/n)
@@ -309,7 +310,7 @@ IGRAPH a6bd990 DNW- 6 10 --
  [1] N-&gt;S S-&gt;N S-&gt;A A-&gt;D A-&gt;S A-&gt;P D-&gt;P D-&gt;A D-&gt;E E-&gt;N
 </code></pre><h3 id="4-drawing-the-network">4. Drawing the Network</h3>
 <p>描画するだけならもっと楽です。</p>
-<pre><code>net %&gt;% plot()
+<pre tabindex="0"><code>net %&gt;% plot()
 </code></pre><p>これだけです。びっくり。以下のようなグラフが出力されます。
 ちなみにこの<code>plot()</code>は実は<code>plot.igraph()</code>を呼んでいるのでこんな感じに描けるわけです。{igraph}を読み込んでいないと動かないことに注意してください。</p>
 <p><img src="https://i.imgur.com/DuqYwfb.png" alt=""></p>
@@ -326,27 +327,27 @@ IGRAPH a6bd990 DNW- 6 10 --
 <p><code>nodes</code>に<code>behType</code>とか<code>typeLabel</code>と言うカラムがあります。実はそんなカラムを作成していました。
 これは、行動の主体が捕食者なのか被食者なのかそれとも両方なのかを表しています。</p>
 <p>せっかくなので色分けすると見やすくなるかもしれません。</p>
-<pre><code>colr &lt;- c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;)
+<pre tabindex="0"><code>colr &lt;- c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;)
 V(net)$color &lt;- colr[V(net)$behType]
 
 plot(net)
 </code></pre><p><img src="https://i.imgur.com/LEIezts.png" alt=""></p>
 <p>色が変わりました。<strong>本番環境では文字の色との兼ね合いを考えましょう。</strong></p>
 <p>また、各行動がどれくらいの頻度で生じているかを人目見てわかりやすくしたいですね。そういった時は以下のスクリプトで対応できます。</p>
-<pre><code>V(net)$size &lt;- degree(net, mode=&quot;all&quot;)*5
+<pre tabindex="0"><code>V(net)$size &lt;- degree(net, mode=&quot;all&quot;)*5
 plot(net)
 </code></pre><p><img src="https://i.imgur.com/bJLaDtN.png" alt=""></p>
 <p>EscapeやPredationはSearchやAttackに比べて生じにくいと言うことがぱっと見でわかると思います。
 <code>*5</code>の部分はデータによってまちまちなので各自の調節が大切になります。</p>
 <h4 id="tips-link-weight">Tips: Link weight</h4>
 <p>リンクの太さを変えることで、遷移がどこの行動間で生じているのか見やすくしましょう。</p>
-<pre><code>E(net)$width &lt;- E(net)$weight*10
+<pre tabindex="0"><code>E(net)$width &lt;- E(net)$weight*10
 E(beh_net)$arrow.size &lt;- 2
 plot(net)
 </code></pre><p><img src="https://i.imgur.com/23e0MyL.png" alt=""></p>
 <p>太さは変わりましたが、両方向に生じる遷移の場合、どちらがより大きいのかわかりません。</p>
 <p>この場合はplotで調整します。</p>
-<pre><code>plot(net, edge.curved=0.3)
+<pre tabindex="0"><code>plot(net, edge.curved=0.3)
 </code></pre><p><img src="https://i.imgur.com/SyFVmYE.png" alt=""></p>
 <h4 id="tips-fixed-position">Tips: Fixed position</h4>
 <p>最後に、出力の度にノードの位置が変わってしまう、と言う問題についての対応です。</p>
@@ -355,7 +356,7 @@ plot(net)
 <code>layout</code>オプションは、指定された位置にノードを配置するためのものです。</p>
 <p>配置するためのmatrixを作る関数は<code>layout_()</code>です。ややこしいですね。
 以下のように使います。</p>
-<pre><code>lo &lt;- layout_(net, as_star())
+<pre tabindex="0"><code>lo &lt;- layout_(net, as_star())
 plot(net, layout=lo, edge.curved=0.3)
 </code></pre><p><img src="https://i.imgur.com/MHW99Dx.png" alt=""></p>
 <p><code>as_star()</code>は一つのノードを真ん中に配置し、それ以外を周囲に配置します。

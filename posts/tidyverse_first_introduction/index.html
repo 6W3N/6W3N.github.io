@@ -21,9 +21,10 @@
 <meta property="og:title" content="Tidyverse First Introduction" />
 <meta property="og:description" content="A brief guide to Tidyverse" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://6w3n.github.io/posts/tidyverse_first_introduction/" />
+<meta property="og:url" content="https://6w3n.github.io/posts/tidyverse_first_introduction/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2019-11-20T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-11-20T00:00:00+00:00" />
+
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Tidyverse First Introduction"/>
@@ -176,7 +177,7 @@ So, if you want to learn R on the web, there is no less to know <code>tidyverse<
 <p>I strongly recommend to read and demonstrate &ldquo;R for Data Science (<a href="https://r4ds.had.co.nz/">R4DS</a>)&rdquo; for studying <code>tidyverse</code> or data handling skills in R.
 But this book has so many contents so that focus on some of them at this lecture.</p>
 <p>First of all, to load the <code>tidyverse</code> and make it available in your current R session.</p>
-<pre><code>install.packages(&quot;tidyverse&quot;) #if you have not installed tidyverse
+<pre tabindex="0"><code>install.packages(&quot;tidyverse&quot;) #if you have not installed tidyverse
 library(tidyverse)
 </code></pre><h4 id="core-tidyverse">Core tidyverse</h4>
 <p>NOTE: The following list is just only my thoughts.</p>
@@ -211,7 +212,7 @@ The <code>tidyr</code> package allows us to create &ldquo;tidy data&rdquo; easil
 <p>by <a href="https://r4ds.had.co.nz/">R4DS</a></p>
 <h4 id="examples-of-tidy-data-and-non-tidy-data">Examples of &ldquo;tidy data&rdquo; and &ldquo;non-tidy data&rdquo;</h4>
 <p>&ldquo;Tidy data&rdquo; is like this:</p>
-<pre><code>table1 
+<pre tabindex="0"><code>table1 
 
 #&gt; # A tibble: 6 x 4
 #&gt;   country      year  cases population
@@ -224,7 +225,7 @@ The <code>tidyr</code> package allows us to create &ldquo;tidy data&rdquo; easil
 #&gt; 6 China        2000 213766 1280428583
 </code></pre><p>Each column means variables, and each row represents observations.<br>
 On the other hands, &ldquo;non-tidy data&rdquo; are like these:</p>
-<pre><code>table2
+<pre tabindex="0"><code>table2
 
 #&gt; # A tibble: 12 x 4
 #&gt;   country      year type           count
@@ -237,7 +238,7 @@ On the other hands, &ldquo;non-tidy data&rdquo; are like these:</p>
 #&gt; 6 Brazil       1999 population 172006362
 #&gt; # … with 6 more rows
 </code></pre><p>Because two types (cases and population) are common to country column and year column, table2 is &ldquo;non-tidy data&rdquo;.</p>
-<pre><code>table3
+<pre tabindex="0"><code>table3
 
 #&gt; # A tibble: 6 x 3
 #&gt;   country      year rate             
@@ -251,7 +252,7 @@ On the other hands, &ldquo;non-tidy data&rdquo; are like these:</p>
 </code></pre><p>Because rate column consists of denominator and numerator, table3 is also &ldquo;non-tidy data&rdquo;.</p>
 <h4 id="functions-of-tidyr">Functions of tidyr</h4>
 <h5 id="gather"><code>gather</code></h5>
-<pre><code>table4a
+<pre tabindex="0"><code>table4a
 
 #&gt; # A tibble: 3 x 3
 #&gt;   country     `1999` `2000`
@@ -260,7 +261,7 @@ On the other hands, &ldquo;non-tidy data&rdquo; are like these:</p>
 #&gt; 2 Brazil       37737  80488
 #&gt; 3 China       212258 213766
 </code></pre><p>table4a contains year (1999 or 2000), but each year are columns. &ldquo;gather&rdquo; function takes multiple columns and collapses into key-value pairs, duplicating all other columns as needed.</p>
-<pre><code>gather(table4a, `1999`, `2000`, key = &quot;year&quot;, value = &quot;cases&quot;)
+<pre tabindex="0"><code>gather(table4a, `1999`, `2000`, key = &quot;year&quot;, value = &quot;cases&quot;)
 
 #&gt; # A tibble: 6 x 3
 #&gt;   country     year   cases
@@ -277,7 +278,7 @@ by [R4DS](https://r4ds.had.co.nz/)
 <h5 id="spread"><code>spread</code></h5>
 <p><code>spread</code> function is the opposite of gathering.
 table2 have observations which are scattered across multiple rows.</p>
-<pre><code>spread(table2, key = type, value = count)
+<pre tabindex="0"><code>spread(table2, key = type, value = count)
 
 #&gt; # A tibble: 6 x 4
 #&gt;   country      year  cases population
@@ -293,7 +294,7 @@ table2 have observations which are scattered across multiple rows.</p>
 <p>The <code>tidyr</code> package has more functions but the above lecture only introduces to <code>spread</code> and <code>gather</code> due to time.</p>
 <p>More functions are <a href="https://cran.r-project.org/web/packages/tidyr/tidyr.pdf">here</a>.
 Or we can confirm functions by running following commands.</p>
-<pre><code>help(package = &quot;tidyr&quot;)
+<pre tabindex="0"><code>help(package = &quot;tidyr&quot;)
 </code></pre><h2 id="dplyr">dplyr</h2>
 <p><code>dplyr</code> is a powerful tool to transform data, like summarising, grouping, manipulating cases, manipulating variables, even combination.</p>
 <h4 id="pipe-operator">pipe operator</h4>
@@ -302,20 +303,20 @@ Actually, the pipe operator is function from <code>magrittr</code> package which
 <p>The pipe operator makes R scripts more simple, readable, and hence easy to edit.
 This is because nested functions (the first script)  are difficult to read and also lots of variables (the second script) confuse us.</p>
 <p>Following two scripts will return same results.</p>
-<pre><code>spread(table2, key = type, value = count)
+<pre tabindex="0"><code>spread(table2, key = type, value = count)
 </code></pre><p>or</p>
-<pre><code>table2 %&gt;%
+<pre tabindex="0"><code>table2 %&gt;%
     spread(key = type, value = count)
 </code></pre><p><code>%&gt;%</code> operator would demonstrate its power when applying many  functions in one process.</p>
 <p>Following three scripts also return the same result.</p>
-<pre><code>mutate(spread(filter(table2, country==&quot;Afghanistan&quot;),key = type, value = count), ratio=population/cases)
+<pre tabindex="0"><code>mutate(spread(filter(table2, country==&quot;Afghanistan&quot;),key = type, value = count), ratio=population/cases)
 # `mutate` function will be discribed later.
 </code></pre><p>or</p>
-<pre><code>Af &lt;- filter(table2, country==&quot;Afghanistan&quot;)
+<pre tabindex="0"><code>Af &lt;- filter(table2, country==&quot;Afghanistan&quot;)
 spreadAf &lt;- spread(Af, key = type, value = count)
 mutate(spreadAf, ratio=population/cases)
 </code></pre><p>but  you can utilize pipe operator,</p>
-<pre><code>table2 %&gt;% 
+<pre tabindex="0"><code>table2 %&gt;% 
   filter(country==&quot;Afghanistan&quot;) %&gt;% 
   spread(key = type, value = count) %&gt;% 
   mutate(ratio=population/cases)
@@ -327,13 +328,13 @@ And I write all scripts using the pipe operator from here on.</p>
 <p>I will explain only some of the functions because <code>dplyr</code> also has so many useful functions.</p>
 <h5 id="mutate"><code>mutate</code></h5>
 <p><code>mutate</code> function adds new variables, as used in the above scripts.</p>
-<pre><code>table1 %&gt;% 
+<pre tabindex="0"><code>table1 %&gt;% 
   mutate(ratio=population/cases)
 </code></pre><p>Of course, <code>mutate</code> function can add columns using another dataset.</p>
-<pre><code>table1 %&gt;% 
+<pre tabindex="0"><code>table1 %&gt;% 
   mutate(rate=table3$rate)
 </code></pre><p>In dialect <code>tidyverse</code>, it is common to access the columns as follows:</p>
-<pre><code>table1 %&gt;% 
+<pre tabindex="0"><code>table1 %&gt;% 
   mutate(rate=table3 %&gt;% pull(rate))
 </code></pre><p>Like above, <code>%&gt;%</code> is also valid when passing as arguments.
 <code>pull</code> command access the variables in the data frame.</p>
@@ -348,7 +349,7 @@ So, we will often use <code>mutate</code> function.</p>
 <p>If you want to do as same as <code>table1$year</code>, you should use <code>pull</code> command which is one of the commands in <code>dplyr</code>.</p>
 <p>The <code>pull</code> command  or <code>$</code> operator return the <code>data.frameRowLabels</code> type.
 But <code>select</code> function returns the <code>data.frame</code> type which columns name remains.</p>
-<pre><code>table1 %&gt;% 
+<pre tabindex="0"><code>table1 %&gt;% 
   select(countey)
 </code></pre><p><strong>The following figure is for illustrative purposes.</strong>
 <img src="https://i.imgur.com/hdLcz01.png" alt=""></p>
@@ -356,12 +357,12 @@ But <code>select</code> function returns the <code>data.frame</code> type which 
 <h5 id="filter"><code>filter</code></h5>
 <p>The <code>filter</code> function filters the row levels.
 <code>filter</code> function returns matched row when matching arguments.</p>
-<pre><code>table1 %&gt;% 
+<pre tabindex="0"><code>table1 %&gt;% 
   filter(country==&quot;Afghanistan&quot;)
 </code></pre><p>The above commands return rows including <code>&quot;Afghanistan&quot;</code> in <code>country</code> column.</p>
 <p>Of course, you can also select by row numbers as below.
 But if so, you have to use <code>slice</code> function.</p>
-<pre><code>table1 %&gt;% 
+<pre tabindex="0"><code>table1 %&gt;% 
   slice(1)
 </code></pre><p><strong>The following figure is for illustrative purposes.</strong>
 <img src="https://i.imgur.com/eKVtSXz.png" alt=""></p>
@@ -369,7 +370,7 @@ But if so, you have to use <code>slice</code> function.</p>
 <h5 id="inner_join"><code>inner_join</code></h5>
 <p>The <code>_join</code> function group (<code>left_</code>, <code>right_</code>, <code>inner_</code> <code>full_</code>) combine two data.
 The easiest to use function is <code>inner_join</code> which combine and returns only the rows that match the column specified by <code>by</code>.</p>
-<pre><code>table2 %&gt;%
+<pre tabindex="0"><code>table2 %&gt;%
   inner_join(table3, by=c(&quot;country&quot;, &quot;year&quot;))
 </code></pre><p>The above commands returns the data combined with <code>country</code> and <code>year</code> columns.</p>
 <p><strong>The following figure is for illustrative purposes.</strong><br>
@@ -384,7 +385,7 @@ In this case, <code>inner_join</code> combine as below:
 This function is compatible with <code>summarize</code> function.</p>
 <h5 id="summarize"><code>summarize</code></h5>
 <p>The <code>summarize</code> function summarize variables and create a new table of summary statistics.</p>
-<pre><code>mtcars %&gt;% 
+<pre tabindex="0"><code>mtcars %&gt;% 
   as_tibble()    # tibble is easy to read and use class because we can confirm all variable's names, numbers of rows and columns, and columns class.
 
 
@@ -402,7 +403,7 @@ This function is compatible with <code>summarize</code> function.</p>
 #&gt; 9  22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
 #&gt;10  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
 #&gt;# … with 22 more rows
-</code></pre><pre><code>mtcars %&gt;%
+</code></pre><pre tabindex="0"><code>mtcars %&gt;%
   group_by(cyl) %&gt;%    # grouping by `cyl` levels, which are 4, 6, or 8.
   summarise(avg = mean(mpg))    # summarizing by the group (is `cyl` levels), and creation the averages column.
 

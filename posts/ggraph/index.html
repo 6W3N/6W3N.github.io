@@ -21,9 +21,10 @@
 <meta property="og:title" content="ggraph memo" />
 <meta property="og:description" content="Self memo of ggraph &#43; R" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://6w3n.github.io/posts/ggraph/" />
+<meta property="og:url" content="https://6w3n.github.io/posts/ggraph/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-07-30T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-07-30T00:00:00+00:00" />
+
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ggraph memo"/>
@@ -176,12 +177,12 @@
 <p>上記1.と2.は<a href="https://6w3n.github.io/posts/igraph_memo/">Igraph Memo</a>と全く同じです。読み飛ばしてもらっても構いません。</p>
 <p>今回は3.と4.をメインにやります。</p>
 <h3 id="1-data-preparation">1. Data Preparation</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(tidyverse)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(tidyverse)
 
 dat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">tribble</span>(<span style="color:#f92672">~</span>beh,<span style="color:#e6db74">&#34;S&#34;</span>, <span style="color:#e6db74">&#34;NSADE&#34;</span>, <span style="color:#e6db74">&#34;SAP&#34;</span>, 
     <span style="color:#e6db74">&#34;NSADE&#34;</span>, <span style="color:#e6db74">&#34;MNSADS&#34;</span>, <span style="color:#e6db74">&#34;ADASNSADE&#34;</span>, <span style="color:#e6db74">&#34;NSAP&#34;</span>, 
     <span style="color:#e6db74">&#34;NSADAP&#34;</span>, <span style="color:#e6db74">&#34;SNADENAS&#34;</span>, <span style="color:#e6db74">&#34;NSADAP&#34;</span>)
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#f92672">&gt;</span> dat
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#f92672">&gt;</span> dat
 <span style="color:#75715e"># A tibble: 10 x 1</span>
    beh
    <span style="color:#f92672">&lt;</span>chr<span style="color:#f92672">&gt;</span>
@@ -196,7 +197,7 @@ dat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">tribble
  <span style="color:#ae81ff">9</span> SNADENAS
 <span style="color:#ae81ff">10</span> NSADAP
 </code></pre></div><h3 id="2-data-shaping">2. Data Shaping</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">nodes <span style="color:#f92672">&lt;-</span> dat <span style="color:#f92672">%&gt;%</span>  
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">nodes <span style="color:#f92672">&lt;-</span> dat <span style="color:#f92672">%&gt;%</span>  
 	<span style="color:#a6e22e">mutate</span>(N<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;N&#34;</span>),
         S<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;S&#34;</span>), 
 		A<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;A&#34;</span>), 
@@ -235,7 +236,7 @@ links <span style="color:#f92672">&lt;-</span> dat <span style="color:#f92672">%
 	<span style="color:#a6e22e">mutate</span>(to<span style="color:#f92672">=</span><span style="color:#a6e22e">str_sub</span>(transition, <span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>)) <span style="color:#f92672">%&gt;%</span>
 	<span style="color:#a6e22e">mutate</span>(weight<span style="color:#f92672">=</span>V1) <span style="color:#f92672">%&gt;%</span>
 	<span style="color:#a6e22e">select</span>(<span style="color:#f92672">-</span>transition, <span style="color:#f92672">-</span>V1)
-</code></pre></div><pre><code>&gt; nodes
+</code></pre></div><pre tabindex="0"><code>&gt; nodes
 # A tibble: 6 x 5
   id    beh       behType typeLabel nodeSize
   &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;
@@ -263,14 +264,14 @@ links <span style="color:#f92672">&lt;-</span> dat <span style="color:#f92672">%
 10 E     N        0.1
 </code></pre><h3 id="3-generate-network">3. Generate Network</h3>
 <p>{ggraph}の出番です。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(ggraph)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(ggraph)
 
 net <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">graph_from_data_frame</span>(d<span style="color:#f92672">=</span>links, vertices<span style="color:#f92672">=</span>nodes, 
                             directed<span style="color:#f92672">=</span>T)
 </code></pre></div><p>勘の良い方は気づいているかもしれませんが、<code>graph_from_data_frame()</code>は{igraph}の関数です。{ggraph}を呼ぶときに{igraph}モインポートしています。</p>
 <h3 id="4-drawing-the-network">4. Drawing the Network</h3>
 <p>描画はこんな感じ。</p>
-<pre><code>lo &lt;- matrix(c(50,50,50,100,100,100,80,45,10,50,90,0), ncol=2)	#fixed position
+<pre tabindex="0"><code>lo &lt;- matrix(c(50,50,50,100,100,100,80,45,10,50,90,0), ncol=2)	#fixed position
 
 net_plot &lt;- net %&gt;% ggraph(layout = lo) +
 	geom_edge_arc(aes(edge_width = weight), 
@@ -307,7 +308,7 @@ net_plot
 <p>{ggraph}を使った理由の一つに、{ggpubr}との組み合わせで複数ネットワークを一枚にまとめたかったという思いがあります。
 {igraph}では描画した図表をいちいち切りそろえて結合して&hellip;という作業になるので、それをオートマティックにやりたいというところです。</p>
 <p>概念的には以下のような感じ。</p>
-<pre><code>net_1 &lt;- net %&gt;% ggraph(layout = lo) +
+<pre tabindex="0"><code>net_1 &lt;- net %&gt;% ggraph(layout = lo) +
 	geom_edge_arc(aes(), ...) +
 	geom_node_point(aes(), ...) + 
 	geom_node_text(aes(), ...)
