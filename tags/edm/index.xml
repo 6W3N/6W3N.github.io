@@ -9,10 +9,10 @@
     <lastBuildDate>Fri, 19 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://6w3n.github.io/tags/edm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>New paper is out (2021/11/19)</title>
-      <link>https://6w3n.github.io/posts/newpaper211103/</link>
+      <link>https://6w3n.github.io/posts/newpaper211119/</link>
       <pubDate>Fri, 19 Nov 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://6w3n.github.io/posts/newpaper211103/</guid>
+      <guid>https://6w3n.github.io/posts/newpaper211119/</guid>
       <description>論文紹介 論文が出ました！
  Title: Digging out intersexual and meteorological effects on cicada emergence using 10-year citizen monitoring Author: W. Mukaimine, K. Kawatsu, &amp;amp; Y. Toquenaga Journal: Ecological Entomology URL: https://onlinelibrary.wiley.com/doi/10.1111/een.13109  一文要約 自由研究で集めていたアブラゼミの日毎の羽化数データに対してEDMを適用することで、アブラゼミの日毎の羽化に対して影響を持つ要因を探りました。
 概要 小学生 (2003年)から高校生の時 (2012年)に夏休みの自由研究として集めていたアブラゼミの抜け殻の数 (=羽化数)を用いて、Empirical Dynamic Modeling (EDM)を行い、羽化に対して因果を持つ要因を探りました。 その結果、他の昆虫と同じように気温や日照時間が影響するとともに、他の昆虫ではあまり知られていなかった降水量や湿度が羽化イベントに影響することがわかりました。 さらに、季節性を排除したEDMの結果からメスの羽化イベントがオスの日毎の羽化数に正の因果効果があり、反対にオスの羽化イベントがメスの羽化数に負の因果効果があることがわかりました。 これらの結果はセミの幼虫期のみを地下で過ごすという特異な生態や、雄性先熟という昆虫における一般的な現象 (オスがメスよりも先に出現する現象)の理論的予測と一致しています。 小学生から高校生の間の夏休みに自由研究を行う (行わせる?</description>
