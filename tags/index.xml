@@ -6,7 +6,43 @@
     <description>Recent content in Tags on 6W3N Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://6w3n.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://6w3n.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CCM</title>
+      <link>https://6w3n.github.io/tags/ccm/</link>
+      <pubDate>Sun, 09 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/tags/ccm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>EDM</title>
+      <link>https://6w3n.github.io/tags/edm/</link>
+      <pubDate>Sun, 09 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/tags/edm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>https://6w3n.github.io/tags/r/</link>
+      <pubDate>Sun, 09 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/tags/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>UIC</title>
+      <link>https://6w3n.github.io/tags/uic/</link>
+      <pubDate>Sun, 09 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/tags/uic/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Article</title>
       <link>https://6w3n.github.io/tags/article/</link>
@@ -26,15 +62,6 @@
     </item>
     
     <item>
-      <title>EDM</title>
-      <link>https://6w3n.github.io/tags/edm/</link>
-      <pubDate>Fri, 19 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://6w3n.github.io/tags/edm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>gt</title>
       <link>https://6w3n.github.io/tags/gt/</link>
       <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
@@ -49,15 +76,6 @@
       <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>https://6w3n.github.io/tags/gtsummary/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>R</title>
-      <link>https://6w3n.github.io/tags/r/</link>
-      <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://6w3n.github.io/tags/r/</guid>
       <description></description>
     </item>
     

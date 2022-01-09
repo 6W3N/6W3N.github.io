@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>UIC on 6W3N Site</title>
+    <link>https://6w3n.github.io/tags/uic/</link>
+    <description>Recent content in UIC on 6W3N Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 09 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://6w3n.github.io/tags/uic/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>rUIC</title>
+      <link>https://6w3n.github.io/posts/ruic/</link>
+      <pubDate>Sun, 09 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/posts/ruic/</guid>
+      <description>rUICの備忘録 UICとは Unified Information-theoretic Causalityの略。 最近傍法を用いてCCMを解析的（数学的）に解けるように変形し生まれた指標。CCMの一般化とも言える。そのためEDMの一部という立ち位置。
+UICのメリット：
+ CCMでは線形性が強い際などに偽陽性がでるが、その点に関してUICではロバスト。 条件付きで計算できる。そのため、A-&amp;gt;B-&amp;gt;Cのような因果がある場合、CCMではA-&amp;gt;Cでの因果を否定できないが、UICでは否定できる(?)。 解析的に計算できるためCCMよりも計算速度が速い。  rUIC::simplex() tl &amp;lt;- 400 # time length x &amp;lt;- y &amp;lt;- rep(NA, tl) x[1] &amp;lt;- 0.4 y[1] &amp;lt;- 0.2 for (t in 1:(tl - 1)) { # causality : x -&amp;gt; y x[t+1] = x[t] * (3.</description>
+    </item>
+    
+  </channel>
+</rss>
