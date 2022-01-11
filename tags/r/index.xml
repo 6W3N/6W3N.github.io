@@ -6,7 +6,18 @@
     <description>Recent content in R on 6W3N Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 10 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://6w3n.github.io/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 11 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://6w3n.github.io/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>TsukubaRmdBP</title>
+      <link>https://6w3n.github.io/posts/tsukubarmdbp/</link>
+      <pubDate>Tue, 11 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/posts/tsukubarmdbp/</guid>
+      <description>TsukubaRmdBP 筆者の所属している学位プログラムの修論・博論用のRパッケージを作りつつ、Rパッケージの作り方とRmdの理解を深めました。
+使い方はとてもシンプルでgithubのREADMEを読んでいただければと思います。 日本語には未対応ですが、そのうち対応します。
+そのうち、Rmdについての細かい記事も執筆したいと思いつつ。。。</description>
+    </item>
+    
     <item>
       <title>gt</title>
       <link>https://6w3n.github.io/posts/gtsummary/</link>

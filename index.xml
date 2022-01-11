@@ -8,6 +8,27 @@
     <language>en-us</language>
     <lastBuildDate>Sat, 09 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://6w3n.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Default</title>
+      <link>https://6w3n.github.io/posts/tsukubarmdbp/default/</link>
+      <pubDate>Tue, 11 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/posts/tsukubarmdbp/default/</guid>
+      <description>Article goes here.
+For other options, put these in the front matter: description: &amp;ldquo;A description&amp;rdquo; other than the blog intro draft: true to not publish article yet showDate: true/false to enable/disable showing dates math: true to enable showing equations (katex) chordsheet: true to add chordsheet styelsheet</description>
+    </item>
+    
+    <item>
+      <title>TsukubaRmdBP</title>
+      <link>https://6w3n.github.io/posts/tsukubarmdbp/</link>
+      <pubDate>Tue, 11 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/posts/tsukubarmdbp/</guid>
+      <description>TsukubaRmdBP 筆者の所属している学位プログラムの修論・博論用のRパッケージを作りつつ、Rパッケージの作り方とRmdの理解を深めました。
+使い方はとてもシンプルでgithubのREADMEを読んでいただければと思います。 日本語には未対応ですが、そのうち対応します。
+そのうち、Rmdについての細かい記事も執筆したいと思いつつ。。。</description>
+    </item>
+    
+    <item>
       <title>New paper is out (2021/11/19)</title>
       <link>https://6w3n.github.io/posts/newpaper211119/</link>
       <pubDate>Fri, 19 Nov 2021 00:00:00 +0000</pubDate>
