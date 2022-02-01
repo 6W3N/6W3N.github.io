@@ -114,5 +114,16 @@ Main Flow  Dockerの起動。 Terminalを開いて、Dockerを走らせる。 �
 to use &amp;ldquo;tidy data&amp;rdquo; and to make the design of the tools used for data analyze more tidy.</description>
     </item>
     
+    <item>
+      <title>New paper is out (2022/1/27)</title>
+      <link>https://6w3n.github.io/posts/newpaper220127/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/posts/newpaper220127/</guid>
+      <description>共著論文が出ました！
+ Title: Prey–predator interactions and body size relationships between annual cicadas and spiders in Japan Author: Y. Suzuki &amp;amp; W. Mukaimine Journal: Journal of Natural History URL: https://doi.org/10.1080/00222933.2021.2019340 URL2: https://www.researchgate.net/publication/358165178_Prey-predator_interactions_and_body_size_relationships_between_annual_cicadas_and_spiders_in_Japan  一文要約 日本におけるセミとクモの被食捕食関係を、TwitterやGoogle画像検索を用いて集めたデータをもとに定性的に評価し、餌-捕食者サイズ関係の解析を行いました。
+裏話 セミの捕食者について調べていたときに、素数ゼミの捕食者相は詳細に調べられているのに対して、annual cicada（毎年出現するセミ: 日本のセミなど）についてはほとんど情報が出てこないことに興味を持ちました。 加えて、経験的にTwitterをはじめとするSNSで捕食シーンが撮影・投稿されていることにも気付きました。 その中でも多く目についた（網を張るという特性上目につきやすいということだろう）クモ-セミの被食捕食関係は調べられないかと思い、筆頭著者の鈴木さんに相談をしたのがことの発端です。</description>
+    </item>
+    
   </channel>
 </rss>
