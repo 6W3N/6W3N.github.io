@@ -6,7 +6,18 @@
     <description>Recent content in Posts on 6W3N Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 11 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://6w3n.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 27 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://6w3n.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>New paper is out (2022/1/27)</title>
+      <link>https://6w3n.github.io/posts/newpaper220127/</link>
+      <pubDate>Thu, 27 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/posts/newpaper220127/</guid>
+      <description>共著論文が出ました！
+ Title: Prey–predator interactions and body size relationships between annual cicadas and spiders in Japan Author: Y. Suzuki &amp;amp; W. Mukaimine Journal: Journal of Natural History URL: https://doi.org/10.1080/00222933.2021.2019340 URL2: https://www.researchgate.net/publication/358165178_Prey-predator_interactions_and_body_size_relationships_between_annual_cicadas_and_spiders_in_Japan  一文要約 日本におけるセミとクモの被食捕食関係を、TwitterやGoogle画像検索を用いて集めたデータをもとに定性的に評価し、餌-捕食者サイズ関係の解析を行いました。
+裏話 セミの捕食者について調べていたときに、素数ゼミの捕食者相は詳細に調べられているのに対して、annual cicada（毎年出現するセミ: 日本のセミなど）についてはほとんど情報が出てこないことに興味を持ちました。 加えて、経験的にTwitterをはじめとするSNSで捕食シーンが撮影・投稿されていることにも気付きました。 その中でも多く目についた（網を張るという特性上目につきやすいということだろう）クモ-セミの被食捕食関係は調べられないかと思い、筆頭著者の鈴木さんに相談をしたのがことの発端です。</description>
+    </item>
+    
     <item>
       <title>TsukubaRmdBP</title>
       <link>https://6w3n.github.io/posts/tsukubarmdbp/</link>
@@ -188,17 +199,6 @@ The two photos belows show male genitalias of two geographic strains, implying t
       
       <guid>https://6w3n.github.io/posts/tees180720/</guid>
       <description>Next presentator is Kobayashi-san from Kyoto Univ.</description>
-    </item>
-    
-    <item>
-      <title>New paper is out (2022/1/27)</title>
-      <link>https://6w3n.github.io/posts/newpaper220127/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://6w3n.github.io/posts/newpaper220127/</guid>
-      <description>共著論文が出ました！
- Title: Prey–predator interactions and body size relationships between annual cicadas and spiders in Japan Author: Y. Suzuki &amp;amp; W. Mukaimine Journal: Journal of Natural History URL: https://doi.org/10.1080/00222933.2021.2019340 URL2: https://www.researchgate.net/publication/358165178_Prey-predator_interactions_and_body_size_relationships_between_annual_cicadas_and_spiders_in_Japan  一文要約 日本におけるセミとクモの被食捕食関係を、TwitterやGoogle画像検索を用いて集めたデータをもとに定性的に評価し、餌-捕食者サイズ関係の解析を行いました。
-裏話 セミの捕食者について調べていたときに、素数ゼミの捕食者相は詳細に調べられているのに対して、annual cicada（毎年出現するセミ: 日本のセミなど）についてはほとんど情報が出てこないことに興味を持ちました。 加えて、経験的にTwitterをはじめとするSNSで捕食シーンが撮影・投稿されていることにも気付きました。 その中でも多く目についた（網を張るという特性上目につきやすいということだろう）クモ-セミの被食捕食関係は調べられないかと思い、筆頭著者の鈴木さんに相談をしたのがことの発端です。</description>
     </item>
     
   </channel>

@@ -6,13 +6,58 @@
     <description>Recent content in Tags on 6W3N Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 11 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://6w3n.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 27 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://6w3n.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cicada</title>
+      <link>https://6w3n.github.io/tags/cicada/</link>
+      <pubDate>Thu, 27 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/tags/cicada/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Google</title>
+      <link>https://6w3n.github.io/tags/google/</link>
+      <pubDate>Thu, 27 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/tags/google/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>R</title>
       <link>https://6w3n.github.io/tags/r/</link>
-      <pubDate>Tue, 11 Jan 2022 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 27 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>https://6w3n.github.io/tags/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Scraping</title>
+      <link>https://6w3n.github.io/tags/scraping/</link>
+      <pubDate>Thu, 27 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/tags/scraping/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spider</title>
+      <link>https://6w3n.github.io/tags/spider/</link>
+      <pubDate>Thu, 27 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/tags/spider/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Twitter</title>
+      <link>https://6w3n.github.io/tags/twitter/</link>
+      <pubDate>Thu, 27 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/tags/twitter/</guid>
       <description></description>
     </item>
     
@@ -31,15 +76,6 @@
       <pubDate>Fri, 19 Nov 2021 00:00:00 +0000</pubDate>
       
       <guid>https://6w3n.github.io/tags/article/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Cicada</title>
-      <link>https://6w3n.github.io/tags/cicada/</link>
-      <pubDate>Fri, 19 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://6w3n.github.io/tags/cicada/</guid>
       <description></description>
     </item>
     
@@ -85,15 +121,6 @@
       <pubDate>Fri, 14 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>https://6w3n.github.io/tags/rtweet/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Twitter</title>
-      <link>https://6w3n.github.io/tags/twitter/</link>
-      <pubDate>Fri, 14 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://6w3n.github.io/tags/twitter/</guid>
       <description></description>
     </item>
     
@@ -202,33 +229,6 @@
       <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
       
       <guid>https://6w3n.github.io/tags/sem/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Google</title>
-      <link>https://6w3n.github.io/tags/google/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://6w3n.github.io/tags/google/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Scraping</title>
-      <link>https://6w3n.github.io/tags/scraping/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://6w3n.github.io/tags/scraping/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Spider</title>
-      <link>https://6w3n.github.io/tags/spider/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://6w3n.github.io/tags/spider/</guid>
       <description></description>
     </item>
     
