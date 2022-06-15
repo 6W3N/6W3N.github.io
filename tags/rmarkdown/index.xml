@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rmarkdown on 6W3N Site</title>
+    <link>https://6w3n.github.io/tags/rmarkdown/</link>
+    <description>Recent content in rmarkdown on 6W3N Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 15 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://6w3n.github.io/tags/rmarkdown/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Writing flow</title>
+      <link>https://6w3n.github.io/posts/writingflow/</link>
+      <pubDate>Wed, 15 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/posts/writingflow/</guid>
+      <description>Rstudioを用いた論文執筆フロー Rで解析や作図したものを別ファイルとして保存しておき、LaTeXやwordを用いて文章を作成し、共著者とのメールなどをしながらgoogle driveやdropboxでバージョン管理をして&amp;hellip;という流れがなんだか非効率的に思えていました。
+どうにか一元管理できないかと探していたところ、Rstudio + gitで全て完結しそうだなと思い実際に手を動かしてみた記録です。 簡単に説明すると Rstudioでrticlesなどの便利packageを用いてRmarkdownを書き、それをgitで管理する という方法になります。
+この記事の対象はRを用いて作図 -&amp;gt; 論文執筆をしてきた（これからする）くらいの方です。僕の知る進化・生態学系の研究者の方はRを使う機会が多いと思うので、そちら向けと言ってもいいかもしれません。
+TOC  構成要素 ディレクトリの作成 Rmdの作成 gitでのバージョン管理 gitでの共同編集例 おわりに  構成要素 Rstudio Rユーザーにとっては言わずもがなであるIDE。普段使いしている方も多いと思います。 色々なnvimのプラグインを試した結果、Rmarkdownを書くのにはRstudioが一番適していたので論文執筆時にはお世話になっています。（普段の解析はnvimでやっている。）
+Rmarkdown Rでドキュメント生成するため、Rとmarkdownを組み合わせたもの。少しややこしいheader部分を除けばRのソースコードとmarkdown記法で全て書けるので非常に楽。 markdownのcheat sheatはここを参照。
+閑話：Rmarkdownで執筆するメリット 主に文章、Rスクリプトがまとまっていることに由来する様々なメリットがあります。
+ 再現性が担保される （例：コンパイルするごとに同じグラフを確実に描画できる）。 データが変わってもその都度グラフを書き直したり統計解析を行う必要がない（解析結果などを文中で利用できる形にしておけば）。 RとRstudio（どちらも無償）が入っていれば互換性が担保される。 bibファイルを利用できるため、引用文献管理が非常に楽。  反対にデメリットもちらほら
+ Rmdのままでは（基本的には）英文校閲にかけられない。 論文投稿の際にwordファイルを要求される場合、pandocなどを使って一度.</description>
+    </item>
+    
+  </channel>
+</rss>

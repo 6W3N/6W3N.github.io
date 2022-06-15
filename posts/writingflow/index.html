@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en-us"><title>
+    Writing Flow | 
+    
+    6W3N Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<meta name="description" 
+      content="Rstudioを用いた論文執筆フロー Rで解析や作図したものを別ファイルとして保存しておき、LaTeXやwordを用いて文章を作成し、共著者とのメールなどをしながらgoogle driveやdropboxでバージョン管理をして&hellip;という流れがなんだか非効率的に思えていました。
+どうにか一元管理できないかと探していたところ、Rstudio &#43; gitで全て完結しそうだなと思い実際に手を動かしてみた記録です。 簡単に説明すると Rstudioでrticlesなどの便利packageを用いてRmarkdownを書き、それをgitで管理する という方法になります。
+この記事の対象はRを用いて作図 -&gt; 論文執筆をしてきた（これからする）くらいの方です。僕の知る進化・生態学系の研究者の方はRを使う機会が多いと思うので、そちら向けと言ってもいいかもしれません。
+TOC  構成要素 ディレクトリの作成 Rmdの作成 gitでのバージョン管理 gitでの共同編集例 おわりに  構成要素 Rstudio Rユーザーにとっては言わずもがなであるIDE。普段使いしている方も多いと思います。 色々なnvimのプラグインを試した結果、Rmarkdownを書くのにはRstudioが一番適していたので論文執筆時にはお世話になっています。（普段の解析はnvimでやっている。）
+Rmarkdown Rでドキュメント生成するため、Rとmarkdownを組み合わせたもの。少しややこしいheader部分を除けばRのソースコードとmarkdown記法で全て書けるので非常に楽。 markdownのcheat sheatはここを参照。
+閑話：Rmarkdownで執筆するメリット 主に文章、Rスクリプトがまとまっていることに由来する様々なメリットがあります。
+ 再現性が担保される （例：コンパイルするごとに同じグラフを確実に描画できる）。 データが変わってもその都度グラフを書き直したり統計解析を行う必要がない（解析結果などを文中で利用できる形にしておけば）。 RとRstudio（どちらも無償）が入っていれば互換性が担保される。 bibファイルを利用できるため、引用文献管理が非常に楽。  反対にデメリットもちらほら
+ Rmdのままでは（基本的には）英文校閲にかけられない。 論文投稿の際にwordファイルを要求される場合、pandocなどを使って一度.
+                ">
+
+<link rel="canonical" href="https://6w3n.github.io/posts/writingflow/" />
+
+<link rel="icon" type="image/png" href="https://6w3n.github.io/image/favicon.ico">
+
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../css/bulma.min.css">
+
+<meta property="og:title" content="Writing flow" />
+<meta property="og:description" content="Rstudioを用いた論文執筆フロー Rで解析や作図したものを別ファイルとして保存しておき、LaTeXやwordを用いて文章を作成し、共著者とのメールなどをしながらgoogle driveやdropboxでバージョン管理をして&hellip;という流れがなんだか非効率的に思えていました。
+どうにか一元管理できないかと探していたところ、Rstudio &#43; gitで全て完結しそうだなと思い実際に手を動かしてみた記録です。 簡単に説明すると Rstudioでrticlesなどの便利packageを用いてRmarkdownを書き、それをgitで管理する という方法になります。
+この記事の対象はRを用いて作図 -&gt; 論文執筆をしてきた（これからする）くらいの方です。僕の知る進化・生態学系の研究者の方はRを使う機会が多いと思うので、そちら向けと言ってもいいかもしれません。
+TOC  構成要素 ディレクトリの作成 Rmdの作成 gitでのバージョン管理 gitでの共同編集例 おわりに  構成要素 Rstudio Rユーザーにとっては言わずもがなであるIDE。普段使いしている方も多いと思います。 色々なnvimのプラグインを試した結果、Rmarkdownを書くのにはRstudioが一番適していたので論文執筆時にはお世話になっています。（普段の解析はnvimでやっている。）
+Rmarkdown Rでドキュメント生成するため、Rとmarkdownを組み合わせたもの。少しややこしいheader部分を除けばRのソースコードとmarkdown記法で全て書けるので非常に楽。 markdownのcheat sheatはここを参照。
+閑話：Rmarkdownで執筆するメリット 主に文章、Rスクリプトがまとまっていることに由来する様々なメリットがあります。
+ 再現性が担保される （例：コンパイルするごとに同じグラフを確実に描画できる）。 データが変わってもその都度グラフを書き直したり統計解析を行う必要がない（解析結果などを文中で利用できる形にしておけば）。 RとRstudio（どちらも無償）が入っていれば互換性が担保される。 bibファイルを利用できるため、引用文献管理が非常に楽。  反対にデメリットもちらほら
+ Rmdのままでは（基本的には）英文校閲にかけられない。 論文投稿の際にwordファイルを要求される場合、pandocなどを使って一度." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://6w3n.github.io/posts/writingflow/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-15T00:00:00+00:00" />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Writing flow"/>
+<meta name="twitter:description" content="Rstudioを用いた論文執筆フロー Rで解析や作図したものを別ファイルとして保存しておき、LaTeXやwordを用いて文章を作成し、共著者とのメールなどをしながらgoogle driveやdropboxでバージョン管理をして&hellip;という流れがなんだか非効率的に思えていました。
+どうにか一元管理できないかと探していたところ、Rstudio &#43; gitで全て完結しそうだなと思い実際に手を動かしてみた記録です。 簡単に説明すると Rstudioでrticlesなどの便利packageを用いてRmarkdownを書き、それをgitで管理する という方法になります。
+この記事の対象はRを用いて作図 -&gt; 論文執筆をしてきた（これからする）くらいの方です。僕の知る進化・生態学系の研究者の方はRを使う機会が多いと思うので、そちら向けと言ってもいいかもしれません。
+TOC  構成要素 ディレクトリの作成 Rmdの作成 gitでのバージョン管理 gitでの共同編集例 おわりに  構成要素 Rstudio Rユーザーにとっては言わずもがなであるIDE。普段使いしている方も多いと思います。 色々なnvimのプラグインを試した結果、Rmarkdownを書くのにはRstudioが一番適していたので論文執筆時にはお世話になっています。（普段の解析はnvimでやっている。）
+Rmarkdown Rでドキュメント生成するため、Rとmarkdownを組み合わせたもの。少しややこしいheader部分を除けばRのソースコードとmarkdown記法で全て書けるので非常に楽。 markdownのcheat sheatはここを参照。
+閑話：Rmarkdownで執筆するメリット 主に文章、Rスクリプトがまとまっていることに由来する様々なメリットがあります。
+ 再現性が担保される （例：コンパイルするごとに同じグラフを確実に描画できる）。 データが変わってもその都度グラフを書き直したり統計解析を行う必要がない（解析結果などを文中で利用できる形にしておけば）。 RとRstudio（どちらも無償）が入っていれば互換性が担保される。 bibファイルを利用できるため、引用文献管理が非常に楽。  反対にデメリットもちらほら
+ Rmdのままでは（基本的には）英文校閲にかけられない。 論文投稿の際にwordファイルを要求される場合、pandocなどを使って一度."/>
+
+
+
+    
+
+
+<script src=../../js/ramium.js></script>
+<link rel="stylesheet" href=../../css/ramium.css>
+
+
+
+
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=../../>
+      
+      <strong>6W3N Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="../../">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="../../tags/">All Tags</a>
+          
+          <a class="navbar-item" href="../../posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+      
+      <a class="navbar-item" href="../../author/">Author</a>
+      
+      
+      
+      <a class="navbar-item" href="../../contact/">Contact</a>
+      
+      
+      
+      <a class="navbar-item" href="../../links/">Links</a>
+      
+      
+      
+      <a class="navbar-item" href="../../works/">Works</a>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/6W3N/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content blog">
+    <h1 class="title">Writing Flow</h1>
+
+    <div id="infobar" class="level is-mobile">
+        <div class="level-left">
+            
+            <div class="level-item">
+                <p class="subtitle info date">Jun 15, 2022
+                </p>
+            </div>
+            
+
+            <div class="level-item">
+                <p class="subtitle info">
+                    25 mins read
+                </p>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            <div class="tags">
+                
+                <a class="tag is-dark is-rounded" href="../../tags/rmarkdown">Rmarkdown</a>
+                
+                <a class="tag is-dark is-rounded" href="../../tags/git">Git</a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="tags is-hidden-desktop">
+        
+        <a class="tag is-dark is-rounded" href="../../tags/rmarkdown">Rmarkdown</a>
+        
+        <a class="tag is-dark is-rounded" href="../../tags/git">Git</a>
+        
+    </div>
+
+    <div class="blog-text">
+        
+
+        <h1 id="rstudioを用いた論文執筆フロー">Rstudioを用いた論文執筆フロー</h1>
+<p>Rで解析や作図したものを別ファイルとして保存しておき、LaTeXやwordを用いて文章を作成し、共著者とのメールなどをしながらgoogle driveやdropboxでバージョン管理をして&hellip;という流れがなんだか非効率的に思えていました。</p>
+<p>どうにか一元管理できないかと探していたところ、Rstudio + gitで全て完結しそうだなと思い実際に手を動かしてみた記録です。
+簡単に説明すると <strong>Rstudioでrticlesなどの便利packageを用いてRmarkdownを書き、それをgitで管理する</strong> という方法になります。</p>
+<p>この記事の対象はRを用いて作図 -&gt; 論文執筆をしてきた（これからする）くらいの方です。僕の知る進化・生態学系の研究者の方はRを使う機会が多いと思うので、そちら向けと言ってもいいかもしれません。</p>
+<h2 id="toc">TOC</h2>
+<ul>
+<li><a href="##%E6%A7%8B%E6%88%90%E8%A6%81%E7%B4%A0">構成要素</a></li>
+<li><a href="##%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AE%E4%BD%9C%E6%88%90">ディレクトリの作成</a></li>
+<li><a href="##Rmd%E3%81%AE%E4%BD%9C%E6%88%90">Rmdの作成</a></li>
+<li><a href="##git%E3%81%A7%E3%81%AE%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E7%AE%A1%E7%90%86">gitでのバージョン管理</a></li>
+<li><a href="##git%E3%81%A7%E3%81%AE%E5%85%B1%E5%90%8C%E7%B7%A8%E9%9B%86%E4%BE%8B">gitでの共同編集例</a></li>
+<li><a href="##%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB">おわりに</a></li>
+</ul>
+<h2 id="構成要素">構成要素</h2>
+<h3 id="rstudiohttpswwwrstudiocom"><a href="https://www.rstudio.com/">Rstudio</a></h3>
+<p>Rユーザーにとっては言わずもがなであるIDE。普段使いしている方も多いと思います。
+色々なnvimのプラグインを試した結果、Rmarkdownを書くのにはRstudioが一番適していたので論文執筆時にはお世話になっています。<del>（普段の解析はnvimでやっている。）</del></p>
+<h3 id="rmarkdownhttpsrmarkdownrstudiocomlesson-1html"><a href="https://rmarkdown.rstudio.com/lesson-1.html">Rmarkdown</a></h3>
+<p>Rでドキュメント生成するため、Rとmarkdownを組み合わせたもの。少しややこしいheader部分を除けばRのソースコードとmarkdown記法で全て書けるので非常に楽。
+markdownのcheat sheatは<a href="https://gist.github.com/mignonstyle/083c9e1651d7734f84c99b8cf49d57fa">ここ</a>を参照。</p>
+<h4 id="閑話rmarkdownで執筆するメリット">閑話：Rmarkdownで執筆するメリット</h4>
+<p>主に文章、Rスクリプトがまとまっていることに由来する様々なメリットがあります。</p>
+<ol>
+<li><strong>再現性が担保される</strong> （例：コンパイルするごとに同じグラフを確実に描画できる）。</li>
+<li>データが変わってもその都度グラフを書き直したり統計解析を行う必要がない（解析結果などを文中で利用できる形にしておけば）。</li>
+<li>RとRstudio（どちらも無償）が入っていれば互換性が担保される。</li>
+<li>bibファイルを利用できるため、<strong>引用文献管理が非常に楽</strong>。</li>
+</ol>
+<p>反対にデメリットもちらほら</p>
+<ol>
+<li>Rmdのままでは（基本的には）英文校閲にかけられない。</li>
+<li>論文投稿の際にwordファイルを要求される場合、pandocなどを使って一度.docxファイルにする必要がある。<del>（これはLaTeXユーザーの常な気がする。）</del></li>
+</ol>
+<h3 id="rticleshttpsgithubcomrstudiorticles"><a href="https://github.com/rstudio/rticles">rticles</a></h3>
+<p>Rのpackageの一つ。Rmarkdownで文章を執筆する時に、さまざまなジャーナルのテンプレートを使用できる。どんなテンプレートがあるかなどについては<a href="https://github.com/rstudio/rticles#templates">rticles#templates</a>を参照してください。</p>
+<h3 id="githttpsjawikipediaorgwikigit"><a href="https://ja.wikipedia.org/wiki/Git">git</a></h3>
+<p>分散型のバージョン管理システム。有名なプラットフォームはgithub。他にもBitbucketやgitlabなど色々ある。いずれも基本的な使い方は変わらない（と思う）ので、以下ではgithubを用いた運用例を載せています。</p>
+<h4 id="閑話gitで管理するメリット">閑話：gitで管理するメリット</h4>
+<p>個人的には（もし一人で研究を進めるとしても）研究用のディレクトリをgitで管理することはメリットが大きいと思っています。</p>
+<ol>
+<li><strong>データのバックアップ</strong> を同時に行っているという側面がある。</li>
+<li>論文を公開する時にgitのリポジトリを公開すればdata accessibilityに配慮した研究となる。</li>
+<li>commitのメッセージを見返したりissueを見返すことで、作業の進捗度合いや課題などを思い出すことができる。</li>
+<li>共同制作に役立つ小技が多く用意されている（pull request, issue, branchなど&hellip;）。</li>
+</ol>
+<p>デメリットもいくつかあって</p>
+<ol>
+<li>非公開リポジトリを選択しないとデータ流出の恐れがある。</li>
+<li>所属機関によってはクラウドサービスを使うことができない可能性。</li>
+<li>1ファイルごとの容量制限がある。</li>
+<li>共同研究者が使えるとは限らない（！！）</li>
+</ol>
+<p>特にデメリットの2.はビデオデータや高画質の画像データなどを扱う場合には顕著に厳しくなると思います。また、デメリットの3.は結構あるかもしれません。<del>（使えた方が楽なツールと割り切って勉強してもらってください）</del></p>
+<h2 id="ディレクトリの作成">ディレクトリの作成</h2>
+<p>論文執筆用のディレクトリを作成し、gitに紐つけます。もしくはgithubなどで作成したリポジトリをcloneします。gitを使ったことある方は飛ばしてもらっても良い部分になります。</p>
+<p>また、以下のスクリプトはRstudioのConsole PaneのTerminalタブから実行することが多いです。コマンドを書く際にはどこに記述するものか明記するようにするので参考にしてください。</p>
+<h3 id="リモートで作成---ローカルにclone">リモートで作成 -&gt; ローカルにclone</h3>
+<p>githubの右上の+ボタン &gt; New repositoryをクリックします。</p>
+<p><img src="https://i.imgur.com/TmIVm3G.png" alt=""></p>
+<hr>
+<p>細々した設定を記入します。
+実際の作業に倣い、ここではPrivateを選択しておきます。
+Licenseは今回はMITを選びました。</p>
+<p>諸々の設定が終わったら一番下のCreate repositoryをクリックしリポジトリを作成します。</p>
+<p><img src="https://i.imgur.com/ORGUyju.png" alt=""></p>
+<hr>
+<p>こんな感じでリポジトリが作られました。</p>
+<p><img src="https://i.imgur.com/zbJyQrX.png" alt=""></p>
+<hr>
+<p>右上の緑色のCodeと言われるボタンをクリックすると以下の画像のようにhttpsの情報などが得られます。
+<img src="https://i.imgur.com/FSOur4S.png" alt=""></p>
+<p>その情報をコピーして、git cloneで引っ張ってきます。</p>
+<pre tabindex="0"><code class="language-shell=" data-lang="shell=">## Terminal
+
+cd article    #作成したい場所まで移動する
+git clone https://github.com/6W3N/demo.git    #それぞれのhttps情報に差し替えて使ってください。
+</code></pre><p>githubのアカウント名やtokenなどを聞かれるのでそれをタイプするとプルできます。</p>
+<pre tabindex="0"><code class="language-shell=" data-lang="shell=">## Terminal
+
+cd demo    #今回はdemo repositoryをpullしたのでdemoに移動する
+ls    #中身を見る
+</code></pre><p><img src="https://i.imgur.com/RsZTRPf.png" alt=""></p>
+<p>ここまでで使用するディレクトリの作成は終了です。</p>
+<h2 id="rmdの作成">Rmdの作成</h2>
+<p>まずはrticlesパッケージをインストールします。</p>
+<pre tabindex="0"><code class="language-r=" data-lang="r=">## Console
+
+install.packages(&#34;rticles&#34;)
+</code></pre><p>これで準備は終了です。
+早速Rmdのテンプレートを使いに行きます。</p>
+<p>今回はサンプルとしてarXivのテンプレートを用います。各自の投稿したいジャーナルのフォーマットに合わせて適宜修正してください。出版社に合わせたテンプレートもあるのでそちらを使っても良いかもしれません。</p>
+<p>Rstudio &gt; File &gt; New File &gt; R Markdown &gt; From Template &gt; arXiv Preprint
+の順に選択していきます。
+From Templateにない場合は、Rstudioの再起動などを試してみてください。</p>
+<p><img src="https://i.imgur.com/RzLWEBa.png" alt=""></p>
+<hr>
+<p><img src="https://i.imgur.com/CmcZfZI.png" alt=""></p>
+<hr>
+<p>今回、Nameはarxivにしましたが、ここも適宜変更してください。
+また、Locationでarxivディレクトリを作成するパスの指定をします。
+先ほどプルしてきたdemoの直下に入れます。</p>
+<p>すると下記の画像のようにarxivというサブディレクトリが作成されていることが確認できます。
+<img src="https://i.imgur.com/NteBlak.png" alt=""></p>
+<hr>
+<p>arxiv/arxiv.Rmdを選択すると以下のようなファイルが開きます。</p>
+<p><img src="https://i.imgur.com/SwAjFhx.png" alt=""></p>
+<hr>
+<p>これが論文の雛形になります。
+yaml header部分は特に用事がなければ様式を変更しないことをおすすめします。この辺りは沼が深く、筆者もまだまだな分野です。。。</p>
+<p>適当に編集しましょう。</p>
+<p><img src="https://i.imgur.com/kdhXsMH.png" alt=""></p>
+<p>yaml headerでのいくつかを簡単に説明します。</p>
+<ul>
+<li>title: タイトル。</li>
+<li>authors: 著者情報。段落下げでその詳細（名前とか所属とか）を記述。</li>
+<li>abstract: 概要。</li>
+<li>keywords: キーワード。段落下げリストを書き足すと追加される。</li>
+<li>bibliography: 引用元を集めたbibファイルのファイル名（同じディレクトリ内にある必要がある）。zoteroなど論文管理ツールから一括で吐き出したbibファイルを置き換えておくと便利。</li>
+<li>biblio-style: LaTeXでいうところのbibliographystyle（<a href="https://www.overleaf.com/learn/latex/Bibliography_management_with_bibtex#Reference_guide">参考</a>）。この項目を消してcslを追加するとかもできる。</li>
+<li>output: どのテンプレートに合わせて出力するか。rticles::arxiv_articleの様に関数を自分で定義すればrticlesにテンプレートがなくても使えるようになる。この話はいずれ。</li>
+</ul>
+<hr>
+<p>編集が終わったら、Rstudioのknitボタンをクリックするとよしなにコンパイルしてくれます。</p>
+<p><img src="https://i.imgur.com/CknONAf.png" alt=""></p>
+<p>Rmdの詳細として<a href="https://rmarkdown.rstudio.com/lesson-1.html">ここ</a>や<a href="https://bookdown.org/yihui/bookdown/">ここ</a>を参考に書き進めてください。</p>
+<p>文章は文ごとに改行して管理することをおすすめします。1行だけの改行であればコンパイル時にパラグラフとして分かれません。この辺りはどんどんコンパイルしつつ探してみてください。</p>
+<h2 id="gitでのバージョン管理">gitでのバージョン管理</h2>
+<p>ある程度書き進めたらgitを用いてgithubにもpushしておきましょう。</p>
+<p>基本的には以下のコマンドでpushまで行います。</p>
+<pre tabindex="0"><code class="language-shell=" data-lang="shell=">cd ../    #demoに入ります
+git add arxiv    #書き進めた文章などを追加します。
+git commit -m &#34;add arxiv dir&#34;    #何を追加したのかについて記述します
+git push
+</code></pre><p>すると以下の図のように追加されてアップロードされます。</p>
+<p><img src="https://i.imgur.com/kofclYa.png" alt=""></p>
+<hr>
+<p>すると以下の様にgithub上にも反映されます。
+arxivディレクトリが追加されていることがわかります。</p>
+<p><img src="https://i.imgur.com/YM8Vq4t.png" alt=""></p>
+<hr>
+<p>一人でやる場合にはここまでであらかた終わりです。</p>
+<h2 id="githubでの共同編集例">githubでの共同編集例</h2>
+<p>ここからは共同編集のやり方についてです。
+二人以上で作業するときはbranchと呼ばれるgitの機能を使うと効率良く作業できます。</p>
+<p>筆者もそれほど精通している訳ではなく、現状こうしている、と言う例を載せています。</p>
+<h4 id="1-共同編集者共著者のgithubアカウントを追加する">1. 共同編集者（共著者）のgithubアカウントを追加する。</h4>
+<p>Repository &gt; Settings &gt; Collaborators &gt; Add peopleの順にクリックします。</p>
+<p><img src="https://i.imgur.com/XCYnjxu.png" alt=""></p>
+<hr>
+<p>ここで、共著者のgithubアカウントを探します。</p>
+<p><img src="https://i.imgur.com/pm6oZzb.png" alt=""></p>
+<hr>
+<p>以降は共著者の画面を作るのが面倒だったので文字で説明します。すみません。<del>誰か手伝ってください。。。</del></p>
+<h4 id="2-新たなbranchを作成して修正作業を行う共著者">2. 新たなbranchを作成して修正作業を行う（共著者）</h4>
+<p>まず初めに共著者には自分が作成したレポジトリをpullしてもらいます。</p>
+<pre tabindex="0"><code class="language-shell=" data-lang="shell=">git clone https://github.com/6W3N/demo.git
+</code></pre><p>その後、最初にbranchをきってもらい、そのbranch上で作業してもらいます。</p>
+<pre tabindex="0"><code class="language-shell=" data-lang="shell=">git branch coauthor1comment    #なんでもいいです
+git checkout coauthor1comment
+</code></pre><p>その後作業（Rmarkdownにコメント; 改変）をしてもらいます。
+作業の際にはmarkdown記法を使いこなせるといい感じになります。</p>
+<h4 id="3-pushするpull-requestを投げる共著者">3. pushする・pull requestを投げる（共著者）</h4>
+<p>Rmarkdownへの作業完了後、以下のコマンドで新たなbranchとしてpushします。</p>
+<pre tabindex="0"><code class="language-shell=" data-lang="shell=">git add arxiv/arxiv.Rmd
+git commit -m &#34;add comment&#34;
+git push origin coauthor1comment
+</code></pre><p>ここまででgithubに反映されます。</p>
+<p>github上でpull requestを投げます。（ここは別にメールでもいいと思います。）</p>
+<h4 id="4-pullmergeを行う自分">4. pull・mergeを行う（自分）</h4>
+<p>まずはリモートのbranchをローカルに落とします。</p>
+<pre tabindex="0"><code class="language-shell=" data-lang="shell=">git fetch    #リモートのおbranch情報を引っ張ってきます
+git branch -a    #リモートのbranchがあるか確認します
+git checkout coauthor1comment    #もしあればそのbranchに移動します
+git branch    #これでcoauthor1commentが出てくればokです
+</code></pre><p>その後、mainにmergeします。</p>
+<pre tabindex="0"><code class="language-shell=" data-lang="shell=">git checkout main    #既に入っていたらAlready on &#39;main&#39;と表示されます
+git merge coauthor1comment
+</code></pre><p>gitではmergeは行単位で行うので、共著者が編集してくれた部分だけがmergeによって更新されます。</p>
+<p>共著者のコメントなどを参考に修正を進めます。</p>
+<p>修正を終えたらpushして&hellip;
+という感じでどんどん進めることができます。</p>
+<hr>
+<h2 id="おわりに">おわりに</h2>
+<p>ここまで、ひとまず自分がやっているところを紹介してみました。
+Rmarkdownの使い心地はかなりよく、wordでちまちま修正するよりも良さそうだな〜と思い最近は専らこのシステムで書いています。</p>
+<p>そのうち英文校閲に投げる時のpandocの利用などを書こう&hellip;。</p>
+<p>Enjoy!</p>
+
+    </div>
+</div><div id="social-media-share" class="has-text-centered">
+	<p><i>Sharing is caring!</i></p>
+	<br>
+	
+	<div class="share-buttons">
+	    <a  href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2f6w3n.github.io%2fposts%2fwritingflow%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Facebook. Opens in a new window.">
+	        <img src=../../img/icons/45px/facebook.png>
+	    </a>
+
+	    <a  href="https://twitter.com/intent/tweet?text=Writing%20flow&url=https%3a%2f%2f6w3n.github.io%2fposts%2fwritingflow%2f"
+	        onclick="socialMediaPopUp(this.href, '', 500, 500); return false;"
+	        title="Share on Twitter. Opens in a new window." >
+	        <img src=../../img/icons/45px/twitter.png>
+	    </a>
+
+		<a  href="http://www.reddit.com/submit?url=https%3a%2f%2f6w3n.github.io%2fposts%2fwritingflow%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Reddit. Opens in a new window." >
+	        <img src=../../img/icons/45px/reddit.png>
+	    </a>
+
+	    <a  href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2f6w3n.github.io%2fposts%2fwritingflow%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Pinterest. Opens in a new window." >
+	        <img src=../../img/icons/45px/pinterest.png>
+	    </a>
+
+	    <a  href="http://www.tumblr.com/share/link?url=https%3a%2f%2f6w3n.github.io%2fposts%2fwritingflow%2f"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on Tumblr. Opens in a new window." >
+	        <img src=../../img/icons/45px/tumblr.png>
+	    </a>
+
+		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2f6w3n.github.io%2fposts%2fwritingflow%2f
+			&title=Writing%20flow&summary=Rstudio%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%e8%ab%96%e6%96%87%e5%9f%b7%e7%ad%86%e3%83%95%e3%83%ad%e3%83%bc%20R%e3%81%a7%e8%a7%a3%e6%9e%90%e3%82%84%e4%bd%9c%e5%9b%b3%e3%81%97%e3%81%9f%e3%82%82%e3%81%ae%e3%82%92%e5%88%a5%e3%83%95%e3%82%a1%e3%82%a4%e3%83%ab%e3%81%a8%e3%81%97%e3%81%a6%e4%bf%9d%e5%ad%98%e3%81%97%e3%81%a6%e3%81%8a%e3%81%8d%e3%80%81LaTeX%e3%82%84word%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e6%96%87%e7%ab%a0%e3%82%92%e4%bd%9c%e6%88%90%e3%81%97%e3%80%81%e5%85%b1%e8%91%97%e8%80%85%e3%81%a8%e3%81%ae%e3%83%a1%e3%83%bc%e3%83%ab%e3%81%aa%e3%81%a9%e3%82%92%e3%81%97%e3%81%aa%e3%81%8c%e3%82%89google%20drive%e3%82%84dropbox%e3%81%a7%e3%83%90%e3%83%bc%e3%82%b8%e3%83%a7%e3%83%b3%e7%ae%a1%e7%90%86%e3%82%92%e3%81%97%e3%81%a6%26hellip%3b%e3%81%a8%e3%81%84%e3%81%86%e6%b5%81%e3%82%8c%e3%81%8c%e3%81%aa%e3%82%93%e3%81%a0%e3%81%8b%e9%9d%9e%e5%8a%b9%e7%8e%87%e7%9a%84%e3%81%ab%e6%80%9d%e3%81%88%e3%81%a6%e3%81%84%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%0a%e3%81%a9%e3%81%86%e3%81%ab%e3%81%8b%e4%b8%80%e5%85%83%e7%ae%a1%e7%90%86%e3%81%a7%e3%81%8d%e3%81%aa%e3%81%84%e3%81%8b%e3%81%a8%e6%8e%a2%e3%81%97%e3%81%a6%e3%81%84%e3%81%9f%e3%81%a8%e3%81%93%e3%82%8d%e3%80%81Rstudio%20%2b%20git%e3%81%a7%e5%85%a8%e3%81%a6%e5%ae%8c%e7%b5%90%e3%81%97%e3%81%9d%e3%81%86%e3%81%a0%e3%81%aa%e3%81%a8%e6%80%9d%e3%81%84%e5%ae%9f%e9%9a%9b%e3%81%ab%e6%89%8b%e3%82%92%e5%8b%95%e3%81%8b%e3%81%97%e3%81%a6%e3%81%bf%e3%81%9f%e8%a8%98%e9%8c%b2%e3%81%a7%e3%81%99%e3%80%82%20%e7%b0%a1%e5%8d%98%e3%81%ab%e8%aa%ac%e6%98%8e%e3%81%99%e3%82%8b%e3%81%a8%20Rstudio%e3%81%a7rticles%e3%81%aa%e3%81%a9%e3%81%ae%e4%be%bf%e5%88%a9package%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6Rmarkdown%e3%82%92%e6%9b%b8%e3%81%8d%e3%80%81%e3%81%9d%e3%82%8c%e3%82%92git%e3%81%a7%e7%ae%a1%e7%90%86%e3%81%99%e3%82%8b%20%e3%81%a8%e3%81%84%e3%81%86%e6%96%b9%e6%b3%95%e3%81%ab%e3%81%aa%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%0a%e3%81%93%e3%81%ae%e8%a8%98%e4%ba%8b%e3%81%ae%e5%af%be%e8%b1%a1%e3%81%afR%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e4%bd%9c%e5%9b%b3%20-%26gt%3b%20%e8%ab%96%e6%96%87%e5%9f%b7%e7%ad%86%e3%82%92%e3%81%97%e3%81%a6%e3%81%8d%e3%81%9f%ef%bc%88%e3%81%93%e3%82%8c%e3%81%8b%e3%82%89%e3%81%99%e3%82%8b%ef%bc%89%e3%81%8f%e3%82%89%e3%81%84%e3%81%ae%e6%96%b9%e3%81%a7%e3%81%99%e3%80%82%e5%83%95%e3%81%ae%e7%9f%a5%e3%82%8b%e9%80%b2%e5%8c%96%e3%83%bb%e7%94%9f%e6%85%8b%e5%ad%a6%e7%b3%bb%e3%81%ae%e7%a0%94%e7%a9%b6%e8%80%85%e3%81%ae%e6%96%b9%e3%81%afR%e3%82%92%e4%bd%bf%e3%81%86%e6%a9%9f%e4%bc%9a%e3%81%8c%e5%a4%9a%e3%81%84%e3%81%a8%e6%80%9d%e3%81%86%e3%81%ae%e3%81%a7%e3%80%81%e3%81%9d%e3%81%a1%e3%82%89%e5%90%91%e3%81%91%e3%81%a8%e8%a8%80%e3%81%a3%e3%81%a6%e3%82%82%e3%81%84%e3%81%84%e3%81%8b%e3%82%82%e3%81%97%e3%82%8c%e3%81%be%e3%81%9b%e3%82%93%e3%80%82%0aTOC%20%20%e6%a7%8b%e6%88%90%e8%a6%81%e7%b4%a0%20%e3%83%87%e3%82%a3%e3%83%ac%e3%82%af%e3%83%88%e3%83%aa%e3%81%ae%e4%bd%9c%e6%88%90%20Rmd%e3%81%ae%e4%bd%9c%e6%88%90%20git%e3%81%a7%e3%81%ae%e3%83%90%e3%83%bc%e3%82%b8%e3%83%a7%e3%83%b3%e7%ae%a1%e7%90%86%20git%e3%81%a7%e3%81%ae%e5%85%b1%e5%90%8c%e7%b7%a8%e9%9b%86%e4%be%8b%20%e3%81%8a%e3%82%8f%e3%82%8a%e3%81%ab%20%20%e6%a7%8b%e6%88%90%e8%a6%81%e7%b4%a0%20Rstudio%20R%e3%83%a6%e3%83%bc%e3%82%b6%e3%83%bc%e3%81%ab%e3%81%a8%e3%81%a3%e3%81%a6%e3%81%af%e8%a8%80%e3%82%8f%e3%81%9a%e3%82%82%e3%81%8c%e3%81%aa%e3%81%a7%e3%81%82%e3%82%8bIDE%e3%80%82%e6%99%ae%e6%ae%b5%e4%bd%bf%e3%81%84%e3%81%97%e3%81%a6%e3%81%84%e3%82%8b%e6%96%b9%e3%82%82%e5%a4%9a%e3%81%84%e3%81%a8%e6%80%9d%e3%81%84%e3%81%be%e3%81%99%e3%80%82%20%e8%89%b2%e3%80%85%e3%81%aanvim%e3%81%ae%e3%83%97%e3%83%a9%e3%82%b0%e3%82%a4%e3%83%b3%e3%82%92%e8%a9%a6%e3%81%97%e3%81%9f%e7%b5%90%e6%9e%9c%e3%80%81Rmarkdown%e3%82%92%e6%9b%b8%e3%81%8f%e3%81%ae%e3%81%ab%e3%81%afRstudio%e3%81%8c%e4%b8%80%e7%95%aa%e9%81%a9%e3%81%97%e3%81%a6%e3%81%84%e3%81%9f%e3%81%ae%e3%81%a7%e8%ab%96%e6%96%87%e5%9f%b7%e7%ad%86%e6%99%82%e3%81%ab%e3%81%af%e3%81%8a%e4%b8%96%e8%a9%b1%e3%81%ab%e3%81%aa%e3%81%a3%e3%81%a6%e3%81%84%e3%81%be%e3%81%99%e3%80%82%ef%bc%88%e6%99%ae%e6%ae%b5%e3%81%ae%e8%a7%a3%e6%9e%90%e3%81%afnvim%e3%81%a7%e3%82%84%e3%81%a3%e3%81%a6%e3%81%84%e3%82%8b%e3%80%82%ef%bc%89%0aRmarkdown%20R%e3%81%a7%e3%83%89%e3%82%ad%e3%83%a5%e3%83%a1%e3%83%b3%e3%83%88%e7%94%9f%e6%88%90%e3%81%99%e3%82%8b%e3%81%9f%e3%82%81%e3%80%81R%e3%81%a8markdown%e3%82%92%e7%b5%84%e3%81%bf%e5%90%88%e3%82%8f%e3%81%9b%e3%81%9f%e3%82%82%e3%81%ae%e3%80%82%e5%b0%91%e3%81%97%e3%82%84%e3%82%84%e3%81%93%e3%81%97%e3%81%84header%e9%83%a8%e5%88%86%e3%82%92%e9%99%a4%e3%81%91%e3%81%b0R%e3%81%ae%e3%82%bd%e3%83%bc%e3%82%b9%e3%82%b3%e3%83%bc%e3%83%89%e3%81%a8markdown%e8%a8%98%e6%b3%95%e3%81%a7%e5%85%a8%e3%81%a6%e6%9b%b8%e3%81%91%e3%82%8b%e3%81%ae%e3%81%a7%e9%9d%9e%e5%b8%b8%e3%81%ab%e6%a5%bd%e3%80%82%20markdown%e3%81%aecheat%20sheat%e3%81%af%e3%81%93%e3%81%93%e3%82%92%e5%8f%82%e7%85%a7%e3%80%82%0a%e9%96%91%e8%a9%b1%ef%bc%9aRmarkdown%e3%81%a7%e5%9f%b7%e7%ad%86%e3%81%99%e3%82%8b%e3%83%a1%e3%83%aa%e3%83%83%e3%83%88%20%e4%b8%bb%e3%81%ab%e6%96%87%e7%ab%a0%e3%80%81R%e3%82%b9%e3%82%af%e3%83%aa%e3%83%97%e3%83%88%e3%81%8c%e3%81%be%e3%81%a8%e3%81%be%e3%81%a3%e3%81%a6%e3%81%84%e3%82%8b%e3%81%93%e3%81%a8%e3%81%ab%e7%94%b1%e6%9d%a5%e3%81%99%e3%82%8b%e6%a7%98%e3%80%85%e3%81%aa%e3%83%a1%e3%83%aa%e3%83%83%e3%83%88%e3%81%8c%e3%81%82%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%0a%20%e5%86%8d%e7%8f%be%e6%80%a7%e3%81%8c%e6%8b%85%e4%bf%9d%e3%81%95%e3%82%8c%e3%82%8b%20%ef%bc%88%e4%be%8b%ef%bc%9a%e3%82%b3%e3%83%b3%e3%83%91%e3%82%a4%e3%83%ab%e3%81%99%e3%82%8b%e3%81%94%e3%81%a8%e3%81%ab%e5%90%8c%e3%81%98%e3%82%b0%e3%83%a9%e3%83%95%e3%82%92%e7%a2%ba%e5%ae%9f%e3%81%ab%e6%8f%8f%e7%94%bb%e3%81%a7%e3%81%8d%e3%82%8b%ef%bc%89%e3%80%82%20%e3%83%87%e3%83%bc%e3%82%bf%e3%81%8c%e5%a4%89%e3%82%8f%e3%81%a3%e3%81%a6%e3%82%82%e3%81%9d%e3%81%ae%e9%83%bd%e5%ba%a6%e3%82%b0%e3%83%a9%e3%83%95%e3%82%92%e6%9b%b8%e3%81%8d%e7%9b%b4%e3%81%97%e3%81%9f%e3%82%8a%e7%b5%b1%e8%a8%88%e8%a7%a3%e6%9e%90%e3%82%92%e8%a1%8c%e3%81%86%e5%bf%85%e8%a6%81%e3%81%8c%e3%81%aa%e3%81%84%ef%bc%88%e8%a7%a3%e6%9e%90%e7%b5%90%e6%9e%9c%e3%81%aa%e3%81%a9%e3%82%92%e6%96%87%e4%b8%ad%e3%81%a7%e5%88%a9%e7%94%a8%e3%81%a7%e3%81%8d%e3%82%8b%e5%bd%a2%e3%81%ab%e3%81%97%e3%81%a6%e3%81%8a%e3%81%91%e3%81%b0%ef%bc%89%e3%80%82%20R%e3%81%a8Rstudio%ef%bc%88%e3%81%a9%e3%81%a1%e3%82%89%e3%82%82%e7%84%a1%e5%84%9f%ef%bc%89%e3%81%8c%e5%85%a5%e3%81%a3%e3%81%a6%e3%81%84%e3%82%8c%e3%81%b0%e4%ba%92%e6%8f%9b%e6%80%a7%e3%81%8c%e6%8b%85%e4%bf%9d%e3%81%95%e3%82%8c%e3%82%8b%e3%80%82%20bib%e3%83%95%e3%82%a1%e3%82%a4%e3%83%ab%e3%82%92%e5%88%a9%e7%94%a8%e3%81%a7%e3%81%8d%e3%82%8b%e3%81%9f%e3%82%81%e3%80%81%e5%bc%95%e7%94%a8%e6%96%87%e7%8c%ae%e7%ae%a1%e7%90%86%e3%81%8c%e9%9d%9e%e5%b8%b8%e3%81%ab%e6%a5%bd%e3%80%82%20%20%e5%8f%8d%e5%af%be%e3%81%ab%e3%83%87%e3%83%a1%e3%83%aa%e3%83%83%e3%83%88%e3%82%82%e3%81%a1%e3%82%89%e3%81%bb%e3%82%89%0a%20Rmd%e3%81%ae%e3%81%be%e3%81%be%e3%81%a7%e3%81%af%ef%bc%88%e5%9f%ba%e6%9c%ac%e7%9a%84%e3%81%ab%e3%81%af%ef%bc%89%e8%8b%b1%e6%96%87%e6%a0%a1%e9%96%b2%e3%81%ab%e3%81%8b%e3%81%91%e3%82%89%e3%82%8c%e3%81%aa%e3%81%84%e3%80%82%20%e8%ab%96%e6%96%87%e6%8a%95%e7%a8%bf%e3%81%ae%e9%9a%9b%e3%81%abword%e3%83%95%e3%82%a1%e3%82%a4%e3%83%ab%e3%82%92%e8%a6%81%e6%b1%82%e3%81%95%e3%82%8c%e3%82%8b%e5%a0%b4%e5%90%88%e3%80%81pandoc%e3%81%aa%e3%81%a9%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e4%b8%80%e5%ba%a6.&source=rafed123.github.io"
+	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
+	        title="Share on LinkedIn. Opens in a new window." >
+	        <img src=../../img/icons/45px/linkedin.png>
+	    </a>
+
+	    <a  href="mailto:?subject=Writing%20flow&amp;body=Check out this site https%3a%2f%2f6w3n.github.io%2fposts%2fwritingflow%2f"
+	        title="Share via Email. Opens in a new window." >
+	        <img src=../../img/icons/45px/mail.png>
+	    </a>
+	</div>
+</div>
+
+
+<br>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+	    <p><a class="has-text-light" href="https://6w3n.github.io/">6W3N Site</a><p>
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

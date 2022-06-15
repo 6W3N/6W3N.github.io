@@ -167,7 +167,7 @@ Excelで作成した表をWordに埋め込む、Wordで直接表を作成する�
 皆さんはどうですか？胸に手を当てて考えてみてください。<del>え、何も思わない？そうですか&hellip;。</del></p>
 <p>ということで、今回は <strong>Rから表をimageとして吐き出す</strong> ことを目的とした記事です。imageとして吐き出せば、あとはLaTeXだとて<code>\includegraphics</code>でおしまいなわけです。なんと楽なことか。</p>
 <p><strong>注意！！実際問題として、論文を投稿する時にはimageとしてtableを提出できない場合の方が多いと思います。そのような場合もある程度まではカバーできますが、今回は主に学会発表やプログレスミーティングの時のお役立ち情報くらいに考えてください。</strong>
-こちらの記事を参照ください。<a href="https://www.researchgate.net/post/Can_we_insert_tables_as_images_in_a_manuscript_submission_document">&ldquo;Can we insert tables as images in a manuscript submission document?&quot;</a></p>
+こちらの記事を参照ください。<a href="https://www.researchgate.net/post/Can_we_insert_tables_as_images_in_a_manuscript_submission_document">&ldquo;Can we insert tables as images in a manuscript submission document?&rdquo;</a></p>
 <p>また、今回もかなり備忘録に近いです。</p>
 <p>今回は、</p>
 <ol>
@@ -188,80 +188,80 @@ Excelで作成した表をWordに埋め込む、Wordで直接表を作成する�
 <p>まずは{gt}パッケージによる表作成から。</p>
 <p>{gt}パッケージでは慣れ親しんだtibbleなどからgtオブジェクトを介してきれいな表を作成してくれます。
 例えばirisを例にすると</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(tidyverse)
-<span style="color:#a6e22e">library</span>(gt)
-
-iris <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">gt</span>()
-</code></pre></div><p>これだけです。ブラウザ（Rstudioならviewer）が立ち上がり、下のようなtableが表示されたのではないでしょうか。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(tidyverse)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(gt)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>iris <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">gt</span>()
+</span></span></code></pre></div><p>これだけです。ブラウザ（Rstudioならviewer）が立ち上がり、下のようなtableが表示されたのではないでしょうか。</p>
 <p><img src="https://i.imgur.com/Hn4nLA0.jpg" alt=""></p>
 <p>ちょっと長ったらしいので、データ自体を整形しましょう。</p>
 <p>各種の<code>Sepal.Length</code>のTOP5を集めて、tableとして表示します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">iris_SLtop5 <span style="color:#f92672">&lt;-</span> iris <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">group_by</span>(Species) <span style="color:#f92672">%&gt;%</span> 
-	<span style="color:#a6e22e">arrange</span>(<span style="color:#a6e22e">desc</span>(Sepal.Length)) <span style="color:#f92672">%&gt;%</span> 
-	<span style="color:#a6e22e">mutate</span>(rownum<span style="color:#f92672">=</span><span style="color:#a6e22e">row_number</span>()) <span style="color:#f92672">%&gt;%</span> 
-	<span style="color:#a6e22e">filter</span>(rownum<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">5</span>) <span style="color:#f92672">%&gt;%</span> 
-	<span style="color:#a6e22e">select</span>(<span style="color:#f92672">-</span>rownum) <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">ungroup</span>()
-    
-iris_SLtop5 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">gt</span>()    
-</code></pre></div><p><img src="https://i.imgur.com/HVwfega.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>iris_SLtop5 <span style="color:#f92672">&lt;-</span> iris <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">group_by</span>(Species) <span style="color:#f92672">%&gt;%</span> 
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">arrange</span>(<span style="color:#a6e22e">desc</span>(Sepal.Length)) <span style="color:#f92672">%&gt;%</span> 
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">mutate</span>(rownum<span style="color:#f92672">=</span><span style="color:#a6e22e">row_number</span>()) <span style="color:#f92672">%&gt;%</span> 
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">filter</span>(rownum<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">5</span>) <span style="color:#f92672">%&gt;%</span> 
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">select</span>(<span style="color:#f92672">-</span>rownum) <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">ungroup</span>()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>iris_SLtop5 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">gt</span>()    
+</span></span></code></pre></div><p><img src="https://i.imgur.com/HVwfega.png" alt=""></p>
 <p>すでにキレイな見た目に見えます。が、ここからさらに細かく編集していきましょう。</p>
 <h3 id="title-and-subtitle">Title and subtitle</h3>
 <p>表のタイトルです。習うより慣れろの精神で以下のスクリプトを実行してみてください。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">iris_SLtop5 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">gt</span>() <span style="color:#f92672">%&gt;%</span>
-	<span style="color:#a6e22e">tab_header</span>(
-		title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Anderson&#39;s Iris Data&#34;</span>,
-		subtitle <span style="color:#f92672">=</span> <span style="color:#a6e22e">md</span>(<span style="color:#e6db74">&#34;_Top 5_ flowers from each species of Sepal.Length value&#34;</span>)	
-	)
-</code></pre></div><p><img src="https://i.imgur.com/qe3HVOr.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>iris_SLtop5 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">gt</span>() <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">tab_header</span>(
+</span></span><span style="display:flex;"><span>		title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Anderson&#39;s Iris Data&#34;</span>,
+</span></span><span style="display:flex;"><span>		subtitle <span style="color:#f92672">=</span> <span style="color:#a6e22e">md</span>(<span style="color:#e6db74">&#34;_Top 5_ flowers from each species of Sepal.Length value&#34;</span>)	
+</span></span><span style="display:flex;"><span>	)
+</span></span></code></pre></div><p><img src="https://i.imgur.com/qe3HVOr.png" alt=""></p>
 <p>タイトルがつきました。
 <code>md()</code>という関数を用いると、Markdown記法で文字をいじることができます。これは便利。</p>
 <h3 id="footnote">Footnote</h3>
 <p>注釈を付け加えましょう。データの出典を記述します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">iris_SLtop5 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">gt</span>() <span style="color:#f92672">%&gt;%</span>
-	<span style="color:#a6e22e">tab_header</span>(
-		title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Anderson&#39;s Iris Data&#34;</span>,
-		subtitle <span style="color:#f92672">=</span> <span style="color:#a6e22e">md</span>(<span style="color:#e6db74">&#34;_Top 5_ flowers from each species of Sepal.Length value&#34;</span>)	
-	) <span style="color:#f92672">%&gt;%</span>  
-    <span style="color:#a6e22e">tab_source_note</span>(
-        source_note <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;The data were collected by Anderson, Edgar (1935).&#34;</span>
-  )
-</code></pre></div><p><img src="https://i.imgur.com/HKAw5mP.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>iris_SLtop5 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">gt</span>() <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">tab_header</span>(
+</span></span><span style="display:flex;"><span>		title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Anderson&#39;s Iris Data&#34;</span>,
+</span></span><span style="display:flex;"><span>		subtitle <span style="color:#f92672">=</span> <span style="color:#a6e22e">md</span>(<span style="color:#e6db74">&#34;_Top 5_ flowers from each species of Sepal.Length value&#34;</span>)	
+</span></span><span style="display:flex;"><span>	) <span style="color:#f92672">%&gt;%</span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tab_source_note</span>(
+</span></span><span style="display:flex;"><span>        source_note <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;The data were collected by Anderson, Edgar (1935).&#34;</span>
+</span></span><span style="display:flex;"><span>  )
+</span></span></code></pre></div><p><img src="https://i.imgur.com/HKAw5mP.png" alt=""></p>
 <p>もうちょっと使い勝手良く注釈を付けたいですよね。それもできます。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">SL_longest <span style="color:#f92672">&lt;-</span> iris <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">group_by</span>(Species) <span style="color:#f92672">%&gt;%</span>
-    <span style="color:#a6e22e">summarize</span>(SL_mean<span style="color:#f92672">=</span><span style="color:#a6e22e">mean</span>(Sepal.Length),
-                PL_mean<span style="color:#f92672">=</span><span style="color:#a6e22e">mean</span>(Petal.Length)) <span style="color:#f92672">%&gt;%</span>
-    <span style="color:#a6e22e">ungroup</span>() <span style="color:#f92672">%&gt;%</span>
-    <span style="color:#a6e22e">filter</span>(SL_mean<span style="color:#f92672">==</span><span style="color:#a6e22e">max</span>(SL_mean)) <span style="color:#f92672">%&gt;%</span>
-    <span style="color:#a6e22e">pull</span>(Species) <span style="color:#f92672">%&gt;%</span> 
-    <span style="color:#a6e22e">as.character</span>()
-    
-    
-iris <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">group_by</span>(Species) <span style="color:#f92672">%&gt;%</span>
-    <span style="color:#a6e22e">summarize</span>(SL_mean<span style="color:#f92672">=</span><span style="color:#a6e22e">mean</span>(Sepal.Length),
-                PL_mean<span style="color:#f92672">=</span><span style="color:#a6e22e">mean</span>(Petal.Length)) <span style="color:#f92672">%&gt;%</span>
-    <span style="color:#a6e22e">ungroup</span>() <span style="color:#f92672">%&gt;%</span>    
-    <span style="color:#a6e22e">gt</span>() <span style="color:#f92672">%&gt;%</span>
-    <span style="color:#a6e22e">tab_footnote</span>(
-        footnote <span style="color:#f92672">=</span> <span style="color:#a6e22e">md</span>(<span style="color:#e6db74">&#34;The **longest** by Sepal.Length.&#34;</span>),
-        locations <span style="color:#f92672">=</span> <span style="color:#a6e22e">cells_body</span>(
-          columns <span style="color:#f92672">=</span> <span style="color:#a6e22e">vars</span>(SL_mean),
-          rows <span style="color:#f92672">=</span> Species <span style="color:#f92672">==</span> SL_longest)
-  ) <span style="color:#f92672">%&gt;%</span>
-    <span style="color:#a6e22e">tab_footnote</span>(
-        footnote <span style="color:#f92672">=</span> <span style="color:#a6e22e">md</span>(<span style="color:#e6db74">&#34;The **shortest** by Petal.Length&#34;</span>),
-        locations <span style="color:#f92672">=</span> <span style="color:#a6e22e">cells_body</span>(
-              columns <span style="color:#f92672">=</span> <span style="color:#a6e22e">vars</span>(PL_mean),
-              rows <span style="color:#f92672">=</span> PL_mean <span style="color:#f92672">==</span> <span style="color:#a6e22e">min</span>(PL_mean))
-  )
-</code></pre></div><p><img src="https://i.imgur.com/Q0yonGv.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>SL_longest <span style="color:#f92672">&lt;-</span> iris <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">group_by</span>(Species) <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">summarize</span>(SL_mean<span style="color:#f92672">=</span><span style="color:#a6e22e">mean</span>(Sepal.Length),
+</span></span><span style="display:flex;"><span>                PL_mean<span style="color:#f92672">=</span><span style="color:#a6e22e">mean</span>(Petal.Length)) <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ungroup</span>() <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">filter</span>(SL_mean<span style="color:#f92672">==</span><span style="color:#a6e22e">max</span>(SL_mean)) <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">pull</span>(Species) <span style="color:#f92672">%&gt;%</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">as.character</span>()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>iris <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">group_by</span>(Species) <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">summarize</span>(SL_mean<span style="color:#f92672">=</span><span style="color:#a6e22e">mean</span>(Sepal.Length),
+</span></span><span style="display:flex;"><span>                PL_mean<span style="color:#f92672">=</span><span style="color:#a6e22e">mean</span>(Petal.Length)) <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ungroup</span>() <span style="color:#f92672">%&gt;%</span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">gt</span>() <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tab_footnote</span>(
+</span></span><span style="display:flex;"><span>        footnote <span style="color:#f92672">=</span> <span style="color:#a6e22e">md</span>(<span style="color:#e6db74">&#34;The **longest** by Sepal.Length.&#34;</span>),
+</span></span><span style="display:flex;"><span>        locations <span style="color:#f92672">=</span> <span style="color:#a6e22e">cells_body</span>(
+</span></span><span style="display:flex;"><span>          columns <span style="color:#f92672">=</span> <span style="color:#a6e22e">vars</span>(SL_mean),
+</span></span><span style="display:flex;"><span>          rows <span style="color:#f92672">=</span> Species <span style="color:#f92672">==</span> SL_longest)
+</span></span><span style="display:flex;"><span>  ) <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tab_footnote</span>(
+</span></span><span style="display:flex;"><span>        footnote <span style="color:#f92672">=</span> <span style="color:#a6e22e">md</span>(<span style="color:#e6db74">&#34;The **shortest** by Petal.Length&#34;</span>),
+</span></span><span style="display:flex;"><span>        locations <span style="color:#f92672">=</span> <span style="color:#a6e22e">cells_body</span>(
+</span></span><span style="display:flex;"><span>              columns <span style="color:#f92672">=</span> <span style="color:#a6e22e">vars</span>(PL_mean),
+</span></span><span style="display:flex;"><span>              rows <span style="color:#f92672">=</span> PL_mean <span style="color:#f92672">==</span> <span style="color:#a6e22e">min</span>(PL_mean))
+</span></span><span style="display:flex;"><span>  )
+</span></span></code></pre></div><p><img src="https://i.imgur.com/Q0yonGv.png" alt=""></p>
 <p>1つ目の<code>tab_footnote()</code>では、先に作成しておいた<code>SL_longest</code>に入っている<code>&quot;virginica&quot;</code>とのマッチングでSepal.Lengthの平均が最長の種を指定しています。
 2つ目の<code>tab_footnote()</code>では関数内でPetal.Lengthの平均が最短の種を選択しています。</p>
 <p>このような注釈を付け加えるのも数行で済んでしまいます。</p>
 <h3 id="grouping">Grouping</h3>
 <p>ここまでのスクリプトでは<code>ungroup()</code>をした後に<code>gt()</code>を行っていましたが、groupd_dfのまま<code>gt()</code>を行うとどうなるのか見ていきます。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">iris_SLtop5 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">group_by</span>(Species) <span style="color:#f92672">%&gt;%</span>
-    <span style="color:#a6e22e">gt</span>()
-</code></pre></div><p><img src="https://i.imgur.com/KxCvual.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>iris_SLtop5 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">group_by</span>(Species) <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">gt</span>()
+</span></span></code></pre></div><p><img src="https://i.imgur.com/KxCvual.png" alt=""></p>
 <p>groupごとに表示されてすっきりしました。
 <del>tidydataで慣れている身からするとむしろnon-tidyでモヤッとする&hellip;</del></p>
 <p>見やすさは、おそらくtidydataよりもむしろこっち。多分。スライドなどにはこちらの方が使い勝手が良いかもしれません。</p>
@@ -269,70 +269,68 @@ iris <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">group
 <p>続いて{gtsummary}を用いた表作成です。</p>
 <p>{gtsummary}は名前の通り、{gt}を元に作成されたパッケージです。summaryデータを一瞬で表現できるすごいパッケージです。</p>
 <p>使い方はこちらもシンプル。これだけです。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(gtsummary)
-
-iris <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">tbl_summary</span>()
-</code></pre></div><p><img src="https://i.imgur.com/TfYq4iT.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(gtsummary)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>iris <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">tbl_summary</span>()
+</span></span></code></pre></div><p><img src="https://i.imgur.com/TfYq4iT.png" alt=""></p>
 <p>勝手にまとめてくれた上に表示までしてくれました。すごい。</p>
 <p>上記の値、どこかで近しい何かを見たことあるかもしれません。そう、<code>summary()</code>を用いた時です。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#f92672">&gt;</span> iris <span style="color:#f92672">%&gt;%</span> summary
-
-  Sepal.Length    Sepal.Width     Petal.Length    Petal.Width
- Min.   <span style="color:#f92672">:</span><span style="color:#ae81ff">4.300</span>   Min.   <span style="color:#f92672">:</span><span style="color:#ae81ff">2.000</span>   Min.   <span style="color:#f92672">:</span><span style="color:#ae81ff">1.000</span>   Min.   <span style="color:#f92672">:</span><span style="color:#ae81ff">0.100</span>
- <span style="color:#ae81ff">1</span>st Qu.<span style="color:#f92672">:</span><span style="color:#ae81ff">5.100</span>   <span style="color:#ae81ff">1</span>st Qu.<span style="color:#f92672">:</span><span style="color:#ae81ff">2.800</span>   <span style="color:#ae81ff">1</span>st Qu.<span style="color:#f92672">:</span><span style="color:#ae81ff">1.600</span>   <span style="color:#ae81ff">1</span>st Qu.<span style="color:#f92672">:</span><span style="color:#ae81ff">0.300</span>
- Median <span style="color:#f92672">:</span><span style="color:#ae81ff">5.800</span>   Median <span style="color:#f92672">:</span><span style="color:#ae81ff">3.000</span>   Median <span style="color:#f92672">:</span><span style="color:#ae81ff">4.350</span>   Median <span style="color:#f92672">:</span><span style="color:#ae81ff">1.300</span>
- Mean   <span style="color:#f92672">:</span><span style="color:#ae81ff">5.843</span>   Mean   <span style="color:#f92672">:</span><span style="color:#ae81ff">3.057</span>   Mean   <span style="color:#f92672">:</span><span style="color:#ae81ff">3.758</span>   Mean   <span style="color:#f92672">:</span><span style="color:#ae81ff">1.199</span>
- <span style="color:#ae81ff">3</span>rd Qu.<span style="color:#f92672">:</span><span style="color:#ae81ff">6.400</span>   <span style="color:#ae81ff">3</span>rd Qu.<span style="color:#f92672">:</span><span style="color:#ae81ff">3.300</span>   <span style="color:#ae81ff">3</span>rd Qu.<span style="color:#f92672">:</span><span style="color:#ae81ff">5.100</span>   <span style="color:#ae81ff">3</span>rd Qu.<span style="color:#f92672">:</span><span style="color:#ae81ff">1.800</span>
- Max.   <span style="color:#f92672">:</span><span style="color:#ae81ff">7.900</span>   Max.   <span style="color:#f92672">:</span><span style="color:#ae81ff">4.400</span>   Max.   <span style="color:#f92672">:</span><span style="color:#ae81ff">6.900</span>   Max.   <span style="color:#f92672">:</span><span style="color:#ae81ff">2.500</span>
-       Species
- setosa    <span style="color:#f92672">:</span><span style="color:#ae81ff">50</span>
- versicolor<span style="color:#f92672">:</span><span style="color:#ae81ff">50</span>
- virginica <span style="color:#f92672">:</span><span style="color:#ae81ff">50</span>
-
-</code></pre></div><p>最小値や最大値、平均などは<code>tbl_sumamry()</code>のデフォルトではついてきませんが、個人的には結構満足です。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span><span style="color:#f92672">&gt;</span> iris <span style="color:#f92672">%&gt;%</span> summary
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  Sepal.Length    Sepal.Width     Petal.Length    Petal.Width
+</span></span><span style="display:flex;"><span> Min.   <span style="color:#f92672">:</span><span style="color:#ae81ff">4.300</span>   Min.   <span style="color:#f92672">:</span><span style="color:#ae81ff">2.000</span>   Min.   <span style="color:#f92672">:</span><span style="color:#ae81ff">1.000</span>   Min.   <span style="color:#f92672">:</span><span style="color:#ae81ff">0.100</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">1</span>st Qu.<span style="color:#f92672">:</span><span style="color:#ae81ff">5.100</span>   <span style="color:#ae81ff">1</span>st Qu.<span style="color:#f92672">:</span><span style="color:#ae81ff">2.800</span>   <span style="color:#ae81ff">1</span>st Qu.<span style="color:#f92672">:</span><span style="color:#ae81ff">1.600</span>   <span style="color:#ae81ff">1</span>st Qu.<span style="color:#f92672">:</span><span style="color:#ae81ff">0.300</span>
+</span></span><span style="display:flex;"><span> Median <span style="color:#f92672">:</span><span style="color:#ae81ff">5.800</span>   Median <span style="color:#f92672">:</span><span style="color:#ae81ff">3.000</span>   Median <span style="color:#f92672">:</span><span style="color:#ae81ff">4.350</span>   Median <span style="color:#f92672">:</span><span style="color:#ae81ff">1.300</span>
+</span></span><span style="display:flex;"><span> Mean   <span style="color:#f92672">:</span><span style="color:#ae81ff">5.843</span>   Mean   <span style="color:#f92672">:</span><span style="color:#ae81ff">3.057</span>   Mean   <span style="color:#f92672">:</span><span style="color:#ae81ff">3.758</span>   Mean   <span style="color:#f92672">:</span><span style="color:#ae81ff">1.199</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">3</span>rd Qu.<span style="color:#f92672">:</span><span style="color:#ae81ff">6.400</span>   <span style="color:#ae81ff">3</span>rd Qu.<span style="color:#f92672">:</span><span style="color:#ae81ff">3.300</span>   <span style="color:#ae81ff">3</span>rd Qu.<span style="color:#f92672">:</span><span style="color:#ae81ff">5.100</span>   <span style="color:#ae81ff">3</span>rd Qu.<span style="color:#f92672">:</span><span style="color:#ae81ff">1.800</span>
+</span></span><span style="display:flex;"><span> Max.   <span style="color:#f92672">:</span><span style="color:#ae81ff">7.900</span>   Max.   <span style="color:#f92672">:</span><span style="color:#ae81ff">4.400</span>   Max.   <span style="color:#f92672">:</span><span style="color:#ae81ff">6.900</span>   Max.   <span style="color:#f92672">:</span><span style="color:#ae81ff">2.500</span>
+</span></span><span style="display:flex;"><span>       Species
+</span></span><span style="display:flex;"><span> setosa    <span style="color:#f92672">:</span><span style="color:#ae81ff">50</span>
+</span></span><span style="display:flex;"><span> versicolor<span style="color:#f92672">:</span><span style="color:#ae81ff">50</span>
+</span></span><span style="display:flex;"><span> virginica <span style="color:#f92672">:</span><span style="color:#ae81ff">50</span>
+</span></span></code></pre></div><p>最小値や最大値、平均などは<code>tbl_sumamry()</code>のデフォルトではついてきませんが、個人的には結構満足です。</p>
 <h3 id="with-glm">with glm</h3>
 <p><code>summary()</code>がこんなにきれいに描けるならもしやliner modelとかも&hellip;と期待してしまいますよね。
 <strong>あります。</strong></p>
 <p>まずは単純に<code>glm()</code>から。モデル式などなどは適当です。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#f92672">&gt;</span> model1 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">glm</span>(Sepal.Length<span style="color:#f92672">~</span>Sepal.Width <span style="color:#f92672">+</span> Species <span style="color:#f92672">+</span> Sepal.Width<span style="color:#f92672">*</span>Species, dat<span style="color:#f92672">=</span>iris)
-<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">summary</span>(model1)
-
-
-Call<span style="color:#f92672">:</span>
-<span style="color:#a6e22e">glm</span>(formula <span style="color:#f92672">=</span> Sepal.Length <span style="color:#f92672">~</span> Sepal.Width <span style="color:#f92672">+</span> Species <span style="color:#f92672">+</span> Sepal.Width <span style="color:#f92672">*</span>
-    Species, data <span style="color:#f92672">=</span> iris)
-
-Deviance Residuals<span style="color:#f92672">:</span>
-     Min        <span style="color:#ae81ff">1</span>Q    Median        <span style="color:#ae81ff">3</span>Q       Max
-<span style="color:#ae81ff">-1.26067</span>  <span style="color:#ae81ff">-0.25861</span>  <span style="color:#ae81ff">-0.03305</span>   <span style="color:#ae81ff">0.18929</span>   <span style="color:#ae81ff">1.44917</span>
-
-Coefficients<span style="color:#f92672">:</span>
-                              Estimate Std. Error t value <span style="color:#a6e22e">Pr</span>(<span style="color:#f92672">&gt;|</span>t<span style="color:#f92672">|</span>)
-(Intercept)                     <span style="color:#ae81ff">2.6390</span>     <span style="color:#ae81ff">0.5715</span>   <span style="color:#ae81ff">4.618</span> <span style="color:#ae81ff">8.53e-06</span> <span style="color:#f92672">***</span>
-Sepal.Width                     <span style="color:#ae81ff">0.6905</span>     <span style="color:#ae81ff">0.1657</span>   <span style="color:#ae81ff">4.166</span> <span style="color:#ae81ff">5.31e-05</span> <span style="color:#f92672">***</span>
-Speciesversicolor               <span style="color:#ae81ff">0.9007</span>     <span style="color:#ae81ff">0.7988</span>   <span style="color:#ae81ff">1.128</span>    <span style="color:#ae81ff">0.261</span>
-Speciesvirginica                <span style="color:#ae81ff">1.2678</span>     <span style="color:#ae81ff">0.8162</span>   <span style="color:#ae81ff">1.553</span>    <span style="color:#ae81ff">0.123</span>
-Sepal.Width<span style="color:#f92672">:</span>Speciesversicolor   <span style="color:#ae81ff">0.1746</span>     <span style="color:#ae81ff">0.2599</span>   <span style="color:#ae81ff">0.672</span>    <span style="color:#ae81ff">0.503</span>
-Sepal.Width<span style="color:#f92672">:</span>Speciesvirginica    <span style="color:#ae81ff">0.2110</span>     <span style="color:#ae81ff">0.2558</span>   <span style="color:#ae81ff">0.825</span>    <span style="color:#ae81ff">0.411</span>
-<span style="color:#f92672">---</span>
-Signif. codes<span style="color:#f92672">:</span>  <span style="color:#ae81ff">0</span> ‘<span style="color:#f92672">***</span>’ <span style="color:#ae81ff">0.001</span> ‘<span style="color:#f92672">**</span>’ <span style="color:#ae81ff">0.01</span> ‘<span style="color:#f92672">*</span>’ <span style="color:#ae81ff">0.05</span> ‘.’ <span style="color:#ae81ff">0.1</span> ‘ ’ <span style="color:#ae81ff">1</span>
-
-(Dispersion parameter for gaussian family taken to be <span style="color:#ae81ff">0.1933783</span>)
-
-    Null deviance<span style="color:#f92672">:</span> <span style="color:#ae81ff">102.168</span>  on <span style="color:#ae81ff">149</span>  degrees of freedom
-Residual deviance<span style="color:#f92672">:</span>  <span style="color:#ae81ff">27.846</span>  on <span style="color:#ae81ff">144</span>  degrees of freedom
-AIC<span style="color:#f92672">:</span> <span style="color:#ae81ff">187.09</span>
-
-Number of Fisher Scoring iterations<span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>
-</code></pre></div><p>これを{gtsummary}で書くとこうなります。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">model1 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">tbl_regression</span>()
-</code></pre></div><p><img src="https://i.imgur.com/Chwf2v1.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span><span style="color:#f92672">&gt;</span> model1 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">glm</span>(Sepal.Length<span style="color:#f92672">~</span>Sepal.Width <span style="color:#f92672">+</span> Species <span style="color:#f92672">+</span> Sepal.Width<span style="color:#f92672">*</span>Species, dat<span style="color:#f92672">=</span>iris)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">summary</span>(model1)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Call<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">glm</span>(formula <span style="color:#f92672">=</span> Sepal.Length <span style="color:#f92672">~</span> Sepal.Width <span style="color:#f92672">+</span> Species <span style="color:#f92672">+</span> Sepal.Width <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>    Species, data <span style="color:#f92672">=</span> iris)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Deviance Residuals<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>     Min        <span style="color:#ae81ff">1</span>Q    Median        <span style="color:#ae81ff">3</span>Q       Max
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">-1.26067</span>  <span style="color:#ae81ff">-0.25861</span>  <span style="color:#ae81ff">-0.03305</span>   <span style="color:#ae81ff">0.18929</span>   <span style="color:#ae81ff">1.44917</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Coefficients<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>                              Estimate Std. Error t value <span style="color:#a6e22e">Pr</span>(<span style="color:#f92672">&gt;|</span>t<span style="color:#f92672">|</span>)
+</span></span><span style="display:flex;"><span>(Intercept)                     <span style="color:#ae81ff">2.6390</span>     <span style="color:#ae81ff">0.5715</span>   <span style="color:#ae81ff">4.618</span> <span style="color:#ae81ff">8.53e-06</span> <span style="color:#f92672">***</span>
+</span></span><span style="display:flex;"><span>Sepal.Width                     <span style="color:#ae81ff">0.6905</span>     <span style="color:#ae81ff">0.1657</span>   <span style="color:#ae81ff">4.166</span> <span style="color:#ae81ff">5.31e-05</span> <span style="color:#f92672">***</span>
+</span></span><span style="display:flex;"><span>Speciesversicolor               <span style="color:#ae81ff">0.9007</span>     <span style="color:#ae81ff">0.7988</span>   <span style="color:#ae81ff">1.128</span>    <span style="color:#ae81ff">0.261</span>
+</span></span><span style="display:flex;"><span>Speciesvirginica                <span style="color:#ae81ff">1.2678</span>     <span style="color:#ae81ff">0.8162</span>   <span style="color:#ae81ff">1.553</span>    <span style="color:#ae81ff">0.123</span>
+</span></span><span style="display:flex;"><span>Sepal.Width<span style="color:#f92672">:</span>Speciesversicolor   <span style="color:#ae81ff">0.1746</span>     <span style="color:#ae81ff">0.2599</span>   <span style="color:#ae81ff">0.672</span>    <span style="color:#ae81ff">0.503</span>
+</span></span><span style="display:flex;"><span>Sepal.Width<span style="color:#f92672">:</span>Speciesvirginica    <span style="color:#ae81ff">0.2110</span>     <span style="color:#ae81ff">0.2558</span>   <span style="color:#ae81ff">0.825</span>    <span style="color:#ae81ff">0.411</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">---</span>
+</span></span><span style="display:flex;"><span>Signif. codes<span style="color:#f92672">:</span>  <span style="color:#ae81ff">0</span> ‘<span style="color:#f92672">***</span>’ <span style="color:#ae81ff">0.001</span> ‘<span style="color:#f92672">**</span>’ <span style="color:#ae81ff">0.01</span> ‘<span style="color:#f92672">*</span>’ <span style="color:#ae81ff">0.05</span> ‘.’ <span style="color:#ae81ff">0.1</span> ‘ ’ <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(Dispersion parameter for gaussian family taken to be <span style="color:#ae81ff">0.1933783</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Null deviance<span style="color:#f92672">:</span> <span style="color:#ae81ff">102.168</span>  on <span style="color:#ae81ff">149</span>  degrees of freedom
+</span></span><span style="display:flex;"><span>Residual deviance<span style="color:#f92672">:</span>  <span style="color:#ae81ff">27.846</span>  on <span style="color:#ae81ff">144</span>  degrees of freedom
+</span></span><span style="display:flex;"><span>AIC<span style="color:#f92672">:</span> <span style="color:#ae81ff">187.09</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Number of Fisher Scoring iterations<span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>
+</span></span></code></pre></div><p>これを{gtsummary}で書くとこうなります。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>model1 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">tbl_regression</span>()
+</span></span></code></pre></div><p><img src="https://i.imgur.com/Chwf2v1.png" alt=""></p>
 <p>Interceptが欲しい、p-valueは小数点3桁で揃えたい、説明変数は斜体にしたい、などもできます。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">model1 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">tbl_regression</span>(intercept<span style="color:#f92672">=</span>T,
-             pvalue_fun <span style="color:#f92672">=</span> <span style="color:#f92672">~</span><span style="color:#a6e22e">style_pvalue</span>(.x, digits <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>)) <span style="color:#f92672">%&gt;%</span> 
-    <span style="color:#a6e22e">italicize_levels</span>()
-
-</code></pre></div><p><img src="https://i.imgur.com/0V2HQ74.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>model1 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">tbl_regression</span>(intercept<span style="color:#f92672">=</span>T,
+</span></span><span style="display:flex;"><span>             pvalue_fun <span style="color:#f92672">=</span> <span style="color:#f92672">~</span><span style="color:#a6e22e">style_pvalue</span>(.x, digits <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>)) <span style="color:#f92672">%&gt;%</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">italicize_levels</span>()
+</span></span></code></pre></div><p><img src="https://i.imgur.com/0V2HQ74.png" alt=""></p>
 <p>他にもいろいろ便利な関数が用意されているようですが、私はまだ使いこなせていません。そのうち勉強して追記します。</p>
 <p>参考： <a href="https://cran.r-project.org/web/packages/gtsummary/gtsummary.pdf">https://cran.r-project.org/web/packages/gtsummary/gtsummary.pdf</a></p>
 <h2 id="出力その他">出力、その他</h2>
@@ -341,17 +339,17 @@ Number of Fisher Scoring iterations<span style="color:#f92672">:</span> <span st
 ここからの出力の方法はいくつかあるのかな、と個人的には思っています。
 ただ今回は画像としての出力が目標でしたのでそちらで進めていきます。</p>
 <p>まずは、{webshot}パッケージを読み込みます。このパッケージを用いると（正確にはPhantomJSというアプリケーションを用いると）Rでwebページのスクリーンショットを撮ることができます。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(webshot)
-<span style="color:#a6e22e">install_phantomjs</span>()
-</code></pre></div><p>準備はこれで終わりです。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(webshot)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">install_phantomjs</span>()
+</span></span></code></pre></div><p>準備はこれで終わりです。</p>
 <p>では作成したhtmlのスクリーンショットを撮ってみます。</p>
 <p>例えば、一番最後に作成した表を画像として保存したいとします。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">model1 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">tbl_regression</span>(intercept<span style="color:#f92672">=</span>T,
-             pvalue_fun <span style="color:#f92672">=</span> <span style="color:#f92672">~</span><span style="color:#a6e22e">style_pvalue</span>(.x, digits <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>)) <span style="color:#f92672">%&gt;%</span> 
-    <span style="color:#a6e22e">italicize_levels</span>() <span style="color:#f92672">%&gt;%</span>
-    <span style="color:#a6e22e">as_gt</span>() <span style="color:#f92672">%&gt;%</span>
-    <span style="color:#a6e22e">gtsave</span>(<span style="color:#e6db74">&#34;hogehoge.png&#34;</span>)
-</code></pre></div><p>これで、<code>hogehoge.png</code>が作成されていると思います。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>model1 <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">tbl_regression</span>(intercept<span style="color:#f92672">=</span>T,
+</span></span><span style="display:flex;"><span>             pvalue_fun <span style="color:#f92672">=</span> <span style="color:#f92672">~</span><span style="color:#a6e22e">style_pvalue</span>(.x, digits <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>)) <span style="color:#f92672">%&gt;%</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">italicize_levels</span>() <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">as_gt</span>() <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">gtsave</span>(<span style="color:#e6db74">&#34;hogehoge.png&#34;</span>)
+</span></span></code></pre></div><p>これで、<code>hogehoge.png</code>が作成されていると思います。</p>
 <p>先ほど表を作成した時と違うのは<code>as_gt()</code>を噛ませていることです。
 {gtsummary}の<code>tbl_regression()</code>それそのものではgtオブジェクトになっていないようですね。<code>as_gt()</code>でgtオブジェクトへ変換した後に<code>gtsave()</code>を行ってsaveします。
 この<code>gtsave()</code>の際に先ほどの{webshot}が要求されます。</p>
@@ -398,7 +396,7 @@ Number of Fisher Scoring iterations<span style="color:#f92672">:</span> <span st
 	    </a>
 
 		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2f6w3n.github.io%2fposts%2fgtsummary%2f
-			&title=gt&summary=%e5%b0%8e%e5%85%a5%20%e8%ab%96%e6%96%87%e3%82%92%e5%9f%b7%e7%ad%86%e3%81%99%e3%82%8b%e6%99%82%e3%82%84%e3%80%81%e7%b5%90%e6%9e%9c%e3%82%92%e3%83%9c%e3%82%b9%e3%81%ab%e8%a6%8b%e3%81%9b%e3%82%8b%e6%99%82%e3%81%aa%e3%81%a9%e3%81%ab%e8%a1%a8%e3%82%92%e4%bd%9c%e6%88%90%e3%81%99%e3%82%8b%e3%81%93%e3%81%a8%e3%81%8c%e3%81%82%e3%82%8b%e3%81%a8%e6%80%9d%e3%81%84%e3%81%be%e3%81%99%e3%80%82%20%e3%81%9d%e3%81%ae%e3%82%88%e3%81%86%e3%81%aa%e6%99%82%e3%81%ab%e7%9a%86%e3%81%95%e3%82%93%e3%81%af%e3%81%a9%e3%81%ae%e3%82%88%e3%81%86%e3%81%ab%e8%a1%a8%e3%82%92%e4%bd%9c%e6%88%90%e3%81%97%e3%81%a6%e3%81%84%e3%81%be%e3%81%99%e3%81%8b%ef%bc%9f%20Excel%e3%81%a7%e4%bd%9c%e6%88%90%e3%81%97%e3%81%9f%e8%a1%a8%e3%82%92Word%e3%81%ab%e5%9f%8b%e3%82%81%e8%be%bc%e3%82%80%e3%80%81Word%e3%81%a7%e7%9b%b4%e6%8e%a5%e8%a1%a8%e3%82%92%e4%bd%9c%e6%88%90%e3%81%99%e3%82%8b%e3%80%81LaTeX%e3%81%ae%e8%a1%a8%e7%b5%84%e3%81%bf%e3%82%92%e7%94%a8%e3%81%84%e3%82%8b%e3%80%81Markdown%e3%81%a7%e8%a8%98%e8%bf%b0%e3%81%97%e3%81%a6pandoc%e3%81%a7%e5%90%90%e3%81%8d%e5%87%ba%e3%81%99%26hellip%3b%e3%81%aa%e3%81%a9%e3%81%aa%e3%81%a9%e3%81%84%e3%82%8d%e3%81%84%e3%82%8d%e3%81%aa%e6%96%b9%e6%b3%95%e3%81%8c%e3%81%82%e3%82%8b%e3%81%a8%e6%80%9d%e3%81%84%e3%81%be%e3%81%99%e3%80%82%0a%e7%ad%86%e8%80%85%e3%81%af%e3%82%82%e3%81%a3%e3%81%b1%e3%82%89LaTeX%e3%81%ae%e8%a1%a8%e7%b5%84%e3%81%bf%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e3%81%84%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%ef%bc%88%e7%ad%86%e8%80%85%e3%81%af%e3%81%9d%e3%81%ae%e3%81%86%e3%81%a1.Rmd%e3%81%ab%e5%ae%8c%e5%85%a8%e7%a7%bb%e8%a1%8c%e3%81%97%e3%81%9f%e3%81%84%e3%81%a8%e6%80%9d%e3%81%84%e3%81%a4%e3%81%a42%e5%b9%b4%e3%81%8f%e3%82%89%e3%81%84%e3%81%afR%2bLaTeX%e3%81%ae%e7%b5%84%e3%81%bf%e5%90%88%e3%82%8f%e3%81%9b%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e3%81%84%e3%81%be%e3%81%99%e3%80%82%ef%bc%89%0a%e3%81%84%e3%81%a4%e3%82%82%e3%81%ae%e3%82%88%e3%81%86%e3%81%abR%e3%81%a7%e5%be%97%e3%81%9f%e8%a7%a3%e6%9e%90%e7%b5%90%e6%9e%9c%e3%82%92%e3%81%bd%e3%81%a1%e3%81%bd%e3%81%a1%e3%81%a8%e3%82%b3%e3%83%94%e3%83%9a%e3%82%92%e3%81%97%e3%81%a6%e3%81%84%e3%81%9f%e3%81%a8%e3%81%93%e3%82%8d%e3%80%81%e3%81%b5%e3%81%a8%20%e3%80%8cR%e3%81%a7%e5%90%90%e3%81%8d%e5%87%ba%e3%81%97%e3%81%9f%e8%a7%a3%e6%9e%90%e3%81%ae%e7%b5%90%e6%9e%9c%e3%82%92%e3%82%b3%e3%83%94%e3%83%9a%e3%81%99%e3%82%8b%e4%bd%9c%e6%a5%ad%e3%80%81%e8%99%9a%e3%81%97%e3%81%8f%e3%81%aa%e3%81%84%ef%bc%9f%e3%80%8d%20%e3%81%a8%e6%80%9d%e3%81%84%e7%ab%8b%e3%81%a3%e3%81%9f%e3%81%ae%e3%81%8c%e6%9c%ac%e8%a8%98%e4%ba%8b%e3%81%ae%e3%81%8d%e3%81%a3%e3%81%8b%e3%81%91%e3%81%a7%e3%81%99%e3%80%82%20%e7%9a%86%e3%81%95%e3%82%93%e3%81%af%e3%81%a9%e3%81%86%e3%81%a7%e3%81%99%e3%81%8b%ef%bc%9f%e8%83%b8%e3%81%ab%e6%89%8b%e3%82%92%e5%bd%93%e3%81%a6%e3%81%a6%e8%80%83%e3%81%88%e3%81%a6%e3%81%bf%e3%81%a6%e3%81%8f%e3%81%a0%e3%81%95%e3%81%84%e3%80%82%e3%81%88%e3%80%81%e4%bd%95%e3%82%82%e6%80%9d%e3%82%8f%e3%81%aa%e3%81%84%ef%bc%9f%e3%81%9d%e3%81%86%e3%81%a7%e3%81%99%e3%81%8b%26hellip%3b%e3%80%82%0a%e3%81%a8%e3%81%84%e3%81%86%e3%81%93%e3%81%a8%e3%81%a7%e3%80%81%e4%bb%8a%e5%9b%9e%e3%81%af%20R%e3%81%8b%e3%82%89%e8%a1%a8%e3%82%92image%e3%81%a8%e3%81%97%e3%81%a6%e5%90%90%e3%81%8d%e5%87%ba%e3%81%99%20%e3%81%93%e3%81%a8%e3%82%92%e7%9b%ae%e7%9a%84%e3%81%a8%e3%81%97%e3%81%9f%e8%a8%98%e4%ba%8b%e3%81%a7%e3%81%99%e3%80%82image%e3%81%a8%e3%81%97%e3%81%a6%e5%90%90%e3%81%8d%e5%87%ba%e3%81%9b%e3%81%b0%e3%80%81%e3%81%82%e3%81%a8%e3%81%afLaTeX%e3%81%a0%e3%81%a8%e3%81%a6%5cincludegraphics%e3%81%a7%e3%81%8a%e3%81%97%e3%81%be%e3%81%84%e3%81%aa%e3%82%8f%e3%81%91%e3%81%a7%e3%81%99%e3%80%82%e3%81%aa%e3%82%93%e3%81%a8%e6%a5%bd%e3%81%aa%e3%81%93%e3%81%a8%e3%81%8b%e3%80%82%0a%e6%b3%a8%e6%84%8f%ef%bc%81%ef%bc%81%e5%ae%9f%e9%9a%9b%e5%95%8f%e9%a1%8c%e3%81%a8%e3%81%97%e3%81%a6%e3%80%81%e8%ab%96%e6%96%87%e3%82%92%e6%8a%95%e7%a8%bf%e3%81%99%e3%82%8b%e6%99%82%e3%81%ab%e3%81%afimage%e3%81%a8%e3%81%97%e3%81%a6table%e3%82%92%e6%8f%90%e5%87%ba%e3%81%a7%e3%81%8d%e3%81%aa%e3%81%84%e5%a0%b4%e5%90%88%e3%81%ae%e6%96%b9%e3%81%8c%e5%a4%9a%e3%81%84%e3%81%a8%e6%80%9d%e3%81%84%e3%81%be%e3%81%99%e3%80%82%e3%81%9d%e3%81%ae%e3%82%88%e3%81%86%e3%81%aa%e5%a0%b4%e5%90%88%e3%82%82%e3%81%82%e3%82%8b%e7%a8%8b%e5%ba%a6%e3%81%be%e3%81%a7%e3%81%af%e3%82%ab%e3%83%90%e3%83%bc%e3%81%a7%e3%81%8d%e3%81%be%e3%81%99%e3%81%8c%e3%80%81%e4%bb%8a%e5%9b%9e%e3%81%af%e4%b8%bb%e3%81%ab%e5%ad%a6%e4%bc%9a%e7%99%ba%e8%a1%a8%e3%82%84%e3%83%97%e3%83%ad%e3%82%b0%e3%83%ac%e3%82%b9%e3%83%9f%e3%83%bc%e3%83%86%e3%82%a3%e3%83%b3%e3%82%b0%e3%81%ae%e6%99%82%e3%81%ae%e3%81%8a%e5%bd%b9%e7%ab%8b%e3%81%a1%e6%83%85%e5%a0%b1%e3%81%8f%e3%82%89%e3%81%84%e3%81%ab%e8%80%83%e3%81%88%e3%81%a6%e3%81%8f%e3%81%a0%e3%81%95%e3%81%84%e3%80%82%20%e3%81%93%e3%81%a1%e3%82%89%e3%81%ae%e8%a8%98%e4%ba%8b%e3%82%92%e5%8f%82%e7%85%a7%e3%81%8f%e3%81%a0%e3%81%95%e3%81%84%e3%80%82%26ldquo%3bCan%20we%20insert%20tables%20as%20images%20in%20a%20manuscript%20submission%20document%3f%26quot%3b%0a%e3%81%be%e3%81%9f%e3%80%81%e4%bb%8a%e5%9b%9e%e3%82%82%e3%81%8b%e3%81%aa%e3%82%8a%e5%82%99%e5%bf%98%e9%8c%b2%e3%81%ab%e8%bf%91%e3%81%84%e3%81%a7%e3%81%99%e3%80%82%0a%e4%bb%8a%e5%9b%9e%e3%81%af%e3%80%81%0a%20%7bgt%7d%e3%81%ab%e3%82%88%e3%82%8b%e8%a1%a8%e4%bd%9c%e6%88%90%20%7bgtsummary%7d%e3%81%ab%e3%82%88%e3%82%8b%e8%a1%a8%e4%bd%9c%e6%88%90%20%e5%87%ba%e5%8a%9b%e3%80%81%e3%81%9d%e3%81%ae%e4%bb%96%20%20%e3%81%ae%e9%a0%86%e3%81%a7%e3%81%99%e3%80%82%0aEnvironment%20%20macOS%20Catalina%2010.15.6%20R%204.0.2%20gt%200.&source=rafed123.github.io"
+			&title=gt&summary=%e5%b0%8e%e5%85%a5%20%e8%ab%96%e6%96%87%e3%82%92%e5%9f%b7%e7%ad%86%e3%81%99%e3%82%8b%e6%99%82%e3%82%84%e3%80%81%e7%b5%90%e6%9e%9c%e3%82%92%e3%83%9c%e3%82%b9%e3%81%ab%e8%a6%8b%e3%81%9b%e3%82%8b%e6%99%82%e3%81%aa%e3%81%a9%e3%81%ab%e8%a1%a8%e3%82%92%e4%bd%9c%e6%88%90%e3%81%99%e3%82%8b%e3%81%93%e3%81%a8%e3%81%8c%e3%81%82%e3%82%8b%e3%81%a8%e6%80%9d%e3%81%84%e3%81%be%e3%81%99%e3%80%82%20%e3%81%9d%e3%81%ae%e3%82%88%e3%81%86%e3%81%aa%e6%99%82%e3%81%ab%e7%9a%86%e3%81%95%e3%82%93%e3%81%af%e3%81%a9%e3%81%ae%e3%82%88%e3%81%86%e3%81%ab%e8%a1%a8%e3%82%92%e4%bd%9c%e6%88%90%e3%81%97%e3%81%a6%e3%81%84%e3%81%be%e3%81%99%e3%81%8b%ef%bc%9f%20Excel%e3%81%a7%e4%bd%9c%e6%88%90%e3%81%97%e3%81%9f%e8%a1%a8%e3%82%92Word%e3%81%ab%e5%9f%8b%e3%82%81%e8%be%bc%e3%82%80%e3%80%81Word%e3%81%a7%e7%9b%b4%e6%8e%a5%e8%a1%a8%e3%82%92%e4%bd%9c%e6%88%90%e3%81%99%e3%82%8b%e3%80%81LaTeX%e3%81%ae%e8%a1%a8%e7%b5%84%e3%81%bf%e3%82%92%e7%94%a8%e3%81%84%e3%82%8b%e3%80%81Markdown%e3%81%a7%e8%a8%98%e8%bf%b0%e3%81%97%e3%81%a6pandoc%e3%81%a7%e5%90%90%e3%81%8d%e5%87%ba%e3%81%99%26hellip%3b%e3%81%aa%e3%81%a9%e3%81%aa%e3%81%a9%e3%81%84%e3%82%8d%e3%81%84%e3%82%8d%e3%81%aa%e6%96%b9%e6%b3%95%e3%81%8c%e3%81%82%e3%82%8b%e3%81%a8%e6%80%9d%e3%81%84%e3%81%be%e3%81%99%e3%80%82%0a%e7%ad%86%e8%80%85%e3%81%af%e3%82%82%e3%81%a3%e3%81%b1%e3%82%89LaTeX%e3%81%ae%e8%a1%a8%e7%b5%84%e3%81%bf%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e3%81%84%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%ef%bc%88%e7%ad%86%e8%80%85%e3%81%af%e3%81%9d%e3%81%ae%e3%81%86%e3%81%a1.Rmd%e3%81%ab%e5%ae%8c%e5%85%a8%e7%a7%bb%e8%a1%8c%e3%81%97%e3%81%9f%e3%81%84%e3%81%a8%e6%80%9d%e3%81%84%e3%81%a4%e3%81%a42%e5%b9%b4%e3%81%8f%e3%82%89%e3%81%84%e3%81%afR%2bLaTeX%e3%81%ae%e7%b5%84%e3%81%bf%e5%90%88%e3%82%8f%e3%81%9b%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6%e3%81%84%e3%81%be%e3%81%99%e3%80%82%ef%bc%89%0a%e3%81%84%e3%81%a4%e3%82%82%e3%81%ae%e3%82%88%e3%81%86%e3%81%abR%e3%81%a7%e5%be%97%e3%81%9f%e8%a7%a3%e6%9e%90%e7%b5%90%e6%9e%9c%e3%82%92%e3%81%bd%e3%81%a1%e3%81%bd%e3%81%a1%e3%81%a8%e3%82%b3%e3%83%94%e3%83%9a%e3%82%92%e3%81%97%e3%81%a6%e3%81%84%e3%81%9f%e3%81%a8%e3%81%93%e3%82%8d%e3%80%81%e3%81%b5%e3%81%a8%20%e3%80%8cR%e3%81%a7%e5%90%90%e3%81%8d%e5%87%ba%e3%81%97%e3%81%9f%e8%a7%a3%e6%9e%90%e3%81%ae%e7%b5%90%e6%9e%9c%e3%82%92%e3%82%b3%e3%83%94%e3%83%9a%e3%81%99%e3%82%8b%e4%bd%9c%e6%a5%ad%e3%80%81%e8%99%9a%e3%81%97%e3%81%8f%e3%81%aa%e3%81%84%ef%bc%9f%e3%80%8d%20%e3%81%a8%e6%80%9d%e3%81%84%e7%ab%8b%e3%81%a3%e3%81%9f%e3%81%ae%e3%81%8c%e6%9c%ac%e8%a8%98%e4%ba%8b%e3%81%ae%e3%81%8d%e3%81%a3%e3%81%8b%e3%81%91%e3%81%a7%e3%81%99%e3%80%82%20%e7%9a%86%e3%81%95%e3%82%93%e3%81%af%e3%81%a9%e3%81%86%e3%81%a7%e3%81%99%e3%81%8b%ef%bc%9f%e8%83%b8%e3%81%ab%e6%89%8b%e3%82%92%e5%bd%93%e3%81%a6%e3%81%a6%e8%80%83%e3%81%88%e3%81%a6%e3%81%bf%e3%81%a6%e3%81%8f%e3%81%a0%e3%81%95%e3%81%84%e3%80%82%e3%81%88%e3%80%81%e4%bd%95%e3%82%82%e6%80%9d%e3%82%8f%e3%81%aa%e3%81%84%ef%bc%9f%e3%81%9d%e3%81%86%e3%81%a7%e3%81%99%e3%81%8b%26hellip%3b%e3%80%82%0a%e3%81%a8%e3%81%84%e3%81%86%e3%81%93%e3%81%a8%e3%81%a7%e3%80%81%e4%bb%8a%e5%9b%9e%e3%81%af%20R%e3%81%8b%e3%82%89%e8%a1%a8%e3%82%92image%e3%81%a8%e3%81%97%e3%81%a6%e5%90%90%e3%81%8d%e5%87%ba%e3%81%99%20%e3%81%93%e3%81%a8%e3%82%92%e7%9b%ae%e7%9a%84%e3%81%a8%e3%81%97%e3%81%9f%e8%a8%98%e4%ba%8b%e3%81%a7%e3%81%99%e3%80%82image%e3%81%a8%e3%81%97%e3%81%a6%e5%90%90%e3%81%8d%e5%87%ba%e3%81%9b%e3%81%b0%e3%80%81%e3%81%82%e3%81%a8%e3%81%afLaTeX%e3%81%a0%e3%81%a8%e3%81%a6%5cincludegraphics%e3%81%a7%e3%81%8a%e3%81%97%e3%81%be%e3%81%84%e3%81%aa%e3%82%8f%e3%81%91%e3%81%a7%e3%81%99%e3%80%82%e3%81%aa%e3%82%93%e3%81%a8%e6%a5%bd%e3%81%aa%e3%81%93%e3%81%a8%e3%81%8b%e3%80%82%0a%e6%b3%a8%e6%84%8f%ef%bc%81%ef%bc%81%e5%ae%9f%e9%9a%9b%e5%95%8f%e9%a1%8c%e3%81%a8%e3%81%97%e3%81%a6%e3%80%81%e8%ab%96%e6%96%87%e3%82%92%e6%8a%95%e7%a8%bf%e3%81%99%e3%82%8b%e6%99%82%e3%81%ab%e3%81%afimage%e3%81%a8%e3%81%97%e3%81%a6table%e3%82%92%e6%8f%90%e5%87%ba%e3%81%a7%e3%81%8d%e3%81%aa%e3%81%84%e5%a0%b4%e5%90%88%e3%81%ae%e6%96%b9%e3%81%8c%e5%a4%9a%e3%81%84%e3%81%a8%e6%80%9d%e3%81%84%e3%81%be%e3%81%99%e3%80%82%e3%81%9d%e3%81%ae%e3%82%88%e3%81%86%e3%81%aa%e5%a0%b4%e5%90%88%e3%82%82%e3%81%82%e3%82%8b%e7%a8%8b%e5%ba%a6%e3%81%be%e3%81%a7%e3%81%af%e3%82%ab%e3%83%90%e3%83%bc%e3%81%a7%e3%81%8d%e3%81%be%e3%81%99%e3%81%8c%e3%80%81%e4%bb%8a%e5%9b%9e%e3%81%af%e4%b8%bb%e3%81%ab%e5%ad%a6%e4%bc%9a%e7%99%ba%e8%a1%a8%e3%82%84%e3%83%97%e3%83%ad%e3%82%b0%e3%83%ac%e3%82%b9%e3%83%9f%e3%83%bc%e3%83%86%e3%82%a3%e3%83%b3%e3%82%b0%e3%81%ae%e6%99%82%e3%81%ae%e3%81%8a%e5%bd%b9%e7%ab%8b%e3%81%a1%e6%83%85%e5%a0%b1%e3%81%8f%e3%82%89%e3%81%84%e3%81%ab%e8%80%83%e3%81%88%e3%81%a6%e3%81%8f%e3%81%a0%e3%81%95%e3%81%84%e3%80%82%20%e3%81%93%e3%81%a1%e3%82%89%e3%81%ae%e8%a8%98%e4%ba%8b%e3%82%92%e5%8f%82%e7%85%a7%e3%81%8f%e3%81%a0%e3%81%95%e3%81%84%e3%80%82%26ldquo%3bCan%20we%20insert%20tables%20as%20images%20in%20a%20manuscript%20submission%20document%3f%26rdquo%3b%0a%e3%81%be%e3%81%9f%e3%80%81%e4%bb%8a%e5%9b%9e%e3%82%82%e3%81%8b%e3%81%aa%e3%82%8a%e5%82%99%e5%bf%98%e9%8c%b2%e3%81%ab%e8%bf%91%e3%81%84%e3%81%a7%e3%81%99%e3%80%82%0a%e4%bb%8a%e5%9b%9e%e3%81%af%e3%80%81%0a%20%7bgt%7d%e3%81%ab%e3%82%88%e3%82%8b%e8%a1%a8%e4%bd%9c%e6%88%90%20%7bgtsummary%7d%e3%81%ab%e3%82%88%e3%82%8b%e8%a1%a8%e4%bd%9c%e6%88%90%20%e5%87%ba%e5%8a%9b%e3%80%81%e3%81%9d%e3%81%ae%e4%bb%96%20%20%e3%81%ae%e9%a0%86%e3%81%a7%e3%81%99%e3%80%82%0aEnvironment%20%20macOS%20Catalina%2010.15.6%20R%204.0.2%20gt%200.&source=rafed123.github.io"
 	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
 	        title="Share on LinkedIn. Opens in a new window." >
 	        <img src=../../img/icons/45px/linkedin.png>

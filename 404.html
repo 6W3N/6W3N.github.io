@@ -188,6 +188,14 @@
 
 
 
+
+
+
+
+
+
+
+
 <div class="columns is-centered has-text-centered">
     <div class="column is-10">
         <div class="content">
@@ -238,6 +246,12 @@
                     </span>
                 </a>
                 
+                <a href="./tags/git">
+                    <span class="tag is-dark is-large is-rounded">
+                        Git
+                    </span>
+                </a>
+                
                 <a href="./tags/google">
                     <span class="tag is-dark is-large is-rounded">
                         Google
@@ -268,6 +282,12 @@
                     </span>
                 </a>
                 
+                <a href="./tags/latex">
+                    <span class="tag is-dark is-large is-rounded">
+                        Latex
+                    </span>
+                </a>
+                
                 <a href="./tags/photo">
                     <span class="tag is-dark is-large is-rounded">
                         Photo
@@ -280,9 +300,21 @@
                     </span>
                 </a>
                 
+                <a href="./tags/rmarkdown">
+                    <span class="tag is-dark is-large is-rounded">
+                        Rmarkdown
+                    </span>
+                </a>
+                
                 <a href="./tags/rmd">
                     <span class="tag is-dark is-large is-rounded">
                         Rmd
+                    </span>
+                </a>
+                
+                <a href="./tags/rticles">
+                    <span class="tag is-dark is-large is-rounded">
+                        Rticles
                     </span>
                 </a>
                 
@@ -366,6 +398,137 @@
             </a>
         </div>
         <div class="blog-brief">
+    <a href="./posts/writingflow/">
+        <h3 class="title is-4">
+            Writing Flow
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="./posts/writingflow/">
+                    <p class="subtitle info date">Jun 15, 2022
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="./posts/writingflow/">
+                    <p class="subtitle info">
+                        25 mins read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="./tags/rmarkdown">Rmarkdown</a>
+            
+            <a class="tag is-rounded" href="./tags/git">Git</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="./posts/writingflow/">
+                <p class="summary">
+                    Rstudioを用いた論文執筆フロー Rで解析や作図したものを別ファイルとして保存しておき、LaTeXやwordを用いて文章を作成し、共著者とのメールなどをしながらgoogle driveやdropboxでバージョン管理をして…という流れがなんだか非効率的に思えていました。
+どうにか一元管理できないかと探していたところ、Rstudio &#43; gitで全て完結しそうだなと思い実際に手を動かしてみた記録です。 簡単に説明すると Rstudioでrticlesなどの便利packageを用いてRmarkdownを書き、それをgitで管理する という方法になります。
+この記事の対象はRを用いて作図 -&gt; 論文執筆をしてきた（これからする）くらいの方です。僕の知る進化・生態学系の研究者の方はRを使う機会が多いと思うので、そちら向けと言ってもいいかもしれません。
+TOC  構成要素 ディレクトリの作成 Rmdの作成 gitでのバージョン管理 gitでの共同編集例 おわりに  構成要素 Rstudio Rユーザーにとっては言わずもがなであるIDE。普段使いしている方も多いと思います。 色々なnvimのプラグインを試した結果、Rmarkdownを書くのにはRstudioが一番適していたので論文執筆時にはお世話になっています。（普段の解析はnvimでやっている。）
+Rmarkdown Rでドキュメント生成するため、Rとmarkdownを組み合わせたもの。少しややこしいheader部分を除けばRのソースコードとmarkdown記法で全て書けるので非常に楽。 markdownのcheat sheatはここを参照。
+閑話：Rmarkdownで執筆するメリット 主に文章、Rスクリプトがまとまっていることに由来する様々なメリットがあります。
+ 再現性が担保される （例：コンパイルするごとに同じグラフを確実に描画できる）。 データが変わってもその都度グラフを書き直したり統計解析を行う必要がない（解析結果などを文中で利用できる形にしておけば）。 RとRstudio（どちらも無償）が入っていれば互換性が担保される。 bibファイルを利用できるため、引用文献管理が非常に楽。  反対にデメリットもちらほら
+ Rmdのままでは（基本的には）英文校閲にかけられない。 論文投稿の際にwordファイルを要求される場合、pandocなどを使って一度.
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="./posts/writingflow/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
+    <a href="./posts/rticles/">
+        <h3 class="title is-4">
+            Rmd to Article
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="./posts/rticles/">
+                    <p class="subtitle info date">Mar 20, 2022
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="./posts/rticles/">
+                    <p class="subtitle info">
+                        1 min read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="./tags/r">R</a>
+            
+            <a class="tag is-rounded" href="./tags/rmd">Rmd</a>
+            
+            <a class="tag is-rounded" href="./tags/latex">Latex</a>
+            
+            <a class="tag is-rounded" href="./tags/rticles">Rticles</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="./posts/rticles/">
+                <p class="summary">
+                    What’s rticles ? この度PCを新調しました。それに伴っていろいろな環境を移す作業をしつつ、どんな環境だったかを描き出せる範囲で書き出しています。
+今回はRStudioを用いてRmdで論文執筆ができる（RStudioは使わなくとも良いが）rticlesというパッケージをPCに入れるさいの手順等をメモしておきます。
+rticlesというRパッケージ
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="./posts/rticles/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
     <a href="./posts/newpaper220127/">
         <h3 class="title is-4">
             New Paper Is Out (2022/1/27)
@@ -559,132 +722,6 @@
         </div>
         <div class="level-right">
             <a href="./posts/newpaper211119/">Continue reading <i class="fa fa-angle-double-right"
-                    aria-hidden="true"></i></a>
-        </div>
-    </div>
-    <hr>
-</div><div class="blog-brief">
-    <a href="./posts/gtsummary/">
-        <h3 class="title is-4">
-            Gt
-        </h3>
-    </a>
-
-    <div class="level is-mobile details">
-        <div class="level-left">
-
-            
-            <div class="level-item">
-                <a href="./posts/gtsummary/">
-                    <p class="subtitle info date">Sep 10, 2020
-                    </p>
-                </a>
-            </div>
-            
-
-
-            <div class="level-item">
-                <a href="./posts/gtsummary/">
-                    <p class="subtitle info">
-                        17 mins read
-                    </p>
-                </a>
-            </div>
-        </div>
-        <div class="level-right is-hidden-touch">
-            
-            <a class="tag is-rounded" href="./tags/r">R</a>
-            
-            <a class="tag is-rounded" href="./tags/gt">Gt</a>
-            
-            <a class="tag is-rounded" href="./tags/gtsummary">Gtsummary</a>
-            
-            <a class="tag is-rounded" href="./tags/tips">Tips</a>
-            
-        </div>
-    </div>
-
-    <div>
-        
-
-        <div>
-            <a href="./posts/gtsummary/">
-                <p class="summary">
-                    Self memo to make tables as images using R
-                    
-                </p>
-            </a>
-        </div>
-    </div>
-
-    <div class="level is-mobile continue-reading">
-        <div class="level-left">
-        </div>
-        <div class="level-right">
-            <a href="./posts/gtsummary/">Continue reading <i class="fa fa-angle-double-right"
-                    aria-hidden="true"></i></a>
-        </div>
-    </div>
-    <hr>
-</div><div class="blog-brief">
-    <a href="./posts/rtweet/">
-        <h3 class="title is-4">
-            Rtweet
-        </h3>
-    </a>
-
-    <div class="level is-mobile details">
-        <div class="level-left">
-
-            
-            <div class="level-item">
-                <a href="./posts/rtweet/">
-                    <p class="subtitle info date">Aug 14, 2020
-                    </p>
-                </a>
-            </div>
-            
-
-
-            <div class="level-item">
-                <a href="./posts/rtweet/">
-                    <p class="subtitle info">
-                        22 mins read
-                    </p>
-                </a>
-            </div>
-        </div>
-        <div class="level-right is-hidden-touch">
-            
-            <a class="tag is-rounded" href="./tags/r">R</a>
-            
-            <a class="tag is-rounded" href="./tags/rtweet">Rtweet</a>
-            
-            <a class="tag is-rounded" href="./tags/twitter">Twitter</a>
-            
-            <a class="tag is-rounded" href="./tags/tips">Tips</a>
-            
-        </div>
-    </div>
-
-    <div>
-        
-
-        <div>
-            <a href="./posts/rtweet/">
-                <p class="summary">
-                    Self memo of Twitter search by R
-                    
-                </p>
-            </a>
-        </div>
-    </div>
-
-    <div class="level is-mobile continue-reading">
-        <div class="level-left">
-        </div>
-        <div class="level-right">
-            <a href="./posts/rtweet/">Continue reading <i class="fa fa-angle-double-right"
                     aria-hidden="true"></i></a>
         </div>
     </div>

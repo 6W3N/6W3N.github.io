@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en-us"><title>
+    Git | 
+    
+    6W3N Site</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<meta name="description" 
+      content="&#39;6W3N&#39; is an anagram of &#39;mwmin&#39; that is one of the nicknames for Wataru Mukaimine
+                ">
+
+<link rel="canonical" href="https://6w3n.github.io/tags/git/" />
+
+<link rel="icon" type="image/png" href="https://6w3n.github.io/image/favicon.ico">
+
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../css/bulma.min.css">
+
+<meta property="og:title" content="git" />
+<meta property="og:description" content="&#39;6W3N&#39; is an anagram of &#39;mwmin&#39; that is one of the nicknames for Wataru Mukaimine" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://6w3n.github.io/tags/git/" />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="git"/>
+<meta name="twitter:description" content="&#39;6W3N&#39; is an anagram of &#39;mwmin&#39; that is one of the nicknames for Wataru Mukaimine"/>
+
+
+
+    
+
+
+<script src=../../js/ramium.js></script>
+<link rel="stylesheet" href=../../css/ramium.css>
+
+
+
+
+
+<body><nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href=../../>
+      
+      <strong>6W3N Site </strong>
+      
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+      
+      <a class="navbar-item" href="../../">Home</a>
+      
+      
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">This Blog</a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="../../tags/">All Tags</a>
+          
+          <a class="navbar-item" href="../../posts/">All Posts</a>
+          
+        </div>
+      </div>
+      
+      
+      
+      <a class="navbar-item" href="../../author/">Author</a>
+      
+      
+      
+      <a class="navbar-item" href="../../contact/">Contact</a>
+      
+      
+      
+      <a class="navbar-item" href="../../links/">Links</a>
+      
+      
+      
+      <a class="navbar-item" href="../../works/">Works</a>
+      
+      
+    </div>
+
+    <div class="navbar-end">
+      
+      <a class="navbar-item navgithub" href="https://github.com/6W3N/" target="_blank">
+        <i class="fa fa-github fa-2x"></i>
+      </a>
+      
+
+      
+    </div>
+  </div>
+</nav><div class="columns is-centered">
+        <div id="page-body" class="column is-7">
+
+<div class="content">
+    <h1>Git</h1>
+</div>
+
+<div class="blog-brief">
+    <a href="../../posts/writingflow/">
+        <h3 class="title is-4">
+            Writing Flow
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="../../posts/writingflow/">
+                    <p class="subtitle info date">Jun 15, 2022
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="../../posts/writingflow/">
+                    <p class="subtitle info">
+                        25 mins read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="../../tags/rmarkdown">Rmarkdown</a>
+            
+            <a class="tag is-rounded" href="../../tags/git">Git</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="../../posts/writingflow/">
+                <p class="summary">
+                    Rstudioを用いた論文執筆フロー Rで解析や作図したものを別ファイルとして保存しておき、LaTeXやwordを用いて文章を作成し、共著者とのメールなどをしながらgoogle driveやdropboxでバージョン管理をして…という流れがなんだか非効率的に思えていました。
+どうにか一元管理できないかと探していたところ、Rstudio &#43; gitで全て完結しそうだなと思い実際に手を動かしてみた記録です。 簡単に説明すると Rstudioでrticlesなどの便利packageを用いてRmarkdownを書き、それをgitで管理する という方法になります。
+この記事の対象はRを用いて作図 -&gt; 論文執筆をしてきた（これからする）くらいの方です。僕の知る進化・生態学系の研究者の方はRを使う機会が多いと思うので、そちら向けと言ってもいいかもしれません。
+TOC  構成要素 ディレクトリの作成 Rmdの作成 gitでのバージョン管理 gitでの共同編集例 おわりに  構成要素 Rstudio Rユーザーにとっては言わずもがなであるIDE。普段使いしている方も多いと思います。 色々なnvimのプラグインを試した結果、Rmarkdownを書くのにはRstudioが一番適していたので論文執筆時にはお世話になっています。（普段の解析はnvimでやっている。）
+Rmarkdown Rでドキュメント生成するため、Rとmarkdownを組み合わせたもの。少しややこしいheader部分を除けばRのソースコードとmarkdown記法で全て書けるので非常に楽。 markdownのcheat sheatはここを参照。
+閑話：Rmarkdownで執筆するメリット 主に文章、Rスクリプトがまとまっていることに由来する様々なメリットがあります。
+ 再現性が担保される （例：コンパイルするごとに同じグラフを確実に描画できる）。 データが変わってもその都度グラフを書き直したり統計解析を行う必要がない（解析結果などを文中で利用できる形にしておけば）。 RとRstudio（どちらも無償）が入っていれば互換性が担保される。 bibファイルを利用できるため、引用文献管理が非常に楽。  反対にデメリットもちらほら
+ Rmdのままでは（基本的には）英文校閲にかけられない。 論文投稿の際にwordファイルを要求される場合、pandocなどを使って一度.
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="../../posts/writingflow/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+<footer class="footer has-background-dark">
+    <div class="content has-text-centered has-text-white">
+	    <p><a class="has-text-light" href="https://6w3n.github.io/">6W3N Site</a><p>
+        <p>
+            © 2020 Ramium. Powered by
+            <a class="has-text-light" href="https://github.com/gohugoio/hugo" target="_blank">
+            Hugo</a>. Theme
+            <a class="has-text-light" href="https://github.com/rafed123/ramium/" target="_blank">
+                Ramium.
+            </a>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>

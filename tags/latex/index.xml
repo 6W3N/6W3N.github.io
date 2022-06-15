@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>latex on 6W3N Site</title>
+    <link>https://6w3n.github.io/tags/latex/</link>
+    <description>Recent content in latex on 6W3N Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 20 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://6w3n.github.io/tags/latex/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rmd to article</title>
+      <link>https://6w3n.github.io/posts/rticles/</link>
+      <pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/posts/rticles/</guid>
+      <description>What&amp;rsquo;s rticles ? この度PCを新調しました。それに伴っていろいろな環境を移す作業をしつつ、どんな環境だったかを描き出せる範囲で書き出しています。
+今回はRStudioを用いてRmdで論文執筆ができる（RStudioは使わなくとも良いが）rticlesというパッケージをPCに入れるさいの手順等をメモしておきます。
+rticlesというRパッケージ</description>
+    </item>
+    
+  </channel>
+</rss>

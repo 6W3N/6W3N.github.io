@@ -177,7 +177,7 @@ So, if you want to learn R on the web, there is no less to know <code>tidyverse<
 <p>I strongly recommend to read and demonstrate &ldquo;R for Data Science (<a href="https://r4ds.had.co.nz/">R4DS</a>)&rdquo; for studying <code>tidyverse</code> or data handling skills in R.
 But this book has so many contents so that focus on some of them at this lecture.</p>
 <p>First of all, to load the <code>tidyverse</code> and make it available in your current R session.</p>
-<pre tabindex="0"><code>install.packages(&quot;tidyverse&quot;) #if you have not installed tidyverse
+<pre tabindex="0"><code>install.packages(&#34;tidyverse&#34;) #if you have not installed tidyverse
 library(tidyverse)
 </code></pre><h4 id="core-tidyverse">Core tidyverse</h4>
 <p>NOTE: The following list is just only my thoughts.</p>
@@ -261,7 +261,7 @@ On the other hands, &ldquo;non-tidy data&rdquo; are like these:</p>
 #&gt; 2 Brazil       37737  80488
 #&gt; 3 China       212258 213766
 </code></pre><p>table4a contains year (1999 or 2000), but each year are columns. &ldquo;gather&rdquo; function takes multiple columns and collapses into key-value pairs, duplicating all other columns as needed.</p>
-<pre tabindex="0"><code>gather(table4a, `1999`, `2000`, key = &quot;year&quot;, value = &quot;cases&quot;)
+<pre tabindex="0"><code>gather(table4a, `1999`, `2000`, key = &#34;year&#34;, value = &#34;cases&#34;)
 
 #&gt; # A tibble: 6 x 3
 #&gt;   country     year   cases
@@ -294,7 +294,7 @@ table2 have observations which are scattered across multiple rows.</p>
 <p>The <code>tidyr</code> package has more functions but the above lecture only introduces to <code>spread</code> and <code>gather</code> due to time.</p>
 <p>More functions are <a href="https://cran.r-project.org/web/packages/tidyr/tidyr.pdf">here</a>.
 Or we can confirm functions by running following commands.</p>
-<pre tabindex="0"><code>help(package = &quot;tidyr&quot;)
+<pre tabindex="0"><code>help(package = &#34;tidyr&#34;)
 </code></pre><h2 id="dplyr">dplyr</h2>
 <p><code>dplyr</code> is a powerful tool to transform data, like summarising, grouping, manipulating cases, manipulating variables, even combination.</p>
 <h4 id="pipe-operator">pipe operator</h4>
@@ -309,15 +309,15 @@ This is because nested functions (the first script)  are difficult to read and a
     spread(key = type, value = count)
 </code></pre><p><code>%&gt;%</code> operator would demonstrate its power when applying many  functions in one process.</p>
 <p>Following three scripts also return the same result.</p>
-<pre tabindex="0"><code>mutate(spread(filter(table2, country==&quot;Afghanistan&quot;),key = type, value = count), ratio=population/cases)
+<pre tabindex="0"><code>mutate(spread(filter(table2, country==&#34;Afghanistan&#34;),key = type, value = count), ratio=population/cases)
 # `mutate` function will be discribed later.
 </code></pre><p>or</p>
-<pre tabindex="0"><code>Af &lt;- filter(table2, country==&quot;Afghanistan&quot;)
+<pre tabindex="0"><code>Af &lt;- filter(table2, country==&#34;Afghanistan&#34;)
 spreadAf &lt;- spread(Af, key = type, value = count)
 mutate(spreadAf, ratio=population/cases)
 </code></pre><p>but  you can utilize pipe operator,</p>
 <pre tabindex="0"><code>table2 %&gt;% 
-  filter(country==&quot;Afghanistan&quot;) %&gt;% 
+  filter(country==&#34;Afghanistan&#34;) %&gt;% 
   spread(key = type, value = count) %&gt;% 
   mutate(ratio=population/cases)
 </code></pre><p>The first two are traditional R scripts.
@@ -358,7 +358,7 @@ But <code>select</code> function returns the <code>data.frame</code> type which 
 <p>The <code>filter</code> function filters the row levels.
 <code>filter</code> function returns matched row when matching arguments.</p>
 <pre tabindex="0"><code>table1 %&gt;% 
-  filter(country==&quot;Afghanistan&quot;)
+  filter(country==&#34;Afghanistan&#34;)
 </code></pre><p>The above commands return rows including <code>&quot;Afghanistan&quot;</code> in <code>country</code> column.</p>
 <p>Of course, you can also select by row numbers as below.
 But if so, you have to use <code>slice</code> function.</p>
@@ -371,7 +371,7 @@ But if so, you have to use <code>slice</code> function.</p>
 <p>The <code>_join</code> function group (<code>left_</code>, <code>right_</code>, <code>inner_</code> <code>full_</code>) combine two data.
 The easiest to use function is <code>inner_join</code> which combine and returns only the rows that match the column specified by <code>by</code>.</p>
 <pre tabindex="0"><code>table2 %&gt;%
-  inner_join(table3, by=c(&quot;country&quot;, &quot;year&quot;))
+  inner_join(table3, by=c(&#34;country&#34;, &#34;year&#34;))
 </code></pre><p>The above commands returns the data combined with <code>country</code> and <code>year</code> columns.</p>
 <p><strong>The following figure is for illustrative purposes.</strong><br>
 <code>x</code> has <code>a, b, and c</code> in <code>A</code> column and <code>t, u, and v</code> in <code>B</code> column.
@@ -386,7 +386,7 @@ This function is compatible with <code>summarize</code> function.</p>
 <h5 id="summarize"><code>summarize</code></h5>
 <p>The <code>summarize</code> function summarize variables and create a new table of summary statistics.</p>
 <pre tabindex="0"><code>mtcars %&gt;% 
-  as_tibble()    # tibble is easy to read and use class because we can confirm all variable's names, numbers of rows and columns, and columns class.
+  as_tibble()    # tibble is easy to read and use class because we can confirm all variable&#39;s names, numbers of rows and columns, and columns class.
 
 
 #&gt; # A tibble: 32 x 11
