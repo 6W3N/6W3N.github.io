@@ -13,7 +13,9 @@
       <pubDate>Wed, 13 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://6w3n.github.io/posts/slideembedding_demo/</guid>
-      <description>スライドを埋め込むデモ Office 365の機能を使ってみる This is an embedded Microsoft Office presentation, powered by Office.  Google slidesを使った例   </description>
+      <description>スライドを埋め込むデモ Office 365の機能を使ってみる This is an embedded Microsoft Office presentation, powered by Office.  Google slidesを使った例   レスポンシブにするには 出てきたタグに対してその上位にタグを設定。そこに対してclassやidでcssを直接あてに行く。
+具体的には以下のような感じでできる。
+&amp;lt;div class=&amp;#34;iframe-outer&amp;#34;&amp;gt; &amp;lt;iframe class=&amp;#34;iframe-tags&amp;#34; src=&amp;#34;...&amp;#34;, ...&amp;lt;/iframe&amp;gt; &amp;lt;/div&amp;gt; .iframe-outer{ position: relative; padding-top: 75%; /* 4:3の縦横比率にしたい場合、3÷4=75% */ } .iframe-tags{ position: absolute; top: 0; left: 0; width: 100%; height: 100%; } </description>
     </item>
     
   </channel>
