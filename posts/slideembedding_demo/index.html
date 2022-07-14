@@ -8,9 +8,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <meta name="description" 
-      content="スライドを埋め込むデモ Office 365の機能を使ってみる This is an embedded Microsoft Office presentation, powered by Office.  Google slidesを使った例   レスポンシブにするには 出てきたタグに対してその上位にタグを設定。そこに対してclassやidでcssを直接あてに行く。
+      content="スライドを埋め込むデモ github pages by hugoにスライドを埋め込む方法を調べたのでメモがてら。
+Office 365の機能を使った例 This is an embedded Microsoft Office presentation, powered by Office.  ログインしないと見れないのが難点かも&hellip;？ ログインせずに見れる方法があれば教えてください。
+Google slidesを使った例   こっちのが良いかも。
+レスポンシブにするには 出てきたタグに対してその上位にタグを設定。そこに対してclassやidでcssを直接あてに行く。
 具体的には以下のような感じでできる。
-&lt;div class=&#34;iframe-outer&#34;&gt; &lt;iframe class=&#34;iframe-tags&#34; src=&#34;...&#34;, ...&lt;/iframe&gt; &lt;/div&gt; .iframe-outer{ position: relative; padding-top: 75%; /* 4:3の縦横比率にしたい場合、3÷4=75% */ } .iframe-tags{ position: absolute; top: 0; left: 0; width: 100%; height: 100%; } 
+&lt;div class=&#34;iframe-outer&#34;&gt; &lt;iframe class=&#34;iframe-tags&#34; src=&#34;...&#34;, ...&lt;/iframe&gt; &lt;/div&gt; .iframe-outer{ position: relative; padding-top: 75%; /* 4:3の縦横比率にしたい場合、3÷4=75% */ } .
                 ">
 
 <link rel="canonical" href="https://6w3n.github.io/posts/slideembedding_demo/" />
@@ -21,9 +24,12 @@
 <link rel="stylesheet" href="../../css/bulma.min.css">
 
 <meta property="og:title" content="Slide Embedding Demo" />
-<meta property="og:description" content="スライドを埋め込むデモ Office 365の機能を使ってみる This is an embedded Microsoft Office presentation, powered by Office.  Google slidesを使った例   レスポンシブにするには 出てきたタグに対してその上位にタグを設定。そこに対してclassやidでcssを直接あてに行く。
+<meta property="og:description" content="スライドを埋め込むデモ github pages by hugoにスライドを埋め込む方法を調べたのでメモがてら。
+Office 365の機能を使った例 This is an embedded Microsoft Office presentation, powered by Office.  ログインしないと見れないのが難点かも&hellip;？ ログインせずに見れる方法があれば教えてください。
+Google slidesを使った例   こっちのが良いかも。
+レスポンシブにするには 出てきたタグに対してその上位にタグを設定。そこに対してclassやidでcssを直接あてに行く。
 具体的には以下のような感じでできる。
-&lt;div class=&#34;iframe-outer&#34;&gt; &lt;iframe class=&#34;iframe-tags&#34; src=&#34;...&#34;, ...&lt;/iframe&gt; &lt;/div&gt; .iframe-outer{ position: relative; padding-top: 75%; /* 4:3の縦横比率にしたい場合、3÷4=75% */ } .iframe-tags{ position: absolute; top: 0; left: 0; width: 100%; height: 100%; } " />
+&lt;div class=&#34;iframe-outer&#34;&gt; &lt;iframe class=&#34;iframe-tags&#34; src=&#34;...&#34;, ...&lt;/iframe&gt; &lt;/div&gt; .iframe-outer{ position: relative; padding-top: 75%; /* 4:3の縦横比率にしたい場合、3÷4=75% */ } ." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://6w3n.github.io/posts/slideembedding_demo/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-07-13T00:00:00+00:00" />
@@ -32,9 +38,12 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Slide Embedding Demo"/>
-<meta name="twitter:description" content="スライドを埋め込むデモ Office 365の機能を使ってみる This is an embedded Microsoft Office presentation, powered by Office.  Google slidesを使った例   レスポンシブにするには 出てきたタグに対してその上位にタグを設定。そこに対してclassやidでcssを直接あてに行く。
+<meta name="twitter:description" content="スライドを埋め込むデモ github pages by hugoにスライドを埋め込む方法を調べたのでメモがてら。
+Office 365の機能を使った例 This is an embedded Microsoft Office presentation, powered by Office.  ログインしないと見れないのが難点かも&hellip;？ ログインせずに見れる方法があれば教えてください。
+Google slidesを使った例   こっちのが良いかも。
+レスポンシブにするには 出てきたタグに対してその上位にタグを設定。そこに対してclassやidでcssを直接あてに行く。
 具体的には以下のような感じでできる。
-&lt;div class=&#34;iframe-outer&#34;&gt; &lt;iframe class=&#34;iframe-tags&#34; src=&#34;...&#34;, ...&lt;/iframe&gt; &lt;/div&gt; .iframe-outer{ position: relative; padding-top: 75%; /* 4:3の縦横比率にしたい場合、3÷4=75% */ } .iframe-tags{ position: absolute; top: 0; left: 0; width: 100%; height: 100%; } "/>
+&lt;div class=&#34;iframe-outer&#34;&gt; &lt;iframe class=&#34;iframe-tags&#34; src=&#34;...&#34;, ...&lt;/iframe&gt; &lt;/div&gt; .iframe-outer{ position: relative; padding-top: 75%; /* 4:3の縦横比率にしたい場合、3÷4=75% */ } ."/>
 
 
 
@@ -156,14 +165,18 @@
         
 
         <h1 id="スライドを埋め込むデモ">スライドを埋め込むデモ</h1>
-<h3 id="office-365の機能を使ってみる">Office 365の機能を使ってみる</h3>
+<p>github pages by hugoにスライドを埋め込む方法を調べたのでメモがてら。</p>
+<h3 id="office-365の機能を使った例">Office 365の機能を使った例</h3>
 <div class="iframe-outer">
 <iframe class="iframe-tags" src="https://o365tsukuba-my.sharepoint.com/personal/s2030225_u_tsukuba_ac_jp/_layouts/15/Doc.aspx?sourcedoc={1fb818fd-baa4-4cf9-a96f-acd8c2672ab5}&amp;action=embedview&amp;wdAr=1.7777777777777777" width="476px" height="288px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>
 </div>
+<p>ログインしないと見れないのが難点かも&hellip;？
+ログインせずに見れる方法があれば教えてください。</p>
 <h3 id="google-slidesを使った例">Google slidesを使った例</h3>
 <div class="iframe-outer">
 <iframe class="iframe-tags" src="https://docs.google.com/presentation/d/e/2PACX-1vTdn0yrR3dS75dBUnqpzyhiGaJjtMwu3HTNK1IMSGDwN16hrKtCFnwc49JIiwogCFHy0tRxx4FwyjAx/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 </div>
+<p>こっちのが良いかも。</p>
 <h3 id="レスポンシブにするには">レスポンシブにするには</h3>
 <p>出てきた<iframe>タグに対してその上位に<div>タグを設定。そこに対してclassやidでcssを直接あてに行く。</p>
 <p>具体的には以下のような感じでできる。</p>
@@ -227,7 +240,7 @@
 	    </a>
 
 		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2f6w3n.github.io%2fposts%2fslideembedding_demo%2f
-			&title=Slide%20Embedding%20Demo&summary=%e3%82%b9%e3%83%a9%e3%82%a4%e3%83%89%e3%82%92%e5%9f%8b%e3%82%81%e8%be%bc%e3%82%80%e3%83%87%e3%83%a2%20Office%20365%e3%81%ae%e6%a9%9f%e8%83%bd%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e3%81%bf%e3%82%8b%20This%20is%20an%20embedded%20Microsoft%20Office%20presentation%2c%20powered%20by%20Office.%20%20Google%20slides%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%9f%e4%be%8b%20%20%20%e3%83%ac%e3%82%b9%e3%83%9d%e3%83%b3%e3%82%b7%e3%83%96%e3%81%ab%e3%81%99%e3%82%8b%e3%81%ab%e3%81%af%20%e5%87%ba%e3%81%a6%e3%81%8d%e3%81%9f%e3%82%bf%e3%82%b0%e3%81%ab%e5%af%be%e3%81%97%e3%81%a6%e3%81%9d%e3%81%ae%e4%b8%8a%e4%bd%8d%e3%81%ab%e3%82%bf%e3%82%b0%e3%82%92%e8%a8%ad%e5%ae%9a%e3%80%82%e3%81%9d%e3%81%93%e3%81%ab%e5%af%be%e3%81%97%e3%81%a6class%e3%82%84id%e3%81%a7css%e3%82%92%e7%9b%b4%e6%8e%a5%e3%81%82%e3%81%a6%e3%81%ab%e8%a1%8c%e3%81%8f%e3%80%82%0a%e5%85%b7%e4%bd%93%e7%9a%84%e3%81%ab%e3%81%af%e4%bb%a5%e4%b8%8b%e3%81%ae%e3%82%88%e3%81%86%e3%81%aa%e6%84%9f%e3%81%98%e3%81%a7%e3%81%a7%e3%81%8d%e3%82%8b%e3%80%82%0a%26lt%3bdiv%20class%3d%26%2334%3biframe-outer%26%2334%3b%26gt%3b%20%26lt%3biframe%20class%3d%26%2334%3biframe-tags%26%2334%3b%20src%3d%26%2334%3b...%26%2334%3b%2c%20...%26lt%3b%2fiframe%26gt%3b%20%26lt%3b%2fdiv%26gt%3b%20.iframe-outer%7b%20position%3a%20relative%3b%20padding-top%3a%2075%25%3b%20%2f%2a%204%3a3%e3%81%ae%e7%b8%a6%e6%a8%aa%e6%af%94%e7%8e%87%e3%81%ab%e3%81%97%e3%81%9f%e3%81%84%e5%a0%b4%e5%90%88%e3%80%813%c3%b74%3d75%25%20%2a%2f%20%7d%20.iframe-tags%7b%20position%3a%20absolute%3b%20top%3a%200%3b%20left%3a%200%3b%20width%3a%20100%25%3b%20height%3a%20100%25%3b%20%7d%20&source=rafed123.github.io"
+			&title=Slide%20Embedding%20Demo&summary=%e3%82%b9%e3%83%a9%e3%82%a4%e3%83%89%e3%82%92%e5%9f%8b%e3%82%81%e8%be%bc%e3%82%80%e3%83%87%e3%83%a2%20github%20pages%20by%20hugo%e3%81%ab%e3%82%b9%e3%83%a9%e3%82%a4%e3%83%89%e3%82%92%e5%9f%8b%e3%82%81%e8%be%bc%e3%82%80%e6%96%b9%e6%b3%95%e3%82%92%e8%aa%bf%e3%81%b9%e3%81%9f%e3%81%ae%e3%81%a7%e3%83%a1%e3%83%a2%e3%81%8c%e3%81%a6%e3%82%89%e3%80%82%0aOffice%20365%e3%81%ae%e6%a9%9f%e8%83%bd%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%9f%e4%be%8b%20This%20is%20an%20embedded%20Microsoft%20Office%20presentation%2c%20powered%20by%20Office.%20%20%e3%83%ad%e3%82%b0%e3%82%a4%e3%83%b3%e3%81%97%e3%81%aa%e3%81%84%e3%81%a8%e8%a6%8b%e3%82%8c%e3%81%aa%e3%81%84%e3%81%ae%e3%81%8c%e9%9b%a3%e7%82%b9%e3%81%8b%e3%82%82%26hellip%3b%ef%bc%9f%20%e3%83%ad%e3%82%b0%e3%82%a4%e3%83%b3%e3%81%9b%e3%81%9a%e3%81%ab%e8%a6%8b%e3%82%8c%e3%82%8b%e6%96%b9%e6%b3%95%e3%81%8c%e3%81%82%e3%82%8c%e3%81%b0%e6%95%99%e3%81%88%e3%81%a6%e3%81%8f%e3%81%a0%e3%81%95%e3%81%84%e3%80%82%0aGoogle%20slides%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%9f%e4%be%8b%20%20%20%e3%81%93%e3%81%a3%e3%81%a1%e3%81%ae%e3%81%8c%e8%89%af%e3%81%84%e3%81%8b%e3%82%82%e3%80%82%0a%e3%83%ac%e3%82%b9%e3%83%9d%e3%83%b3%e3%82%b7%e3%83%96%e3%81%ab%e3%81%99%e3%82%8b%e3%81%ab%e3%81%af%20%e5%87%ba%e3%81%a6%e3%81%8d%e3%81%9f%e3%82%bf%e3%82%b0%e3%81%ab%e5%af%be%e3%81%97%e3%81%a6%e3%81%9d%e3%81%ae%e4%b8%8a%e4%bd%8d%e3%81%ab%e3%82%bf%e3%82%b0%e3%82%92%e8%a8%ad%e5%ae%9a%e3%80%82%e3%81%9d%e3%81%93%e3%81%ab%e5%af%be%e3%81%97%e3%81%a6class%e3%82%84id%e3%81%a7css%e3%82%92%e7%9b%b4%e6%8e%a5%e3%81%82%e3%81%a6%e3%81%ab%e8%a1%8c%e3%81%8f%e3%80%82%0a%e5%85%b7%e4%bd%93%e7%9a%84%e3%81%ab%e3%81%af%e4%bb%a5%e4%b8%8b%e3%81%ae%e3%82%88%e3%81%86%e3%81%aa%e6%84%9f%e3%81%98%e3%81%a7%e3%81%a7%e3%81%8d%e3%82%8b%e3%80%82%0a%26lt%3bdiv%20class%3d%26%2334%3biframe-outer%26%2334%3b%26gt%3b%20%26lt%3biframe%20class%3d%26%2334%3biframe-tags%26%2334%3b%20src%3d%26%2334%3b...%26%2334%3b%2c%20...%26lt%3b%2fiframe%26gt%3b%20%26lt%3b%2fdiv%26gt%3b%20.iframe-outer%7b%20position%3a%20relative%3b%20padding-top%3a%2075%25%3b%20%2f%2a%204%3a3%e3%81%ae%e7%b8%a6%e6%a8%aa%e6%af%94%e7%8e%87%e3%81%ab%e3%81%97%e3%81%9f%e3%81%84%e5%a0%b4%e5%90%88%e3%80%813%c3%b74%3d75%25%20%2a%2f%20%7d%20.&source=rafed123.github.io"
 	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
 	        title="Share on LinkedIn. Opens in a new window." >
 	        <img src=../../img/icons/45px/linkedin.png>
