@@ -194,26 +194,26 @@ N -&gt; S -&gt; A -&gt; D -&gt; E
 <p>データの都合上、Pが生じたらそこでこの行動の観察を終了します。行ごとの被食者を統一するためです。
 捕食後の捕食者が次の探索行動に移る場合などは別の行で表します。
 つまり、行が同じ時は捕食者と被食者が同一であることを示します。NとSでは被食者が出てきませんが&hellip;。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(tidyverse)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>dat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">tribble</span>(<span style="color:#f92672">~</span>beh,<span style="color:#e6db74">&#34;S&#34;</span>, <span style="color:#e6db74">&#34;NSADE&#34;</span>, <span style="color:#e6db74">&#34;SAP&#34;</span>, 
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;NSADE&#34;</span>, <span style="color:#e6db74">&#34;MNSADS&#34;</span>, <span style="color:#e6db74">&#34;ADASNSADE&#34;</span>, <span style="color:#e6db74">&#34;NSAP&#34;</span>, 
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;NSADAP&#34;</span>, <span style="color:#e6db74">&#34;SNADENAS&#34;</span>, <span style="color:#e6db74">&#34;NSADAP&#34;</span>)
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span><span style="color:#f92672">&gt;</span> dat
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># A tibble: 10 x 1</span>
-</span></span><span style="display:flex;"><span>   beh
-</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;</span>chr<span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">1</span> S
-</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">2</span> NSADE
-</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">3</span> SAP
-</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">4</span> NSADE
-</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">5</span> MNSADS
-</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">6</span> ADASNSADE
-</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">7</span> NSAP
-</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">8</span> NSADAP
-</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">9</span> SNADENAS
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">10</span> NSADAP
-</span></span></code></pre></div><p>こんな感じにデータを生成します。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(tidyverse)
+
+dat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">tribble</span>(<span style="color:#f92672">~</span>beh,<span style="color:#e6db74">&#34;S&#34;</span>, <span style="color:#e6db74">&#34;NSADE&#34;</span>, <span style="color:#e6db74">&#34;SAP&#34;</span>, 
+    <span style="color:#e6db74">&#34;NSADE&#34;</span>, <span style="color:#e6db74">&#34;MNSADS&#34;</span>, <span style="color:#e6db74">&#34;ADASNSADE&#34;</span>, <span style="color:#e6db74">&#34;NSAP&#34;</span>, 
+    <span style="color:#e6db74">&#34;NSADAP&#34;</span>, <span style="color:#e6db74">&#34;SNADENAS&#34;</span>, <span style="color:#e6db74">&#34;NSADAP&#34;</span>)
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#f92672">&gt;</span> dat
+<span style="color:#75715e"># A tibble: 10 x 1</span>
+   beh
+   <span style="color:#f92672">&lt;</span>chr<span style="color:#f92672">&gt;</span>
+ <span style="color:#ae81ff">1</span> S
+ <span style="color:#ae81ff">2</span> NSADE
+ <span style="color:#ae81ff">3</span> SAP
+ <span style="color:#ae81ff">4</span> NSADE
+ <span style="color:#ae81ff">5</span> MNSADS
+ <span style="color:#ae81ff">6</span> ADASNSADE
+ <span style="color:#ae81ff">7</span> NSAP
+ <span style="color:#ae81ff">8</span> NSADAP
+ <span style="color:#ae81ff">9</span> SNADENAS
+<span style="color:#ae81ff">10</span> NSADAP
+</code></pre></div><p>こんな感じにデータを生成します。
 実際のデータはもっと別の形をしている可能性はありますし、観察の設定によっては絶対に解釈が難しいとかもあるでしょうが、今回は目を瞑ります。
 例えば、1行目のSだけの行動は観察者が捕食者の探索行動を観察している内に観察を中断した、とかが考えられます。 <del>そんなデータ使わない方が良いとは思いますが&hellip;。</del></p>
 <h3 id="2-data-shaping">2. Data Shaping</h3>
@@ -226,46 +226,46 @@ N -&gt; S -&gt; A -&gt; D -&gt; E
 ノードは一つの行動（ex. NとかSなど）が相当します。
 リンクは行動の遷移（ex. NSやSAなど）が相当します。
 また、今回はただのリンクではなく、方向性のあるリンクとなります。遷移なので。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>nodes <span style="color:#f92672">&lt;-</span> dat <span style="color:#f92672">%&gt;%</span>  
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">mutate</span>(N<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;N&#34;</span>),
-</span></span><span style="display:flex;"><span>        S<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;S&#34;</span>), 
-</span></span><span style="display:flex;"><span>		A<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;A&#34;</span>), 
-</span></span><span style="display:flex;"><span>        D<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;D&#34;</span>),
-</span></span><span style="display:flex;"><span>		E<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;E&#34;</span>),
-</span></span><span style="display:flex;"><span>        P<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;P&#34;</span>)) <span style="color:#f92672">%&gt;%</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">select</span>(<span style="color:#f92672">-</span>beh) <span style="color:#f92672">%&gt;%</span> 
-</span></span><span style="display:flex;"><span>	dplyr<span style="color:#f92672">::</span><span style="color:#a6e22e">summarize_all</span>(mean) <span style="color:#f92672">%&gt;%</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">t</span>() <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">as.data.frame</span>() <span style="color:#f92672">%&gt;%</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">as_tibble</span>(rownames<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;id&#34;</span>) <span style="color:#f92672">%&gt;%</span> 
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">mutate</span>(beh<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;No action&#34;</span>, <span style="color:#e6db74">&#34;Search&#34;</span>, <span style="color:#e6db74">&#34;Attack&#34;</span>, 
-</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#34;Defense&#34;</span>, <span style="color:#e6db74">&#34;Escape&#34;</span>, <span style="color:#e6db74">&#34;Predation&#34;</span>)) <span style="color:#f92672">%&gt;%</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">mutate</span>(behType<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>), typeLabel<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;Both&#34;</span>, <span style="color:#e6db74">&#34;Predator&#34;</span>, 
-</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#34;Predator&#34;</span>, <span style="color:#e6db74">&#34;Prey&#34;</span>, 
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Prey&#34;</span>, <span style="color:#e6db74">&#34;Predator&#34;</span>)) <span style="color:#f92672">%&gt;%</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">mutate</span>(nodeSize<span style="color:#f92672">=</span>V1) <span style="color:#f92672">%&gt;%</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">select</span>(<span style="color:#f92672">-</span>V1)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>links <span style="color:#f92672">&lt;-</span> dat <span style="color:#f92672">%&gt;%</span>  
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">mutate</span>(NS<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;NS&#34;</span>),
-</span></span><span style="display:flex;"><span>            SN<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;SN&#34;</span>), 
-</span></span><span style="display:flex;"><span>            SA<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;SA&#34;</span>), 
-</span></span><span style="display:flex;"><span>            AD<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;AD&#34;</span>), 
-</span></span><span style="display:flex;"><span>            AS<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;AS&#34;</span>), 
-</span></span><span style="display:flex;"><span>            AP<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;AP&#34;</span>), 
-</span></span><span style="display:flex;"><span>            DP<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;DP&#34;</span>), 
-</span></span><span style="display:flex;"><span>            DA<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;DA&#34;</span>), 
-</span></span><span style="display:flex;"><span>            DE<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;DE&#34;</span>), 
-</span></span><span style="display:flex;"><span>            EN<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;EN&#34;</span>)) <span style="color:#f92672">%&gt;%</span> 
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">select</span>(<span style="color:#f92672">-</span>beh) <span style="color:#f92672">%&gt;%</span> 
-</span></span><span style="display:flex;"><span>	dplyr<span style="color:#f92672">::</span><span style="color:#a6e22e">summarize_all</span>(mean) <span style="color:#f92672">%&gt;%</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">t</span>() <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">as.data.frame</span>() <span style="color:#f92672">%&gt;%</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">as_tibble</span>(rownames<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;transition&#34;</span>) <span style="color:#f92672">%&gt;%</span> 
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">mutate</span>(from<span style="color:#f92672">=</span><span style="color:#a6e22e">str_sub</span>(transition, <span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>)) <span style="color:#f92672">%&gt;%</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">mutate</span>(to<span style="color:#f92672">=</span><span style="color:#a6e22e">str_sub</span>(transition, <span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>)) <span style="color:#f92672">%&gt;%</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">mutate</span>(weight<span style="color:#f92672">=</span>V1) <span style="color:#f92672">%&gt;%</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">select</span>(<span style="color:#f92672">-</span>transition, <span style="color:#f92672">-</span>V1)
-</span></span></code></pre></div><p><strong>※今回は簡単のため、一連の行動（1行に相当する）の長さについて考えていません。実際には行動のレベルで標準化することが必要かと思います。</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">nodes <span style="color:#f92672">&lt;-</span> dat <span style="color:#f92672">%&gt;%</span>  
+	<span style="color:#a6e22e">mutate</span>(N<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;N&#34;</span>),
+        S<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;S&#34;</span>), 
+		A<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;A&#34;</span>), 
+        D<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;D&#34;</span>),
+		E<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;E&#34;</span>),
+        P<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;P&#34;</span>)) <span style="color:#f92672">%&gt;%</span>
+	<span style="color:#a6e22e">select</span>(<span style="color:#f92672">-</span>beh) <span style="color:#f92672">%&gt;%</span> 
+	dplyr<span style="color:#f92672">::</span><span style="color:#a6e22e">summarize_all</span>(mean) <span style="color:#f92672">%&gt;%</span>
+	<span style="color:#a6e22e">t</span>() <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">as.data.frame</span>() <span style="color:#f92672">%&gt;%</span>
+	<span style="color:#a6e22e">as_tibble</span>(rownames<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;id&#34;</span>) <span style="color:#f92672">%&gt;%</span> 
+	<span style="color:#a6e22e">mutate</span>(beh<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;No action&#34;</span>, <span style="color:#e6db74">&#34;Search&#34;</span>, <span style="color:#e6db74">&#34;Attack&#34;</span>, 
+			<span style="color:#e6db74">&#34;Defense&#34;</span>, <span style="color:#e6db74">&#34;Escape&#34;</span>, <span style="color:#e6db74">&#34;Predation&#34;</span>)) <span style="color:#f92672">%&gt;%</span>
+	<span style="color:#a6e22e">mutate</span>(behType<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>), typeLabel<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;Both&#34;</span>, <span style="color:#e6db74">&#34;Predator&#34;</span>, 
+			<span style="color:#e6db74">&#34;Predator&#34;</span>, <span style="color:#e6db74">&#34;Prey&#34;</span>, 
+            <span style="color:#e6db74">&#34;Prey&#34;</span>, <span style="color:#e6db74">&#34;Predator&#34;</span>)) <span style="color:#f92672">%&gt;%</span>
+	<span style="color:#a6e22e">mutate</span>(nodeSize<span style="color:#f92672">=</span>V1) <span style="color:#f92672">%&gt;%</span>
+	<span style="color:#a6e22e">select</span>(<span style="color:#f92672">-</span>V1)
+
+
+links <span style="color:#f92672">&lt;-</span> dat <span style="color:#f92672">%&gt;%</span>  
+	<span style="color:#a6e22e">mutate</span>(NS<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;NS&#34;</span>),
+            SN<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;SN&#34;</span>), 
+            SA<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;SA&#34;</span>), 
+            AD<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;AD&#34;</span>), 
+            AS<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;AS&#34;</span>), 
+            AP<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;AP&#34;</span>), 
+            DP<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;DP&#34;</span>), 
+            DA<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;DA&#34;</span>), 
+            DE<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;DE&#34;</span>), 
+            EN<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;EN&#34;</span>)) <span style="color:#f92672">%&gt;%</span> 
+	<span style="color:#a6e22e">select</span>(<span style="color:#f92672">-</span>beh) <span style="color:#f92672">%&gt;%</span> 
+	dplyr<span style="color:#f92672">::</span><span style="color:#a6e22e">summarize_all</span>(mean) <span style="color:#f92672">%&gt;%</span>
+	<span style="color:#a6e22e">t</span>() <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">as.data.frame</span>() <span style="color:#f92672">%&gt;%</span>
+	<span style="color:#a6e22e">as_tibble</span>(rownames<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;transition&#34;</span>) <span style="color:#f92672">%&gt;%</span> 
+	<span style="color:#a6e22e">mutate</span>(from<span style="color:#f92672">=</span><span style="color:#a6e22e">str_sub</span>(transition, <span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>)) <span style="color:#f92672">%&gt;%</span>
+	<span style="color:#a6e22e">mutate</span>(to<span style="color:#f92672">=</span><span style="color:#a6e22e">str_sub</span>(transition, <span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>)) <span style="color:#f92672">%&gt;%</span>
+	<span style="color:#a6e22e">mutate</span>(weight<span style="color:#f92672">=</span>V1) <span style="color:#f92672">%&gt;%</span>
+	<span style="color:#a6e22e">select</span>(<span style="color:#f92672">-</span>transition, <span style="color:#f92672">-</span>V1)
+</code></pre></div><p><strong>※今回は簡単のため、一連の行動（1行に相当する）の長さについて考えていません。実際には行動のレベルで標準化することが必要かと思います。</strong></p>
 <p>できたものがこちら。</p>
 <pre tabindex="0"><code>&gt; nodes
 # A tibble: 6 x 5
@@ -296,11 +296,11 @@ N -&gt; S -&gt; A -&gt; D -&gt; E
 </code></pre><p>なんかそれっぽくなってきました。</p>
 <h3 id="3-generate-network">3. Generate Network</h3>
 <p>ようやく{igraph}の出番です。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(igraph)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>net <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">graph_from_data_frame</span>(d<span style="color:#f92672">=</span>links, vertices<span style="color:#f92672">=</span>nodes, 
-</span></span><span style="display:flex;"><span>                            directed<span style="color:#f92672">=</span>T)
-</span></span></code></pre></div><p><code>graph_from_data_frame()</code>以外にもnetworkを作成する関数は存在します。興味がある人は<code>?igraph</code>で探してみてください。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(igraph)
+
+net <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">graph_from_data_frame</span>(d<span style="color:#f92672">=</span>links, vertices<span style="color:#f92672">=</span>nodes, 
+                            directed<span style="color:#f92672">=</span>T)
+</code></pre></div><p><code>graph_from_data_frame()</code>以外にもnetworkを作成する関数は存在します。興味がある人は<code>?igraph</code>で探してみてください。</p>
 <p>中身はこんな感じになっています。ここからは完全に{igraph}の独壇場です。</p>
 <pre tabindex="0"><code>&gt; net
 IGRAPH a6bd990 DNW- 6 10 --
@@ -327,14 +327,14 @@ IGRAPH a6bd990 DNW- 6 10 --
 <p><code>nodes</code>に<code>behType</code>とか<code>typeLabel</code>と言うカラムがあります。実はそんなカラムを作成していました。
 これは、行動の主体が捕食者なのか被食者なのかそれとも両方なのかを表しています。</p>
 <p>せっかくなので色分けすると見やすくなるかもしれません。</p>
-<pre tabindex="0"><code>colr &lt;- c(&#34;red&#34;, &#34;blue&#34;, &#34;green&#34;)
+<pre tabindex="0"><code>colr &lt;- c(&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;)
 V(net)$color &lt;- colr[V(net)$behType]
 
 plot(net)
 </code></pre><p><img src="https://i.imgur.com/LEIezts.png" alt=""></p>
 <p>色が変わりました。<strong>本番環境では文字の色との兼ね合いを考えましょう。</strong></p>
 <p>また、各行動がどれくらいの頻度で生じているかを人目見てわかりやすくしたいですね。そういった時は以下のスクリプトで対応できます。</p>
-<pre tabindex="0"><code>V(net)$size &lt;- degree(net, mode=&#34;all&#34;)*5
+<pre tabindex="0"><code>V(net)$size &lt;- degree(net, mode=&quot;all&quot;)*5
 plot(net)
 </code></pre><p><img src="https://i.imgur.com/bJLaDtN.png" alt=""></p>
 <p>EscapeやPredationはSearchやAttackに比べて生じにくいと言うことがぱっと見でわかると思います。

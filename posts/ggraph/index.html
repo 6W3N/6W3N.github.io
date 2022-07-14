@@ -177,66 +177,66 @@
 <p>上記1.と2.は<a href="https://6w3n.github.io/posts/igraph_memo/">Igraph Memo</a>と全く同じです。読み飛ばしてもらっても構いません。</p>
 <p>今回は3.と4.をメインにやります。</p>
 <h3 id="1-data-preparation">1. Data Preparation</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(tidyverse)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>dat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">tribble</span>(<span style="color:#f92672">~</span>beh,<span style="color:#e6db74">&#34;S&#34;</span>, <span style="color:#e6db74">&#34;NSADE&#34;</span>, <span style="color:#e6db74">&#34;SAP&#34;</span>, 
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;NSADE&#34;</span>, <span style="color:#e6db74">&#34;MNSADS&#34;</span>, <span style="color:#e6db74">&#34;ADASNSADE&#34;</span>, <span style="color:#e6db74">&#34;NSAP&#34;</span>, 
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;NSADAP&#34;</span>, <span style="color:#e6db74">&#34;SNADENAS&#34;</span>, <span style="color:#e6db74">&#34;NSADAP&#34;</span>)
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span><span style="color:#f92672">&gt;</span> dat
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># A tibble: 10 x 1</span>
-</span></span><span style="display:flex;"><span>   beh
-</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;</span>chr<span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">1</span> S
-</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">2</span> NSADE
-</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">3</span> SAP
-</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">4</span> NSADE
-</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">5</span> MNSADS
-</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">6</span> ADASNSADE
-</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">7</span> NSAP
-</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">8</span> NSADAP
-</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">9</span> SNADENAS
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">10</span> NSADAP
-</span></span></code></pre></div><h3 id="2-data-shaping">2. Data Shaping</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>nodes <span style="color:#f92672">&lt;-</span> dat <span style="color:#f92672">%&gt;%</span>  
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">mutate</span>(N<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;N&#34;</span>),
-</span></span><span style="display:flex;"><span>        S<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;S&#34;</span>), 
-</span></span><span style="display:flex;"><span>		A<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;A&#34;</span>), 
-</span></span><span style="display:flex;"><span>        D<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;D&#34;</span>),
-</span></span><span style="display:flex;"><span>		E<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;E&#34;</span>),
-</span></span><span style="display:flex;"><span>        P<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;P&#34;</span>)) <span style="color:#f92672">%&gt;%</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">select</span>(<span style="color:#f92672">-</span>beh) <span style="color:#f92672">%&gt;%</span> 
-</span></span><span style="display:flex;"><span>	dplyr<span style="color:#f92672">::</span><span style="color:#a6e22e">summarize_all</span>(mean) <span style="color:#f92672">%&gt;%</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">t</span>() <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">as.data.frame</span>() <span style="color:#f92672">%&gt;%</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">as_tibble</span>(rownames<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;id&#34;</span>) <span style="color:#f92672">%&gt;%</span> 
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">mutate</span>(beh<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;No action&#34;</span>, <span style="color:#e6db74">&#34;Search&#34;</span>, <span style="color:#e6db74">&#34;Attack&#34;</span>, 
-</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#34;Defense&#34;</span>, <span style="color:#e6db74">&#34;Escape&#34;</span>, <span style="color:#e6db74">&#34;Predation&#34;</span>)) <span style="color:#f92672">%&gt;%</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">mutate</span>(behType<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>), typeLabel<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;Both&#34;</span>, <span style="color:#e6db74">&#34;Predator&#34;</span>, 
-</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#34;Predator&#34;</span>, <span style="color:#e6db74">&#34;Prey&#34;</span>, 
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Prey&#34;</span>, <span style="color:#e6db74">&#34;Predator&#34;</span>)) <span style="color:#f92672">%&gt;%</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">mutate</span>(nodeSize<span style="color:#f92672">=</span>V1) <span style="color:#f92672">%&gt;%</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">select</span>(<span style="color:#f92672">-</span>V1)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>links <span style="color:#f92672">&lt;-</span> dat <span style="color:#f92672">%&gt;%</span>  
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">mutate</span>(NS<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;NS&#34;</span>),
-</span></span><span style="display:flex;"><span>            SN<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;SN&#34;</span>), 
-</span></span><span style="display:flex;"><span>            SA<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;SA&#34;</span>), 
-</span></span><span style="display:flex;"><span>            AD<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;AD&#34;</span>), 
-</span></span><span style="display:flex;"><span>            AS<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;AS&#34;</span>), 
-</span></span><span style="display:flex;"><span>            AP<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;AP&#34;</span>), 
-</span></span><span style="display:flex;"><span>            DP<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;DP&#34;</span>), 
-</span></span><span style="display:flex;"><span>            DA<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;DA&#34;</span>), 
-</span></span><span style="display:flex;"><span>            DE<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;DE&#34;</span>), 
-</span></span><span style="display:flex;"><span>            EN<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;EN&#34;</span>)) <span style="color:#f92672">%&gt;%</span> 
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">select</span>(<span style="color:#f92672">-</span>beh) <span style="color:#f92672">%&gt;%</span> 
-</span></span><span style="display:flex;"><span>	dplyr<span style="color:#f92672">::</span><span style="color:#a6e22e">summarize_all</span>(mean) <span style="color:#f92672">%&gt;%</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">t</span>() <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">as.data.frame</span>() <span style="color:#f92672">%&gt;%</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">as_tibble</span>(rownames<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;transition&#34;</span>) <span style="color:#f92672">%&gt;%</span> 
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">mutate</span>(from<span style="color:#f92672">=</span><span style="color:#a6e22e">str_sub</span>(transition, <span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>)) <span style="color:#f92672">%&gt;%</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">mutate</span>(to<span style="color:#f92672">=</span><span style="color:#a6e22e">str_sub</span>(transition, <span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>)) <span style="color:#f92672">%&gt;%</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">mutate</span>(weight<span style="color:#f92672">=</span>V1) <span style="color:#f92672">%&gt;%</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">select</span>(<span style="color:#f92672">-</span>transition, <span style="color:#f92672">-</span>V1)
-</span></span></code></pre></div><pre tabindex="0"><code>&gt; nodes
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(tidyverse)
+
+dat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">tribble</span>(<span style="color:#f92672">~</span>beh,<span style="color:#e6db74">&#34;S&#34;</span>, <span style="color:#e6db74">&#34;NSADE&#34;</span>, <span style="color:#e6db74">&#34;SAP&#34;</span>, 
+    <span style="color:#e6db74">&#34;NSADE&#34;</span>, <span style="color:#e6db74">&#34;MNSADS&#34;</span>, <span style="color:#e6db74">&#34;ADASNSADE&#34;</span>, <span style="color:#e6db74">&#34;NSAP&#34;</span>, 
+    <span style="color:#e6db74">&#34;NSADAP&#34;</span>, <span style="color:#e6db74">&#34;SNADENAS&#34;</span>, <span style="color:#e6db74">&#34;NSADAP&#34;</span>)
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#f92672">&gt;</span> dat
+<span style="color:#75715e"># A tibble: 10 x 1</span>
+   beh
+   <span style="color:#f92672">&lt;</span>chr<span style="color:#f92672">&gt;</span>
+ <span style="color:#ae81ff">1</span> S
+ <span style="color:#ae81ff">2</span> NSADE
+ <span style="color:#ae81ff">3</span> SAP
+ <span style="color:#ae81ff">4</span> NSADE
+ <span style="color:#ae81ff">5</span> MNSADS
+ <span style="color:#ae81ff">6</span> ADASNSADE
+ <span style="color:#ae81ff">7</span> NSAP
+ <span style="color:#ae81ff">8</span> NSADAP
+ <span style="color:#ae81ff">9</span> SNADENAS
+<span style="color:#ae81ff">10</span> NSADAP
+</code></pre></div><h3 id="2-data-shaping">2. Data Shaping</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">nodes <span style="color:#f92672">&lt;-</span> dat <span style="color:#f92672">%&gt;%</span>  
+	<span style="color:#a6e22e">mutate</span>(N<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;N&#34;</span>),
+        S<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;S&#34;</span>), 
+		A<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;A&#34;</span>), 
+        D<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;D&#34;</span>),
+		E<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;E&#34;</span>),
+        P<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh,<span style="color:#e6db74">&#34;P&#34;</span>)) <span style="color:#f92672">%&gt;%</span>
+	<span style="color:#a6e22e">select</span>(<span style="color:#f92672">-</span>beh) <span style="color:#f92672">%&gt;%</span> 
+	dplyr<span style="color:#f92672">::</span><span style="color:#a6e22e">summarize_all</span>(mean) <span style="color:#f92672">%&gt;%</span>
+	<span style="color:#a6e22e">t</span>() <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">as.data.frame</span>() <span style="color:#f92672">%&gt;%</span>
+	<span style="color:#a6e22e">as_tibble</span>(rownames<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;id&#34;</span>) <span style="color:#f92672">%&gt;%</span> 
+	<span style="color:#a6e22e">mutate</span>(beh<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;No action&#34;</span>, <span style="color:#e6db74">&#34;Search&#34;</span>, <span style="color:#e6db74">&#34;Attack&#34;</span>, 
+			<span style="color:#e6db74">&#34;Defense&#34;</span>, <span style="color:#e6db74">&#34;Escape&#34;</span>, <span style="color:#e6db74">&#34;Predation&#34;</span>)) <span style="color:#f92672">%&gt;%</span>
+	<span style="color:#a6e22e">mutate</span>(behType<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>), typeLabel<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;Both&#34;</span>, <span style="color:#e6db74">&#34;Predator&#34;</span>, 
+			<span style="color:#e6db74">&#34;Predator&#34;</span>, <span style="color:#e6db74">&#34;Prey&#34;</span>, 
+            <span style="color:#e6db74">&#34;Prey&#34;</span>, <span style="color:#e6db74">&#34;Predator&#34;</span>)) <span style="color:#f92672">%&gt;%</span>
+	<span style="color:#a6e22e">mutate</span>(nodeSize<span style="color:#f92672">=</span>V1) <span style="color:#f92672">%&gt;%</span>
+	<span style="color:#a6e22e">select</span>(<span style="color:#f92672">-</span>V1)
+
+
+links <span style="color:#f92672">&lt;-</span> dat <span style="color:#f92672">%&gt;%</span>  
+	<span style="color:#a6e22e">mutate</span>(NS<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;NS&#34;</span>),
+            SN<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;SN&#34;</span>), 
+            SA<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;SA&#34;</span>), 
+            AD<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;AD&#34;</span>), 
+            AS<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;AS&#34;</span>), 
+            AP<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;AP&#34;</span>), 
+            DP<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;DP&#34;</span>), 
+            DA<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;DA&#34;</span>), 
+            DE<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;DE&#34;</span>), 
+            EN<span style="color:#f92672">=</span><span style="color:#a6e22e">str_count</span>(beh, <span style="color:#e6db74">&#34;EN&#34;</span>)) <span style="color:#f92672">%&gt;%</span> 
+	<span style="color:#a6e22e">select</span>(<span style="color:#f92672">-</span>beh) <span style="color:#f92672">%&gt;%</span> 
+	dplyr<span style="color:#f92672">::</span><span style="color:#a6e22e">summarize_all</span>(mean) <span style="color:#f92672">%&gt;%</span>
+	<span style="color:#a6e22e">t</span>() <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">as.data.frame</span>() <span style="color:#f92672">%&gt;%</span>
+	<span style="color:#a6e22e">as_tibble</span>(rownames<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;transition&#34;</span>) <span style="color:#f92672">%&gt;%</span> 
+	<span style="color:#a6e22e">mutate</span>(from<span style="color:#f92672">=</span><span style="color:#a6e22e">str_sub</span>(transition, <span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>)) <span style="color:#f92672">%&gt;%</span>
+	<span style="color:#a6e22e">mutate</span>(to<span style="color:#f92672">=</span><span style="color:#a6e22e">str_sub</span>(transition, <span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>)) <span style="color:#f92672">%&gt;%</span>
+	<span style="color:#a6e22e">mutate</span>(weight<span style="color:#f92672">=</span>V1) <span style="color:#f92672">%&gt;%</span>
+	<span style="color:#a6e22e">select</span>(<span style="color:#f92672">-</span>transition, <span style="color:#f92672">-</span>V1)
+</code></pre></div><pre tabindex="0"><code>&gt; nodes
 # A tibble: 6 x 5
   id    beh       behType typeLabel nodeSize
   &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;
@@ -264,28 +264,28 @@
 10 E     N        0.1
 </code></pre><h3 id="3-generate-network">3. Generate Network</h3>
 <p>{ggraph}の出番です。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(ggraph)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>net <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">graph_from_data_frame</span>(d<span style="color:#f92672">=</span>links, vertices<span style="color:#f92672">=</span>nodes, 
-</span></span><span style="display:flex;"><span>                            directed<span style="color:#f92672">=</span>T)
-</span></span></code></pre></div><p>勘の良い方は気づいているかもしれませんが、<code>graph_from_data_frame()</code>は{igraph}の関数です。{ggraph}を呼ぶときに{igraph}モインポートしています。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">library</span>(ggraph)
+
+net <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">graph_from_data_frame</span>(d<span style="color:#f92672">=</span>links, vertices<span style="color:#f92672">=</span>nodes, 
+                            directed<span style="color:#f92672">=</span>T)
+</code></pre></div><p>勘の良い方は気づいているかもしれませんが、<code>graph_from_data_frame()</code>は{igraph}の関数です。{ggraph}を呼ぶときに{igraph}モインポートしています。</p>
 <h3 id="4-drawing-the-network">4. Drawing the Network</h3>
 <p>描画はこんな感じ。</p>
 <pre tabindex="0"><code>lo &lt;- matrix(c(50,50,50,100,100,100,80,45,10,50,90,0), ncol=2)	#fixed position
 
 net_plot &lt;- net %&gt;% ggraph(layout = lo) +
 	geom_edge_arc(aes(edge_width = weight), 
-		edge_colour = &#34;gray&#34;, 
-		arrow= arrow(length = unit(10, &#39;mm&#39;)),
+		edge_colour = &quot;gray&quot;, 
+		arrow= arrow(length = unit(10, 'mm')),
 		strength=0.3, 
-		start_cap = circle(30, &#39;mm&#39;), 
-		end_cap = circle(10, &#39;mm&#39;)) +
+		start_cap = circle(30, 'mm'), 
+		end_cap = circle(10, 'mm')) +
 	geom_node_point(aes(size = nodeSize, color=behType)) + 
 	scale_size(range = c(2,20)) +
 	geom_node_text(aes(label = beh), 
 		repel = F) +
 	theme_void() +
-	theme(plot.margin = unit(c(3,3,3,3), &#34;lines&#34;)) 
+	theme(plot.margin = unit(c(3,3,3,3), &quot;lines&quot;)) 
 
 net_plot
 </code></pre><p>描いたものがこちら。
@@ -320,8 +320,9 @@ net_2 &lt;- net %&gt;% ggraph(layout = lo) +
 
 
 ggpubr::ggarange(net1, net2, 
-	labels=c(&#34;net1&#34;, &#34;net2&#34;),
+	labels=c(&quot;net1&quot;, &quot;net2&quot;),
 	nrow=2, ncol=1)
+
 </code></pre><p>Enjoy!</p>
 
     </div>
@@ -361,7 +362,7 @@ ggpubr::ggarange(net1, net2,
 	    </a>
 
 		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2f6w3n.github.io%2fposts%2fggraph%2f
-			&title=ggraph%20memo&summary=Preface%20R%e3%81%a8ggraph%e3%81%a7%e3%83%8d%e3%83%83%e3%83%88%e3%83%af%e3%83%bc%e3%82%af%e3%81%ae%e3%82%b0%e3%83%a9%e3%83%95%e3%82%92%e6%9b%b8%e3%81%84%e3%81%9f%e6%99%82%e3%81%ae%e5%82%99%e5%bf%98%e9%8c%b2%e3%81%a7%e3%81%99%e3%80%82%20Igraph%20Memo%e3%81%ae%e7%b6%9a%e7%b7%a8%e3%81%a7%e3%81%99%e3%80%82%0a%e3%81%a8%e3%81%84%e3%81%86%e3%81%ae%e3%82%82%e3%80%81%e3%80%8c%7bigraph%7d%e3%81%af%7bggplot2%7d%e3%81%ae%e3%82%88%e3%81%86%e3%81%ab%e5%9b%b3%e3%81%ae%e9%87%8d%e3%81%ad%e5%90%88%e3%82%8f%e3%81%9b%e3%81%8c%e3%81%a7%e3%81%8d%e3%81%aa%e3%81%84%e3%80%8d%e3%81%a8%e3%81%84%e3%81%86%e5%95%8f%e9%a1%8c%e3%81%ab%e5%bd%93%e3%81%9f%e3%81%a3%e3%81%9f%e3%81%9f%e3%82%81%e3%81%a7%e3%81%99%e3%80%82%20%e3%81%9d%e3%82%8c%e3%82%92%e8%a7%a3%e6%b1%ba%e3%81%99%e3%82%8b%e3%81%9f%e3%82%81%e3%81%ab%7bggraph%7d%e3%82%92%e7%94%a8%e3%81%84%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%e3%81%9d%e3%81%ae%e3%83%a1%e3%83%a2%e3%81%a7%e3%81%99%e3%80%82%0aEnvironment%20%20Mac%20OS%20Catalina%20ver.%2010.15.4%20R%20ggraph%20ver.%202.0.3%20R%20ver.%204.0.2%20%20What%26rsquo%3bs%20ggraph%3f%20%e3%82%82%e3%81%ae%e3%81%99%e3%81%94%e3%81%8f%e5%a4%a7%e9%9b%91%e6%8a%8a%e3%81%aa%e8%aa%ac%e6%98%8e%e3%82%92%e3%81%97%e3%81%a6%e3%81%97%e3%81%be%e3%81%86%e3%81%a8%e3%80%81%7bggraph%7d%e3%81%af%7bggplot2%7d%e3%81%ae%e3%82%88%e3%81%86%e3%81%ab%e3%83%8d%e3%83%83%e3%83%88%e3%83%af%e3%83%bc%e3%82%af%e3%81%ae%e8%a6%96%e8%a6%9a%e5%8c%96%e3%81%aa%e3%81%a9%e3%82%92%e8%a1%8c%e3%81%86%e3%81%9f%e3%82%81%e3%81%ae%e3%83%91%e3%83%83%e3%82%b1%e3%83%bc%e3%82%b8%e3%81%a7%e3%81%99%e3%80%82%0aMain%20Flow%20%20Data%e3%81%ae%e6%ba%96%e5%82%99%20%e3%83%8d%e3%83%83%e3%83%88%e3%83%af%e3%83%bc%e3%82%af%e3%81%b8%e5%a4%89%e6%8f%9b%e3%81%ae%e4%b8%8b%e6%ba%96%e5%82%99%20%e3%83%8d%e3%83%83%e3%83%88%e3%83%af%e3%83%bc%e3%82%af%e3%81%ae%e7%94%9f%e6%88%90%20%e6%8f%8f%e7%94%bb%20%20%e4%b8%8a%e8%a8%981.%e3%81%a82.%e3%81%afIgraph%20Memo%e3%81%a8%e5%85%a8%e3%81%8f%e5%90%8c%e3%81%98%e3%81%a7%e3%81%99%e3%80%82%e8%aa%ad%e3%81%bf%e9%a3%9b%e3%81%b0%e3%81%97%e3%81%a6%e3%82%82%e3%82%89%e3%81%a3%e3%81%a6%e3%82%82%e6%a7%8b%e3%81%84%e3%81%be%e3%81%9b%e3%82%93%e3%80%82%0a%e4%bb%8a%e5%9b%9e%e3%81%af3.%e3%81%a84.%e3%82%92%e3%83%a1%e3%82%a4%e3%83%b3%e3%81%ab%e3%82%84%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%0a1.%20Data%20Preparation%20library%28tidyverse%29%20%20dat%20%26lt%3b-%20tribble%28~beh%2c%26%2334%3bS%26%2334%3b%2c%20%26%2334%3bNSADE%26%2334%3b%2c%20%26%2334%3bSAP%26%2334%3b%2c%20%20%26%2334%3bNSADE%26%2334%3b%2c%20%26%2334%3bMNSADS%26%2334%3b%2c%20%26%2334%3bADASNSADE%26%2334%3b%2c%20%26%2334%3bNSAP%26%2334%3b%2c%20%20%26%2334%3bNSADAP%26%2334%3b%2c%20%26%2334%3bSNADENAS%26%2334%3b%2c%20%26%2334%3bNSADAP%26%2334%3b%29%20%26gt%3b%20dat%20%23%20A%20tibble%3a%2010%20x%201%20%20beh%20%20%26lt%3bchr%26gt%3b%20%201%20S%20%202%20NSADE%20%203%20SAP%20%204%20NSADE%20%205%20MNSADS%20%206%20ADASNSADE%20%207%20NSAP%20%208%20NSADAP%20%209%20SNADENAS%2010%20NSADAP%202.&source=rafed123.github.io"
+			&title=ggraph%20memo&summary=Preface%20R%e3%81%a8ggraph%e3%81%a7%e3%83%8d%e3%83%83%e3%83%88%e3%83%af%e3%83%bc%e3%82%af%e3%81%ae%e3%82%b0%e3%83%a9%e3%83%95%e3%82%92%e6%9b%b8%e3%81%84%e3%81%9f%e6%99%82%e3%81%ae%e5%82%99%e5%bf%98%e9%8c%b2%e3%81%a7%e3%81%99%e3%80%82%20Igraph%20Memo%e3%81%ae%e7%b6%9a%e7%b7%a8%e3%81%a7%e3%81%99%e3%80%82%0a%e3%81%a8%e3%81%84%e3%81%86%e3%81%ae%e3%82%82%e3%80%81%e3%80%8c%7bigraph%7d%e3%81%af%7bggplot2%7d%e3%81%ae%e3%82%88%e3%81%86%e3%81%ab%e5%9b%b3%e3%81%ae%e9%87%8d%e3%81%ad%e5%90%88%e3%82%8f%e3%81%9b%e3%81%8c%e3%81%a7%e3%81%8d%e3%81%aa%e3%81%84%e3%80%8d%e3%81%a8%e3%81%84%e3%81%86%e5%95%8f%e9%a1%8c%e3%81%ab%e5%bd%93%e3%81%9f%e3%81%a3%e3%81%9f%e3%81%9f%e3%82%81%e3%81%a7%e3%81%99%e3%80%82%20%e3%81%9d%e3%82%8c%e3%82%92%e8%a7%a3%e6%b1%ba%e3%81%99%e3%82%8b%e3%81%9f%e3%82%81%e3%81%ab%7bggraph%7d%e3%82%92%e7%94%a8%e3%81%84%e3%81%be%e3%81%97%e3%81%9f%e3%80%82%e3%81%9d%e3%81%ae%e3%83%a1%e3%83%a2%e3%81%a7%e3%81%99%e3%80%82%0aEnvironment%20%20Mac%20OS%20Catalina%20ver.%2010.15.4%20R%20ggraph%20ver.%202.0.3%20R%20ver.%204.0.2%20%20What%26rsquo%3bs%20ggraph%3f%20%e3%82%82%e3%81%ae%e3%81%99%e3%81%94%e3%81%8f%e5%a4%a7%e9%9b%91%e6%8a%8a%e3%81%aa%e8%aa%ac%e6%98%8e%e3%82%92%e3%81%97%e3%81%a6%e3%81%97%e3%81%be%e3%81%86%e3%81%a8%e3%80%81%7bggraph%7d%e3%81%af%7bggplot2%7d%e3%81%ae%e3%82%88%e3%81%86%e3%81%ab%e3%83%8d%e3%83%83%e3%83%88%e3%83%af%e3%83%bc%e3%82%af%e3%81%ae%e8%a6%96%e8%a6%9a%e5%8c%96%e3%81%aa%e3%81%a9%e3%82%92%e8%a1%8c%e3%81%86%e3%81%9f%e3%82%81%e3%81%ae%e3%83%91%e3%83%83%e3%82%b1%e3%83%bc%e3%82%b8%e3%81%a7%e3%81%99%e3%80%82%0aMain%20Flow%20%20Data%e3%81%ae%e6%ba%96%e5%82%99%20%e3%83%8d%e3%83%83%e3%83%88%e3%83%af%e3%83%bc%e3%82%af%e3%81%b8%e5%a4%89%e6%8f%9b%e3%81%ae%e4%b8%8b%e6%ba%96%e5%82%99%20%e3%83%8d%e3%83%83%e3%83%88%e3%83%af%e3%83%bc%e3%82%af%e3%81%ae%e7%94%9f%e6%88%90%20%e6%8f%8f%e7%94%bb%20%20%e4%b8%8a%e8%a8%981.%e3%81%a82.%e3%81%afIgraph%20Memo%e3%81%a8%e5%85%a8%e3%81%8f%e5%90%8c%e3%81%98%e3%81%a7%e3%81%99%e3%80%82%e8%aa%ad%e3%81%bf%e9%a3%9b%e3%81%b0%e3%81%97%e3%81%a6%e3%82%82%e3%82%89%e3%81%a3%e3%81%a6%e3%82%82%e6%a7%8b%e3%81%84%e3%81%be%e3%81%9b%e3%82%93%e3%80%82%0a%e4%bb%8a%e5%9b%9e%e3%81%af3.%e3%81%a84.%e3%82%92%e3%83%a1%e3%82%a4%e3%83%b3%e3%81%ab%e3%82%84%e3%82%8a%e3%81%be%e3%81%99%e3%80%82%0a1.%20Data%20Preparation%20library%28tidyverse%29%20dat%20%26lt%3b-%20tribble%28~beh%2c%26%2334%3bS%26%2334%3b%2c%20%26%2334%3bNSADE%26%2334%3b%2c%20%26%2334%3bSAP%26%2334%3b%2c%20%26%2334%3bNSADE%26%2334%3b%2c%20%26%2334%3bMNSADS%26%2334%3b%2c%20%26%2334%3bADASNSADE%26%2334%3b%2c%20%26%2334%3bNSAP%26%2334%3b%2c%20%26%2334%3bNSADAP%26%2334%3b%2c%20%26%2334%3bSNADENAS%26%2334%3b%2c%20%26%2334%3bNSADAP%26%2334%3b%29%20%26gt%3b%20dat%20%23%20A%20tibble%3a%2010%20x%201%20beh%20%26lt%3bchr%26gt%3b%201%20S%202%20NSADE%203%20SAP%204%20NSADE%205%20MNSADS%206%20ADASNSADE%207%20NSAP%208%20NSADAP%209%20SNADENAS%2010%20NSADAP%202.&source=rafed123.github.io"
 	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
 	        title="Share on LinkedIn. Opens in a new window." >
 	        <img src=../../img/icons/45px/linkedin.png>

@@ -174,7 +174,7 @@ The above MEMO focuses on after establishing an instance on EC2.</li>
 <li>Make instance (This page is supporting only for Ubuntu)</li>
 <li>Click to &ldquo;CONNECT&rdquo;</li>
 <li>Excute following command in directory, which has .pem file
-<pre tabindex="0"><code>ssh -i &#34;hogehoge.pem&#34; ubuntu@hugahuga.compute.amazonaws.com
+<pre tabindex="0"><code>ssh -i &quot;hogehoge.pem&quot; ubuntu@hugahuga.compute.amazonaws.com
 </code></pre></li>
 </ul>
 <h2 id="fileor-directory-import-local-to-aws">File(or Directory) import (local to AWS)</h2>
@@ -185,8 +185,8 @@ The above MEMO focuses on after establishing an instance on EC2.</li>
 <pre tabindex="0"><code>lsb_release -cs
 </code></pre></li>
 <li>Register the mirror site of the download source by adding at <b>/etc/apt/sources.list</b>
-<pre tabindex="0"><code>echo -e &#34;\n## For R package&#34;  | sudo tee -a /etc/apt/sources.list
-echo &#34;deb https://cran.ism.ac.jp//bin/linux/ubuntu $(lsb_release -cs)-cran35/&#34; | sudo tee -a /etc/apt/sources.list
+<pre tabindex="0"><code>echo -e &quot;\n## For R package&quot;  | sudo tee -a /etc/apt/sources.list
+echo &quot;deb https://cran.ism.ac.jp//bin/linux/ubuntu $(lsb_release -cs)-cran35/&quot; | sudo tee -a /etc/apt/sources.list
 </code></pre><ul>
 <li>cran35 means that a repository providing R 3.5.x for bionic</li>
 </ul>
@@ -214,7 +214,7 @@ sudo apt-get install libssl-dev
 </ul>
 <h3 id="redm-installation-1">rEDM installation</h3>
 <pre tabindex="0"><code>install.packages(remotes)
-remotes::install_github(&#34;ha0ye/rEDM&#34;)
+remotes::install_github(&quot;ha0ye/rEDM&quot;)
 library(rEDM)
 </code></pre><h4 id="caution">!!caution!!</h4>
 <p>rEDM latest version(190422) <b>DOESN&rsquo;T</b> have <b><i>twin surrogate method</i></b> by default&hellip;
@@ -227,9 +227,9 @@ So if you would like to use this method, 1. install <b>rEDM ver.0.7.1</b>, or 2.
 <ol>
 <li>
 <p>install rEDM ver.0.7.1</p>
-<pre tabindex="0"><code>install.packages(&#34;repmis&#34;)
+<pre tabindex="0"><code>install.packages(&quot;repmis&quot;)
 library(repmis)
-InstallOldPackages(pkgs = &#34;rEDM&#34;, versions = &#34;0.7.1&#34;)
+InstallOldPackages(pkgs = &quot;rEDM&quot;, versions = &quot;0.7.1&quot;)
 </code></pre></li>
 <li>
 <p>read <a href="../../9e2Pb_-dQbSqjSWFUnQdLA">data_transformations.R</a></p>

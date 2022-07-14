@@ -258,7 +258,7 @@ ls    #中身を見る
 <p>まずはrticlesパッケージをインストールします。</p>
 <pre tabindex="0"><code class="language-r=" data-lang="r=">## Console
 
-install.packages(&#34;rticles&#34;)
+install.packages(&quot;rticles&quot;)
 </code></pre><p>これで準備は終了です。
 早速Rmdのテンプレートを使いに行きます。</p>
 <p>今回はサンプルとしてarXivのテンプレートを用います。各自の投稿したいジャーナルのフォーマットに合わせて適宜修正してください。出版社に合わせたテンプレートもあるのでそちらを使っても良いかもしれません。</p>
@@ -302,7 +302,7 @@ yaml header部分は特に用事がなければ様式を変更しないことを
 <p>基本的には以下のコマンドでpushまで行います。</p>
 <pre tabindex="0"><code class="language-shell=" data-lang="shell=">cd ../    #demoに入ります
 git add arxiv    #書き進めた文章などを追加します。
-git commit -m &#34;add arxiv dir&#34;    #何を追加したのかについて記述します
+git commit -m &quot;add arxiv dir&quot;    #何を追加したのかについて記述します
 git push
 </code></pre><p>すると以下の図のように追加されてアップロードされます。</p>
 <p><img src="https://i.imgur.com/kofclYa.png" alt=""></p>
@@ -335,7 +335,7 @@ git checkout coauthor1comment
 <h4 id="3-pushするpull-requestを投げる共著者">3. pushする・pull requestを投げる（共著者）</h4>
 <p>Rmarkdownへの作業完了後、以下のコマンドで新たなbranchとしてpushします。</p>
 <pre tabindex="0"><code class="language-shell=" data-lang="shell=">git add arxiv/arxiv.Rmd
-git commit -m &#34;add comment&#34;
+git commit -m &quot;add comment&quot;
 git push origin coauthor1comment
 </code></pre><p>ここまででgithubに反映されます。</p>
 <p>github上でpull requestを投げます。（ここは別にメールでもいいと思います。）</p>
@@ -346,7 +346,7 @@ git branch -a    #リモートのbranchがあるか確認します
 git checkout coauthor1comment    #もしあればそのbranchに移動します
 git branch    #これでcoauthor1commentが出てくればokです
 </code></pre><p>その後、mainにmergeします。</p>
-<pre tabindex="0"><code class="language-shell=" data-lang="shell=">git checkout main    #既に入っていたらAlready on &#39;main&#39;と表示されます
+<pre tabindex="0"><code class="language-shell=" data-lang="shell=">git checkout main    #既に入っていたらAlready on 'main'と表示されます
 git merge coauthor1comment
 </code></pre><p>gitではmergeは行単位で行うので、共著者が編集してくれた部分だけがmergeによって更新されます。</p>
 <p>共著者のコメントなどを参考に修正を進めます。</p>

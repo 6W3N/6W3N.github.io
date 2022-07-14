@@ -218,45 +218,45 @@ In fact, there is no problem even if you don't use Docker, but here I introduce 
 
 google_search_path &lt;- function(str) {
   url &lt;- list(
-    hostname = &#34;google.com&#34;,
-    scheme = &#34;https&#34;,
-    path = &#34;search&#34;,
+    hostname = &quot;google.com&quot;,
+    scheme = &quot;https&quot;,
+    path = &quot;search&quot;,
     query = list(
       q = str,
-      tbm = &#34;isch&#34;
+      tbm = &quot;isch&quot;
     )
   )
-  class(url) &lt;- &#34;url&#34;
+  class(url) &lt;- &quot;url&quot;
   httr::build_url(url)
 }
 </code></pre><p>このコードは研究室の先輩である<a href="https://github.com/h8gi">h8giさん</a>に色々教えてもらいました。
 <a href="https://cran.r-project.org/web/packages/httr/httr.pdf">{httr}</a>パッケージを使いました。</p>
-<pre tabindex="0"><code>google_search_path(&#34;beanweevil&#34;)
+<pre tabindex="0"><code>google_search_path(&quot;beanweevil&quot;)
 </code></pre><p>上のコードを実行するとbeanweevilと検索窓に打った時と同じページのURLを取得できます。</p>
 <h3 id="4--rseleniumで画像のurlを一括取得">4.  RSeleniumで画像のURLを一括取得。</h3>
 <p>ここからRのスクリプトが多くなります。</p>
 <pre tabindex="0"><code>remDr &lt;- remoteDriver(
-  remoteServerAddr = &#34;localhost&#34;,
+  remoteServerAddr = &quot;localhost&quot;,
   port = 4445L,
-  browserName = &#34;firefox&#34;
+  browserName = &quot;firefox&quot;
 )
 remDr$open()
 </code></pre><p><code>remoteDriver</code>はRSeleniumに入っている関数です。
 <code>remDr$open()</code>を実行することでDockerで立てたサーバーにアクセスします。</p>
-<pre tabindex="0"><code>str &lt;- &#34;beanweevil&#34;
+<pre tabindex="0"><code>str &lt;- &quot;beanweevil&quot;
 search_url &lt;- google_search_path(str)
 
 urls &lt;- foreach(i=1:100, .combine=rbind) %do% {			#Google shows 100 photos
 	remDr$navigate(search_url)
-	webElem &lt;- remDr$findElements(using = &#39;xpath&#39;, 
-		&#34;//a[contains(@class, &#39;wXeWr&#39;)]&#34;)		#initialize
+	webElem &lt;- remDr$findElements(using = 'xpath', 
+		&quot;//a[contains(@class, 'wXeWr')]&quot;)		#initialize
 
 	remDr$mouseMoveToLocation(webElement = webElem[[i]]) 	#move location
 	remDr$click(1)						#single click 
 	
-	tmp_webElem &lt;- remDr$findElements(using = xpath&#39;, 
-		&#34;//a[contains(@class, &#39;wXeWr&#39;)]&#34;)		#get web elements after click
-	tmp &lt;- tmp_webElem[[i]]$getElementAttribute(&#34;href&#34;)	#get tmp url 
+	tmp_webElem &lt;- remDr$findElements(using = xpath', 
+		&quot;//a[contains(@class, 'wXeWr')]&quot;)		#get web elements after click
+	tmp &lt;- tmp_webElem[[i]]$getElementAttribute(&quot;href&quot;)	#get tmp url 
 	tmp_url &lt;- httr::parse_url(tmp[[1]])$query$imgurl	#parse and decode and get url
 		
 	tibble(id=i, url=tmp_url)
@@ -301,8 +301,9 @@ Google画像検索で出てきた画像をクリックすると、右側に黒�
 # … with 90 more rows
 </code></pre><p>これをテキストファイル(.txt)として出力します。</p>
 <pre tabindex="0"><code>urls %&gt;% select(url) %&gt;% 
-	write.table(&#34;YOURDIR/urls.txt&#34;, 
+	write.table(&quot;YOURDIR/urls.txt&quot;, 
 		col.names = FALSE, quote=FALSE, row.names=FALSE)
+
 </code></pre><p><img src="../../image/photo/urls_text.png" alt="urls_text"></p>
 <p>出力結果です。</p>
 <h3 id="5-wgetを用いて画像を取得">5. wgetを用いて画像を取得。</h3>
@@ -312,8 +313,8 @@ Google画像検索で出てきた画像をクリックすると、右側に黒�
 <pre tabindex="0"><code>brew install wget
 </code></pre><p>を実行して入れておいてください。</p>
 <p>筆者はものぐさすぎてRで一括で走らせたいと言う謎の気持ちが強かったので以下のコードを走らせています。</p>
-<pre tabindex="0"><code>setwd(&#34;YOURDIR/figs&#34;)
-system(&#34;wget -i ../urls.txt&#34;)
+<pre tabindex="0"><code>setwd(&quot;YOURDIR/figs&quot;)
+system(&quot;wget -i ../urls.txt&quot;)
 </code></pre><p>これで取得できます。こちらはそこまで時間がかかりません。</p>
 <p><img src="../../image/photo/figs_scraping.png" alt="figs_scraping"></p>
 <p>こんな感じで取得できます。</p>
