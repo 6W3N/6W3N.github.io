@@ -14,11 +14,12 @@
       
       <guid>https://6w3n.github.io/posts/slideembedding_demo/</guid>
       <description>スライドを埋め込むデモ github pages by hugoにスライドを埋め込む方法を調べたのでメモがてら。
+Office 365とGoogle slidesを使った例を紹介。どちらもウェブ上でスライドをいじった後にブログの方をリロードすれば自動で更新がかかるので優秀。
 Office 365の機能を使った例 This is an embedded Microsoft Office presentation, powered by Office.  ログインしないと見れないのが難点かも&amp;hellip;？ ログインせずに見れる方法があれば教えてください。
 Google slidesを使った例   こっちのが良いかも。
-レスポンシブにするには 出てきたタグに対してその上位にタグを設定。そこに対してclassやidでcssを直接あてに行く。
+レスポンシブにするには 出てきたiframeタグに対してその上位にdivタグを設定。そこに対してclassやidでcssを直接あてに行く。
 具体的には以下のような感じでできる。
-&amp;lt;div class=&amp;quot;iframe-outer&amp;quot;&amp;gt; &amp;lt;iframe class=&amp;quot;iframe-tags&amp;quot; src=&amp;quot;...&amp;quot;, ...&amp;lt;/iframe&amp;gt; &amp;lt;/div&amp;gt; .iframe-outer{ position: relative; padding-top: 75%; /* 4:3の縦横比率にしたい場合、3÷4=75% */ } .</description>
+&amp;lt;div class=&amp;#34;iframe-outer&amp;#34;&amp;gt; &amp;lt;iframe class=&amp;#34;iframe-tags&amp;#34; src=&amp;#34;...&amp;#34;, ...&amp;lt;/iframe&amp;gt; &amp;lt;/div&amp;gt; .iframe-outer{ position: relative; padding-top: 75%; /* 4:3の縦横比率にしたい場合、3÷4=75% */ } .</description>
     </item>
     
   </channel>
