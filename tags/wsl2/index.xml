@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tidyverse on 6W3N Site</title>
-    <link>https://6w3n.github.io/tags/tidyverse/</link>
-    <description>Recent content in Tidyverse on 6W3N Site</description>
+    <title>wsl2 on 6W3N Site</title>
+    <link>https://6w3n.github.io/tags/wsl2/</link>
+    <description>Recent content in wsl2 on 6W3N Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://6w3n.github.io/tags/tidyverse/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 10 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://6w3n.github.io/tags/wsl2/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>tidyverse on wsl2</title>
       <link>https://6w3n.github.io/posts/wsl2/</link>
@@ -19,17 +19,6 @@ wsl2のインストール  コマンドプロンプトを管理者権限で実�
 R 4.xのインストール おそらく何もしていなければUbuntuが入っていると思います。その他の環境については今回は調査していません。
 コマンドプロンプトで以下を実行。
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 sudo add-apt-repository &amp;#39;deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/&amp;#39; sudo apt install r-base R --version 参照</description>
-    </item>
-    
-    <item>
-      <title>Tidyverse First Introduction</title>
-      <link>https://6w3n.github.io/posts/tidyverse_first_introduction/</link>
-      <pubDate>Wed, 20 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://6w3n.github.io/posts/tidyverse_first_introduction/</guid>
-      <description>Contents (for MB2, 19/11/08)  Tidyverse tidyr dplyr Excersice (data manipulation using tidyr and dplyr)  Tidyverse Tidyverse has three meanings:
- Concept:
-to use &amp;ldquo;tidy data&amp;rdquo; and to make the design of the tools used for data analyze more tidy.</description>
     </item>
     
   </channel>

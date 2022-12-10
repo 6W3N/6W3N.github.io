@@ -6,7 +6,21 @@
     <description>Recent content in R on 6W3N Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 20 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://6w3n.github.io/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 10 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://6w3n.github.io/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>tidyverse on wsl2</title>
+      <link>https://6w3n.github.io/posts/wsl2/</link>
+      <pubDate>Sat, 10 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/posts/wsl2/</guid>
+      <description>tidyverse on wsl2 R 4.xとtidyverseをwsl2で動かすメモです。Windows初心者なので色々間違っているかもしれません。
+使ったPCはこちら OS：Windows 11 Pro
+wsl2のインストール  コマンドプロンプトを管理者権限で実行 コマンドプロンプトでwsl --install 再起動  ここまでは多くの記事があるのではしょりましたが、大きく分けると上記の3段階です。
+R 4.xのインストール おそらく何もしていなければUbuntuが入っていると思います。その他の環境については今回は調査していません。
+コマンドプロンプトで以下を実行。
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 sudo add-apt-repository &amp;#39;deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/&amp;#39; sudo apt install r-base R --version 参照</description>
+    </item>
+    
     <item>
       <title>Rmd to article</title>
       <link>https://6w3n.github.io/posts/rticles/</link>
