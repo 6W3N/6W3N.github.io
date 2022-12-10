@@ -113,6 +113,70 @@
 
 
 <div class="blog-brief">
+    <a href="../posts/wsl2/">
+        <h3 class="title is-4">
+            Tidyverse on Wsl2
+        </h3>
+    </a>
+
+    <div class="level is-mobile details">
+        <div class="level-left">
+
+            
+            <div class="level-item">
+                <a href="../posts/wsl2/">
+                    <p class="subtitle info date">Dec 10, 2022
+                    </p>
+                </a>
+            </div>
+            
+
+
+            <div class="level-item">
+                <a href="../posts/wsl2/">
+                    <p class="subtitle info">
+                        6 mins read
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="level-right is-hidden-touch">
+            
+            <a class="tag is-rounded" href="../tags/tag1">Tag1</a>
+            
+            <a class="tag is-rounded" href="../tags/tag2">Tag2</a>
+            
+        </div>
+    </div>
+
+    <div>
+        
+
+        <div>
+            <a href="../posts/wsl2/">
+                <p class="summary">
+                    tidyverse on wsl2 R 4.xとtidyverseをwsl2で動かすメモです。Windows初心者なので色々間違っているかもしれません。
+使ったPCはこちら OS：Windows 11 Pro
+wsl2のインストール  コマンドプロンプトを管理者権限で実行 コマンドプロンプトでwsl --install 再起動  ここまでは多くの記事があるのではしょりましたが、大きく分けると上記の3段階です。
+R 4.xのインストール おそらく何もしていなければUbuntuが入っていると思います。その他の環境については今回は調査していません。
+コマンドプロンプトで以下を実行。
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 sudo add-apt-repository &#39;deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/&#39; sudo apt install r-base R --version 参照：https://medium.com/@hpgomide/how-to-update-your-r-3-x-to-the-r-4-x-in-your-linux-ubuntu-46e2209409c3#:~:text=How%20to%20update%20R%203.x%20to%20the%20new,3.x%20packages%20to%20the%20new%204.0.%20See%20More.
+                    
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <div class="level is-mobile continue-reading">
+        <div class="level-left">
+        </div>
+        <div class="level-right">
+            <a href="../posts/wsl2/">Continue reading <i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <hr>
+</div><div class="blog-brief">
     <a href="../posts/slideembedding_demo/">
         <h3 class="title is-4">
             Slide Embedding Demo
@@ -161,7 +225,7 @@ Office 365の機能を使った例 This is an embedded Microsoft Office presenta
 Google slidesを使った例   こっちのが良いかも。
 レスポンシブにするには 出てきたiframeタグに対してその上位にdivタグを設定。そこに対してclassやidでcssを直接あてに行く。
 具体的には以下のような感じでできる。
-&lt;div class=&#34;iframe-outer&#34;&gt; &lt;iframe class=&#34;iframe-tags&#34; src=&#34;...&#34;, ...&lt;/iframe&gt; &lt;/div&gt; .iframe-outer{ position: relative; padding-top: 75%; /* 4:3の縦横比率にしたい場合、3÷4=75% */ } .
+&lt;div class=&#34;iframe-outer&#34;&gt; &lt;iframe class=&#34;iframe-tags&#34; src=&#34;...&#34;, ...&lt;/iframe&gt; &lt;/div&gt; .iframe-outer{  position: relative;  padding-top: 75%; /* 4:3の縦横比率にしたい場合、3÷4=75% */ }  .
                     
                 </p>
             </a>
@@ -378,67 +442,6 @@ rticlesというRパッケージ
         </div>
     </div>
     <hr>
-</div><div class="blog-brief">
-    <a href="../posts/tsukubarmdbp/">
-        <h3 class="title is-4">
-            TsukubaRmdBP
-        </h3>
-    </a>
-
-    <div class="level is-mobile details">
-        <div class="level-left">
-
-            
-            <div class="level-item">
-                <a href="../posts/tsukubarmdbp/">
-                    <p class="subtitle info date">Jan 11, 2022
-                    </p>
-                </a>
-            </div>
-            
-
-
-            <div class="level-item">
-                <a href="../posts/tsukubarmdbp/">
-                    <p class="subtitle info">
-                        1 min read
-                    </p>
-                </a>
-            </div>
-        </div>
-        <div class="level-right is-hidden-touch">
-            
-            <a class="tag is-rounded" href="../tags/r">R</a>
-            
-            <a class="tag is-rounded" href="../tags/rmd">Rmd</a>
-            
-        </div>
-    </div>
-
-    <div>
-        
-
-        <div>
-            <a href="../posts/tsukubarmdbp/">
-                <p class="summary">
-                    TsukubaRmdBP 筆者の所属している学位プログラムの修論・博論用のRパッケージを作りつつ、Rパッケージの作り方とRmdの理解を深めました。
-使い方はとてもシンプルでgithubのREADMEを読んでいただければと思います。 日本語には未対応ですが、そのうち対応します。
-そのうち、Rmdについての細かい記事も執筆したいと思いつつ。。。
-                    
-                </p>
-            </a>
-        </div>
-    </div>
-
-    <div class="level is-mobile continue-reading">
-        <div class="level-left">
-        </div>
-        <div class="level-right">
-            <a href="../posts/tsukubarmdbp/">Continue reading <i class="fa fa-angle-double-right"
-                    aria-hidden="true"></i></a>
-        </div>
-    </div>
-    <hr>
 </div>
 
 
@@ -513,6 +516,18 @@ rticlesというRパッケージ
             
 
                 <li><a href="../posts/page/4/" class="pagination-link">4</a></li>
+
+                
+                
+
+            
+
+        
+
+            
+            
+
+                <li><a href="../posts/page/5/" class="pagination-link">5</a></li>
 
                 
                 

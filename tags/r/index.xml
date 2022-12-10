@@ -51,7 +51,7 @@ rticlesというRパッケージ</description>
 筆者はもっぱらLaTeXの表組みを用いていました。（筆者はそのうち.Rmdに完全移行したいと思いつつ2年くらいはR+LaTeXの組み合わせを用いています。）
 いつものようにRで得た解析結果をぽちぽちとコピペをしていたところ、ふと 「Rで吐き出した解析の結果をコピペする作業、虚しくない？」 と思い立ったのが本記事のきっかけです。 皆さんはどうですか？胸に手を当てて考えてみてください。え、何も思わない？そうですか&amp;hellip;。
 ということで、今回は Rから表をimageとして吐き出す ことを目的とした記事です。imageとして吐き出せば、あとはLaTeXだとて\includegraphicsでおしまいなわけです。なんと楽なことか。
-注意！！実際問題として、論文を投稿する時にはimageとしてtableを提出できない場合の方が多いと思います。そのような場合もある程度まではカバーできますが、今回は主に学会発表やプログレスミーティングの時のお役立ち情報くらいに考えてください。 こちらの記事を参照ください。&amp;ldquo;Can we insert tables as images in a manuscript submission document?&amp;quot;
+注意！！実際問題として、論文を投稿する時にはimageとしてtableを提出できない場合の方が多いと思います。そのような場合もある程度まではカバーできますが、今回は主に学会発表やプログレスミーティングの時のお役立ち情報くらいに考えてください。 こちらの記事を参照ください。&amp;ldquo;Can we insert tables as images in a manuscript submission document?&amp;rdquo;
 また、今回もかなり備忘録に近いです。
 今回は、
  {gt}による表作成 {gtsummary}による表作成 出力、その他  の順です。
@@ -70,7 +70,7 @@ APIは申請してから使います。
 この備忘録では以下の流れで実行します。
  rtweet Twitter API rtweet + Twitter API  Environment  macOS Catalina 10.15.6 R 4.0.2 rtweet 0.7.0 Twitter Account  rtweet {rtweet}はRからTwitterを操作するためのパッケージです。例えば、ツイートのデータを集めたり、ツイートを行ったりすることができます。 これらはTwitterアカウントを連携させて用いることになります。なのでTwitterのアカウントがない場合はこちらを参照してアカウントを作成してください。
 {rtweet}の使い方自体は至ってシンプルです。
-library(rtweet) post_tweet(&amp;#34;Look, i&amp;#39;m tweeting from R in my #rstats!</description>
+library(rtweet)  post_tweet(&amp;#34;Look, i&amp;#39;m tweeting from R in my #rstats!</description>
     </item>
     
     <item>
@@ -84,7 +84,7 @@ library(rtweet) post_tweet(&amp;#34;Look, i&amp;#39;m tweeting from R in my #rst
 Environment  Mac OS Catalina ver. 10.15.4 R ggraph ver. 2.0.3 R ver. 4.0.2  What&amp;rsquo;s ggraph? ものすごく大雑把な説明をしてしまうと、{ggraph}は{ggplot2}のようにネットワークの視覚化などを行うためのパッケージです。
 Main Flow  Dataの準備 ネットワークへ変換の下準備 ネットワークの生成 描画  上記1.と2.はIgraph Memoと全く同じです。読み飛ばしてもらっても構いません。
 今回は3.と4.をメインにやります。
-1. Data Preparation library(tidyverse) dat &amp;lt;- tribble(~beh,&amp;#34;S&amp;#34;, &amp;#34;NSADE&amp;#34;, &amp;#34;SAP&amp;#34;, &amp;#34;NSADE&amp;#34;, &amp;#34;MNSADS&amp;#34;, &amp;#34;ADASNSADE&amp;#34;, &amp;#34;NSAP&amp;#34;, &amp;#34;NSADAP&amp;#34;, &amp;#34;SNADENAS&amp;#34;, &amp;#34;NSADAP&amp;#34;) &amp;gt; dat # A tibble: 10 x 1 beh &amp;lt;chr&amp;gt; 1 S 2 NSADE 3 SAP 4 NSADE 5 MNSADS 6 ADASNSADE 7 NSAP 8 NSADAP 9 SNADENAS 10 NSADAP 2.</description>
+1. Data Preparation library(tidyverse)  dat &amp;lt;- tribble(~beh,&amp;#34;S&amp;#34;, &amp;#34;NSADE&amp;#34;, &amp;#34;SAP&amp;#34;,  &amp;#34;NSADE&amp;#34;, &amp;#34;MNSADS&amp;#34;, &amp;#34;ADASNSADE&amp;#34;, &amp;#34;NSAP&amp;#34;,  &amp;#34;NSADAP&amp;#34;, &amp;#34;SNADENAS&amp;#34;, &amp;#34;NSADAP&amp;#34;) &amp;gt; dat # A tibble: 10 x 1  beh  &amp;lt;chr&amp;gt;  1 S  2 NSADE  3 SAP  4 NSADE  5 MNSADS  6 ADASNSADE  7 NSAP  8 NSADAP  9 SNADENAS 10 NSADAP 2.</description>
     </item>
     
     <item>

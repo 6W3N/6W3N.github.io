@@ -19,7 +19,7 @@ Office 365の機能を使った例 This is an embedded Microsoft Office presenta
 Google slidesを使った例   こっちのが良いかも。
 レスポンシブにするには 出てきたiframeタグに対してその上位にdivタグを設定。そこに対してclassやidでcssを直接あてに行く。
 具体的には以下のような感じでできる。
-&amp;lt;div class=&amp;#34;iframe-outer&amp;#34;&amp;gt; &amp;lt;iframe class=&amp;#34;iframe-tags&amp;#34; src=&amp;#34;...&amp;#34;, ...&amp;lt;/iframe&amp;gt; &amp;lt;/div&amp;gt; .iframe-outer{ position: relative; padding-top: 75%; /* 4:3の縦横比率にしたい場合、3÷4=75% */ } .</description>
+&amp;lt;div class=&amp;#34;iframe-outer&amp;#34;&amp;gt; &amp;lt;iframe class=&amp;#34;iframe-tags&amp;#34; src=&amp;#34;...&amp;#34;, ...&amp;lt;/iframe&amp;gt; &amp;lt;/div&amp;gt; .iframe-outer{  position: relative;  padding-top: 75%; /* 4:3の縦横比率にしたい場合、3÷4=75% */ }  .</description>
     </item>
     
   </channel>

@@ -19,7 +19,7 @@ APIは申請してから使います。
 この備忘録では以下の流れで実行します。
  rtweet Twitter API rtweet + Twitter API  Environment  macOS Catalina 10.15.6 R 4.0.2 rtweet 0.7.0 Twitter Account  rtweet {rtweet}はRからTwitterを操作するためのパッケージです。例えば、ツイートのデータを集めたり、ツイートを行ったりすることができます。 これらはTwitterアカウントを連携させて用いることになります。なのでTwitterのアカウントがない場合はこちらを参照してアカウントを作成してください。
 {rtweet}の使い方自体は至ってシンプルです。
-library(rtweet) post_tweet(&amp;#34;Look, i&amp;#39;m tweeting from R in my #rstats!</description>
+library(rtweet)  post_tweet(&amp;#34;Look, i&amp;#39;m tweeting from R in my #rstats!</description>
     </item>
     
   </channel>
