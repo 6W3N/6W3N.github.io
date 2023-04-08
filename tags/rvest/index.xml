@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rvest on 6W3N Site</title>
+    <link>https://6w3n.github.io/tags/rvest/</link>
+    <description>Recent content in rvest on 6W3N Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://6w3n.github.io/tags/rvest/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>rvest memo</title>
+      <link>https://6w3n.github.io/posts/keibascraping/</link>
+      <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/posts/keibascraping/</guid>
+      <description>Preface このページは、Rを使ったWeb Scrapingの備忘録です。
+Motivation お金が欲しいです。 出来るだけ労力をかけずにお金が欲しいです。 研究生活で得た能力がすぐお金にならないかなぁ&amp;hellip;なったら嬉しいなぁ&amp;hellip;。
+というか、これまでの研究生活で得た能力って何があったかなぁと考えたところ
+ 統計解析  統計的因果推論 時系列解析 その他諸々   スクレイピング ウェブページ関連(htmlとかcssとか) 画像処理ちょっと マメゾウの個体数をぱっと見で当てる技術 巻貝同定能力 種々の知識  一般的に使いやすそうなものはスクレイピングと統計解析か&amp;hellip; うーん&amp;hellip;
+「「「せや！おうまさん当てゲームや！！」」」
+「競馬のデータをスクレイピングしてきて何が馬の勝敗に効いているか調べたらお金が稼げるのではないだろうか。」 そんな動機で行う、競馬のデータ収集から解析までの連続投稿の第一弾です。 今回はRとrvestを用いてデータを集めます。
+Environment  Mac OS Catalina var. 10.15.4 R var. 3.6.1  Postface Enjoy!</description>
+    </item>
+    
+  </channel>
+</rss>

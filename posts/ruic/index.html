@@ -10,7 +10,7 @@
 <meta name="description" 
       content="rUICの備忘録 UICとは Unified Information-theoretic Causalityの略。 最近傍法を用いてCCMを解析的（数学的）に解けるように変形し生まれた指標。CCMの一般化とも言える。そのためEDMの一部という立ち位置。
 UICのメリット：
- CCMでは線形性が強い際などに偽陽性がでるが、その点に関してUICではロバスト。 条件付きで計算できる。そのため、A-&gt;B-&gt;Cのような因果がある場合、CCMではA-&gt;Cでの因果を否定できないが、UICでは否定できる(?)。 解析的に計算できるためCCMよりも計算速度が速い。  rUIC::simplex() tl &lt;- 400 # time length x &lt;- y &lt;- rep(NA, tl) x[1] &lt;- 0.4 y[1] &lt;- 0.2 for (t in 1:(tl - 1)) { # causality : x -&gt; y x[t&#43;1] = x[t] * (3.
+ CCMでは線形性が強い際などに偽陽性がでるが、その点に関してUICではロバスト。 条件付きで計算できる。そのため、A-&gt;B-&gt;Cのような因果がある場合、CCMではA-&gt;Cでの因果を否定できないが、UICでは否定できる(?)。 解析的に計算できるためCCMよりも計算速度が速い。  rUIC::simplex() tl &lt;- 400 # time length x &lt;- y &lt;- rep(NA, tl) x[1] &lt;- 0.4 y[1] &lt;- 0.2 for (t in 1:(tl - 1)) { # causality : x -&gt; y  x[t&#43;1] = x[t] * (3.
                 ">
 
 <link rel="canonical" href="https://6w3n.github.io/posts/ruic/" />
@@ -23,7 +23,7 @@ UICのメリット：
 <meta property="og:title" content="rUIC" />
 <meta property="og:description" content="rUICの備忘録 UICとは Unified Information-theoretic Causalityの略。 最近傍法を用いてCCMを解析的（数学的）に解けるように変形し生まれた指標。CCMの一般化とも言える。そのためEDMの一部という立ち位置。
 UICのメリット：
- CCMでは線形性が強い際などに偽陽性がでるが、その点に関してUICではロバスト。 条件付きで計算できる。そのため、A-&gt;B-&gt;Cのような因果がある場合、CCMではA-&gt;Cでの因果を否定できないが、UICでは否定できる(?)。 解析的に計算できるためCCMよりも計算速度が速い。  rUIC::simplex() tl &lt;- 400 # time length x &lt;- y &lt;- rep(NA, tl) x[1] &lt;- 0.4 y[1] &lt;- 0.2 for (t in 1:(tl - 1)) { # causality : x -&gt; y x[t&#43;1] = x[t] * (3." />
+ CCMでは線形性が強い際などに偽陽性がでるが、その点に関してUICではロバスト。 条件付きで計算できる。そのため、A-&gt;B-&gt;Cのような因果がある場合、CCMではA-&gt;Cでの因果を否定できないが、UICでは否定できる(?)。 解析的に計算できるためCCMよりも計算速度が速い。  rUIC::simplex() tl &lt;- 400 # time length x &lt;- y &lt;- rep(NA, tl) x[1] &lt;- 0.4 y[1] &lt;- 0.2 for (t in 1:(tl - 1)) { # causality : x -&gt; y  x[t&#43;1] = x[t] * (3." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://6w3n.github.io/posts/ruic/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-01-09T00:00:00+00:00" />
@@ -34,7 +34,7 @@ UICのメリット：
 <meta name="twitter:title" content="rUIC"/>
 <meta name="twitter:description" content="rUICの備忘録 UICとは Unified Information-theoretic Causalityの略。 最近傍法を用いてCCMを解析的（数学的）に解けるように変形し生まれた指標。CCMの一般化とも言える。そのためEDMの一部という立ち位置。
 UICのメリット：
- CCMでは線形性が強い際などに偽陽性がでるが、その点に関してUICではロバスト。 条件付きで計算できる。そのため、A-&gt;B-&gt;Cのような因果がある場合、CCMではA-&gt;Cでの因果を否定できないが、UICでは否定できる(?)。 解析的に計算できるためCCMよりも計算速度が速い。  rUIC::simplex() tl &lt;- 400 # time length x &lt;- y &lt;- rep(NA, tl) x[1] &lt;- 0.4 y[1] &lt;- 0.2 for (t in 1:(tl - 1)) { # causality : x -&gt; y x[t&#43;1] = x[t] * (3."/>
+ CCMでは線形性が強い際などに偽陽性がでるが、その点に関してUICではロバスト。 条件付きで計算できる。そのため、A-&gt;B-&gt;Cのような因果がある場合、CCMではA-&gt;Cでの因果を否定できないが、UICでは否定できる(?)。 解析的に計算できるためCCMよりも計算速度が速い。  rUIC::simplex() tl &lt;- 400 # time length x &lt;- y &lt;- rep(NA, tl) x[1] &lt;- 0.4 y[1] &lt;- 0.2 for (t in 1:(tl - 1)) { # causality : x -&gt; y  x[t&#43;1] = x[t] * (3."/>
 
 
 
@@ -174,37 +174,37 @@ UICのメリット：
 <li>解析的に計算できるためCCMよりも計算速度が速い。</li>
 </ul>
 <h3 id="ruicsimplex">rUIC::simplex()</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">tl <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">400</span>  <span style="color:#75715e"># time length</span>
-x <span style="color:#f92672">&lt;-</span> y <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">rep</span>(<span style="color:#66d9ef">NA</span>, tl)
-x[1] <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">0.4</span>
-y[1] <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">0.2</span>
-<span style="color:#a6e22e">for </span>(t in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>(tl <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)) {  <span style="color:#75715e"># causality : x -&gt; y</span>
-    x[t<span style="color:#ae81ff">+1</span>] <span style="color:#f92672">=</span> x[t] <span style="color:#f92672">*</span> (<span style="color:#ae81ff">3.8</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">3.8</span> <span style="color:#f92672">*</span> x[t] <span style="color:#f92672">-</span> <span style="color:#ae81ff">0.0</span> <span style="color:#f92672">*</span> y[t])
-    y[t<span style="color:#ae81ff">+1</span>] <span style="color:#f92672">=</span> y[t] <span style="color:#f92672">*</span> (<span style="color:#ae81ff">3.5</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">3.5</span> <span style="color:#f92672">*</span> y[t] <span style="color:#f92672">-</span> <span style="color:#ae81ff">0.1</span> <span style="color:#f92672">*</span> x[t])
-}
-block <span style="color:#f92672">=</span> <span style="color:#a6e22e">data.frame</span>(t <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>tl, x <span style="color:#f92672">=</span> x, y <span style="color:#f92672">=</span> y)
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">simp_yx <span style="color:#f92672">&lt;-</span> rUIC<span style="color:#f92672">::</span><span style="color:#a6e22e">simplex</span>(block, 
-            lib_var <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;y&#34;</span>, cond_var <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;x&#34;</span>, E <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">:</span><span style="color:#ae81ff">8</span>, 
-            tau <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, tp <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, Enull <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;adaptive&#34;</span>)
-Eyx <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">with</span>(simp_yx, <span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">0</span>, E[pval <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0.05</span>])))
-</code></pre></div><p>引数cond_varを指定することで、rUIC::simplex()を行う際に2つの時系列を食わせてやってrmse（だけ!）を求めることができる。そこから　埋め込み次元Eを求める（c.f. rEDM::simplex()は1つの時系列しか入れられない）。UICを計算するとき、2つの時系列の組み合わせで求めたEを他の組み合わせに適用するのは多分ダメ（X+Yで計算したXのEを用いてXとZのUICを計算する、的な）。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>tl <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">400</span>  <span style="color:#75715e"># time length</span>
+</span></span><span style="display:flex;"><span>x <span style="color:#f92672">&lt;-</span> y <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">rep</span>(<span style="color:#66d9ef">NA</span>, tl)
+</span></span><span style="display:flex;"><span>x[1] <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">0.4</span>
+</span></span><span style="display:flex;"><span>y[1] <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">0.2</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">for </span>(t in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>(tl <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)) {  <span style="color:#75715e"># causality : x -&gt; y</span>
+</span></span><span style="display:flex;"><span>    x[t<span style="color:#ae81ff">+1</span>] <span style="color:#f92672">=</span> x[t] <span style="color:#f92672">*</span> (<span style="color:#ae81ff">3.8</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">3.8</span> <span style="color:#f92672">*</span> x[t] <span style="color:#f92672">-</span> <span style="color:#ae81ff">0.0</span> <span style="color:#f92672">*</span> y[t])
+</span></span><span style="display:flex;"><span>    y[t<span style="color:#ae81ff">+1</span>] <span style="color:#f92672">=</span> y[t] <span style="color:#f92672">*</span> (<span style="color:#ae81ff">3.5</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">3.5</span> <span style="color:#f92672">*</span> y[t] <span style="color:#f92672">-</span> <span style="color:#ae81ff">0.1</span> <span style="color:#f92672">*</span> x[t])
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>block <span style="color:#f92672">=</span> <span style="color:#a6e22e">data.frame</span>(t <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>tl, x <span style="color:#f92672">=</span> x, y <span style="color:#f92672">=</span> y)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>simp_yx <span style="color:#f92672">&lt;-</span> rUIC<span style="color:#f92672">::</span><span style="color:#a6e22e">simplex</span>(block, 
+</span></span><span style="display:flex;"><span>            lib_var <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;y&#34;</span>, cond_var <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;x&#34;</span>, E <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">:</span><span style="color:#ae81ff">8</span>, 
+</span></span><span style="display:flex;"><span>            tau <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, tp <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, Enull <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;adaptive&#34;</span>)
+</span></span><span style="display:flex;"><span>Eyx <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">with</span>(simp_yx, <span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">0</span>, E[pval <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0.05</span>])))
+</span></span></code></pre></div><p>引数cond_varを指定することで、rUIC::simplex()を行う際に2つの時系列を食わせてやってrmse（だけ!）を求めることができる。そこから　埋め込み次元Eを求める（c.f. rEDM::simplex()は1つの時系列しか入れられない）。UICを計算するとき、2つの時系列の組み合わせで求めたEを他の組み合わせに適用するのは多分ダメ（X+Yで計算したXのEを用いてXとZのUICを計算する、的な）。
 2引数でEを求める場合、次元数を一つ増やす操作が必要らしい（uic.optimal()では勝手にやってくれている）。
 rmseしか出力結果にないのはUICにおいてrhoとmseが使えないから(?)。
 uic.optinal()はバックエンドでこの2引数バージョンのsimplex()を採用している。</p>
 <p>ちなみに、rEDM::simplex()で出てくるrhoについては、rhoの値が低い場合（0.1より低いくらい）あまり信用できないらしい。rmseはその辺については大丈夫なよう。Eを実際どのように決めるかについてのガイドラインはいまだにあやふやで、ひとまずrmseが妥当っぽい。</p>
 <h3 id="ruicuicoptimal">rUIC::uic.optimal()</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">uic_opt_yx <span style="color:#f92672">&lt;-</span> rUIC<span style="color:#f92672">::</span><span style="color:#a6e22e">uic.optimal</span>(block, 
-                    lib_var <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;y&#34;</span>, tar_var <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;x&#34;</span>, E <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">:</span><span style="color:#ae81ff">8</span>, 
-                    tau <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, tp <span style="color:#f92672">=</span> <span style="color:#ae81ff">-4</span><span style="color:#f92672">:</span><span style="color:#ae81ff">4</span>)
-</code></pre></div><p>Eの計算からやってくれる。Eは上記のrUIC::simplex()のrmseから求められている。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>uic_opt_yx <span style="color:#f92672">&lt;-</span> rUIC<span style="color:#f92672">::</span><span style="color:#a6e22e">uic.optimal</span>(block, 
+</span></span><span style="display:flex;"><span>                    lib_var <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;y&#34;</span>, tar_var <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;x&#34;</span>, E <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">:</span><span style="color:#ae81ff">8</span>, 
+</span></span><span style="display:flex;"><span>                    tau <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, tp <span style="color:#f92672">=</span> <span style="color:#ae81ff">-4</span><span style="color:#f92672">:</span><span style="color:#ae81ff">4</span>)
+</span></span></code></pre></div><p>Eの計算からやってくれる。Eは上記のrUIC::simplex()のrmseから求められている。
 時間遅れtpは普通は0からマイナスにかけて計算する。デモなのでプラスが入っているようだ。</p>
 <h3 id="uicの結果の見方">uic()の結果の見方</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">gg_uic <span style="color:#f92672">&lt;-</span> uic_opt_yx <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">mutate</span>(signif<span style="color:#f92672">=</span><span style="color:#a6e22e">if_else</span>(te<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#34;red&#34;</span>, <span style="color:#e6db74">&#34;black&#34;</span>)) <span style="color:#f92672">%&gt;%</span> 
-        <span style="color:#a6e22e">ggplot</span>(<span style="color:#a6e22e">aes</span>(x<span style="color:#f92672">=</span>tp, y<span style="color:#f92672">=</span>te)) <span style="color:#f92672">+</span> 
-        <span style="color:#a6e22e">geom_line</span>() <span style="color:#f92672">+</span>
-        <span style="color:#a6e22e">geom_point</span>(<span style="color:#a6e22e">aes</span>(y<span style="color:#f92672">=</span>te, color<span style="color:#f92672">=</span>signif)) <span style="color:#f92672">+</span>
-        <span style="color:#a6e22e">theme</span>(legend.position<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;none&#34;</span>)
-</code></pre></div><p><img src="https://i.imgur.com/gdWxMXP.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>gg_uic <span style="color:#f92672">&lt;-</span> uic_opt_yx <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">mutate</span>(signif<span style="color:#f92672">=</span><span style="color:#a6e22e">if_else</span>(te<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#34;red&#34;</span>, <span style="color:#e6db74">&#34;black&#34;</span>)) <span style="color:#f92672">%&gt;%</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ggplot</span>(<span style="color:#a6e22e">aes</span>(x<span style="color:#f92672">=</span>tp, y<span style="color:#f92672">=</span>te)) <span style="color:#f92672">+</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">geom_line</span>() <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">geom_point</span>(<span style="color:#a6e22e">aes</span>(y<span style="color:#f92672">=</span>te, color<span style="color:#f92672">=</span>signif)) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">theme</span>(legend.position<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;none&#34;</span>)
+</span></span></code></pre></div><p><img src="https://i.imgur.com/gdWxMXP.png" alt=""></p>
 <p>出力で言うところのteがUICに相当する様子。
 大雑把に言って、</p>
 <ol>
@@ -213,36 +213,36 @@ uic.optinal()はバックエンドでこの2引数バージョンのsimplex()を
 </ol>
 <p>時間遅れでは因果があると言えるようである。</p>
 <h3 id="redmccmとの比較">rEDM::ccm()との比較</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">library</span>(foreach)
-<span style="color:#a6e22e">library</span>(rEDM)
-<span style="color:#a6e22e">packageVersion</span>(<span style="color:#e6db74">&#34;rEDM&#34;</span>)
-<span style="color:#f92672">&gt;</span> [1] ‘<span style="color:#ae81ff">0.7.1</span>’
-</code></pre></div><p>向峯が慣れているver.0.7.1で比較します。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(foreach)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(rEDM)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">packageVersion</span>(<span style="color:#e6db74">&#34;rEDM&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;</span> [1] ‘<span style="color:#ae81ff">0.7.1</span>’
+</span></span></code></pre></div><p>向峯が慣れているver.0.7.1で比較します。</p>
 <p>rEDMは引数tpにvectorを渡せないことに注意！
 そのため、foreach()で回します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">ccm_res <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">foreach</span>(tp<span style="color:#f92672">=</span><span style="color:#ae81ff">-4</span><span style="color:#f92672">:</span><span style="color:#ae81ff">4</span>, .combine<span style="color:#f92672">=</span>rbind) <span style="color:#f92672">%do%</span> {
-    rEDM<span style="color:#f92672">::</span><span style="color:#a6e22e">ccm</span>(block, E<span style="color:#f92672">=</span>Eyx, 
-        tp<span style="color:#f92672">=</span>tp, lib_sizes<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(Eyx<span style="color:#ae81ff">+1</span>, <span style="color:#a6e22e">nrow</span>(block)),    
-        lib_column<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;y&#34;</span>, target_column<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;x&#34;</span>, 
-        silent<span style="color:#f92672">=</span>T)
-    } <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">as_tibble</span>() <span style="color:#f92672">%&gt;%</span>
-    <span style="color:#a6e22e">nest</span>(<span style="color:#f92672">-</span>lib_size, <span style="color:#f92672">-</span>tp) <span style="color:#f92672">%&gt;%</span>
-    <span style="color:#a6e22e">mutate</span>(data<span style="color:#f92672">=</span><span style="color:#a6e22e">map</span>(data, <span style="color:#f92672">~</span><span style="color:#a6e22e">summarize</span>(., 
-            sd<span style="color:#f92672">=</span><span style="color:#a6e22e">sd</span>(rmse, na.rm<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>), 
-            rmse<span style="color:#f92672">=</span><span style="color:#a6e22e">mean</span>(rmse, na.rm<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>)))) <span style="color:#f92672">%&gt;%</span> 
-    <span style="color:#a6e22e">unnest</span>() <span style="color:#f92672">%&gt;%</span>
-    <span style="color:#a6e22e">mutate</span>(lib_size<span style="color:#f92672">=</span><span style="color:#a6e22e">if_else</span>(lib_size<span style="color:#f92672">==</span><span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;min&#34;</span>, <span style="color:#e6db74">&#34;max&#34;</span>))
-
-gg_ccm <span style="color:#f92672">&lt;-</span> ccm_res <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">ggplot</span>(<span style="color:#a6e22e">aes</span>(x<span style="color:#f92672">=</span>tp, y<span style="color:#f92672">=</span>rmse, color<span style="color:#f92672">=</span>lib_size)) <span style="color:#f92672">+</span>
-    <span style="color:#a6e22e">geom_line</span>() <span style="color:#f92672">+</span>
-    <span style="color:#a6e22e">geom_ribbon</span>(<span style="color:#a6e22e">aes</span>(ymin<span style="color:#f92672">=</span>rmse<span style="color:#f92672">-</span>sd, ymax<span style="color:#f92672">=</span>rmse<span style="color:#f92672">+</span>sd, fill<span style="color:#f92672">=</span>lib_size), alpha<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>)
-</code></pre></div><p><img src="https://i.imgur.com/OWTOUwN.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>ccm_res <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">foreach</span>(tp<span style="color:#f92672">=</span><span style="color:#ae81ff">-4</span><span style="color:#f92672">:</span><span style="color:#ae81ff">4</span>, .combine<span style="color:#f92672">=</span>rbind) <span style="color:#f92672">%do%</span> {
+</span></span><span style="display:flex;"><span>    rEDM<span style="color:#f92672">::</span><span style="color:#a6e22e">ccm</span>(block, E<span style="color:#f92672">=</span>Eyx, 
+</span></span><span style="display:flex;"><span>        tp<span style="color:#f92672">=</span>tp, lib_sizes<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(Eyx<span style="color:#ae81ff">+1</span>, <span style="color:#a6e22e">nrow</span>(block)),    
+</span></span><span style="display:flex;"><span>        lib_column<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;y&#34;</span>, target_column<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;x&#34;</span>, 
+</span></span><span style="display:flex;"><span>        silent<span style="color:#f92672">=</span>T)
+</span></span><span style="display:flex;"><span>    } <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">as_tibble</span>() <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">nest</span>(<span style="color:#f92672">-</span>lib_size, <span style="color:#f92672">-</span>tp) <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">mutate</span>(data<span style="color:#f92672">=</span><span style="color:#a6e22e">map</span>(data, <span style="color:#f92672">~</span><span style="color:#a6e22e">summarize</span>(., 
+</span></span><span style="display:flex;"><span>            sd<span style="color:#f92672">=</span><span style="color:#a6e22e">sd</span>(rmse, na.rm<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>), 
+</span></span><span style="display:flex;"><span>            rmse<span style="color:#f92672">=</span><span style="color:#a6e22e">mean</span>(rmse, na.rm<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>)))) <span style="color:#f92672">%&gt;%</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">unnest</span>() <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">mutate</span>(lib_size<span style="color:#f92672">=</span><span style="color:#a6e22e">if_else</span>(lib_size<span style="color:#f92672">==</span><span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;min&#34;</span>, <span style="color:#e6db74">&#34;max&#34;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>gg_ccm <span style="color:#f92672">&lt;-</span> ccm_res <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">ggplot</span>(<span style="color:#a6e22e">aes</span>(x<span style="color:#f92672">=</span>tp, y<span style="color:#f92672">=</span>rmse, color<span style="color:#f92672">=</span>lib_size)) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_line</span>() <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_ribbon</span>(<span style="color:#a6e22e">aes</span>(ymin<span style="color:#f92672">=</span>rmse<span style="color:#f92672">-</span>sd, ymax<span style="color:#f92672">=</span>rmse<span style="color:#f92672">+</span>sd, fill<span style="color:#f92672">=</span>lib_size), alpha<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>)
+</span></span></code></pre></div><p><img src="https://i.imgur.com/OWTOUwN.png" alt=""></p>
 <p>結果の見方：library sizeがminよりもmaxでrmseが低い時間遅れで因果があると判断できる。加えてsdを計算することでFisher’s ∆ρZ-testをやっていることに相当（するはず）。</p>
 <p>グラフを横に並べてみる。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">library</span>(ggpubr)
-
-<span style="color:#a6e22e">ggarrange</span>(gg_uic, gg_ccm, nrow<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, labels<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;(UIC)&#34;</span>, <span style="color:#e6db74">&#34;(CCM)&#34;</span>))
-</code></pre></div><p><img src="https://i.imgur.com/V2RqQOE.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(ggpubr)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ggarrange</span>(gg_uic, gg_ccm, nrow<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, labels<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;(UIC)&#34;</span>, <span style="color:#e6db74">&#34;(CCM)&#34;</span>))
+</span></span></code></pre></div><p><img src="https://i.imgur.com/V2RqQOE.png" alt=""></p>
 <p>どちらもtp=-1で最も因果があると判断できる。</p>
 <h3 id="まとめ">まとめ</h3>
 <ul>
@@ -292,7 +292,7 @@ gg_ccm <span style="color:#f92672">&lt;-</span> ccm_res <span style="color:#f926
 	    </a>
 
 		<a  href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2f6w3n.github.io%2fposts%2fruic%2f
-			&title=rUIC&summary=rUIC%e3%81%ae%e5%82%99%e5%bf%98%e9%8c%b2%20UIC%e3%81%a8%e3%81%af%20Unified%20Information-theoretic%20Causality%e3%81%ae%e7%95%a5%e3%80%82%20%e6%9c%80%e8%bf%91%e5%82%8d%e6%b3%95%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6CCM%e3%82%92%e8%a7%a3%e6%9e%90%e7%9a%84%ef%bc%88%e6%95%b0%e5%ad%a6%e7%9a%84%ef%bc%89%e3%81%ab%e8%a7%a3%e3%81%91%e3%82%8b%e3%82%88%e3%81%86%e3%81%ab%e5%a4%89%e5%bd%a2%e3%81%97%e7%94%9f%e3%81%be%e3%82%8c%e3%81%9f%e6%8c%87%e6%a8%99%e3%80%82CCM%e3%81%ae%e4%b8%80%e8%88%ac%e5%8c%96%e3%81%a8%e3%82%82%e8%a8%80%e3%81%88%e3%82%8b%e3%80%82%e3%81%9d%e3%81%ae%e3%81%9f%e3%82%81EDM%e3%81%ae%e4%b8%80%e9%83%a8%e3%81%a8%e3%81%84%e3%81%86%e7%ab%8b%e3%81%a1%e4%bd%8d%e7%bd%ae%e3%80%82%0aUIC%e3%81%ae%e3%83%a1%e3%83%aa%e3%83%83%e3%83%88%ef%bc%9a%0a%20CCM%e3%81%a7%e3%81%af%e7%b7%9a%e5%bd%a2%e6%80%a7%e3%81%8c%e5%bc%b7%e3%81%84%e9%9a%9b%e3%81%aa%e3%81%a9%e3%81%ab%e5%81%bd%e9%99%bd%e6%80%a7%e3%81%8c%e3%81%a7%e3%82%8b%e3%81%8c%e3%80%81%e3%81%9d%e3%81%ae%e7%82%b9%e3%81%ab%e9%96%a2%e3%81%97%e3%81%a6UIC%e3%81%a7%e3%81%af%e3%83%ad%e3%83%90%e3%82%b9%e3%83%88%e3%80%82%20%e6%9d%a1%e4%bb%b6%e4%bb%98%e3%81%8d%e3%81%a7%e8%a8%88%e7%ae%97%e3%81%a7%e3%81%8d%e3%82%8b%e3%80%82%e3%81%9d%e3%81%ae%e3%81%9f%e3%82%81%e3%80%81A-%26gt%3bB-%26gt%3bC%e3%81%ae%e3%82%88%e3%81%86%e3%81%aa%e5%9b%a0%e6%9e%9c%e3%81%8c%e3%81%82%e3%82%8b%e5%a0%b4%e5%90%88%e3%80%81CCM%e3%81%a7%e3%81%afA-%26gt%3bC%e3%81%a7%e3%81%ae%e5%9b%a0%e6%9e%9c%e3%82%92%e5%90%a6%e5%ae%9a%e3%81%a7%e3%81%8d%e3%81%aa%e3%81%84%e3%81%8c%e3%80%81UIC%e3%81%a7%e3%81%af%e5%90%a6%e5%ae%9a%e3%81%a7%e3%81%8d%e3%82%8b%28%3f%29%e3%80%82%20%e8%a7%a3%e6%9e%90%e7%9a%84%e3%81%ab%e8%a8%88%e7%ae%97%e3%81%a7%e3%81%8d%e3%82%8b%e3%81%9f%e3%82%81CCM%e3%82%88%e3%82%8a%e3%82%82%e8%a8%88%e7%ae%97%e9%80%9f%e5%ba%a6%e3%81%8c%e9%80%9f%e3%81%84%e3%80%82%20%20rUIC%3a%3asimplex%28%29%20tl%20%26lt%3b-%20400%20%23%20time%20length%20x%20%26lt%3b-%20y%20%26lt%3b-%20rep%28NA%2c%20tl%29%20x%5b1%5d%20%26lt%3b-%200.4%20y%5b1%5d%20%26lt%3b-%200.2%20for%20%28t%20in%201%3a%28tl%20-%201%29%29%20%7b%20%23%20causality%20%3a%20x%20-%26gt%3b%20y%20x%5bt%2b1%5d%20%3d%20x%5bt%5d%20%2a%20%283.&source=rafed123.github.io"
+			&title=rUIC&summary=rUIC%e3%81%ae%e5%82%99%e5%bf%98%e9%8c%b2%20UIC%e3%81%a8%e3%81%af%20Unified%20Information-theoretic%20Causality%e3%81%ae%e7%95%a5%e3%80%82%20%e6%9c%80%e8%bf%91%e5%82%8d%e6%b3%95%e3%82%92%e7%94%a8%e3%81%84%e3%81%a6CCM%e3%82%92%e8%a7%a3%e6%9e%90%e7%9a%84%ef%bc%88%e6%95%b0%e5%ad%a6%e7%9a%84%ef%bc%89%e3%81%ab%e8%a7%a3%e3%81%91%e3%82%8b%e3%82%88%e3%81%86%e3%81%ab%e5%a4%89%e5%bd%a2%e3%81%97%e7%94%9f%e3%81%be%e3%82%8c%e3%81%9f%e6%8c%87%e6%a8%99%e3%80%82CCM%e3%81%ae%e4%b8%80%e8%88%ac%e5%8c%96%e3%81%a8%e3%82%82%e8%a8%80%e3%81%88%e3%82%8b%e3%80%82%e3%81%9d%e3%81%ae%e3%81%9f%e3%82%81EDM%e3%81%ae%e4%b8%80%e9%83%a8%e3%81%a8%e3%81%84%e3%81%86%e7%ab%8b%e3%81%a1%e4%bd%8d%e7%bd%ae%e3%80%82%0aUIC%e3%81%ae%e3%83%a1%e3%83%aa%e3%83%83%e3%83%88%ef%bc%9a%0a%20CCM%e3%81%a7%e3%81%af%e7%b7%9a%e5%bd%a2%e6%80%a7%e3%81%8c%e5%bc%b7%e3%81%84%e9%9a%9b%e3%81%aa%e3%81%a9%e3%81%ab%e5%81%bd%e9%99%bd%e6%80%a7%e3%81%8c%e3%81%a7%e3%82%8b%e3%81%8c%e3%80%81%e3%81%9d%e3%81%ae%e7%82%b9%e3%81%ab%e9%96%a2%e3%81%97%e3%81%a6UIC%e3%81%a7%e3%81%af%e3%83%ad%e3%83%90%e3%82%b9%e3%83%88%e3%80%82%20%e6%9d%a1%e4%bb%b6%e4%bb%98%e3%81%8d%e3%81%a7%e8%a8%88%e7%ae%97%e3%81%a7%e3%81%8d%e3%82%8b%e3%80%82%e3%81%9d%e3%81%ae%e3%81%9f%e3%82%81%e3%80%81A-%26gt%3bB-%26gt%3bC%e3%81%ae%e3%82%88%e3%81%86%e3%81%aa%e5%9b%a0%e6%9e%9c%e3%81%8c%e3%81%82%e3%82%8b%e5%a0%b4%e5%90%88%e3%80%81CCM%e3%81%a7%e3%81%afA-%26gt%3bC%e3%81%a7%e3%81%ae%e5%9b%a0%e6%9e%9c%e3%82%92%e5%90%a6%e5%ae%9a%e3%81%a7%e3%81%8d%e3%81%aa%e3%81%84%e3%81%8c%e3%80%81UIC%e3%81%a7%e3%81%af%e5%90%a6%e5%ae%9a%e3%81%a7%e3%81%8d%e3%82%8b%28%3f%29%e3%80%82%20%e8%a7%a3%e6%9e%90%e7%9a%84%e3%81%ab%e8%a8%88%e7%ae%97%e3%81%a7%e3%81%8d%e3%82%8b%e3%81%9f%e3%82%81CCM%e3%82%88%e3%82%8a%e3%82%82%e8%a8%88%e7%ae%97%e9%80%9f%e5%ba%a6%e3%81%8c%e9%80%9f%e3%81%84%e3%80%82%20%20rUIC%3a%3asimplex%28%29%20tl%20%26lt%3b-%20400%20%23%20time%20length%20x%20%26lt%3b-%20y%20%26lt%3b-%20rep%28NA%2c%20tl%29%20x%5b1%5d%20%26lt%3b-%200.4%20y%5b1%5d%20%26lt%3b-%200.2%20for%20%28t%20in%201%3a%28tl%20-%201%29%29%20%7b%20%23%20causality%20%3a%20x%20-%26gt%3b%20y%20%20x%5bt%2b1%5d%20%3d%20x%5bt%5d%20%2a%20%283.&source=rafed123.github.io"
 	        onclick="socialMediaPopUp(this.href, '', 900, 500); return false;"
 	        title="Share on LinkedIn. Opens in a new window." >
 	        <img src=../../img/icons/45px/linkedin.png>

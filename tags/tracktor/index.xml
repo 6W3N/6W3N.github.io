@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tracktor on 6W3N Site</title>
+    <link>https://6w3n.github.io/tags/tracktor/</link>
+    <description>Recent content in tracktor on 6W3N Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 13 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://6w3n.github.io/tags/tracktor/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tracktor</title>
+      <link>https://6w3n.github.io/posts/tracktor/</link>
+      <pubDate>Mon, 13 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://6w3n.github.io/posts/tracktor/</guid>
+      <description>Preface tracktorを用いて動画から行動のトラッキングを行う備忘録です。
+Environment  Mac OS Big Sur ver. 11.6 Python ver. 3.9.6  What&amp;rsquo;s tracktor? Main Flow 1. Data Preparation 2. Install tracktor 3. Run tracktor Postface Enjoy!</description>
+    </item>
+    
+  </channel>
+</rss>
